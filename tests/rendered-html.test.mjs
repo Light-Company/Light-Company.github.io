@@ -12,16 +12,52 @@ test("keeps the Prism positioning concrete and the CTA singular", async () => {
 
   assert.match(
     page,
-    /A desk lamp that projects AI guidance onto the work in your hands\./,
+    /A lamp that projects AI guidance onto robotics and hardware work\./,
   );
   assert.match(page, /robotics and hardware teams/i);
-  assert.match(page, /Former Apple Vision Pro infrastructure engineer/);
+  assert.match(page, /APPLE VISION PRO INFRASTRUCTURE ENGINEER/);
   assert.match(page, /action="\/api\/rsvp"/);
   assert.match(page, /RSVP \/ GET NOTIFIED/);
   assert.match(page, /San Francisco · August 20, 2026/i);
   assert.match(page, /FOOTAGE NOT YET PUBLISHED/);
   assert.doesNotMatch(page, /future of spatial computing/i);
   assert.doesNotMatch(page, /codex-preview|react-loading-skeleton/i);
+});
+
+test("makes IMG_5010 the hero and restores every original-site video", async () => {
+  const page = await readFile(pageUrl, "utf8");
+  const expectedVideos = [
+    "img-5010.mp4",
+    "founder-intro.mp4",
+    "registered-guidance.mp4",
+    "hero-workbench.mp4",
+    "object-measurement.mp4",
+    "measure.mp4",
+    "overhead.mp4",
+    "track-person.mp4",
+    "object.mp4",
+    "scene-scan.mp4",
+    "room-layout.mp4",
+    "room-seg.mp4",
+    "rooms-grid.mp4",
+    "ambient-bird.mp4",
+    "ambient-art.mp4",
+    "ambient-display.mp4",
+    "artwork.mp4",
+    "signoff.mp4",
+  ];
+
+  assert.match(
+    page,
+    /<section className="hero"[\s\S]*?src="\/media\/img-5010\.mp4"/,
+  );
+  for (const video of expectedVideos) {
+    assert.match(page, new RegExp(`/media/${video.replace(".", "\\.")}`));
+  }
+  assert.equal(
+    new Set(page.match(/\/media\/[\w-]+\.mp4/g)).size,
+    expectedVideos.length,
+  );
 });
 
 test("includes host-aware social metadata and responsive safeguards", async () => {
