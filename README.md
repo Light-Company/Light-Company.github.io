@@ -6,7 +6,9 @@ onto physical work.
 ## What is included
 
 - concrete positioning for robotics and hardware teams
-- real prototype footage from the existing Prism media library
+- `IMG_5010` as the full-screen landing video
+- every video from the original Prism media library, each presented as its own
+  spaced proof moment rather than consolidated into a gallery
 - clearly labeled future footage slots for assembly, soldering, and cooking
 - an August 20, 2026 San Francisco RSVP flow backed by D1
 - responsive layouts, reduced-motion support, and host-aware social metadata
