@@ -18,7 +18,7 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const title = "Prism · AI guidance projected onto physical work";
+const title = "The Light Company · AI guidance projected onto physical work";
 const description =
   "A desk lamp with cameras and a projector that sees the workbench, understands the task, and points to the next action. Built for robotics and hardware teams.";
 
@@ -27,7 +27,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const host =
     requestHeaders.get("x-forwarded-host") ??
     requestHeaders.get("host") ??
-    "meetprism.co";
+    "prism-labs-physical-work.jonnysol.chatgpt.site";
   const protocol = requestHeaders.get("x-forwarded-proto") ?? "https";
   const metadataBase = new URL(`${protocol}://${host}`);
   const socialImage = new URL("/og.png", metadataBase).toString();
@@ -36,18 +36,18 @@ export async function generateMetadata(): Promise<Metadata> {
     metadataBase,
     title,
     description,
-    applicationName: "Prism Labs",
+    applicationName: "The Light Company",
     keywords: [
-      "PrismOS",
       "projected AR",
       "physical AI",
       "robotics",
       "hardware assembly",
       "spatial guidance",
+      "intelligent light",
     ],
-    authors: [{ name: "Prism Labs", url: "https://meetprism.co" }],
-    creator: "Prism Labs",
-    publisher: "Prism Labs",
+    authors: [{ name: "The Light Company" }],
+    creator: "The Light Company",
+    publisher: "The Light Company",
     alternates: { canonical: "/" },
     icons: {
       icon: "/favicon.svg",
@@ -56,7 +56,7 @@ export async function generateMetadata(): Promise<Metadata> {
     openGraph: {
       type: "website",
       url: "/",
-      siteName: "Prism Labs",
+      siteName: "The Light Company",
       title,
       description,
       images: [
@@ -64,7 +64,7 @@ export async function generateMetadata(): Promise<Metadata> {
           url: socialImage,
           width: 1200,
           height: 630,
-          alt: "Prism Labs: AI guidance projected onto physical work",
+          alt: "The Light Company: AI guidance projected onto physical work",
         },
       ],
     },
@@ -84,8 +84,8 @@ export async function generateMetadata(): Promise<Metadata> {
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#08070A",
-  colorScheme: "dark",
+  themeColor: "#F7F8FA",
+  colorScheme: "light",
 };
 
 export default function RootLayout({

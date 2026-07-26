@@ -7,9 +7,10 @@ const layoutUrl = new URL("../app/layout.tsx", import.meta.url);
 const routeUrl = new URL("../app/api/rsvp/route.ts", import.meta.url);
 const cssUrl = new URL("../app/globals.css", import.meta.url);
 
-test("keeps the Prism positioning concrete and the CTA singular", async () => {
+test("keeps the positioning concrete, adopts The Light Company, and retains one CTA", async () => {
   const page = await readFile(pageUrl, "utf8");
 
+  assert.match(page, /THE LIGHT COMPANY/);
   assert.match(
     page,
     /A lamp that projects AI guidance onto robotics and hardware work\./,
@@ -21,6 +22,7 @@ test("keeps the Prism positioning concrete and the CTA singular", async () => {
   assert.match(page, /San Francisco · August 20, 2026/i);
   assert.match(page, /FOOTAGE NOT YET PUBLISHED/);
   assert.doesNotMatch(page, /future of spatial computing/i);
+  assert.doesNotMatch(page, /light[\s.]+intelligence[\s.]+forward/i);
   assert.doesNotMatch(page, /codex-preview|react-loading-skeleton/i);
 });
 
@@ -69,6 +71,11 @@ test("includes host-aware social metadata and responsive safeguards", async () =
   assert.match(layout, /requestHeaders\.get\("x-forwarded-host"\)/);
   assert.match(layout, /new URL\("\/og\.png", metadataBase\)/);
   assert.match(layout, /card: "summary_large_image"/);
+  assert.match(layout, /The Light Company · AI guidance projected onto physical work/);
+  assert.match(css, /color-scheme: light/);
+  assert.match(css, /--room: #f7f8fa/);
+  assert.match(css, /\.light-mark/);
+  assert.match(css, /\.hero-beams/);
   assert.match(css, /@media \(max-width: 680px\)/);
   assert.match(css, /@media \(prefers-reduced-motion: reduce\)/);
   assert.match(css, /:focus-visible/);

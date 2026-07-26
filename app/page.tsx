@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Prism · AI guidance projected onto physical work",
+  title: "The Light Company · AI guidance projected onto physical work",
   description:
     "A lamp that sees a workbench, understands the task, and projects the next action onto the exact part. Built for robotics and hardware teams.",
 };
@@ -40,7 +40,7 @@ const loop = [
   {
     number: "04",
     title: "Verify",
-    body: "Prism checks the result before moving to the next step.",
+    body: "The system checks the result before moving to the next step.",
   },
 ];
 
@@ -59,7 +59,7 @@ const benchStories: VideoStory[] = [
     index: "02",
     kind: "WORKING PROTOTYPE",
     title: "The workbench becomes the interface.",
-    body: "Prism sees the object, measures it, and projects the result beside it. The operator never has to translate a screen back to the bench.",
+    body: "The system sees the object, measures it, and projects the result beside it. The operator never has to translate a screen back to the bench.",
     src: "/media/hero-workbench.mp4",
     poster: "/media/hero-workbench.jpg",
     format: "wide",
@@ -106,7 +106,7 @@ const benchStories: VideoStory[] = [
   {
     index: "07",
     kind: "WORKING PROTOTYPE",
-    title: "Place an object. Prism responds beside it.",
+    title: "Place an object. The system responds beside it.",
     body: "The system recognizes what entered the workspace and projects context next to the physical object instead of opening another window.",
     src: "/media/object.mp4",
     poster: "/media/object.jpg",
@@ -119,7 +119,7 @@ const spatialStories: VideoStory[] = [
   {
     index: "08",
     kind: "PERCEPTION PIPELINE",
-    title: "Prism first builds a spatial view of the room.",
+    title: "The system first builds a spatial view of the room.",
     body: "The camera maps the physical workspace before any instruction layer reaches a surface.",
     src: "/media/scene-scan.mp4",
     poster: "/media/scene-scan.jpg",
@@ -171,7 +171,7 @@ const ambientStories: VideoStory[] = [
     index: "13",
     kind: "AMBIENT UI STUDY",
     title: "Quiet by default.",
-    body: "Prism can sit in a room like a framed print, then become an interface only when the task calls for one.",
+    body: "It can sit in a room like a framed print, then become an interface only when the task calls for one.",
     src: "/media/ambient-art.mp4",
     poster: "/media/ambient-art.jpg",
     format: "portrait",
@@ -199,9 +199,9 @@ const ambientStories: VideoStory[] = [
   },
   {
     index: "16",
-    kind: "ORIGINAL PRISM REEL",
+    kind: "ORIGINAL SITE REEL",
     title: "The interface leaves the screen.",
-    body: "Prism puts guidance in the same physical space as the hands, tools, and objects it is helping with.",
+    body: "The system puts guidance in the same physical space as the hands, tools, and objects it is helping with.",
     src: "/media/signoff.mp4",
     poster: "/media/signoff.jpg",
     format: "portrait",
@@ -227,31 +227,16 @@ const upcomingDemos = [
   },
 ];
 
-function PrismMark() {
+function LightMark() {
   return (
-    <svg
-      className="brand-mark"
-      viewBox="0 0 64 64"
+    <span
+      className="light-mark"
       aria-hidden="true"
-      focusable="false"
     >
-      <defs>
-        <linearGradient id="prism-spectrum" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0" stopColor="#EC6F9E" />
-          <stop offset=".5" stopColor="#9DA3FF" />
-          <stop offset="1" stopColor="#4AA3F0" />
-        </linearGradient>
-      </defs>
-      <path
-        d="M32 10 55 50H9L32 10Z"
-        fill="none"
-        stroke="url(#prism-spectrum)"
-        strokeWidth="2.2"
-        strokeLinejoin="round"
-      />
-      <path d="M9 50 32 34 55 50" fill="none" stroke="#9DA3FF" />
-      <path d="M32 10v24" fill="none" stroke="#ECEAF2" opacity=".7" />
-    </svg>
+      <span className="light-mark-glow" />
+      <span className="light-mark-beam" />
+      <span className="light-mark-blade" />
+    </span>
   );
 }
 
@@ -288,7 +273,7 @@ function VideoStory({ story }: { story: VideoStory }) {
           <span className="media-tag mono">{story.kind}</span>
         </div>
         <div className="video-story-copy">
-          <span className="mono">{story.index} / PRISM VIDEO ARCHIVE</span>
+          <span className="mono">{story.index} / VIDEO ARCHIVE</span>
           <h3>{story.title}</h3>
           <p>{story.body}</p>
         </div>
@@ -307,11 +292,9 @@ export default async function Home({ searchParams }: PageProps) {
       </a>
 
       <header className="site-header">
-        <a className="brand" href="#top" aria-label="Prism Labs home">
-          <PrismMark />
-          <span>PRISM LABS</span>
-          <span className="brand-divider">/</span>
-          <span className="brand-os">PRISMOS</span>
+        <a className="brand" href="#top" aria-label="The Light Company home">
+          <LightMark />
+          <span>THE LIGHT COMPANY</span>
         </a>
         <nav aria-label="Primary navigation">
           <a href="#proof">See it working</a>
@@ -336,6 +319,11 @@ export default async function Home({ searchParams }: PageProps) {
             </video>
           </div>
           <div className="hero-shade" aria-hidden="true" />
+          <div className="hero-beams" aria-hidden="true">
+            <span className="hero-beam hero-beam-warm" />
+            <span className="hero-beam hero-beam-blue" />
+            <span className="hero-beam hero-beam-violet" />
+          </div>
           <ViewfinderCorners />
 
           <div className="hero-content">
@@ -347,9 +335,9 @@ export default async function Home({ searchParams }: PageProps) {
               A lamp that projects AI guidance onto robotics and hardware work.
             </h1>
             <p className="hero-copy">
-              Prism sees the bench, understands the task, and points to the
-              exact part. No headset. No screen switching. Both hands stay on
-              the work.
+              The system sees the bench, understands the task, and points to
+              the exact part. No headset. No screen switching. Both hands stay
+              on the work.
             </p>
             <p className="hero-credential mono">
               BUILT BY A FORMER APPLE VISION PRO INFRASTRUCTURE ENGINEER
@@ -369,7 +357,7 @@ export default async function Home({ searchParams }: PageProps) {
           </div>
 
           <div className="hero-telemetry mono" aria-hidden="true">
-            <span>IMG_5010 / LIVE PRISM WORKBENCH</span>
+            <span>IMG_5010 / LIVE WORKBENCH</span>
             <span>PROJECTED REALITY / NO HEADSET</span>
           </div>
         </section>
@@ -428,7 +416,7 @@ export default async function Home({ searchParams }: PageProps) {
               </article>
               <article>
                 <span className="mono">NOW</span>
-                <h3>Used to build Prism itself</h3>
+                <h3>Used to build the system itself</h3>
                 <p>The prototype helps build the next hardware iteration.</p>
               </article>
             </div>
@@ -479,13 +467,13 @@ export default async function Home({ searchParams }: PageProps) {
             <h2 id="proof-title">See the loop from every angle.</h2>
             <p>
               These are the full set of videos published across the original
-              Prism site: physical registration, object awareness, perception,
+              site: physical registration, object awareness, perception,
               room understanding, and ambient interface studies.
             </p>
           </div>
         </section>
 
-        <div className="video-sequence" aria-label="Prism prototype videos">
+        <div className="video-sequence" aria-label="Prototype videos">
           {benchStories.map((story) => (
             <VideoStory story={story} key={story.src} />
           ))}
@@ -522,14 +510,14 @@ export default async function Home({ searchParams }: PageProps) {
         <section className="chapter band" aria-labelledby="spatial-title">
           <div className="section-index mono">06 / UNDERSTAND THE SPACE</div>
           <div className="chapter-heading">
-            <p className="kicker">BEFORE PRISM CAN POINT, IT HAS TO SEE</p>
+            <p className="kicker">BEFORE THE SYSTEM CAN POINT, IT HAS TO SEE</p>
             <h2 id="spatial-title">
               The physical scene becomes context for the agent.
             </h2>
           </div>
         </section>
 
-        <div className="video-sequence" aria-label="Prism perception videos">
+        <div className="video-sequence" aria-label="Perception videos">
           {spatialStories.map((story) => (
             <VideoStory story={story} key={story.src} />
           ))}
@@ -545,7 +533,7 @@ export default async function Home({ searchParams }: PageProps) {
           </div>
         </section>
 
-        <div className="video-sequence" aria-label="Prism ambient interface videos">
+        <div className="video-sequence" aria-label="Ambient interface videos">
           {ambientStories.map((story) => (
             <VideoStory story={story} key={story.src} />
           ))}
@@ -590,7 +578,7 @@ export default async function Home({ searchParams }: PageProps) {
           <div className="metric-grid">
             <article>
               <strong>Daily</strong>
-              <span>Used to build the next Prism hardware iteration</span>
+              <span>Used to build the next hardware iteration</span>
             </article>
             <article>
               <strong>1 loop</strong>
@@ -698,8 +686,8 @@ export default async function Home({ searchParams }: PageProps) {
 
       <footer>
         <a className="brand" href="#top" aria-label="Back to top">
-          <PrismMark />
-          <span>PRISM LABS</span>
+          <LightMark />
+          <span>THE LIGHT COMPANY</span>
         </a>
         <p>Claude Code for physical work.</p>
         <div>

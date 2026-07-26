@@ -1,13 +1,13 @@
-# Prism Labs marketing site
+# The Light Company marketing site
 
-The refreshed single-page site for PrismOS / Desklight: AI guidance projected
-onto physical work.
+The refreshed single-page site for a projected-AI desk lamp: AI guidance
+projected onto physical work.
 
 ## What is included
 
 - concrete positioning for robotics and hardware teams
 - `IMG_5010` as the full-screen landing video
-- every video from the original Prism media library, each presented as its own
+- every video from the original media library, each presented as its own
   spaced proof moment rather than consolidated into a gallery
 - clearly labeled future footage slots for assembly, soldering, and cooking
 - an August 20, 2026 San Francisco RSVP flow backed by D1

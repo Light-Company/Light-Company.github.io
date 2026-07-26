@@ -1,13 +1,16 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
   <defs>
-    <linearGradient id="s" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#EC6F9E"/>
-      <stop offset=".5" stop-color="#9DA3FF"/>
-      <stop offset="1" stop-color="#4AA3F0"/>
+    <linearGradient id="beam" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#F2C977"/>
+      <stop offset=".48" stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#7B63FF"/>
     </linearGradient>
+    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="2.4"/>
+    </filter>
   </defs>
-  <rect width="64" height="64" rx="13" fill="#08070A"/>
-  <path d="M32 12 52 49H12L32 12Z" fill="none" stroke="url(#s)" stroke-width="2.6" stroke-linejoin="round"/>
-  <path d="M12 49 32 35 52 49" fill="none" stroke="#9DA3FF" stroke-width="1.4"/>
-  <path d="M32 12v23" fill="none" stroke="#ECEAF2" stroke-width="1.4" opacity=".7"/>
+  <rect width="64" height="64" rx="13" fill="#F7F8FA"/>
+  <path d="M8 47 52 8 29 41Z" fill="#7B63FF" opacity=".32" filter="url(#glow)"/>
+  <path d="M8 47 52 8 29 41Z" fill="url(#beam)"/>
+  <path d="M52 8 38 56 29 41Z" fill="#0F1117"/>
 </svg>
