@@ -1,5 +1,4 @@
 import type { Metadata, Viewport } from "next";
-import { headers } from "next/headers";
 import { Geist, Geist_Mono, Inter } from "next/font/google";
 import "./globals.css";
 
@@ -21,17 +20,10 @@ const geistMono = Geist_Mono({
 const title = "The Light Company · AI guidance projected onto physical work";
 const description =
   "A desk lamp with cameras and a projector that sees the workbench, understands the task, and points to the next action. Built for robotics and hardware teams.";
+const metadataBase = new URL("https://lightcompany.ai");
+const socialImage = new URL("/og.png", metadataBase).toString();
 
-export async function generateMetadata(): Promise<Metadata> {
-  const requestHeaders = await headers();
-  const host =
-    requestHeaders.get("x-forwarded-host") ??
-    requestHeaders.get("host") ??
-    "prism-labs-physical-work.jonnysol.chatgpt.site";
-  const protocol = requestHeaders.get("x-forwarded-proto") ?? "https";
-  const metadataBase = new URL(`${protocol}://${host}`);
-  const socialImage = new URL("/og.png", metadataBase).toString();
-
+export function generateMetadata(): Metadata {
   return {
     metadataBase,
     title,
@@ -48,14 +40,14 @@ export async function generateMetadata(): Promise<Metadata> {
     authors: [{ name: "The Light Company" }],
     creator: "The Light Company",
     publisher: "The Light Company",
-    alternates: { canonical: "/" },
+    alternates: { canonical: "https://lightcompany.ai" },
     icons: {
       icon: "/favicon.svg",
       shortcut: "/favicon.svg",
     },
     openGraph: {
       type: "website",
-      url: "/",
+      url: "https://lightcompany.ai",
       siteName: "The Light Company",
       title,
       description,

@@ -62,13 +62,14 @@ test("makes IMG_5010 the hero and restores every original-site video", async () 
   );
 });
 
-test("includes host-aware social metadata and responsive safeguards", async () => {
+test("uses lightcompany.ai as the canonical social domain and keeps responsive safeguards", async () => {
   const [layout, css] = await Promise.all([
     readFile(layoutUrl, "utf8"),
     readFile(cssUrl, "utf8"),
   ]);
 
-  assert.match(layout, /requestHeaders\.get\("x-forwarded-host"\)/);
+  assert.match(layout, /new URL\("https:\/\/lightcompany\.ai"\)/);
+  assert.match(layout, /canonical: "https:\/\/lightcompany\.ai"/);
   assert.match(layout, /new URL\("\/og\.png", metadataBase\)/);
   assert.match(layout, /card: "summary_large_image"/);
   assert.match(layout, /The Light Company · AI guidance projected onto physical work/);
