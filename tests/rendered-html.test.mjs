@@ -6,11 +6,13 @@ const pageUrl = new URL("../app/page.tsx", import.meta.url);
 const layoutUrl = new URL("../app/layout.tsx", import.meta.url);
 const routeUrl = new URL("../app/api/rsvp/route.ts", import.meta.url);
 const cssUrl = new URL("../app/globals.css", import.meta.url);
+const markUrl = new URL("../public/brand/light-company-mark.svg", import.meta.url);
 
 test("keeps the positioning concrete, adopts The Light Company, and retains one CTA", async () => {
   const page = await readFile(pageUrl, "utf8");
 
   assert.match(page, /THE LIGHT COMPANY/);
+  assert.match(page, /src="\/brand\/light-company-mark\.svg"/);
   assert.match(
     page,
     /A lamp that projects AI guidance onto robotics and hardware work\./,
@@ -24,6 +26,20 @@ test("keeps the positioning concrete, adopts The Light Company, and retains one 
   assert.doesNotMatch(page, /future of spatial computing/i);
   assert.doesNotMatch(page, /light[\s.]+intelligence[\s.]+forward/i);
   assert.doesNotMatch(page, /codex-preview|react-loading-skeleton/i);
+});
+
+test("uses the extracted vector light mark instead of the old CSS approximation", async () => {
+  const [page, css, mark] = await Promise.all([
+    readFile(pageUrl, "utf8"),
+    readFile(cssUrl, "utf8"),
+    readFile(markUrl, "utf8"),
+  ]);
+
+  assert.match(mark, /viewBox="0 0 140 140"/);
+  assert.match(mark, /linearGradient id="light-beam"/);
+  assert.match(mark, /linearGradient id="graphite-blade"/);
+  assert.doesNotMatch(page, /light-mark-(glow|beam|blade)/);
+  assert.doesNotMatch(css, /\.light-mark-(glow|beam|blade)/);
 });
 
 test("makes IMG_5010 the hero and restores every original-site video", async () => {

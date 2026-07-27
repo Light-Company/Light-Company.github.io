@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "The Light Company · AI guidance projected onto physical work",
@@ -229,14 +230,14 @@ const upcomingDemos = [
 
 function LightMark() {
   return (
-    <span
+    <Image
       className="light-mark"
+      src="/brand/light-company-mark.svg"
+      alt=""
+      width="42"
+      height="42"
       aria-hidden="true"
-    >
-      <span className="light-mark-glow" />
-      <span className="light-mark-beam" />
-      <span className="light-mark-blade" />
-    </span>
+    />
   );
 }
 
@@ -306,59 +307,61 @@ export default async function Home({ searchParams }: PageProps) {
 
       <main id="main">
         <section className="hero" id="top" aria-labelledby="hero-title">
-          <div className="hero-media" aria-hidden="true">
-            <video
-              autoPlay
-              muted
-              loop
-              playsInline
-              preload="auto"
-              poster="/media/img-5010-poster.jpg"
-            >
-              <source src="/media/img-5010.mp4" type="video/mp4" />
-            </video>
-          </div>
-          <div className="hero-shade" aria-hidden="true" />
           <div className="hero-beams" aria-hidden="true">
-            <span className="hero-beam hero-beam-warm" />
-            <span className="hero-beam hero-beam-blue" />
-            <span className="hero-beam hero-beam-violet" />
+            <span className="hero-beam" />
           </div>
-          <ViewfinderCorners />
 
-          <div className="hero-content">
-            <p className="eyebrow">
-              <span className="signal-dot" aria-hidden="true" />
-              CLAUDE CODE FOR PHYSICAL WORK
-            </p>
-            <h1 id="hero-title">
-              A lamp that projects AI guidance onto robotics and hardware work.
-            </h1>
-            <p className="hero-copy">
-              The system sees the bench, understands the task, and points to
-              the exact part. No headset. No screen switching. Both hands stay
-              on the work.
-            </p>
-            <p className="hero-credential mono">
-              BUILT BY A FORMER APPLE VISION PRO INFRASTRUCTURE ENGINEER
-              <span>×</span>
-              FORMER HARDWARE TRADES WORKER
-            </p>
-            <div className="hero-actions">
-              <a className="button button-primary" href="#rsvp">
-                RSVP FOR THE AUG 20 DEMO
-                <span aria-hidden="true">↗</span>
-              </a>
-              <p>
-                San Francisco
-                <span>Hands-on · 2026</span>
+          <div className="hero-inner">
+            <div className="hero-content">
+              <p className="eyebrow">
+                <span className="signal-dot" aria-hidden="true" />
+                CLAUDE CODE FOR PHYSICAL WORK
               </p>
+              <h1 id="hero-title">
+                A lamp that projects AI guidance onto robotics and hardware work.
+              </h1>
+              <p className="hero-copy">
+                The system sees the bench, understands the task, and points to
+                the exact part. No headset. No screen switching. Both hands stay
+                on the work.
+              </p>
+              <p className="hero-credential mono">
+                BUILT BY A FORMER APPLE VISION PRO INFRASTRUCTURE ENGINEER
+                <span>×</span>
+                FORMER HARDWARE TRADES WORKER
+              </p>
+              <div className="hero-actions">
+                <a className="button button-primary" href="#rsvp">
+                  RSVP FOR THE AUG 20 DEMO
+                  <span aria-hidden="true">↗</span>
+                </a>
+                <p>
+                  San Francisco
+                  <span>Hands-on · 2026</span>
+                </p>
+              </div>
             </div>
-          </div>
 
-          <div className="hero-telemetry mono" aria-hidden="true">
-            <span>IMG_5010 / LIVE WORKBENCH</span>
-            <span>PROJECTED REALITY / NO HEADSET</span>
+            <div className="hero-media">
+              <div className="hero-video-shell">
+                <video
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  preload="auto"
+                  poster="/media/img-5010-poster.jpg"
+                  aria-label="The Light Company projected workbench prototype"
+                >
+                  <source src="/media/img-5010.mp4" type="video/mp4" />
+                </video>
+                <span className="media-tag mono">WORKING PROTOTYPE</span>
+              </div>
+              <div className="hero-video-meta mono" aria-hidden="true">
+                <span>IMG_5010 / LIVE WORKBENCH</span>
+                <span>NO HEADSET</span>
+              </div>
+            </div>
           </div>
         </section>
 
