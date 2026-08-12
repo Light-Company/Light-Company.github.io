@@ -8,36 +8,35 @@ const routeUrl = new URL("../app/api/rsvp/route.ts", import.meta.url);
 const cssUrl = new URL("../app/globals.css", import.meta.url);
 const markUrl = new URL("../public/brand/light-company-mark.svg", import.meta.url);
 
-test("keeps the positioning concrete, adopts The Light Company, and retains one CTA", async () => {
+test("keeps the positioning concrete, adopts Light Company, and retains the demo CTA", async () => {
   const page = await readFile(pageUrl, "utf8");
 
-  assert.match(page, /THE LIGHT COMPANY/);
+  assert.match(page, /Light Company/);
   assert.match(page, /src="\/brand\/light-company-mark\.svg"/);
-  assert.match(
-    page,
-    /A lamp that projects AI guidance onto robotics and hardware work\./,
-  );
-  assert.match(page, /robotics and hardware teams/i);
-  assert.match(page, /APPLE VISION PRO INFRASTRUCTURE ENGINEER/);
+  assert.match(page, /AI That Points to the Work\./);
+  assert.match(page, /A lamp that sees the workbench, understands the task/);
+  assert.match(page, /High-Mix Robotics Benches/);
+  assert.match(page, /Apple Vision Pro infrastructure engineer/i);
   assert.match(page, /action="\/api\/rsvp"/);
-  assert.match(page, /RSVP \/ GET NOTIFIED/);
-  assert.match(page, /San Francisco · August 20, 2026/i);
-  assert.match(page, /FOOTAGE NOT YET PUBLISHED/);
+  assert.match(page, /Reserve My Seat/);
+  assert.match(page, /new Intl\.DateTimeFormat/);
+  assert.match(page, /Next Public Captures/);
   assert.doesNotMatch(page, /future of spatial computing/i);
   assert.doesNotMatch(page, /light[\s.]+intelligence[\s.]+forward/i);
   assert.doesNotMatch(page, /codex-preview|react-loading-skeleton/i);
 });
 
-test("uses the extracted vector light mark instead of the old CSS approximation", async () => {
+test("uses the cropped transparent vector mark from the supplied logo", async () => {
   const [page, css, mark] = await Promise.all([
     readFile(pageUrl, "utf8"),
     readFile(cssUrl, "utf8"),
     readFile(markUrl, "utf8"),
   ]);
 
-  assert.match(mark, /viewBox="0 0 140 140"/);
-  assert.match(mark, /linearGradient id="light-beam"/);
-  assert.match(mark, /linearGradient id="graphite-blade"/);
+  assert.match(mark, /viewBox="128 124 225 183"/);
+  assert.match(mark, /linearGradient id="projection-beam"/);
+  assert.match(mark, /stroke="#0A1118"/);
+  assert.doesNotMatch(mark, /<rect|fill="#fff"|fill="#ffffff"/i);
   assert.doesNotMatch(page, /light-mark-(glow|beam|blade)/);
   assert.doesNotMatch(css, /\.light-mark-(glow|beam|blade)/);
 });
@@ -88,14 +87,15 @@ test("uses lightcompany.ai as the canonical social domain and keeps responsive s
   assert.match(layout, /canonical: "https:\/\/lightcompany\.ai"/);
   assert.match(layout, /new URL\("\/og\.png", metadataBase\)/);
   assert.match(layout, /card: "summary_large_image"/);
-  assert.match(layout, /The Light Company · AI guidance projected onto physical work/);
+  assert.match(layout, /The Light Company · AI That Points to the Work/);
   assert.match(css, /color-scheme: light/);
-  assert.match(css, /--room: #f7f8fa/);
+  assert.match(css, /--field: #f5f8fa/);
   assert.match(css, /\.light-mark/);
-  assert.match(css, /\.hero-beams/);
-  assert.match(css, /@media \(max-width: 680px\)/);
+  assert.match(css, /\.hero-beam/);
+  assert.match(css, /@media \(max-width: 760px\)/);
   assert.match(css, /@media \(prefers-reduced-motion: reduce\)/);
   assert.match(css, /:focus-visible/);
+  assert.doesNotMatch(css, /transition:\s*all/);
 });
 
 test("validates and stores RSVPs without collecting extra personal data", async () => {

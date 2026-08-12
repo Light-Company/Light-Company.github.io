@@ -1,26 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 140" fill="none">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="128 124 225 183" fill="none">
   <defs>
-    <linearGradient id="light-beam" x1="16" y1="112" x2="119" y2="17" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#7B63FF"/>
-      <stop offset=".42" stop-color="#F7F8FA"/>
-      <stop offset=".82" stop-color="#F2C977"/>
-      <stop offset="1" stop-color="#FFB64A"/>
+    <linearGradient id="projection-beam" x1="230.365" y1="223" x2="344.365" y2="223" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#075BFF"/>
+      <stop offset=".52" stop-color="#009FF4"/>
+      <stop offset="1" stop-color="#24D4FF"/>
     </linearGradient>
-    <linearGradient id="graphite-blade" x1="84" y1="54" x2="101" y2="119" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#252A34"/>
-      <stop offset="1" stop-color="#0F1117"/>
-    </linearGradient>
-    <filter id="beam-glow" x="-30%" y="-30%" width="170%" height="170%">
-      <feGaussianBlur stdDeviation="5"/>
-    </filter>
   </defs>
-  <path
-    d="M12 109 119 17 55 82Z"
-    fill="url(#light-beam)"
-    opacity=".42"
-    filter="url(#beam-glow)"
-  />
-  <path d="M12 109 119 17 55 82Z" fill="url(#light-beam)"/>
-  <path d="M30 112 119 17 69 77Z" fill="#F7F8FA"/>
-  <path d="M119 17 96 119 69 77Z" fill="url(#graphite-blade)"/>
+  <path d="M264.268 192.995 233.422 135.867c-1.729-3.266-6.295-3.266-8.023 0l-83.688 152.441c-1.729 3.266.545 7.18 4.012 7.18h157.375c3.467 0 5.74-3.914 4.012-7.18l-17.283-34.566c-1.729-3.266-6.295-3.266-8.023 0" stroke="#0A1118" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M344.365 183.912 230.365 222.995 344.365 262.078V183.912Z" fill="url(#projection-beam)"/>
 </svg>

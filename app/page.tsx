@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import Image from "next/image";
 
 export const metadata: Metadata = {
-  title: "The Light Company · AI guidance projected onto physical work",
+  title: "The Light Company · AI That Points to the Work",
   description:
-    "A lamp that sees a workbench, understands the task, and projects the next action onto the exact part. Built for robotics and hardware teams.",
+    "A lamp that sees the workbench, understands the task, and projects the next step onto the exact part.",
 };
 
 type PageProps = {
@@ -19,118 +19,125 @@ type VideoStory = {
   src: string;
   poster: string;
   format: "wide" | "portrait" | "square";
-  side?: "left" | "right";
 };
+
+const eventDate = new Date("2026-08-20T19:00:00-07:00");
+const eventDay = new Intl.DateTimeFormat("en-US", {
+  weekday: "long",
+  month: "long",
+  day: "numeric",
+  year: "numeric",
+  timeZone: "America/Los_Angeles",
+}).format(eventDate);
+const eventShortDay = new Intl.DateTimeFormat("en-US", {
+  month: "short",
+  day: "numeric",
+  timeZone: "America/Los_Angeles",
+}).format(eventDate);
 
 const loop = [
   {
     number: "01",
     title: "Observe",
-    body: "Cameras track the bench, every part, every tool, and your hands.",
+    body: "Cameras keep the bench, parts, tools, and hands in view.",
   },
   {
     number: "02",
     title: "Reason",
-    body: "A vision-language model understands the task and its current state.",
+    body: "A vision-language model reads the task and its current state.",
   },
   {
     number: "03",
     title: "Project",
-    body: "The next action lands in light on the exact part that needs it.",
+    body: "The next instruction lands on the exact physical target.",
   },
   {
     number: "04",
     title: "Verify",
-    body: "The system checks the result before moving to the next step.",
+    body: "The system checks the result before the work moves on.",
   },
 ];
 
 const benchStories: VideoStory[] = [
   {
     index: "01",
-    kind: "WORKING PROTOTYPE",
-    title: "Instructions stay registered to the work.",
-    body: "A live instruction layer follows the page as it moves. The same registration loop puts assembly guidance directly onto parts and tools.",
+    kind: "Registered Guidance",
+    title: "Instructions Stay With the Work",
+    body: "The instruction layer follows a moving page. The same registration loop can keep assembly guidance attached to parts and tools.",
     src: "/media/registered-guidance.mp4",
     poster: "/media/registered-guidance.jpg",
     format: "portrait",
-    side: "left",
   },
   {
     index: "02",
-    kind: "WORKING PROTOTYPE",
-    title: "The workbench becomes the interface.",
-    body: "The system sees the object, measures it, and projects the result beside it. The operator never has to translate a screen back to the bench.",
+    kind: "Live Workbench",
+    title: "The Bench Becomes the Interface",
+    body: "The system sees an object, measures it, and places the result beside it—without sending the operator to another screen.",
     src: "/media/hero-workbench.mp4",
     poster: "/media/hero-workbench.jpg",
     format: "wide",
   },
   {
     index: "03",
-    kind: "WORKING PROTOTYPE",
-    title: "Measurements land on the object.",
-    body: "The camera reads dimensions from the physical scene. The projector puts the answer where it is useful: on the table, next to the thing.",
+    kind: "Object Measurement",
+    title: "Measurements Land on the Object",
+    body: "The camera reads the scene. The projector puts the answer next to the thing being measured.",
     src: "/media/object-measurement.mp4",
     poster: "/media/object-measurement.jpg",
     format: "portrait",
-    side: "right",
   },
   {
     index: "04",
-    kind: "WORKING PROTOTYPE",
-    title: "Projected guidance locks to real surfaces.",
-    body: "This earlier measurement pass shows the core loop in its simplest form: see the bench, understand the geometry, and answer in light.",
+    kind: "Geometry Pass",
+    title: "Guidance Locks to Real Surfaces",
+    body: "See the bench, understand its geometry, and answer in light. This is the core loop in its simplest form.",
     src: "/media/measure.mp4",
     poster: "/media/measure.jpg",
     format: "wide",
   },
   {
     index: "05",
-    kind: "THE SYSTEM",
-    title: "One rig watches the whole workspace.",
-    body: "An overhead camera keeps the working surface in view while the projector turns it into a shared, hands-free display.",
+    kind: "System View",
+    title: "One Rig Watches the Workspace",
+    body: "An overhead camera keeps the working surface in view while the projector turns it into a hands-free display.",
     src: "/media/overhead.mp4",
     poster: "/media/overhead.jpg",
     format: "portrait",
-    side: "left",
   },
   {
     index: "06",
-    kind: "PERCEPTION PIPELINE",
-    title: "It tracks the person doing the work.",
-    body: "Pose, motion, and presence are read from the live scene so guidance can react to the operator, not just a fixed instruction script.",
+    kind: "Perception",
+    title: "It Tracks the Person Doing the Work",
+    body: "Pose, motion, and presence let guidance respond to the operator—not just a fixed instruction script.",
     src: "/media/track-person.mp4",
     poster: "/media/track-person.jpg",
     format: "portrait",
-    side: "right",
   },
   {
     index: "07",
-    kind: "WORKING PROTOTYPE",
-    title: "Place an object. The system responds beside it.",
-    body: "The system recognizes what entered the workspace and projects context next to the physical object instead of opening another window.",
+    kind: "Object Awareness",
+    title: "Place an Object. The System Responds.",
+    body: "The system recognizes what enters the workspace and projects context beside the physical object.",
     src: "/media/object.mp4",
     poster: "/media/object.jpg",
     format: "portrait",
-    side: "left",
   },
 ];
 
 const spatialStories: VideoStory[] = [
   {
     index: "08",
-    kind: "PERCEPTION PIPELINE",
-    title: "The system first builds a spatial view of the room.",
-    body: "The camera maps the physical workspace before any instruction layer reaches a surface.",
+    kind: "Scene Scan",
+    title: "Build a Spatial View",
+    body: "The camera maps the workspace before an instruction reaches a surface.",
     src: "/media/scene-scan.mp4",
     poster: "/media/scene-scan.jpg",
     format: "square",
-    side: "right",
   },
   {
     index: "09",
-    kind: "PERCEPTION PIPELINE",
-    title: "It reads the geometry.",
+    kind: "Room Geometry",
+    title: "Read the Geometry",
     body: "Walls, floors, furniture, and usable work surfaces are reconstructed from the live scene.",
     src: "/media/room-layout.mp4",
     poster: "/media/room-layout.jpg",
@@ -138,19 +145,18 @@ const spatialStories: VideoStory[] = [
   },
   {
     index: "10",
-    kind: "PERCEPTION PIPELINE",
-    title: "It labels every surface.",
-    body: "The system separates table, chair, wall, floor, and door so projected UI lands on the right physical plane.",
+    kind: "Segmentation",
+    title: "Label Every Surface",
+    body: "The system separates table, chair, wall, floor, and door so projected UI lands on the right plane.",
     src: "/media/room-seg.mp4",
     poster: "/media/room-seg.jpg",
     format: "square",
-    side: "left",
   },
   {
     index: "11",
-    kind: "PERCEPTION PIPELINE",
-    title: "The same model works across unfamiliar rooms.",
-    body: "The goal is adaptive guidance: understand the live environment instead of asking an engineer to pre-author every possible setup.",
+    kind: "Generalization",
+    title: "Work Across Unfamiliar Rooms",
+    body: "The goal is adaptive guidance that reads the live environment instead of requiring every setup to be pre-authored.",
     src: "/media/rooms-grid.mp4",
     poster: "/media/rooms-grid.jpg",
     format: "wide",
@@ -160,121 +166,115 @@ const spatialStories: VideoStory[] = [
 const ambientStories: VideoStory[] = [
   {
     index: "12",
-    kind: "AMBIENT UI STUDY",
-    title: "A blank wall can become useful without becoming a screen.",
+    kind: "Ambient Study",
+    title: "A Blank Wall Becomes Useful",
     body: "Projected content occupies only the light it needs. The rest of the room stays the room.",
     src: "/media/ambient-bird.mp4",
     poster: "/media/ambient-bird.jpg",
     format: "portrait",
-    side: "right",
   },
   {
     index: "13",
-    kind: "AMBIENT UI STUDY",
-    title: "Quiet by default.",
-    body: "It can sit in a room like a framed print, then become an interface only when the task calls for one.",
+    kind: "Ambient Study",
+    title: "Quiet by Default",
+    body: "It can sit like a framed print, then become an interface when the task calls for one.",
     src: "/media/ambient-art.mp4",
     poster: "/media/ambient-art.jpg",
     format: "portrait",
-    side: "left",
   },
   {
     index: "14",
-    kind: "AMBIENT UI STUDY",
-    title: "Reach into the interface.",
-    body: "Controls appear on the physical surface and respond to a real hand. Nothing is strapped to the person using it.",
+    kind: "Hand Interaction",
+    title: "Reach Into the Interface",
+    body: "Controls appear on a physical surface and respond to a real hand. Nothing is strapped to the person using it.",
     src: "/media/ambient-display.mp4",
     poster: "/media/ambient-display.jpg",
     format: "portrait",
-    side: "right",
   },
   {
     index: "15",
-    kind: "AMBIENT UI STUDY",
-    title: "Any surface can carry the next useful action.",
-    body: "The workbench is the first wedge. The same projected interface can extend to cooking, repair, and shared physical spaces.",
+    kind: "Surface Study",
+    title: "Put the Next Action Anywhere",
+    body: "The workbench is the first wedge. The same interface can extend to cooking, repair, and shared spaces.",
     src: "/media/artwork.mp4",
     poster: "/media/artwork.jpg",
     format: "portrait",
-    side: "left",
   },
   {
     index: "16",
-    kind: "ORIGINAL SITE REEL",
-    title: "The interface leaves the screen.",
-    body: "The system puts guidance in the same physical space as the hands, tools, and objects it is helping with.",
+    kind: "Original Reel",
+    title: "The Interface Leaves the Screen",
+    body: "Guidance moves into the same physical space as the hands, tools, and objects it is helping with.",
     src: "/media/signoff.mp4",
     poster: "/media/signoff.jpg",
     format: "portrait",
-    side: "right",
   },
 ];
 
 const upcomingDemos = [
-  {
-    index: "01",
-    title: "Assembly guidance",
-    body: "Projected steps on the exact fastener and part as the build moves.",
-  },
-  {
-    index: "02",
-    title: "Soldering walkthrough",
-    body: "The pad, component, and orientation highlighted while both hands stay on the work.",
-  },
-  {
-    index: "03",
-    title: "Cooking with intelligence",
-    body: "Ingredients, timing, and the next action projected onto the counter.",
-  },
+  ["01", "Assembly Guidance", "Projected steps on the exact fastener and part."],
+  ["02", "Soldering Walkthrough", "Pad, component, and orientation highlighted in place."],
+  ["03", "Cooking With Intelligence", "Ingredients, timing, and next actions on the counter."],
 ];
 
-function LightMark() {
+function LightMark({ priority = false }: { priority?: boolean }) {
   return (
     <Image
       className="light-mark"
       src="/brand/light-company-mark.svg"
       alt=""
-      width="42"
-      height="42"
+      width="225"
+      height="183"
+      priority={priority}
       aria-hidden="true"
     />
   );
 }
 
-function ViewfinderCorners() {
+function Brand({ priority = false }: { priority?: boolean }) {
   return (
-    <>
-      <span className="corner corner-tl" aria-hidden="true" />
-      <span className="corner corner-tr" aria-hidden="true" />
-      <span className="corner corner-bl" aria-hidden="true" />
-      <span className="corner corner-br" aria-hidden="true" />
-    </>
+    <span className="brand-lockup" translate="no">
+      <LightMark priority={priority} />
+      <span>Light Company</span>
+    </span>
   );
 }
 
-function VideoStory({ story }: { story: VideoStory }) {
+function RegistrationCorners() {
   return (
-    <article
-      className={`video-story video-story-${story.format} video-story-${story.side ?? "full"}`}
-    >
-      <div className="video-story-inner">
-        <div className="video-stage frame">
-          <ViewfinderCorners />
-          <video
-            className="viewport-video"
-            muted
-            loop
-            playsInline
-            preload="metadata"
-            poster={story.poster}
-            aria-label={story.title}
-          >
-            <source src={story.src} type="video/mp4" />
-          </video>
-          <span className="media-tag mono">{story.kind}</span>
-        </div>
-        <div className="video-story-copy">
-          <span className="mono">{story.index} / VIDEO ARCHIVE</span>
+    <span className="registration-corners" aria-hidden="true">
+      <i />
+      <i />
+      <i />
+      <i />
+    </span>
+  );
+}
+
+function StoryCard({ story }: { story: VideoStory }) {
+  return (
+    <article className={`story-card story-card-${story.format}`}>
+      <div className="story-media">
+        <RegistrationCorners />
+        <video
+          className="viewport-video"
+          muted
+          loop
+          playsInline
+          preload="none"
+          poster={story.poster}
+          controls
+          width="1280"
+          height="960"
+          aria-label={story.title}
+        >
+          <source src={story.src} type="video/mp4" />
+        </video>
+        <span className="media-label utility">{story.kind}</span>
+      </div>
+      <div className="story-copy">
+        <span className="story-index utility">{story.index}</span>
+        <div>
           <h3>{story.title}</h3>
           <p>{story.body}</p>
         </div>
@@ -283,67 +283,74 @@ function VideoStory({ story }: { story: VideoStory }) {
   );
 }
 
+function StoryGallery({ stories }: { stories: VideoStory[] }) {
+  return (
+    <div className="story-gallery">
+      {stories.map((story) => (
+        <StoryCard story={story} key={story.src} />
+      ))}
+    </div>
+  );
+}
+
 export default async function Home({ searchParams }: PageProps) {
   const { rsvp } = await searchParams;
+  const emailDescription = rsvp === "invalid" ? "form-note email-error" : "form-note";
 
   return (
     <>
       <a className="skip-link" href="#main">
-        Skip to content
+        Skip to Content
       </a>
 
       <header className="site-header">
-        <a className="brand" href="#top" aria-label="The Light Company home">
-          <LightMark />
-          <span>THE LIGHT COMPANY</span>
+        <a className="brand-link" href="#top" aria-label="Light Company home">
+          <Brand priority />
         </a>
         <nav aria-label="Primary navigation">
-          <a href="#proof">See it working</a>
+          <a href="#system">How It Works</a>
+          <a href="#proof">See It Working</a>
           <a className="nav-cta" href="#rsvp">
-            RSVP · AUG 20
+            RSVP · {eventShortDay}
           </a>
         </nav>
       </header>
 
       <main id="main">
         <section className="hero" id="top" aria-labelledby="hero-title">
-          <div className="hero-beams" aria-hidden="true">
-            <span className="hero-beam" />
-          </div>
-
+          <div className="hero-beam" aria-hidden="true" />
           <div className="hero-inner">
-            <div className="hero-content">
-              <p className="eyebrow">
+            <div className="hero-copy-wrap">
+              <p className="eyebrow utility">
                 <span className="signal-dot" aria-hidden="true" />
-                CLAUDE CODE FOR PHYSICAL WORK
+                Physical AI · San Francisco
               </p>
-              <h1 id="hero-title">
-                A lamp that projects AI guidance onto robotics and hardware work.
-              </h1>
-              <p className="hero-copy">
-                The system sees the bench, understands the task, and points to
-                the exact part. No headset. No screen switching. Both hands stay
-                on the work.
-              </p>
-              <p className="hero-credential mono">
-                BUILT BY A FORMER APPLE VISION PRO INFRASTRUCTURE ENGINEER
-                <span>×</span>
-                FORMER HARDWARE TRADES WORKER
+              <h1 id="hero-title">AI That Points to the Work.</h1>
+              <p className="hero-summary">
+                A lamp that sees the workbench, understands the task, and
+                projects the next step onto the exact part.
               </p>
               <div className="hero-actions">
                 <a className="button button-primary" href="#rsvp">
-                  RSVP FOR THE AUG 20 DEMO
-                  <span aria-hidden="true">↗</span>
+                  Reserve a Demo Seat <span aria-hidden="true">↗</span>
                 </a>
-                <p>
-                  San Francisco
-                  <span>Hands-on · 2026</span>
+                <p className="event-note">
+                  <time dateTime="2026-08-20">{eventShortDay}</time>
+                  <span>Hands-on · San Francisco</span>
                 </p>
               </div>
+              <p className="founder-line utility">
+                Built by a former Apple Vision Pro infrastructure engineer and
+                hardware trades worker
+              </p>
             </div>
 
-            <div className="hero-media">
-              <div className="hero-video-shell">
+            <div className="hero-visual">
+              <div className="hero-mark" aria-hidden="true">
+                <LightMark />
+              </div>
+              <div className="hero-video-frame">
+                <RegistrationCorners />
                 <video
                   autoPlay
                   muted
@@ -351,286 +358,220 @@ export default async function Home({ searchParams }: PageProps) {
                   playsInline
                   preload="auto"
                   poster="/media/img-5010-poster.jpg"
-                  aria-label="The Light Company projected workbench prototype"
+                  controls
+                  width="900"
+                  height="1200"
+                  aria-label="Projected guidance running on the Light Company workbench prototype"
                 >
                   <source src="/media/img-5010.mp4" type="video/mp4" />
                 </video>
-                <span className="media-tag mono">WORKING PROTOTYPE</span>
+                <span className="media-label utility">Working Prototype</span>
               </div>
-              <div className="hero-video-meta mono" aria-hidden="true">
-                <span>IMG_5010 / LIVE WORKBENCH</span>
-                <span>NO HEADSET</span>
+              <div className="visual-readout utility" aria-hidden="true">
+                <span>Live Workbench / IMG_5010</span>
+                <span>Registered to Surface</span>
               </div>
+            </div>
+          </div>
+          <div className="hero-proof utility" aria-label="Product summary">
+            <span>No Headset</span>
+            <span>Hands Stay on the Work</span>
+            <span>Observe · Reason · Project · Verify</span>
+          </div>
+        </section>
+
+        <section className="thesis section" aria-labelledby="thesis-title">
+          <div className="section-label utility">The Missing Interface</div>
+          <div className="thesis-grid">
+            <h2 id="thesis-title">Keep Your Eyes &amp; Hands on the Build.</h2>
+            <div className="thesis-copy">
+              <p>
+                Today, builders stop to find a video or spec, translate it back
+                to the bench, do one step, then look away again.
+              </p>
+              <p>
+                Light Company puts the interface on the thing itself. No screen
+                switching. No headset. No guessing which connector the agent
+                means.
+              </p>
             </div>
           </div>
         </section>
 
-        <section className="credibility band" aria-labelledby="credibility-title">
-          <div className="section-index mono">01 / FOUNDER INSIGHT</div>
-          <div className="credibility-grid">
+        <section className="system section" id="system" aria-labelledby="system-title">
+          <div className="section-heading">
             <div>
-              <p className="kicker">BUILT FROM BOTH SIDES OF THE PROBLEM</p>
-              <h2 id="credibility-title">
-                The display belongs above the bench, not on your face.
-              </h2>
+              <p className="eyebrow utility">A Closed Loop for Physical Work</p>
+              <h2 id="system-title">See It. Understand It. Point. Check.</h2>
             </div>
-            <div className="credibility-copy">
-              <p>
-                Two years building Vision Pro infrastructure showed the limits
-                of a display people remove. Years in the hardware trades showed
-                the same gap from the other side: instructions live away from
-                the work.
-              </p>
-              <p className="credential-line">
-                Apple Vision Pro infrastructure
-                <span aria-hidden="true">×</span>
-                Hardware trades
-                <span aria-hidden="true">×</span>
-                Building full-time in SF
-              </p>
-            </div>
+            <p>
+              One rig combines cameras, a vision-language model, and a projector.
+              The order matters: every action is grounded in the live scene.
+            </p>
           </div>
+          <ol className="loop-list">
+            {loop.map((item) => (
+              <li key={item.number}>
+                <span className="loop-number utility">{item.number}</span>
+                <h3>{item.title}</h3>
+                <p>{item.body}</p>
+              </li>
+            ))}
+          </ol>
+        </section>
 
-          <div className="founder-reel">
-            <div className="founder-video frame">
-              <ViewfinderCorners />
+        <section className="founder section" aria-labelledby="founder-title">
+          <div className="founder-layout">
+            <div className="founder-media">
+              <RegistrationCorners />
               <video
                 className="viewport-video"
                 muted
                 playsInline
-                preload="metadata"
+                preload="none"
                 poster="/media/founder-intro.jpg"
+                controls
+                width="1280"
+                height="720"
                 aria-label="Founder introduction"
               >
                 <source src="/media/founder-intro.mp4" type="video/mp4" />
               </video>
-              <span className="media-tag mono">FOUNDER INTRO · 01:00</span>
+              <span className="media-label utility">Founder Introduction · 01:00</span>
             </div>
-            <div className="timeline">
-              <article>
-                <span className="mono">2022</span>
-                <h3>First projected-reality prototype</h3>
-                <p>Mapped a live interface onto moving physical objects.</p>
-              </article>
-              <article>
-                <span className="mono">APPLE</span>
-                <h3>Vision Pro infrastructure</h3>
-                <p>Saw headset friction from inside spatial computing.</p>
-              </article>
-              <article>
-                <span className="mono">NOW</span>
-                <h3>Used to build the system itself</h3>
-                <p>The prototype helps build the next hardware iteration.</p>
-              </article>
+            <div className="founder-copy">
+              <p className="eyebrow utility">Built From Both Sides of the Problem</p>
+              <h2 id="founder-title">The Display Belongs Above the Bench.</h2>
+              <p>
+                Two years building Vision Pro infrastructure showed the friction
+                of a display people remove. Years in the hardware trades showed
+                the other half: instructions live away from the work.
+              </p>
+              <dl className="origin-list">
+                <div><dt>2022</dt><dd>First projected-reality prototype</dd></div>
+                <div><dt>Apple</dt><dd>Vision Pro infrastructure</dd></div>
+                <div><dt>Now</dt><dd>The prototype helps build its next iteration</dd></div>
+              </dl>
             </div>
           </div>
         </section>
 
-        <section className="problem band" aria-labelledby="problem-title">
-          <div className="section-index mono">02 / PROBLEM</div>
-          <div className="split-heading">
-            <p className="kicker">THE BROKEN WORKFLOW</p>
-            <h2 id="problem-title">AI stops at the edge of the screen.</h2>
+        <section className="archive section" id="proof" aria-labelledby="proof-title">
+          <div className="section-heading archive-heading">
+            <div>
+              <p className="eyebrow utility">Working System · Not a Render</p>
+              <h2 id="proof-title">Proof From the Workbench.</h2>
+            </div>
             <p>
-              Builders still stop, find a video or spec, re-orient to the part,
-              do one step, then look away again. Screen-bound agents cannot
-              point at a physical connector, fastener, or solder pad.
+              The complete published bench archive: registration, measurement,
+              object awareness, and person tracking.
             </p>
           </div>
+          <StoryGallery stories={benchStories} />
         </section>
 
-        <section className="product band" aria-labelledby="product-title">
-          <div className="section-index mono">03 / PRODUCT</div>
-          <div className="split-heading">
-            <p className="kicker">A CLOSED LOOP FOR HANDS-ON WORK</p>
-            <h2 id="product-title">Put the interface on the thing itself.</h2>
-            <p>
-              One lamp combines cameras, a vision-language model, and a
-              projector. It sees the task, guides the action, and checks the
-              result.
-            </p>
-          </div>
-          <div className="loop-grid">
-            {loop.map((item) => (
-              <article key={item.number}>
-                <span className="loop-number">{item.number}</span>
-                <div>
-                  <h3>{item.title}</h3>
-                  <p>{item.body}</p>
-                </div>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        <section className="archive-intro band" id="proof" aria-labelledby="proof-title">
-          <div className="section-index mono">04 / EVERY PUBLISHED VIDEO</div>
-          <div className="archive-heading">
-            <p className="kicker">THE WORKING SYSTEM, NOT A RENDER</p>
-            <h2 id="proof-title">See the loop from every angle.</h2>
-            <p>
-              These are the full set of videos published across the original
-              site: physical registration, object awareness, perception,
-              room understanding, and ambient interface studies.
-            </p>
-          </div>
-        </section>
-
-        <div className="video-sequence" aria-label="Prototype videos">
-          {benchStories.map((story) => (
-            <VideoStory story={story} key={story.src} />
-          ))}
-        </div>
-
-        <section className="wedge band" aria-labelledby="wedge-title">
-          <div className="section-index mono">05 / INITIAL WEDGE</div>
+        <section className="wedge section" aria-labelledby="wedge-title">
           <div className="wedge-grid">
             <div>
-              <p className="kicker">START WHERE VARIABILITY HURTS</p>
-              <h2 id="wedge-title">High-mix robotics workbenches first.</h2>
+              <p className="eyebrow utility">First Wedge</p>
+              <h2 id="wedge-title">High-Mix Robotics Benches.</h2>
             </div>
-            <div className="wedge-detail">
-              <article>
-                <span className="mono">FIRST CUSTOMER</span>
-                <h3>Robotics teams</h3>
-                <p>
-                  Small hardware teams assembling, debugging, and repairing
-                  changing systems at a shared bench.
-                </p>
-              </article>
-              <article>
-                <span className="mono">JOB TO BE DONE</span>
-                <h3>Guide variable work</h3>
-                <p>
-                  Show the next action, catch mistakes, and verify completion
-                  when the task changes too often to pre-author.
-                </p>
-              </article>
-            </div>
-          </div>
-        </section>
-
-        <section className="chapter band" aria-labelledby="spatial-title">
-          <div className="section-index mono">06 / UNDERSTAND THE SPACE</div>
-          <div className="chapter-heading">
-            <p className="kicker">BEFORE THE SYSTEM CAN POINT, IT HAS TO SEE</p>
-            <h2 id="spatial-title">
-              The physical scene becomes context for the agent.
-            </h2>
-          </div>
-        </section>
-
-        <div className="video-sequence" aria-label="Perception videos">
-          {spatialStories.map((story) => (
-            <VideoStory story={story} key={story.src} />
-          ))}
-        </div>
-
-        <section className="chapter band" aria-labelledby="ambient-title">
-          <div className="section-index mono">07 / BEYOND THE BENCH</div>
-          <div className="chapter-heading">
-            <p className="kicker">THE INTERFACE CAN LIVE IN THE ROOM</p>
-            <h2 id="ambient-title">
-              Only the useful light appears. Everything else stays physical.
-            </h2>
-          </div>
-        </section>
-
-        <div className="video-sequence" aria-label="Ambient interface videos">
-          {ambientStories.map((story) => (
-            <VideoStory story={story} key={story.src} />
-          ))}
-        </div>
-
-        <section className="upcoming band" aria-labelledby="upcoming-title">
-          <div className="section-index mono">08 / NEXT PUBLIC CAPTURES</div>
-          <div className="upcoming-heading">
-            <div>
-              <p className="kicker">FOOTAGE NOT YET PUBLISHED</p>
-              <h2 id="upcoming-title">Three task demos next.</h2>
-            </div>
-            <p>
-              The archive above is real published media. These task-specific
-              clips are clearly marked until the August 20 capture replaces
-              them.
-            </p>
-          </div>
-          <div className="upcoming-list">
-            {upcomingDemos.map((demo) => (
-              <article key={demo.title}>
-                <span className="mono">{demo.index} / CAPTURE SCHEDULED</span>
-                <h3>{demo.title}</h3>
-                <p>{demo.body}</p>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        <section className="momentum band" aria-labelledby="momentum-title">
-          <div className="section-index mono">09 / PROOF + MOMENTUM</div>
-          <div className="momentum-heading">
-            <div>
-              <p className="kicker">PRE-LAUNCH, WORKING PRODUCT</p>
-              <h2 id="momentum-title">The prototype is used, not just shown.</h2>
-            </div>
-            <p>
-              No revenue or external-user claim yet. The strongest proof today
-              is a working system and daily founder use.
-            </p>
-          </div>
-          <div className="metric-grid">
-            <article>
-              <strong>Daily</strong>
-              <span>Used to build the next hardware iteration</span>
-            </article>
-            <article>
-              <strong>1 loop</strong>
-              <span>Observe, reason, project, and verify</span>
-            </article>
-            <article>
-              <strong>2 tasks</strong>
-              <span>Cooking and ambient desk workflows completed</span>
-            </article>
-            <article className="metric-accent">
-              <strong>Aug 20</strong>
-              <span>Public hands-on demo in San Francisco</span>
-            </article>
-          </div>
-        </section>
-
-        <section className="rsvp" id="rsvp" aria-labelledby="rsvp-title">
-          <div className="rsvp-glow" aria-hidden="true" />
-          <ViewfinderCorners />
-          <div className="rsvp-topline mono">
-            <span>10 / PUBLIC DEMO</span>
-            <span>SAN FRANCISCO · AUGUST 20, 2026</span>
-          </div>
-          <div className="rsvp-grid">
-            <div>
-              <p className="kicker">COME USE THE PROTOTYPE</p>
-              <h2 id="rsvp-title">
-                Build hardware and cook with intelligence.
-              </h2>
-              <p className="rsvp-copy">
-                We rented a house in San Francisco for a public, hands-on demo.
-                Bring a task, try the prototype, and meet the robotics teams and
-                builders shaping the first pilots.
+            <div className="wedge-copy">
+              <p>
+                Start with small robotics teams assembling, debugging, and
+                repairing changing systems at a shared bench.
               </p>
+              <p>
+                Show the next action, catch mistakes, and verify completion where
+                the work changes too often to pre-author.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section className="spatial section dark-section" aria-labelledby="spatial-title">
+          <div className="section-heading">
+            <div>
+              <p className="eyebrow utility">Before the System Can Point, It Has to See</p>
+              <h2 id="spatial-title">The Room Becomes Context.</h2>
+            </div>
+            <p>
+              Scene geometry tells the agent which surface is a bench, wall,
+              floor, or object—and where an instruction can land.
+            </p>
+          </div>
+          <StoryGallery stories={spatialStories} />
+        </section>
+
+        <section className="ambient section" aria-labelledby="ambient-title">
+          <div className="section-heading">
+            <div>
+              <p className="eyebrow utility">Beyond the Bench</p>
+              <h2 id="ambient-title">Only the Useful Light Appears.</h2>
+            </div>
+            <p>
+              The interface can extend to cooking, repair, and shared spaces
+              without turning the whole room into a screen.
+            </p>
+          </div>
+          <StoryGallery stories={ambientStories} />
+        </section>
+
+        <section className="next section" aria-labelledby="next-title">
+          <div className="next-layout">
+            <div>
+              <p className="eyebrow utility">Next Public Captures</p>
+              <h2 id="next-title">3 Task Demos Next.</h2>
+              <p className="next-note">
+                These clips are scheduled for capture. The footage above is the
+                complete published archive.
+              </p>
+            </div>
+            <div className="next-list">
+              {upcomingDemos.map(([index, title, body]) => (
+                <article key={index}>
+                  <span className="utility">{index}</span>
+                  <div><h3>{title}</h3><p>{body}</p></div>
+                </article>
+              ))}
+            </div>
+          </div>
+          <div className="proof-strip">
+            <div><strong>Daily</strong><span>Used to build the next rig</span></div>
+            <div><strong>1 Loop</strong><span>Observe, reason, project, verify</span></div>
+            <div><strong>2 Tasks</strong><span>Cooking and ambient desk workflows</span></div>
+            <div><strong>{eventShortDay}</strong><span>Public demo in San Francisco</span></div>
+          </div>
+        </section>
+
+        <section className="rsvp section" id="rsvp" aria-labelledby="rsvp-title">
+          <div className="rsvp-beam" aria-hidden="true" />
+          <div className="rsvp-layout">
+            <div className="rsvp-copy">
+              <p className="eyebrow utility">Come Use the Prototype</p>
+              <h2 id="rsvp-title">Build Hardware With Intelligence in the Room.</h2>
+              <p>
+                Join a hands-on demo in San Francisco. Bring a task, try the
+                prototype, and meet the builders shaping the first pilots.
+              </p>
+              <dl className="event-details">
+                <div><dt>When</dt><dd><time dateTime="2026-08-20">{eventDay}</time></dd></div>
+                <div><dt>Where</dt><dd>San Francisco · Location sent to guests</dd></div>
+                <div><dt>For</dt><dd>Robotics teams, hardware builders, and angels</dd></div>
+              </dl>
             </div>
             <div className="rsvp-form-wrap">
               {rsvp === "thanks" ? (
-                <div className="form-message success" role="status">
+                <div className="form-message" role="status" aria-live="polite">
                   <span className="signal-dot" aria-hidden="true" />
                   <div>
-                    <strong>You&apos;re on the list.</strong>
-                    <p>
-                      We&apos;ll send the San Francisco details before August 20.
-                    </p>
+                    <strong>You’re on the list.</strong>
+                    <p>We’ll send the San Francisco details before {eventShortDay}.</p>
                   </div>
                 </div>
               ) : (
                 <form action="/api/rsvp" method="post" className="rsvp-form">
-                  <label htmlFor="email">Email for demo details</label>
+                  <label htmlFor="email">Email for Demo Details</label>
                   <div className="input-row">
                     <input
                       id="email"
@@ -638,11 +579,13 @@ export default async function Home({ searchParams }: PageProps) {
                       type="email"
                       inputMode="email"
                       autoComplete="email"
-                      placeholder="you@company.com"
+                      spellCheck={false}
+                      placeholder="you@company.com…"
                       required
-                      aria-describedby="form-note"
+                      aria-invalid={rsvp === "invalid"}
+                      aria-describedby={emailDescription}
                     />
-                    <button type="submit">RSVP / GET NOTIFIED</button>
+                    <button type="submit">Reserve My Seat</button>
                   </div>
                   <div className="honey-field" aria-hidden="true">
                     <label htmlFor="company">Company</label>
@@ -654,49 +597,31 @@ export default async function Home({ searchParams }: PageProps) {
                       autoComplete="off"
                     />
                   </div>
-                  <p id="form-note">
-                    One email when details are ready. No newsletter.
-                  </p>
+                  <p id="form-note">One email when details are ready. No newsletter.</p>
                 </form>
               )}
               {rsvp === "invalid" && (
-                <p className="form-error" role="alert">
-                  Enter a valid email address.
+                <p className="form-error" id="email-error" role="alert">
+                  Enter a valid email address, such as name@company.com.
                 </p>
               )}
               {rsvp === "error" && (
                 <p className="form-error" role="alert">
                   The RSVP could not be saved. Email{" "}
-                  <a href="mailto:hi@jonny.sh">hi@jonny.sh</a> and we&apos;ll
-                  add you.
+                  <a href="mailto:hi@jonny.sh">hi@jonny.sh</a> to reserve a seat.
                 </p>
               )}
-              <div className="rsvp-details">
-                <span>
-                  <b>WHEN</b> Thursday, August 20, 2026
-                </span>
-                <span>
-                  <b>WHERE</b> San Francisco · location sent to guests
-                </span>
-                <span>
-                  <b>FOR</b> Robotics teams, hardware builders, angels
-                </span>
-              </div>
             </div>
           </div>
         </section>
       </main>
 
       <footer>
-        <a className="brand" href="#top" aria-label="Back to top">
-          <LightMark />
-          <span>THE LIGHT COMPANY</span>
+        <a className="brand-link" href="#top" aria-label="Back to top">
+          <Brand />
         </a>
-        <p>Claude Code for physical work.</p>
-        <div>
-          <span>San Francisco</span>
-          <a href="mailto:hi@jonny.sh">hi@jonny.sh</a>
-        </div>
+        <p>AI That Points to the Work.</p>
+        <div><span>San Francisco</span><a href="mailto:hi@jonny.sh">hi@jonny.sh</a></div>
       </footer>
 
       <script
@@ -704,6 +629,9 @@ export default async function Home({ searchParams }: PageProps) {
           __html: `
             (() => {
               const videos = [...document.querySelectorAll('.viewport-video')];
+              const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+              const pauseAll = () => videos.forEach((video) => video.pause());
+              if (reducedMotion.matches) { pauseAll(); return; }
               if (!('IntersectionObserver' in window)) return;
               const observer = new IntersectionObserver((entries) => {
                 entries.forEach((entry) => {
@@ -715,8 +643,11 @@ export default async function Home({ searchParams }: PageProps) {
                     video.pause();
                   }
                 });
-              }, { threshold: 0.3, rootMargin: '10% 0px 10% 0px' });
+              }, { threshold: 0.35, rootMargin: '8% 0px' });
               videos.forEach((video) => observer.observe(video));
+              reducedMotion.addEventListener('change', (event) => {
+                if (event.matches) pauseAll();
+              });
             })();
           `,
         }}

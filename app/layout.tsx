@@ -1,10 +1,11 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono, Inter } from "next/font/google";
+import { Barlow_Condensed, Geist_Mono, Inter } from "next/font/google";
 import "./globals.css";
 
-const geist = Geist({
+const barlowCondensed = Barlow_Condensed({
   variable: "--font-display",
   subsets: ["latin"],
+  weight: ["500", "600", "700"],
 });
 
 const inter = Inter({
@@ -17,9 +18,9 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const title = "The Light Company · AI guidance projected onto physical work";
+const title = "The Light Company · AI That Points to the Work";
 const description =
-  "A desk lamp with cameras and a projector that sees the workbench, understands the task, and points to the next action. Built for robotics and hardware teams.";
+  "A lamp that sees the workbench, understands the task, and projects the next step onto the exact part.";
 const metadataBase = new URL("https://lightcompany.ai");
 const socialImage = new URL("/og.png", metadataBase).toString();
 
@@ -34,8 +35,8 @@ export function generateMetadata(): Metadata {
       "physical AI",
       "robotics",
       "hardware assembly",
-      "spatial guidance",
-      "intelligent light",
+      "projected guidance",
+      "hands-free work instructions",
     ],
     authors: [{ name: "The Light Company" }],
     creator: "The Light Company",
@@ -56,7 +57,7 @@ export function generateMetadata(): Metadata {
           url: socialImage,
           width: 1200,
           height: 630,
-          alt: "The Light Company: AI guidance projected onto physical work",
+          alt: "The Light Company: AI that points to the work",
         },
       ],
     },
@@ -76,7 +77,7 @@ export function generateMetadata(): Metadata {
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#F7F8FA",
+  themeColor: "#F5F8FA",
   colorScheme: "light",
 };
 
@@ -87,7 +88,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geist.variable} ${inter.variable} ${geistMono.variable}`}>
+      <body className={`${barlowCondensed.variable} ${inter.variable} ${geistMono.variable}`}>
         {children}
       </body>
     </html>
