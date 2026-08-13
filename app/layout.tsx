@@ -1,21 +1,23 @@
 import type { Metadata, Viewport } from "next";
-import { Barlow_Condensed, Geist_Mono, Inter } from "next/font/google";
+import { Barlow, Barlow_Semi_Condensed, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 
-const barlowCondensed = Barlow_Condensed({
+const barlowSemiCondensed = Barlow_Semi_Condensed({
   variable: "--font-display",
   subsets: ["latin"],
-  weight: ["500", "600", "700"],
+  weight: ["500", "600", "700", "800"],
 });
 
-const inter = Inter({
+const barlow = Barlow({
   variable: "--font-body",
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
 });
 
-const geistMono = Geist_Mono({
+const ibmPlexMono = IBM_Plex_Mono({
   variable: "--font-mono",
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
 });
 
 const title = "The Light Company · AI That Points to the Work";
@@ -88,7 +90,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${barlowCondensed.variable} ${inter.variable} ${geistMono.variable}`}>
+      <body className={`${barlowSemiCondensed.variable} ${barlow.variable} ${ibmPlexMono.variable}`}>
         {children}
       </body>
     </html>

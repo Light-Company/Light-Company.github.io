@@ -1,5 +1,10 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import {
+  chatGPTSignInPath,
+  chatGPTSignOutPath,
+  getChatGPTUser,
+} from "./chatgpt-auth";
 
 export const metadata: Metadata = {
   title: "The Light Company · AI That Points to the Work",
@@ -295,6 +300,7 @@ function StoryGallery({ stories }: { stories: VideoStory[] }) {
 
 export default async function Home({ searchParams }: PageProps) {
   const { rsvp } = await searchParams;
+  const user = await getChatGPTUser();
   const emailDescription = rsvp === "invalid" ? "form-note email-error" : "form-note";
 
   return (
@@ -310,6 +316,13 @@ export default async function Home({ searchParams }: PageProps) {
         <nav aria-label="Primary navigation">
           <a href="#system">How It Works</a>
           <a href="#proof">See It Working</a>
+          <a
+            className="nav-signin"
+            href={user ? chatGPTSignOutPath("/") : chatGPTSignInPath("/")}
+            title={user ? `Signed in as ${user.email}` : undefined}
+          >
+            {user ? "Sign out" : "Sign in"}
+          </a>
           <a className="nav-cta" href="#rsvp">
             RSVP · {eventShortDay}
           </a>
@@ -325,7 +338,10 @@ export default async function Home({ searchParams }: PageProps) {
                 <span className="signal-dot" aria-hidden="true" />
                 Physical AI · San Francisco
               </p>
-              <h1 id="hero-title">AI That Points to the Work.</h1>
+              <h1 id="hero-title">
+                <span>AI That Points</span>
+                <span>to the Work.</span>
+              </h1>
               <p className="hero-summary">
                 A lamp that sees the workbench, understands the task, and
                 projects the next step onto the exact part.

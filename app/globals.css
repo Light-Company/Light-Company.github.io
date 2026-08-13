@@ -36,8 +36,8 @@ body {
   color: var(--ink);
   background: var(--field);
   font-family: var(--font-body), Arial, sans-serif;
-  font-size: 16px;
-  line-height: 1.55;
+  font-size: 17px;
+  line-height: 1.58;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
@@ -94,26 +94,25 @@ h3 {
 }
 
 h1 {
-  margin-bottom: 28px;
-  font-size: clamp(74px, 10.2vw, 154px);
-  letter-spacing: -0.035em;
-  line-height: 0.82;
-  text-transform: uppercase;
+  margin-bottom: 30px;
+  font-size: clamp(68px, 8vw, 126px);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 0.92;
 }
 
 h2 {
   margin-bottom: 24px;
-  font-size: clamp(58px, 7vw, 104px);
-  letter-spacing: -0.03em;
-  line-height: 0.88;
-  text-transform: uppercase;
+  font-size: clamp(48px, 5.8vw, 84px);
+  letter-spacing: -0.034em;
+  line-height: 0.98;
 }
 
 h3 {
   margin-bottom: 12px;
-  font-size: clamp(30px, 3vw, 44px);
-  letter-spacing: -0.018em;
-  line-height: 0.98;
+  font-size: clamp(28px, 2.6vw, 40px);
+  letter-spacing: -0.022em;
+  line-height: 1.04;
 }
 
 [id] {
@@ -129,7 +128,7 @@ h3 {
   font-family: var(--font-mono), ui-monospace, monospace;
   font-size: 10px;
   font-weight: 500;
-  letter-spacing: 0.075em;
+  letter-spacing: 0.065em;
   line-height: 1.4;
   text-transform: uppercase;
 }
@@ -179,9 +178,10 @@ h3 {
 }
 
 .brand-lockup > span {
-  font-size: 17px;
-  font-weight: 750;
-  letter-spacing: -0.035em;
+  font-family: var(--font-body), sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
 }
 
 .light-mark {
@@ -212,6 +212,17 @@ h3 {
 .site-header nav a:hover {
   color: var(--blue-deep);
   border-bottom-color: var(--blue);
+}
+
+.site-header .nav-signin {
+  margin-left: 6px;
+  border: 1px solid var(--line-strong);
+}
+
+.site-header .nav-signin:hover {
+  color: var(--ink);
+  border-color: var(--ink);
+  background: var(--white);
 }
 
 .site-header .nav-cta {
@@ -276,6 +287,10 @@ h3 {
   max-width: 760px;
 }
 
+.hero-copy-wrap h1 span {
+  display: block;
+}
+
 .eyebrow {
   margin-bottom: 25px;
   color: var(--blue-deep);
@@ -295,9 +310,9 @@ h3 {
   max-width: 610px;
   margin-bottom: 35px;
   color: var(--ink-soft);
-  font-size: clamp(19px, 1.65vw, 24px);
-  letter-spacing: -0.018em;
-  line-height: 1.45;
+  font-size: clamp(20px, 1.55vw, 23px);
+  letter-spacing: -0.012em;
+  line-height: 1.5;
   text-wrap: pretty;
 }
 
@@ -505,7 +520,7 @@ h3 {
 .section {
   width: min(100%, var(--max));
   margin: 0 auto;
-  padding: clamp(90px, 10vw, 156px) var(--safe-right) clamp(90px, 10vw, 156px) var(--safe-left);
+  padding: clamp(80px, 8.5vw, 128px) var(--safe-right) clamp(80px, 8.5vw, 128px) var(--safe-left);
   border-bottom: 1px solid var(--line);
 }
 
@@ -513,7 +528,7 @@ h3 {
   display: flex;
   align-items: center;
   gap: 18px;
-  margin-bottom: clamp(56px, 7vw, 94px);
+  margin-bottom: clamp(46px, 6vw, 72px);
   color: var(--blue-deep);
 }
 
@@ -557,7 +572,7 @@ h3 {
   grid-template-columns: minmax(0, 1.35fr) minmax(300px, 0.65fr);
   gap: clamp(48px, 8vw, 132px);
   align-items: end;
-  margin-bottom: clamp(64px, 8vw, 112px);
+  margin-bottom: clamp(52px, 6.5vw, 88px);
 }
 
 .section-heading h2 {
@@ -601,8 +616,7 @@ h3 {
 
 .loop-list h3 {
   margin-top: 44px;
-  font-size: 39px;
-  text-transform: uppercase;
+  font-size: 36px;
 }
 
 .loop-list p {
@@ -693,7 +707,7 @@ h3 {
   display: grid;
   grid-template-columns: 46px 1fr;
   gap: 18px;
-  min-height: 190px;
+  min-height: 164px;
   padding: 24px 0 0;
 }
 
@@ -703,7 +717,7 @@ h3 {
 
 .story-copy h3 {
   max-width: 650px;
-  font-size: clamp(30px, 2.8vw, 43px);
+  font-size: clamp(28px, 2.5vw, 39px);
 }
 
 .story-copy p {
@@ -805,8 +819,7 @@ h3 {
 
 .next-list h3 {
   margin-bottom: 5px;
-  font-size: 30px;
-  text-transform: uppercase;
+  font-size: 29px;
 }
 
 .next-list p {
@@ -845,8 +858,7 @@ h3 {
   font-size: clamp(44px, 4vw, 64px);
   font-weight: 600;
   letter-spacing: -0.025em;
-  line-height: 0.9;
-  text-transform: uppercase;
+  line-height: 0.98;
 }
 
 .proof-strip span {
@@ -1027,7 +1039,6 @@ h3 {
 .form-message strong {
   font-family: var(--font-display), sans-serif;
   font-size: 30px;
-  text-transform: uppercase;
 }
 
 .form-message p {
@@ -1167,8 +1178,14 @@ footer a:hover {
     height: 32px;
   }
 
-  .site-header nav a:not(.nav-cta) {
+  .site-header nav a:not(.nav-cta):not(.nav-signin) {
     display: none;
+  }
+
+  .site-header .nav-signin {
+    min-height: 38px;
+    margin-left: 0;
+    padding: 11px 10px;
   }
 
   .site-header .nav-cta {
@@ -1188,12 +1205,12 @@ footer a:hover {
   }
 
   h1 {
-    font-size: clamp(68px, 22vw, 104px);
-    line-height: 0.82;
+    font-size: clamp(58px, 18vw, 82px);
+    line-height: 0.92;
   }
 
   h2 {
-    font-size: clamp(54px, 17vw, 84px);
+    font-size: clamp(44px, 14vw, 64px);
   }
 
   .hero-summary {
@@ -1253,8 +1270,8 @@ footer a:hover {
   }
 
   .section {
-    padding-top: 84px;
-    padding-bottom: 84px;
+    padding-top: 72px;
+    padding-bottom: 72px;
   }
 
   .section-heading {

@@ -98,6 +98,23 @@ test("uses lightcompany.ai as the canonical social domain and keeps responsive s
   assert.doesNotMatch(css, /transition:\s*all/);
 });
 
+test("uses a logo-compatible type system and exposes working authentication", async () => {
+  const [page, layout, css] = await Promise.all([
+    readFile(pageUrl, "utf8"),
+    readFile(layoutUrl, "utf8"),
+    readFile(cssUrl, "utf8"),
+  ]);
+
+  assert.match(layout, /Barlow_Semi_Condensed/);
+  assert.match(layout, /\bBarlow\b/);
+  assert.match(layout, /IBM_Plex_Mono/);
+  assert.match(page, /chatGPTSignInPath\("\/"\)/);
+  assert.match(page, /className="nav-signin"/);
+  assert.match(page, /\{user \? "Sign out" : "Sign in"\}/);
+  assert.match(css, /\.hero-copy-wrap h1 span/);
+  assert.doesNotMatch(css, /h1[\s\S]{0,240}text-transform:\s*uppercase/);
+});
+
 test("validates and stores RSVPs without collecting extra personal data", async () => {
   const route = await readFile(routeUrl, "utf8");
 
