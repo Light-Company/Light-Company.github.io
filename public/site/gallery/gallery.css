@@ -388,6 +388,17 @@ button { font: inherit; }
   text-decoration: none;
 }
 
+.gallery-end a + a {
+  min-height: auto;
+  margin-top: 16px;
+  padding: 6px;
+  color: rgba(255, 255, 255, 0.64);
+  background: transparent;
+  font-size: 13px;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
 @media (max-width: 720px) {
   .gallery-header { min-height: 68px; }
   .brand span,

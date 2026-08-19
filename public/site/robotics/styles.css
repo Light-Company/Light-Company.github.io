@@ -14,12 +14,12 @@ html { scroll-behavior: smooth; background: var(--ink); }
 body { margin: 0; overflow-x: clip; color: var(--ink); background: var(--paper); font-family: var(--font); -webkit-font-smoothing: antialiased; }
 
 /* Present the robotics edition at the user's preferred Command-Minus scale. */
-body { zoom: .67; }
+body { zoom: .75; }
 
 @supports not (zoom: 1) {
   body {
-    width: 149.2538%;
-    transform: scale(.67);
+    width: 133.3333%;
+    transform: scale(.75);
     transform-origin: top left;
   }
 }
@@ -60,7 +60,7 @@ a { color: inherit; }
 .proof-context { width:min(100%,1300px); margin:0 auto 30px; color:var(--ink-48); font-size:13px; font-weight:680; letter-spacing:.1em; text-transform:uppercase; }
 .proof-grid { display:grid; width:min(100%,1300px); grid-template-columns:repeat(3,1fr); gap:clamp(30px,5vw,90px); margin:0 auto; }
 .proof-grid article { display:flex; flex-direction:column; gap:10px; }
-.proof-grid strong { font-size:clamp(48px,5vw,76px); font-weight:570; letter-spacing:-.06em; }
+.proof-grid strong { font-size:clamp(48px,5vw,76px); font-weight:570; letter-spacing:-.06em; white-space:nowrap; font-variant-numeric:tabular-nums; }
 .proof-grid span { max-width:22ch; color:var(--ink-48); font-size:15px; line-height:1.4; }
 
 .loop { padding: clamp(110px,10vw,170px) max(4vw,20px); }
