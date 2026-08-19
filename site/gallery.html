@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#ffffff" />
+    <meta name="description" content="Light Company projected intelligence in the room, on the bench, and over the work." />
+    <title>Light Company Gallery</title>
+    <link rel="canonical" href="https://lightcompany.ai/gallery" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://lightcompany.ai/gallery" />
+    <meta property="og:title" content="Light Company Gallery" />
+    <meta property="og:description" content="Projected intelligence in the room, on the bench, and over the work." />
+    <meta property="og:image" content="https://lightcompany.ai/og.png" />
+    <link rel="stylesheet" href="/site/gallery/gallery.css" />
+    <script src="/site/gallery/gallery.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#films">Skip to the films</a>
+
+    <header class="gallery-header">
+      <a class="brand" href="/" aria-label="Light Company home">
+        <svg viewBox="128 124 225 183" aria-hidden="true">
+          <defs>
+            <linearGradient id="gallery-beam" x1="230.365" y1="223" x2="344.365" y2="223" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#075bff" />
+              <stop offset=".52" stop-color="#009ff4" />
+              <stop offset="1" stop-color="#24d4ff" />
+            </linearGradient>
+          </defs>
+          <path class="brand-line" d="M264.268 192.995 233.422 135.867c-1.729-3.266-6.295-3.266-8.023 0l-83.688 152.441c-1.729 3.266.545 7.18 4.012 7.18h157.375c3.467 0 5.74-3.914 4.012-7.18l-17.283-34.566c-1.729-3.266-6.295-3.266-8.023 0" />
+          <path d="M344.365 183.912 230.365 222.995 344.365 262.078V183.912Z" fill="url(#gallery-beam)" />
+        </svg>
+        <span>Light Company</span>
+      </a>
+      <nav aria-label="Gallery navigation">
+        <a href="/">Back to the site</a>
+        <a class="signin" href="https://prism.lightcompany.ai"><span aria-hidden="true"></span>Enterprise Sign in</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="gallery-hero" aria-labelledby="gallery-title">
+        <div class="hero-beam" aria-hidden="true"></div>
+        <p class="eyebrow">Light Company Gallery</p>
+        <h1 id="gallery-title">Intelligence,<br />cast into the room.</h1>
+        <p class="hero-copy">No Glasses No Headset. Just light seeing the work and pointing to what comes next.</p>
+        <div class="gallery-status">
+          <span class="live-dot" aria-hidden="true"></span>
+          <span data-gallery-count>Loading the archive</span>
+        </div>
+      </section>
+
+      <section class="gallery-shell" id="films" aria-labelledby="films-title">
+        <div class="gallery-toolbar">
+          <div>
+            <p class="eyebrow">From the workbench</p>
+            <h2 id="films-title">See the light at work.</h2>
+          </div>
+          <div class="filters" role="group" aria-label="Filter gallery">
+            <button class="is-active" type="button" data-filter="all">All</button>
+            <button type="button" data-filter="landscape">Wide</button>
+            <button type="button" data-filter="portrait">Tall</button>
+          </div>
+        </div>
+
+        <div class="mosaic" data-gallery-grid aria-live="polite"></div>
+        <p class="gallery-error" data-gallery-error hidden>The archive could not load. Keep the media chooser running and refresh this page.</p>
+      </section>
+
+      <section class="gallery-end">
+        <svg viewBox="128 124 225 183" aria-hidden="true">
+          <path d="M264.268 192.995 233.422 135.867c-1.729-3.266-6.295-3.266-8.023 0l-83.688 152.441c-1.729 3.266.545 7.18 4.012 7.18h157.375c3.467 0 5.74-3.914 4.012-7.18l-17.283-34.566c-1.729-3.266-6.295-3.266-8.023 0" />
+        </svg>
+        <p>Bring intelligence into the room.</p>
+        <a href="mailto:hi@jonny.sh?subject=Light%20Company%20Demo">Reserve a demo</a>
+      </section>
+    </main>
+  </body>
+</html>

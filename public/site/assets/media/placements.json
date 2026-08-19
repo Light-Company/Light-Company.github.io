@@ -1,0 +1,46 @@
+{
+  "version": 1,
+  "generated_at": "2026-08-19T02:13:59+00:00",
+  "placements": {
+    "answer_in_light": {
+      "kind": "video",
+      "src": "/site/assets/media/curated/img-5523-f36267f05.mp4",
+      "poster": "/site/assets/media/curated/img-5523-f36267f05.jpg",
+      "trim_start": 11.05,
+      "trim_end": 31.25,
+      "original": "IMG_5523.MOV"
+    },
+    "bench_overhead": {
+      "kind": "image",
+      "src": "/site/assets/media/curated/category-reference-arkite-9670212ca.jpg",
+      "poster": "/site/assets/media/curated/category-reference-arkite-9670212ca.jpg",
+      "trim_start": 0.0,
+      "trim_end": 0.0,
+      "original": "category-reference-arkite.png"
+    },
+    "center_device": {
+      "kind": "video",
+      "src": "/site/assets/media/curated/img-5387-6d070b6f5.mp4",
+      "poster": "/site/assets/media/curated/img-5387-6d070b6f5.jpg",
+      "trim_start": 7.05,
+      "trim_end": 22.1,
+      "original": "IMG_5387.MOV"
+    },
+    "founder_intro": {
+      "kind": "video",
+      "src": "/site/assets/media/curated/img-5012-mov-f6294507d.mp4",
+      "poster": "/site/assets/media/curated/img-5012-mov-f6294507d.jpg",
+      "trim_start": 2.0,
+      "trim_end": 51.25,
+      "original": "IMG_5012.MOV.mov"
+    },
+    "research_background": {
+      "kind": "video",
+      "src": "/site/assets/media/curated/img-5387-b10dc5e5b.mp4",
+      "poster": "/site/assets/media/curated/img-5387-b10dc5e5b.jpg",
+      "trim_start": 0.0,
+      "trim_end": 17.05,
+      "original": "IMG_5387.MOV"
+    }
+  }
+}

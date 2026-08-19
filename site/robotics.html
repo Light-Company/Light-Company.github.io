@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#ffffff" />
+    <meta name="description" content="Prism makes robot policy evaluation repeatable by staging, verifying, logging, and replaying physical initial conditions." />
+    <title>Light Company Robotics — Repeatable physical AI evals</title>
+    <link rel="canonical" href="https://lightcompany.ai/Robotics/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://lightcompany.ai/Robotics/" />
+    <meta property="og:title" content="Light Company Robotics — Repeatable physical AI evals" />
+    <meta property="og:description" content="Stage, verify, log, and replay physical initial conditions for robot evaluation." />
+    <meta property="og:image" content="https://lightcompany.ai/og.png" />
+    <link rel="icon" href="/site/assets/brand/light-company-mark.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/site/robotics/styles.css" />
+    <script src="/site/robotics/script.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="topbar">
+      <a class="brand" href="/#top" aria-label="Light Company home">
+        <img src="/site/assets/brand/light-company-mark.svg" alt="" />
+        <span>Light Company <em>Robotics</em></span>
+      </a>
+      <nav aria-label="Primary">
+        <a href="/gallery">Gallery</a>
+        <a href="/#top">Main site</a>
+        <a class="pill pill-dark" href="mailto:hi@jonny.sh?subject=Light%20Company%20Robotics%20Demo"><span class="beam-icon" aria-hidden="true"></span>Reserve a robotics demo</a>
+      </nav>
+    </header>
+
+    <main id="main">
+      <section class="robot-hero" aria-labelledby="hero-title">
+        <div class="hero-copy reveal">
+          <p class="eyebrow">Light Company for Robotics</p>
+          <h1 id="hero-title">Make the scene repeatable.<br />Then measure the model.</h1>
+          <p>Prism stages, verifies, logs, and replays robot eval conditions with projected light—without tape, barcodes, or markers.</p>
+          <div class="hero-actions">
+            <a class="pill pill-dark" href="#eval-loop">See the eval loop</a>
+            <a class="text-link" href="/gallery">View field gallery</a>
+          </div>
+        </div>
+
+        <div class="hero-media reveal">
+          <video class="viewport-video" muted loop playsinline preload="metadata" poster="/site/assets/media/curated/img-5387-b10dc5e5b.jpg">
+            <source src="/site/assets/media/curated/img-5387-b10dc5e5b.mp4" type="video/mp4" />
+          </video>
+          <span class="projection-label">Initial condition verified</span>
+        </div>
+
+        <p class="hero-note">No Glasses No Headset</p>
+      </section>
+
+      <section class="proof" aria-label="Deployment results at New Theory">
+        <p class="proof-context">New Theory deployment</p>
+        <div class="proof-grid">
+          <article><strong>40% → 10%</strong><span>Eval score variation</span></article>
+          <article><strong>20%</strong><span>Setup-invalid episodes found before trial</span></article>
+          <article><strong>1 → 4</strong><span>Stations expanded after deployment</span></article>
+        </div>
+      </section>
+
+      <section class="loop" id="eval-loop" aria-labelledby="loop-title">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Initial-condition control</p>
+          <h2 id="loop-title">A seed and version history<br />for the state of a table.</h2>
+          <p>Control what the robot starts with. Catch setup errors before they become bad data. Recreate the exact scene when a checkpoint changes.</p>
+        </div>
+
+        <div class="loop-grid">
+          <article class="loop-card loop-card-media reveal">
+            <div class="card-media">
+              <video class="viewport-video" muted loop playsinline preload="metadata" poster="/media/registered-guidance.jpg">
+                <source src="/media/registered-guidance.mp4" type="video/mp4" />
+              </video>
+            </div>
+            <div class="card-copy"><span>01</span><h3>Stage</h3><p>Project target object poses directly onto the workspace. The operator places each object to the light.</p></div>
+          </article>
+
+          <article class="loop-card loop-card-media reveal">
+            <div class="card-media">
+              <video class="viewport-video" muted loop playsinline preload="metadata" poster="/media/object-measurement.jpg">
+                <source src="/media/object-measurement.mp4" type="video/mp4" />
+              </video>
+            </div>
+            <div class="card-copy"><span>02</span><h3>Verify</h3><p>Compare identity, position, and residual error against the target before the trial runs.</p></div>
+          </article>
+
+          <article class="loop-card loop-card-visual reveal">
+            <img src="/site/assets/illustrations/work-map.svg" alt="A map of tracked objects and work areas" />
+            <div class="card-copy"><span>03</span><h3>Log</h3><p>Record which objects were where, for which trial, of which policy.</p></div>
+          </article>
+
+          <article class="loop-card loop-card-visual reveal">
+            <img src="/site/assets/illustrations/verification.svg" alt="A verified physical scene ready to replay" />
+            <div class="card-copy"><span>04</span><h3>Replay</h3><p>Re-project any logged condition for regression testing, failure analysis, or a new checkpoint.</p></div>
+          </article>
+        </div>
+      </section>
+
+      <section class="why" aria-labelledby="why-title">
+        <div class="why-media">
+          <video class="viewport-video" muted loop playsinline preload="metadata" poster="/media/hero-workbench.jpg">
+            <source src="/media/hero-workbench.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <div class="why-copy reveal">
+          <p class="eyebrow">Why this matters</p>
+          <h2 id="why-title">Stop measuring the setup. Start measuring the policy.</h2>
+          <p>A few centimeters of object movement can shift measured success from roughly 95% to 50–75%. Without control and logging, the score mixes model quality with an undocumented placement distribution.</p>
+          <div class="why-points">
+            <span>No tape in the training distribution</span>
+            <span>Bad setups flagged in seconds</span>
+            <span>Conditions comparable across checkpoints</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="limits" aria-labelledby="limits-title">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Built for credible measurement</p>
+          <h2 id="limits-title">What Prism controls—and what it does not.</h2>
+          <p>Physical AI infrastructure should make its boundaries visible.</p>
+        </div>
+        <div class="limits-grid">
+          <article><h3>Controls</h3><p>Planar placement of rigid objects, scene identity, position, condition history, and replay.</p></article>
+          <article><h3>Measures next</h3><p>Human placement tolerance per task and the residual variance that survives staging.</p></article>
+          <article><h3>Does not solve alone</h3><p>Scoring-rubric ambiguity, deformable-object state, lighting, or robot-side state.</p></article>
+          <article><h3>Gated during capture</h3><p>Visible projection is removed while recording so guidance does not become a visual confound.</p></article>
+        </div>
+      </section>
+
+      <section class="robot-cta">
+        <img src="/site/assets/brand/light-company-mark.svg" alt="" />
+        <p class="eyebrow">Light Company for Robotics</p>
+        <h2>Make every physical eval<br />possible to run again.</h2>
+        <a class="pill pill-light" href="mailto:hi@jonny.sh?subject=Light%20Company%20Robotics%20Pilot">Start with one station</a>
+      </section>
+    </main>
+
+    <footer>
+      <span>Light Company · Prism</span>
+      <nav aria-label="Footer"><a href="/#top">Main site</a><a href="/gallery">Gallery</a><a href="mailto:hi@jonny.sh">Contact</a></nav>
+    </footer>
+  </body>
+</html>

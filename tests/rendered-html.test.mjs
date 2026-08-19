@@ -1,118 +1,71 @@
 import assert from "node:assert/strict";
-import { readFile } from "node:fs/promises";
+import { access, readFile } from "node:fs/promises";
 import test from "node:test";
 
-const pageUrl = new URL("../app/page.tsx", import.meta.url);
-const layoutUrl = new URL("../app/layout.tsx", import.meta.url);
+const mainUrl = new URL("../site/main.html", import.meta.url);
+const roboticsUrl = new URL("../site/robotics.html", import.meta.url);
+const galleryUrl = new URL("../site/gallery.html", import.meta.url);
+const mainScriptUrl = new URL("../public/site/main/script.js", import.meta.url);
+const galleryScriptUrl = new URL("../public/site/gallery/gallery.js", import.meta.url);
+const manifestUrl = new URL("../public/site/assets/media/placements.json", import.meta.url);
 const routeUrl = new URL("../app/api/rsvp/route.ts", import.meta.url);
-const cssUrl = new URL("../app/globals.css", import.meta.url);
-const markUrl = new URL("../public/brand/light-company-mark.svg", import.meta.url);
 
-test("keeps the positioning concrete, adopts Light Company, and retains the demo CTA", async () => {
-  const page = await readFile(pageUrl, "utf8");
-
-  assert.match(page, /Light Company/);
-  assert.match(page, /src="\/brand\/light-company-mark\.svg"/);
-  assert.match(page, /AI That Points to the Work\./);
-  assert.match(page, /A lamp that sees the workbench, understands the task/);
-  assert.match(page, /High-Mix Robotics Benches/);
-  assert.match(page, /Apple Vision Pro infrastructure engineer/i);
-  assert.match(page, /action="\/api\/rsvp"/);
-  assert.match(page, /Reserve My Seat/);
-  assert.match(page, /new Intl\.DateTimeFormat/);
-  assert.match(page, /Next Public Captures/);
-  assert.doesNotMatch(page, /future of spatial computing/i);
-  assert.doesNotMatch(page, /light[\s.]+intelligence[\s.]+forward/i);
-  assert.doesNotMatch(page, /codex-preview|react-loading-skeleton/i);
-});
-
-test("uses the cropped transparent vector mark from the supplied logo", async () => {
-  const [page, css, mark] = await Promise.all([
-    readFile(pageUrl, "utf8"),
-    readFile(cssUrl, "utf8"),
-    readFile(markUrl, "utf8"),
+test("ships the finished Light Company page without local-only links", async () => {
+  const [main, script, manifest] = await Promise.all([
+    readFile(mainUrl, "utf8"),
+    readFile(mainScriptUrl, "utf8"),
+    readFile(manifestUrl, "utf8"),
   ]);
 
-  assert.match(mark, /viewBox="128 124 225 183"/);
-  assert.match(mark, /linearGradient id="projection-beam"/);
-  assert.match(mark, /stroke="#0A1118"/);
-  assert.doesNotMatch(mark, /<rect|fill="#fff"|fill="#ffffff"/i);
-  assert.doesNotMatch(page, /light-mark-(glow|beam|blade)/);
-  assert.doesNotMatch(css, /\.light-mark-(glow|beam|blade)/);
+  assert.match(main, /Light Company — AI that points to the work/);
+  assert.match(main, /No Glasses No Headset/);
+  assert.match(main, /href="\/gallery"/);
+  assert.match(main, /href="\/Robotics\/"/);
+  assert.match(main, /href="https:\/\/prism\.lightcompany\.ai"/);
+  assert.match(main, /https:\/\/lightcompany\.ai\/og\.png/);
+  assert.match(script, /\/site\/assets\/media\/placements\.json/);
+  assert.doesNotMatch(`${main}${script}${manifest}`, /127\.0\.0\.1|localhost/);
+  assert.doesNotMatch(`${main}${script}${manifest}`, /"assets\//);
 });
 
-test("makes IMG_5010 the hero and restores every original-site video", async () => {
-  const page = await readFile(pageUrl, "utf8");
-  const expectedVideos = [
-    "img-5010.mp4",
-    "founder-intro.mp4",
-    "registered-guidance.mp4",
-    "hero-workbench.mp4",
-    "object-measurement.mp4",
-    "measure.mp4",
-    "overhead.mp4",
-    "track-person.mp4",
-    "object.mp4",
-    "scene-scan.mp4",
-    "room-layout.mp4",
-    "room-seg.mp4",
-    "rooms-grid.mp4",
-    "ambient-bird.mp4",
-    "ambient-art.mp4",
-    "ambient-display.mp4",
-    "artwork.mp4",
-    "signoff.mp4",
-  ];
+test("publishes the smaller dedicated robotics experience", async () => {
+  const robotics = await readFile(roboticsUrl, "utf8");
 
-  assert.match(
-    page,
-    /<section className="hero"[\s\S]*?src="\/media\/img-5010\.mp4"/,
+  assert.match(robotics, /Light Company for Robotics/);
+  assert.match(robotics, /Make the scene repeatable/);
+  assert.match(robotics, /href="\/gallery"/);
+  assert.match(robotics, /href="\/#top"/);
+  assert.match(robotics, /https:\/\/lightcompany\.ai\/Robotics\//);
+  assert.doesNotMatch(robotics, /127\.0\.0\.1|localhost/);
+});
+
+test("publishes a self-contained video mosaic", async () => {
+  const [gallery, galleryScript] = await Promise.all([
+    readFile(galleryUrl, "utf8"),
+    readFile(galleryScriptUrl, "utf8"),
+  ]);
+
+  assert.match(gallery, /Intelligence,<br \/>cast into the room/);
+  assert.match(gallery, /No Glasses No Headset/);
+  assert.match(galleryScript, /const archive = \[/);
+  assert.equal((galleryScript.match(/preview: "\/(?:site\/assets\/media|media)\//g) || []).length, 23);
+  assert.doesNotMatch(`${gallery}${galleryScript}`, /\/api\/media|127\.0\.0\.1|localhost/);
+});
+
+test("keeps every referenced production asset in the published bundle", async () => {
+  const sources = await Promise.all([
+    readFile(mainUrl, "utf8"),
+    readFile(roboticsUrl, "utf8"),
+    readFile(galleryScriptUrl, "utf8"),
+    readFile(manifestUrl, "utf8"),
+  ]);
+  const paths = new Set(
+    sources.join("\n").match(/\/(?:site\/assets|media)\/[A-Za-z0-9_./-]+/g) || [],
   );
-  for (const video of expectedVideos) {
-    assert.match(page, new RegExp(`/media/${video.replace(".", "\\.")}`));
+
+  for (const path of paths) {
+    await access(new URL(`../public${path}`, import.meta.url));
   }
-  assert.equal(
-    new Set(page.match(/\/media\/[\w-]+\.mp4/g)).size,
-    expectedVideos.length,
-  );
-});
-
-test("uses lightcompany.ai as the canonical social domain and keeps responsive safeguards", async () => {
-  const [layout, css] = await Promise.all([
-    readFile(layoutUrl, "utf8"),
-    readFile(cssUrl, "utf8"),
-  ]);
-
-  assert.match(layout, /new URL\("https:\/\/lightcompany\.ai"\)/);
-  assert.match(layout, /canonical: "https:\/\/lightcompany\.ai"/);
-  assert.match(layout, /new URL\("\/og\.png", metadataBase\)/);
-  assert.match(layout, /card: "summary_large_image"/);
-  assert.match(layout, /The Light Company · AI That Points to the Work/);
-  assert.match(css, /color-scheme: light/);
-  assert.match(css, /--field: #f5f8fa/);
-  assert.match(css, /\.light-mark/);
-  assert.match(css, /\.hero-beam/);
-  assert.match(css, /@media \(max-width: 760px\)/);
-  assert.match(css, /@media \(prefers-reduced-motion: reduce\)/);
-  assert.match(css, /:focus-visible/);
-  assert.doesNotMatch(css, /transition:\s*all/);
-});
-
-test("uses a logo-compatible type system and exposes working authentication", async () => {
-  const [page, layout, css] = await Promise.all([
-    readFile(pageUrl, "utf8"),
-    readFile(layoutUrl, "utf8"),
-    readFile(cssUrl, "utf8"),
-  ]);
-
-  assert.match(layout, /Barlow_Semi_Condensed/);
-  assert.match(layout, /\bBarlow\b/);
-  assert.match(layout, /IBM_Plex_Mono/);
-  assert.match(page, /chatGPTSignInPath\("\/"\)/);
-  assert.match(page, /className="nav-signin"/);
-  assert.match(page, /\{user \? "Sign out" : "Sign in"\}/);
-  assert.match(css, /\.hero-copy-wrap h1 span/);
-  assert.doesNotMatch(css, /h1[\s\S]{0,240}text-transform:\s*uppercase/);
 });
 
 test("validates and stores RSVPs without collecting extra personal data", async () => {

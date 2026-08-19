@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="210" viewBox="0 0 600 210" role="img" aria-labelledby="title desc">
+  <title id="title">From Step 1 to Done</title>
+  <desc id="desc">Show me where this fastener goes.</desc>
+  <rect x="2" y="2" width="596" height="206" rx="34" fill="#fff"/>
+  <circle cx="64" cy="62" r="30" fill="#050505"/>
+  <g fill="#fff">
+    <rect x="48" y="57" width="3" height="10" rx="1.5"/>
+    <rect x="55" y="51" width="3" height="22" rx="1.5"/>
+    <rect x="62" y="46" width="3" height="32" rx="1.5"/>
+    <rect x="69" y="52" width="3" height="20" rx="1.5"/>
+    <rect x="76" y="56" width="3" height="12" rx="1.5"/>
+  </g>
+  <text x="112" y="57" fill="#8a8a8a" font-family="Arial, sans-serif" font-size="20" font-weight="600" letter-spacing="1.6">FROM STEP 1 TO DONE</text>
+  <text x="112" y="101" fill="#050505" font-family="Arial, sans-serif" font-size="31" font-weight="500">Show me where this</text>
+  <text x="112" y="141" fill="#050505" font-family="Arial, sans-serif" font-size="31" font-weight="500">fastener goes.</text>
+  <circle cx="550" cy="58" r="8" fill="#09a8f7"/>
+</svg>
