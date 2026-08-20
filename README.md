@@ -1,37 +1,34 @@
-# The Light Company marketing site
+# Light Company website
 
-The refreshed single-page site for a projected-AI desk lamp: AI guidance
-projected onto physical work.
+The production marketing site for [lightcompany.ai](https://lightcompany.ai): projected intelligence for physical work, with dedicated robotics, gallery, and privacy pages.
 
-## What is included
+## Working together
 
-- concrete positioning for robotics and hardware teams
-- `IMG_5010` as the full-screen landing video
-- every video from the original media library, each presented as its own
-  spaced proof moment rather than consolidated into a gallery
-- clearly labeled future footage slots for assembly, soldering, and cooking
-- an August 20, 2026 San Francisco RSVP flow backed by D1
-- responsive layouts, reduced-motion support, and host-aware social metadata
+- `main` is the production branch.
+- Create a branch for each change and open a pull request.
+- Pull requests run the complete build and rendered-page tests.
+- Merging to `main` publishes the site through GitHub Pages automatically.
+- `@Jonnysol` and `@CoolGuy2982` are code owners for the site.
+
+The deployment is intentionally static. The public pages, images, and videos are produced from the same source used by the local Vinext application.
 
 ## Local development
 
 ```bash
-npm install
+npm ci
 npm run dev
 ```
 
-The local site runs at `http://localhost:3000`.
+The development server prints its local URL when ready.
 
 ## Validation
 
 ```bash
-npm run build
-npm run lint
-node --test tests/rendered-html.test.mjs
+npm test
 ```
 
-When the RSVP schema changes, regenerate the migration:
+This builds the Vinext application, creates the GitHub Pages artifact in `.pages-dist`, and runs the rendered-page and static-output tests.
 
-```bash
-npm run db:generate
-```
+## Production
+
+The workflow in `.github/workflows/deploy-production.yml` publishes only from `main`. GitHub Pages is the intended production host after the `lightcompany.ai` DNS records are cut over. Until then, the current OpenAI Sites deployment remains live so there is no interruption.
