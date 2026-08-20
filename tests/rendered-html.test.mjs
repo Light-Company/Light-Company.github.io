@@ -39,16 +39,22 @@ test("publishes the smaller dedicated robotics experience", async () => {
   assert.doesNotMatch(robotics, /127\.0\.0\.1|localhost/);
 });
 
-test("publishes a self-contained video mosaic", async () => {
+test("publishes the Prism playlist gallery grid", async () => {
   const [gallery, galleryScript] = await Promise.all([
     readFile(galleryUrl, "utf8"),
     readFile(galleryScriptUrl, "utf8"),
   ]);
 
-  assert.match(gallery, /Intelligence,<br \/>cast into the room/);
-  assert.match(gallery, /No Glasses No Headset/);
-  assert.match(galleryScript, /const archive = \[/);
-  assert.equal((galleryScript.match(/preview: "\/(?:site\/assets\/media|media)\//g) || []).length, 23);
+  assert.match(gallery, /data-gallery-grid/);
+  assert.match(gallery, /data-lightbox-player/);
+  assert.match(gallery, /data-lightbox-poster/);
+  assert.match(gallery, /rel="preconnect" href="https:\/\/www\.youtube-nocookie\.com"/);
+  assert.match(gallery, /rel="preconnect" href="https:\/\/www\.youtube\.com"/);
+  assert.match(galleryScript, /const playlist = \[/);
+  assert.equal((galleryScript.match(/\{ id: "[A-Za-z0-9_-]{11}", slug: "[a-z0-9-]+", title: "/g) || []).length, 13);
+  assert.match(galleryScript, /iframe_api/);
+  assert.match(galleryScript, /new window\.YT\.Player/);
+  assert.match(galleryScript, /\/media\/prism\/\$\{tile\.dataset\.slug\}\.gif/);
   assert.doesNotMatch(`${gallery}${galleryScript}`, /\/api\/media|127\.0\.0\.1|localhost/);
 });
 

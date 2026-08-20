@@ -1,126 +1,270 @@
 (() => {
   const grid = document.querySelector("[data-gallery-grid]");
-  const count = document.querySelector("[data-gallery-count]");
   const error = document.querySelector("[data-gallery-error]");
-  const filterButtons = [...document.querySelectorAll("[data-filter]")];
+  const lightbox = document.querySelector("[data-lightbox]");
+  const lightboxPlayerMount = document.querySelector("[data-lightbox-player]");
+  const lightboxPoster = document.querySelector("[data-lightbox-poster]");
+  const lightboxTitle = document.querySelector("[data-lightbox-title]");
+  const lightboxCloseEls = document.querySelectorAll("[data-lightbox-close]");
+  const canHoverPreview = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  let items = [];
 
-  const archive = [
-    { filename: "Projected artwork.mp4", preview: "/media/ambient-art.mp4", thumb: "/media/ambient-art.jpg", width: 720, height: 1280, duration: 15, orientation: "portrait" },
-    { filename: "Projected bird.mp4", preview: "/media/ambient-bird.mp4", thumb: "/media/ambient-bird.jpg", width: 720, height: 1280, duration: 15, orientation: "portrait" },
-    { filename: "Ambient display.mp4", preview: "/media/ambient-display.mp4", thumb: "/media/ambient-display.jpg", width: 720, height: 1278, duration: 14, orientation: "portrait" },
-    { filename: "Artwork on the surface.mp4", preview: "/media/artwork.mp4", thumb: "/media/artwork.jpg", width: 720, height: 1280, duration: 10, orientation: "portrait" },
-    { filename: "Founder introduction.mp4", preview: "/media/founder-intro.mp4", thumb: "/media/founder-intro.jpg", width: 640, height: 360, duration: 60.4, orientation: "landscape" },
-    { filename: "Workbench guidance.mp4", preview: "/media/hero-workbench.mp4", thumb: "/media/hero-workbench.jpg", width: 1280, height: 720, duration: 12, orientation: "landscape" },
-    { filename: "Early field capture.mp4", preview: "/media/img-5010.mp4", thumb: "/media/img-5010-poster.jpg", width: 540, height: 960, duration: 141.8, orientation: "portrait" },
-    { filename: "Measurement in light.mp4", preview: "/media/measure.mp4", thumb: "/media/measure.jpg", width: 1280, height: 720, duration: 12, orientation: "landscape" },
-    { filename: "Object measurement.mp4", preview: "/media/object-measurement.mp4", thumb: "/media/object-measurement.jpg", width: 720, height: 1280, duration: 11, orientation: "portrait" },
-    { filename: "Object tracking.mp4", preview: "/media/object.mp4", thumb: "/media/object.jpg", width: 720, height: 960, duration: 9, orientation: "portrait" },
-    { filename: "Overhead system view.mp4", preview: "/media/overhead.mp4", thumb: "/media/overhead.jpg", width: 720, height: 1280, duration: 16, orientation: "portrait" },
-    { filename: "Registered guidance.mp4", preview: "/media/registered-guidance.mp4", thumb: "/media/registered-guidance.jpg", width: 720, height: 1280, duration: 14, orientation: "portrait" },
-    { filename: "Room layout.mp4", preview: "/media/room-layout.mp4", thumb: "/media/room-layout.jpg", width: 1280, height: 720, duration: 13, orientation: "landscape" },
-    { filename: "Room segmentation.mp4", preview: "/media/room-seg.mp4", thumb: "/media/room-seg.jpg", width: 1280, height: 1280, duration: 12, orientation: "landscape" },
-    { filename: "Rooms grid.mp4", preview: "/media/rooms-grid.mp4", thumb: "/media/rooms-grid.jpg", width: 1280, height: 720, duration: 12, orientation: "landscape" },
-    { filename: "Scene scan.mp4", preview: "/media/scene-scan.mp4", thumb: "/media/scene-scan.jpg", width: 1280, height: 1280, duration: 14, orientation: "landscape" },
-    { filename: "Step signoff.mp4", preview: "/media/signoff.mp4", thumb: "/media/signoff.jpg", width: 720, height: 1280, duration: 3.5, orientation: "portrait" },
-    { filename: "Person tracking.mp4", preview: "/media/track-person.mp4", thumb: "/media/track-person.jpg", width: 720, height: 1280, duration: 10, orientation: "portrait" },
-    { filename: "World model lab.mp4", preview: "/site/assets/media/world-model-lab.mp4", thumb: "/site/assets/media/world-model-lab.jpg", width: 1280, height: 720, duration: 4.3, orientation: "landscape" },
-    { filename: "Founder field capture.mp4", preview: "/site/assets/media/curated/img-5012-mov-f6294507d.mp4", thumb: "/site/assets/media/curated/img-5012-mov-f6294507d.jpg", width: 720, height: 1280, duration: 49.3, orientation: "portrait" },
-    { filename: "Projected interface study.mp4", preview: "/site/assets/media/curated/img-5387-6d070b6f5.mp4", thumb: "/site/assets/media/curated/img-5387-6d070b6f5.jpg", width: 1600, height: 900, duration: 15, orientation: "landscape" },
-    { filename: "Robotics scene study.mp4", preview: "/site/assets/media/curated/img-5387-b10dc5e5b.mp4", thumb: "/site/assets/media/curated/img-5387-b10dc5e5b.jpg", width: 1600, height: 900, duration: 17.1, orientation: "landscape" },
-    { filename: "Answer in light.mp4", preview: "/site/assets/media/curated/img-5523-f36267f05.mp4", thumb: "/site/assets/media/curated/img-5523-f36267f05.jpg", width: 1080, height: 1920, duration: 20.2, orientation: "portrait" },
+  // Warm the YouTube IFrame Player API as soon as the page is idle, well before any click,
+  // so opening the modal can create/reuse a player synchronously and keep the click's
+  // user-gesture context (required for reliable unmuted autoplay).
+  let ytApiPromise = null;
+  const loadYouTubeApi = () => {
+    if (window.YT && window.YT.Player) return Promise.resolve();
+    if (ytApiPromise) return ytApiPromise;
+    ytApiPromise = new Promise((resolve) => {
+      const prevReady = window.onYouTubeIframeAPIReady;
+      window.onYouTubeIframeAPIReady = () => {
+        prevReady?.();
+        resolve();
+      };
+      const script = document.createElement("script");
+      script.src = "https://www.youtube.com/iframe_api";
+      document.head.append(script);
+    });
+    return ytApiPromise;
+  };
+  if ("requestIdleCallback" in window) {
+    window.requestIdleCallback(loadYouTubeApi, { timeout: 2000 });
+  } else {
+    window.setTimeout(loadYouTubeApi, 300);
+  }
+
+  // Light Company's "Prism" YouTube playlist: https://www.youtube.com/playlist?list=PLa4QFCA0Kmy4
+  // Hover previews are self-hosted GIFs cut from these same videos (see public/media/prism) —
+  // a YouTube embed can never fully hide its own player chrome, so it can't pass for a GIF loop.
+  const playlist = [
+    { id: "8l_HrdypTt8", slug: "books", title: "Books on Prism" },
+    { id: "HG1q5wkIn6g", slug: "air-hockey", title: "Air Hockey on Prism" },
+    { id: "y228KXS4wVg", slug: "newspaper", title: "Newspaper on Prism" },
+    { id: "Kt7czlsjFJk", slug: "pong", title: "Pong on Prism" },
+    { id: "A4yp3IgU63Y", slug: "vinyls-weather", title: "Vinyls and Weather on Prism" },
+    { id: "NkcO3S3RgWA", slug: "browser-use", title: "Browser Use on Prism" },
+    { id: "n02_uJRY94M", slug: "earth", title: "Earth on Prism" },
+    { id: "MpvXBa2JWww", slug: "drawing", title: "Drawing on Prism" },
+    { id: "H-fQiTYJAV4", slug: "chess", title: "Chess on Prism" },
+    { id: "bkwtg7ZtMdc", slug: "videos-1", title: "Videos on Prism 1" },
+    { id: "rLkvr6TPuFc", slug: "dodger", title: "Dodger on Prism" },
+    { id: "dS0Vy89RNks", slug: "prism-home", title: "Prism Home" },
+    { id: "BbePEVE6CMg", slug: "fruit-ninja", title: "Fruit Ninja on Prism" },
   ];
 
-  const formatDuration = (seconds) => {
-    const total = Math.max(0, Math.round(Number(seconds) || 0));
-    const minutes = Math.floor(total / 60);
-    return `${minutes}:${String(total % 60).padStart(2, "0")}`;
+  const displayTitle = (title) => title.replace(/\bon Prism\b/i, "").replace(/\s+/g, " ").trim() || title;
+
+  const thumbSources = (id) => [
+    `https://i.ytimg.com/vi/${id}/maxresdefault.jpg`,
+    `https://i.ytimg.com/vi/${id}/sddefault.jpg`,
+    `https://i.ytimg.com/vi/${id}/hqdefault.jpg`,
+  ];
+
+  const startPreview = (tile) => {
+    if (!canHoverPreview || reducedMotion) return;
+    const frame = tile.querySelector(".tile-frame");
+    if (frame.dataset.loaded) {
+      frame.classList.add("is-active");
+      return;
+    }
+    const gif = document.createElement("img");
+    gif.src = `/media/prism/${tile.dataset.slug}.gif`;
+    gif.alt = "";
+    frame.append(gif);
+    frame.dataset.loaded = "true";
+    frame.classList.add("is-active");
   };
 
-  const displayName = (filename) => filename
-    .replace(/\.[^.]+$/, "")
-    .replace(/[_-]+/g, " ")
-    .replace(/\b(img|dsc)\s*(\d+)\b/i, "Field capture $2")
-    .replace(/\b(mov|mp4)\b/gi, "")
-    .replace(/\s+/g, " ")
-    .trim();
+  const stopPreview = (tile) => {
+    const frame = tile.querySelector(".tile-frame");
+    frame.classList.remove("is-active");
+    frame.innerHTML = "";
+    delete frame.dataset.loaded;
+  };
 
-  const videoObserver = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      const card = entry.target;
-      const video = card.querySelector("video");
-      if (!video) return;
-      if (entry.isIntersecting) {
-        if (!video.src) {
-          video.src = video.dataset.src;
-          video.load();
-        }
-        if (!reducedMotion) video.play().catch(() => {});
-      } else {
-        video.pause();
+  // Request the highest resolution YouTube has for the video, every time playback actually starts —
+  // covers both a fresh player and a reused one switching videos via loadVideoById.
+  const applyBestQuality = (target) => {
+    const levels = target.getAvailableQualityLevels?.();
+    if (levels && levels.length) target.setPlaybackQuality(levels[0]);
+  };
+
+  let player = null;
+  let spinnerFallback = null;
+
+  const markReady = () => {
+    window.clearTimeout(spinnerFallback);
+    lightbox.classList.add("is-ready");
+  };
+
+  const playVideo = (id) => {
+    if (player) {
+      player.loadVideoById(id);
+      return;
+    }
+    player = new window.YT.Player(lightboxPlayerMount, {
+      videoId: id,
+      playerVars: { autoplay: 1, mute: 0, rel: 0, modestbranding: 1, playsinline: 1 },
+      events: {
+        onStateChange: (event) => {
+          if (event.data === window.YT.PlayerState.PLAYING) {
+            applyBestQuality(event.target);
+            markReady();
+          }
+        },
+      },
+    });
+  };
+
+  const openLightbox = (id, title, posterSrc) => {
+    lightboxTitle.textContent = title;
+    lightboxPoster.src = posterSrc || "";
+    lightbox.classList.remove("is-ready");
+    lightbox.hidden = false;
+    document.body.classList.add("lightbox-open");
+    requestAnimationFrame(() => lightbox.classList.add("is-open"));
+    lightboxCloseEls[0]?.focus();
+
+    // Fail safe: if the player API stalls or state events don't fire, don't leave the spinner stuck forever.
+    window.clearTimeout(spinnerFallback);
+    spinnerFallback = window.setTimeout(markReady, 6000);
+
+    if (window.YT && window.YT.Player) {
+      playVideo(id);
+    } else {
+      loadYouTubeApi().then(() => playVideo(id));
+    }
+  };
+
+  const closeLightbox = () => {
+    if (lightbox.hidden) return;
+    lightbox.classList.remove("is-open");
+    document.body.classList.remove("lightbox-open");
+    player?.pauseVideo?.();
+    window.setTimeout(() => {
+      lightbox.hidden = true;
+    }, 350);
+  };
+
+  lightboxCloseEls.forEach((el) => el.addEventListener("click", closeLightbox));
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") closeLightbox();
+  });
+
+  // Hero film — the centerpiece summary video. Plays inline in place, no modal.
+  const heroFrame = document.querySelector("[data-hero-video]");
+  if (heroFrame) {
+    const heroId = heroFrame.dataset.videoId;
+    const heroPoster = heroFrame.querySelector("[data-hero-poster]");
+    const heroPlayerMount = heroFrame.querySelector("[data-hero-player]");
+    const heroPlayBtn = heroFrame.querySelector("[data-hero-play]");
+
+    const heroSources = thumbSources(heroId);
+    let heroSourceIndex = 0;
+    const tryNextHeroSource = () => {
+      heroSourceIndex += 1;
+      if (heroSourceIndex < heroSources.length) heroPoster.src = heroSources[heroSourceIndex];
+    };
+    heroPoster.addEventListener("error", tryNextHeroSource);
+    heroPoster.addEventListener("load", () => {
+      if (heroPoster.naturalWidth && heroPoster.naturalWidth <= 120) tryNextHeroSource();
+    });
+    heroPoster.src = heroSources[heroSourceIndex];
+
+    let heroPlayer = null;
+    const playHero = () => {
+      heroFrame.classList.add("is-playing");
+      if (heroPlayer) {
+        heroPlayer.playVideo();
+        return;
+      }
+      const start = () => {
+        heroPlayer = new window.YT.Player(heroPlayerMount, {
+          videoId: heroId,
+          playerVars: { autoplay: 1, mute: 0, rel: 0, modestbranding: 1, playsinline: 1 },
+          events: {
+            onStateChange: (event) => {
+              if (event.data === window.YT.PlayerState.PLAYING) applyBestQuality(event.target);
+            },
+          },
+        });
+      };
+      if (window.YT && window.YT.Player) start();
+      else loadYouTubeApi().then(start);
+    };
+
+    heroPlayBtn.addEventListener("click", playHero);
+  }
+
+  const makeTile = (item) => {
+    const label = displayTitle(item.title);
+
+    const tile = document.createElement("article");
+    tile.className = "tile";
+    tile.dataset.id = item.id;
+    tile.dataset.slug = item.slug;
+    tile.tabIndex = 0;
+    tile.setAttribute("role", "button");
+    tile.setAttribute("aria-label", `Play ${label}`);
+
+    const media = document.createElement("div");
+    media.className = "tile-media";
+
+    const img = document.createElement("img");
+    img.className = "tile-thumb";
+    img.loading = "lazy";
+    img.alt = "";
+    const sources = thumbSources(item.id);
+    let sourceIndex = 0;
+    const tryNextSource = () => {
+      sourceIndex += 1;
+      if (sourceIndex < sources.length) img.src = sources[sourceIndex];
+    };
+    img.addEventListener("error", tryNextSource);
+    img.addEventListener("load", () => {
+      if (img.naturalWidth && img.naturalWidth <= 120) tryNextSource();
+    });
+    img.src = sources[sourceIndex];
+    media.append(img);
+
+    const frame = document.createElement("div");
+    frame.className = "tile-frame";
+
+    const veil = document.createElement("div");
+    veil.className = "tile-veil";
+    const span = document.createElement("span");
+    span.className = "tile-label";
+    span.textContent = label;
+    veil.append(span);
+
+    tile.append(media, frame, veil);
+
+    let hoverTimer = null;
+    tile.addEventListener("mouseenter", () => {
+      window.clearTimeout(hoverTimer);
+      hoverTimer = window.setTimeout(() => startPreview(tile), 180);
+    });
+    tile.addEventListener("mouseleave", () => {
+      window.clearTimeout(hoverTimer);
+      stopPreview(tile);
+    });
+    tile.addEventListener("click", () => openLightbox(item.id, label, img.src));
+    tile.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        openLightbox(item.id, label, img.src);
       }
     });
-  }, { rootMargin: "320px 0px", threshold: 0.04 });
 
-  const makeCard = (item) => {
-    const card = document.createElement("article");
-    const ratio = item.width > 0 && item.height > 0 ? item.width / item.height : 16 / 9;
-    const safeRatio = Math.min(1.78, Math.max(0.7, ratio));
-    card.className = "film is-loading";
-    card.dataset.orientation = item.orientation;
-    card.style.aspectRatio = String(safeRatio);
-
-    const video = document.createElement("video");
-    video.muted = true;
-    video.loop = true;
-    video.playsInline = true;
-    video.preload = "none";
-    video.poster = item.thumb;
-    video.dataset.src = item.preview;
-    video.setAttribute("aria-label", `Light Company field video: ${displayName(item.filename)}`);
-    video.addEventListener("canplay", () => card.classList.remove("is-loading"), { once: true });
-
-    const copy = document.createElement("div");
-    copy.className = "film-copy";
-    const label = document.createElement("div");
-    const title = document.createElement("h3");
-    title.textContent = displayName(item.filename) || "Light Company field capture";
-    const meta = document.createElement("p");
-    meta.textContent = `${item.orientation} · ${formatDuration(item.duration)}`;
-    label.append(title, meta);
-
-    const sound = document.createElement("button");
-    sound.className = "sound-toggle";
-    sound.type = "button";
-    sound.textContent = "Sound off";
-    sound.setAttribute("aria-label", `Turn sound on for ${title.textContent}`);
-    sound.addEventListener("click", () => {
-      video.muted = !video.muted;
-      sound.textContent = video.muted ? "Sound off" : "Sound on";
-      sound.setAttribute("aria-label", `${video.muted ? "Turn sound on" : "Mute"} for ${title.textContent}`);
-      if (video.paused) video.play().catch(() => {});
-    });
-
-    copy.append(label, sound);
-    card.append(video, copy);
-    videoObserver.observe(card);
-    return card;
+    return tile;
   };
 
-  const applyFilter = (filter) => {
-    document.querySelectorAll(".film").forEach((card) => {
-      card.hidden = filter !== "all" && card.dataset.orientation !== filter;
-      if (card.hidden) card.querySelector("video")?.pause();
-    });
-    filterButtons.forEach((button) => button.classList.toggle("is-active", button.dataset.filter === filter));
-  };
-
-  filterButtons.forEach((button) => button.addEventListener("click", () => applyFilter(button.dataset.filter)));
-
-  items = archive.filter((item) => item.duration >= 0.8 && item.width > 0 && item.height > 0);
-  const fragment = document.createDocumentFragment();
-  items.forEach((item) => fragment.append(makeCard(item)));
-  grid.append(fragment);
-  count.textContent = `${items.length} field films in the living archive`;
+  try {
+    const fragment = document.createDocumentFragment();
+    playlist.forEach((item) => fragment.append(makeTile(item)));
+    grid.append(fragment);
+  } catch (err) {
+    error.hidden = false;
+  }
 })();
