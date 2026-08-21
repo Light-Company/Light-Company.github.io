@@ -5,27 +5,28 @@ import test from "node:test";
 const mainUrl = new URL("../site/main.html", import.meta.url);
 const roboticsUrl = new URL("../site/robotics.html", import.meta.url);
 const galleryUrl = new URL("../site/gallery.html", import.meta.url);
-const mainScriptUrl = new URL("../public/site/main/script.js", import.meta.url);
 const galleryScriptUrl = new URL("../public/site/gallery/gallery.js", import.meta.url);
 const manifestUrl = new URL("../public/site/assets/media/placements.json", import.meta.url);
 const routeUrl = new URL("../app/api/rsvp/route.ts", import.meta.url);
 
-test("ships the finished Light Company page without local-only links", async () => {
-  const [main, script, manifest] = await Promise.all([
+test("ships the robotics homepage without the lamp experience", async () => {
+  const [main, manifest] = await Promise.all([
     readFile(mainUrl, "utf8"),
-    readFile(mainScriptUrl, "utf8"),
     readFile(manifestUrl, "utf8"),
   ]);
 
-  assert.match(main, /Light Company — AI that points to the work/);
+  assert.match(main, /Light Company Robotics — Repeatable physical AI evals/);
+  assert.match(main, /Make the scene repeatable/);
+  assert.match(main, /40% → 3%/);
   assert.match(main, /No Glasses No Headset/);
   assert.match(main, /href="\/gallery"/);
-  assert.match(main, /href="\/Robotics\/"/);
   assert.match(main, /href="https:\/\/prism\.lightcompany\.ai"/);
-  assert.match(main, /https:\/\/lightcompany\.ai\/og\.png/);
-  assert.match(script, /\/site\/assets\/media\/placements\.json/);
-  assert.doesNotMatch(`${main}${script}${manifest}`, /127\.0\.0\.1|localhost/);
-  assert.doesNotMatch(`${main}${script}${manifest}`, /"assets\//);
+  assert.doesNotMatch(main, /https:\/\/lightcompany\.ai\/og\.png/);
+  assert.match(main, /\/site\/robotics\/styles\.css/);
+  assert.match(main, /\/site\/robotics\/script\.js/);
+  assert.doesNotMatch(main, /lamp-stage|hero-lamp|Move your light|A little lamp/i);
+  assert.doesNotMatch(`${main}${manifest}`, /127\.0\.0\.1|localhost/);
+  assert.doesNotMatch(`${main}${manifest}`, /"assets\//);
 });
 
 test("publishes the smaller dedicated robotics experience", async () => {

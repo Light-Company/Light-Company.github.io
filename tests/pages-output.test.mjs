@@ -15,8 +15,8 @@ test("builds every public GitHub Pages route", async () => {
 test("keeps the public media and brand assets in the Pages artifact", async () => {
   const assets = [
     "media/hero-workbench.mp4",
-    "site/main/styles.css",
-    "site/main/script.js",
+    "site/robotics/styles.css",
+    "site/robotics/script.js",
     "site/assets/brand/light-company-mark.svg",
   ];
 
@@ -31,5 +31,8 @@ test("publishes production contact and privacy links", async () => {
 
   assert.match(home, /hello@lght\.co/);
   assert.match(home, /href="\/privacy"/);
+  assert.match(home, /Make the scene repeatable/);
+  assert.match(home, /40% → 3%/);
+  assert.doesNotMatch(home, /lamp-stage|hero-lamp|Move your light|A little lamp/i);
   assert.match(robotics, /40% → 3%/);
 });

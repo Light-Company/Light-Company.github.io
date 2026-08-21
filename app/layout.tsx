@@ -20,11 +20,10 @@ const ibmPlexMono = IBM_Plex_Mono({
   weight: ["400", "500", "600", "700"],
 });
 
-const title = "The Light Company · AI That Points to the Work";
+const title = "Light Company Robotics · Repeatable Physical AI Evals";
 const description =
-  "A lamp that sees the workbench, understands the task, and projects the next step onto the exact part.";
+  "Prism stages, verifies, logs, and replays physical initial conditions for repeatable robot policy evaluation.";
 const metadataBase = new URL("https://lightcompany.ai");
-const socialImage = new URL("/og.png", metadataBase).toString();
 
 export function generateMetadata(): Metadata {
   return {
@@ -54,20 +53,11 @@ export function generateMetadata(): Metadata {
       siteName: "The Light Company",
       title,
       description,
-      images: [
-        {
-          url: socialImage,
-          width: 1200,
-          height: 630,
-          alt: "The Light Company: AI that points to the work",
-        },
-      ],
     },
     twitter: {
-      card: "summary_large_image",
+      card: "summary",
       title,
       description,
-      images: [socialImage],
     },
     robots: {
       index: true,
