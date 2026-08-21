@@ -249,6 +249,8 @@
       window.clearTimeout(hoverTimer);
       stopPreview(tile);
     });
+    tile.addEventListener("focusin", () => startPreview(tile));
+    tile.addEventListener("focusout", () => stopPreview(tile));
     tile.addEventListener("click", () => openLightbox(item.id, label, img.src));
     tile.addEventListener("keydown", (event) => {
       if (event.key === "Enter" || event.key === " ") {
