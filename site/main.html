@@ -3,146 +3,345 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta
+      name="description"
+      content="Light Company is AI that sees the work, understands the task, and points to what comes next."
+    />
     <meta name="theme-color" content="#ffffff" />
-    <meta name="description" content="Prism makes robot policy evaluation repeatable by staging, verifying, logging, and replaying physical initial conditions." />
-    <title>Light Company Robotics — Repeatable physical AI evals</title>
+    <title>Light Company — AI that points to the work</title>
     <link rel="canonical" href="https://lightcompany.ai/" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://lightcompany.ai/" />
-    <meta property="og:title" content="Light Company Robotics — Repeatable physical AI evals" />
-    <meta property="og:description" content="Stage, verify, log, and replay physical initial conditions for robot evaluation." />
-    <meta name="twitter:card" content="summary" />
+    <meta property="og:title" content="Light Company — AI that points to the work" />
+    <meta property="og:description" content="Light Company is AI that sees the work, understands the task, and points to what comes next." />
+    <meta property="og:image" content="https://lightcompany.ai/og.png" />
+    <meta name="twitter:card" content="summary_large_image" />
     <link rel="icon" href="/site/assets/brand/light-company-mark.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="/site/robotics/styles.css" />
-    <script src="/site/robotics/script.js" defer></script>
+    <link rel="stylesheet" href="/site/main/styles.css" />
+    <script src="/site/main/script.js" defer></script>
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
 
-    <header class="topbar">
-      <a class="brand" href="/#top" aria-label="Light Company home">
+    <div class="boot" aria-hidden="true">
+      <img src="/site/assets/brand/light-company-mark.svg" alt="" />
+    </div>
+
+    <header class="topbar" aria-label="Main navigation">
+      <a class="topbar-mark" href="#top" aria-label="Light Company home">
         <img src="/site/assets/brand/light-company-mark.svg" alt="" />
-        <span>Light Company <em>Robotics</em></span>
       </a>
-      <nav aria-label="Primary">
-        <a href="/gallery">Gallery</a>
-        <a href="https://prism.lightcompany.ai">Enterprise Sign in</a>
-        <a class="pill pill-dark" href="mailto:hello@lght.co?subject=Light%20Company%20Robotics%20Pre-order"><span class="beam-icon" aria-hidden="true"></span>Pre-order today</a>
+      <nav class="topbar-links" aria-label="Primary">
+        <a class="gallery-nav-link" href="/gallery">View the Gallery</a>
+        <a href="/Robotics/">Robotics</a>
+        <a href="mailto:hello@lght.co?subject=Light%20Company%20Investor">Investors</a>
+        <button class="info-trigger" type="button" aria-label="About Light Company" aria-haspopup="dialog" aria-controls="vision-dialog">?</button>
+        <a class="pill pill-dark" href="https://prism.lightcompany.ai">
+          <span class="beam-icon" aria-hidden="true"></span>
+          <span>Enterprise Sign in</span>
+        </a>
       </nav>
     </header>
 
     <main id="main">
-      <section class="robot-hero" id="top" aria-labelledby="hero-title">
-        <div class="hero-copy reveal">
-          <p class="eyebrow">Light Company for Robotics</p>
-          <h1 id="hero-title">Make the scene repeatable.<br />Then measure the model.</h1>
-          <p>Prism stages, verifies, logs, and replays robot eval conditions with projected light—without tape, barcodes, or markers.</p>
-          <div class="hero-actions">
-            <a class="pill pill-dark" href="#eval-loop">See the eval loop</a>
-            <a class="text-link" href="/gallery">View field gallery</a>
+      <section class="hero" id="top" aria-labelledby="hero-title">
+        <div class="lamp-stage" data-lamp-stage>
+          <div class="lamp-title-wrap">
+            <h1 id="hero-title" aria-label="The Light Company">
+              <svg class="lamp-brand-mark" viewBox="128 124 225 183" aria-hidden="true">
+                <defs>
+                  <linearGradient id="hero-logo-beam" x1="230.365" y1="223" x2="344.365" y2="223" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#40a9ff" />
+                    <stop offset=".52" stop-color="#65c9ff" />
+                    <stop offset="1" stop-color="#a9e8ff" />
+                  </linearGradient>
+                </defs>
+                <path d="M264.268 192.995 233.422 135.867c-1.729-3.266-6.295-3.266-8.023 0l-83.688 152.441c-1.729 3.266.545 7.18 4.012 7.18h157.375c3.467 0 5.74-3.914 4.012-7.18l-17.283-34.566c-1.729-3.266-6.295-3.266-8.023 0" />
+                <path class="brand-projection" d="M344.365 183.912 230.365 222.995 344.365 262.078V183.912Z" />
+              </svg>
+              <span>The Light Company</span>
+            </h1>
+            <p>AI that points to the work. <strong>No Glasses No Headset.</strong></p>
+            <div class="hero-actions">
+              <a class="pill hero-gallery-pill" href="/gallery">View the Gallery</a>
+            </div>
+          </div>
+
+          <div class="lamp-photo" aria-hidden="true">
+            <img src="/site/assets/media/hero-projection.jpg" alt="" data-media-slot="hero_projection" />
+          </div>
+
+          <div class="lamp-beam" aria-hidden="true"></div>
+          <div class="lamp-focus" aria-hidden="true"></div>
+
+          <div class="hero-lamp" aria-hidden="true">
+            <svg viewBox="0 0 180 230" role="presentation">
+              <ellipse class="lamp-shadow" cx="90" cy="215" rx="67" ry="10" />
+              <path class="lamp-base" d="M31 205c5-17 27-25 59-25s54 8 59 25c-10 9-31 14-59 14s-49-5-59-14Z" />
+              <path class="lamp-arm lamp-arm-back" d="M90 188 57 117" />
+              <path class="lamp-arm lamp-arm-front" d="m57 117 39-59" />
+              <path class="lamp-spring" d="M82 186 50 119M66 111l39-59" />
+              <circle class="lamp-joint" cx="57" cy="117" r="14" />
+              <circle class="lamp-joint-cap" cx="57" cy="117" r="5" />
+              <g class="lamp-head">
+                <circle class="lamp-head-joint" cx="96" cy="58" r="10" />
+                <circle class="lamp-head-joint-cap" cx="96" cy="58" r="3.5" />
+                <path class="lamp-neck" d="M101 58h13" />
+                <path class="lamp-shade" d="M108 49c18-7 36-12 53-13 6 13 6 31 0 44-17-1-35-6-53-13 7-5 7-13 0-18Z" />
+                <path class="lamp-shade-highlight" d="M118 50c14-5 26-8 37-9" />
+                <path class="lamp-rim" d="M160 36c8 5 12 12 13 22-1 10-5 17-13 22" />
+                <ellipse class="lamp-bulb" cx="166" cy="58" rx="5" ry="13" />
+              </g>
+            </svg>
+          </div>
+
+          <p class="lamp-instruction"><span class="pointer-dot"></span>Move your light</p>
+          <a class="hero-chevron" href="#meet" aria-label="Scroll to meet Light Company">
+            <svg viewBox="0 0 36 36" aria-hidden="true">
+              <path d="m10 14 8 8 8-8" />
+            </svg>
+          </a>
+        </div>
+      </section>
+
+      <section class="meet template-section" id="meet" aria-labelledby="meet-title">
+        <div class="template-canvas meet-canvas">
+          <div class="meet-copy section-copy reveal">
+            <p class="kicker">Meet Light Company</p>
+            <h2 id="meet-title">A little lamp that understands the work.</h2>
+            <p>Sees the bench, follows the task, and points to what comes next.</p>
+          </div>
+
+          <div class="device-card meet-video reveal">
+            <video
+              class="viewport-video"
+              data-media-slot="founder_intro"
+              muted
+              loop
+              playsinline
+              preload="metadata"
+              poster="/media/founder-intro.jpg"
+              aria-label="Founder introducing Light Company"
+            >
+              <source src="/media/founder-intro.mp4" type="video/mp4" />
+            </video>
+            <span class="glass-label">From the founder · 01:00</span>
+          </div>
+
+          <div class="beam-tail" aria-hidden="true">
+            <span></span>
+          </div>
+        </div>
+      </section>
+
+      <section class="beside template-section" id="see-it" aria-labelledby="beside-title">
+        <div class="template-canvas beside-canvas">
+          <div class="section-copy section-copy-center reveal">
+            <h2 id="beside-title">Intelligent Light Over the Work.</h2>
+            <p>A quiet guide to help you find the part,<br />make the move, and keep going.</p>
+          </div>
+
+          <figure class="float-card float-a reveal" data-shift="-34">
+            <video class="viewport-video" data-media-slot="guidance_fixed" muted loop playsinline preload="metadata" poster="/media/registered-guidance.jpg">
+              <source src="/media/registered-guidance.mp4" type="video/mp4" />
+            </video>
+            <figcaption>Guidance that stays put</figcaption>
+          </figure>
+
+          <figure class="float-card float-b reveal" data-shift="31">
+            <video class="viewport-video" data-media-slot="object_measurement" muted loop playsinline preload="metadata" poster="/media/object-measurement.jpg">
+              <source src="/media/object-measurement.mp4" type="video/mp4" />
+            </video>
+            <figcaption>Measure the thing itself</figcaption>
+          </figure>
+
+          <figure class="float-card float-c reveal" data-shift="-28">
+            <video class="viewport-video" data-media-slot="answer_in_light" muted loop playsinline preload="metadata" poster="/media/measure.jpg">
+              <source src="/media/measure.mp4" type="video/mp4" />
+            </video>
+            <figcaption>Answer in light</figcaption>
+          </figure>
+
+          <figure class="float-card float-d reveal" data-shift="35">
+            <video class="viewport-video" data-media-slot="bench_overhead" muted loop playsinline preload="metadata" poster="/media/overhead.jpg">
+              <source src="/media/overhead.mp4" type="video/mp4" />
+            </video>
+            <figcaption>Keep the whole bench in view</figcaption>
+          </figure>
+
+          <div class="device-card beside-device reveal">
+            <video class="viewport-video" data-media-slot="center_device" muted loop playsinline preload="metadata" poster="/media/hero-workbench.jpg">
+              <source src="/media/hero-workbench.mp4" type="video/mp4" />
+            </video>
+          </div>
+          <div class="activity-rail" aria-label="Work types">
+            <span>Assembly</span>
+            <span>Repair</span>
+            <span>Robotics</span>
+            <span>Debugging</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="answers template-section" aria-labelledby="answers-title">
+        <div class="template-canvas answers-canvas">
+          <div class="beam-arm" aria-hidden="true">
+            <span class="beam-line"></span>
+            <span class="beam-cone"></span>
+          </div>
+          <div class="section-copy answers-copy reveal">
+            <h2 id="answers-title">Get answers you can see.</h2>
+            <p>Light Company puts the next instruction on the thing you are working on.</p>
+          </div>
+
+          <div class="carousel" data-carousel>
+            <button class="carousel-arrow carousel-prev" type="button" aria-label="Previous example">←</button>
+            <div class="carousel-track">
+              <article class="answer-card" data-slide>
+                <video class="viewport-video" data-media-slot="perception_person" muted loop playsinline preload="metadata" poster="/media/track-person.jpg">
+                  <source src="/media/track-person.mp4" type="video/mp4" />
+                </video>
+                <div><span>01 · Perception</span><h3>It sees who is doing the work.</h3></div>
+              </article>
+              <article class="answer-card is-active" data-slide>
+                <video class="viewport-video" data-media-slot="perception_object" muted loop playsinline preload="metadata" poster="/media/object.jpg">
+                  <source src="/media/object.mp4" type="video/mp4" />
+                </video>
+                <div><span>02 · Objects</span><h3>Put down a part. It knows what arrived.</h3></div>
+              </article>
+              <article class="answer-card" data-slide>
+                <video class="viewport-video" data-media-slot="perception_space" muted loop playsinline preload="metadata" poster="/media/scene-scan.jpg">
+                  <source src="/media/scene-scan.mp4" type="video/mp4" />
+                </video>
+                <div><span>03 · Space</span><h3>The whole room becomes context.</h3></div>
+              </article>
+            </div>
+            <button class="carousel-arrow carousel-next" type="button" aria-label="Next example">→</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="done template-section" id="how-it-works" aria-labelledby="done-title">
+        <div class="goal-marquee" aria-hidden="true">
+          <div class="marquee-row">
+            <span>Find the right part</span><span>Follow the assembly</span><span>Check the result</span><span>Find the right part</span><span>Follow the assembly</span><span>Check the result</span>
+          </div>
+          <div class="marquee-row reverse">
+            <span>Point to the fastener</span><span>Read the live scene</span><span>Show the next move</span><span>Point to the fastener</span><span>Read the live scene</span><span>Show the next move</span>
+          </div>
+          <div class="marquee-row">
+            <span>Keep hands in view</span><span>Guide the repair</span><span>Adapt as things move</span><span>Keep hands in view</span><span>Guide the repair</span><span>Adapt as things move</span>
           </div>
         </div>
 
-        <div class="hero-media reveal">
-          <video class="viewport-video" muted loop playsinline preload="metadata" poster="/media/robot-eval-staging.jpg">
-            <source src="/media/robot-eval-staging.mp4" type="video/mp4" />
-          </video>
-          <span class="projection-label">Robot eval in progress</span>
-        </div>
+        <div class="template-canvas done-canvas">
+          <div class="section-copy section-copy-center done-copy reveal">
+            <h2 id="done-title">From Step 1 to Done.</h2>
+            <p>Light Company breaks a whole build down into what your hands can do next.</p>
+          </div>
 
-        <p class="hero-note">No Glasses No Headset</p>
-      </section>
-
-      <section class="proof" aria-label="Deployment results at New Theory">
-        <p class="proof-context">New Theory deployment</p>
-        <div class="proof-grid">
-          <article><strong>40% → 3%</strong><span>Eval score variation</span></article>
-          <article><strong>20%</strong><span>Setup-invalid episodes found before trial</span></article>
-          <article><strong>1 → 4</strong><span>Stations expanded after deployment</span></article>
-        </div>
-      </section>
-
-      <section class="loop" id="eval-loop" aria-labelledby="loop-title">
-        <div class="section-heading reveal">
-          <p class="eyebrow">Initial-condition control</p>
-          <h2 id="loop-title">A seed and version history<br />for the state of a table.</h2>
-          <p>Control what the robot starts with. Catch setup errors before they become bad data. Recreate the exact scene when a checkpoint changes.</p>
-        </div>
-
-        <div class="loop-grid">
-          <article class="loop-card loop-card-media reveal">
-            <div class="card-media">
-              <video class="viewport-video" muted loop playsinline preload="metadata" poster="/media/registered-guidance.jpg">
-                <source src="/media/registered-guidance.mp4" type="video/mp4" />
-              </video>
-            </div>
-            <div class="card-copy"><span>01</span><h3>Stage</h3><p>Project target object poses directly onto the workspace. The operator places each object to the light.</p></div>
-          </article>
-
-          <article class="loop-card loop-card-media reveal">
-            <div class="card-media">
-              <video class="viewport-video" muted loop playsinline preload="metadata" poster="/media/object-measurement.jpg">
-                <source src="/media/object-measurement.mp4" type="video/mp4" />
-              </video>
-            </div>
-            <div class="card-copy"><span>02</span><h3>Verify</h3><p>Compare identity, position, and residual error against the target before the trial runs.</p></div>
-          </article>
-
-          <article class="loop-card loop-card-visual reveal">
-            <img src="/site/assets/illustrations/work-map.svg" alt="A map of tracked objects and work areas" />
-            <div class="card-copy"><span>03</span><h3>Log</h3><p>Record which objects were where, for which trial, of which policy.</p></div>
-          </article>
-
-          <article class="loop-card loop-card-visual reveal">
-            <img src="/site/assets/illustrations/verification.svg" alt="A verified physical scene ready to replay" />
-            <div class="card-copy"><span>04</span><h3>Replay</h3><p>Re-project any logged condition for regression testing, failure analysis, or a new checkpoint.</p></div>
-          </article>
-        </div>
-      </section>
-
-      <section class="why" aria-labelledby="why-title">
-        <div class="why-media">
-          <video class="viewport-video" muted loop playsinline preload="metadata" poster="/media/hero-workbench.jpg">
-            <source src="/media/hero-workbench.mp4" type="video/mp4" />
-          </video>
-        </div>
-        <div class="why-copy reveal">
-          <p class="eyebrow">Why this matters</p>
-          <h2 id="why-title">Stop measuring the setup. Start measuring the policy.</h2>
-          <p>A few centimeters of object movement can shift measured success from roughly 95% to 50–75%. Without control and logging, the score mixes model quality with an undocumented placement distribution.</p>
-          <div class="why-points">
-            <span>No tape in the training distribution</span>
-            <span>Bad setups flagged in seconds</span>
-            <span>Conditions comparable across checkpoints</span>
+          <div class="process-story" aria-label="A request becomes projected guidance">
+            <img class="process-request reveal" src="/site/assets/illustrations/operator-request.svg" alt="Light Company takes the work from step one to done" />
+            <img class="process-arrow process-arrow-down" src="/site/assets/illustrations/flow-arrow.svg" alt="" aria-hidden="true" />
+            <img class="process-plan reveal" src="/site/assets/illustrations/build-plan.svg" alt="Light Company turns the request into a visual assembly plan" />
+            <img class="process-arrow process-arrow-right" src="/site/assets/illustrations/flow-arrow.svg" alt="" aria-hidden="true" />
+            <img class="process-live reveal" src="/site/assets/illustrations/live-guidance.svg" alt="The live guidance view shows the next step on the work" />
           </div>
         </div>
       </section>
 
-      <section class="limits" aria-labelledby="limits-title">
-        <div class="section-heading reveal">
-          <p class="eyebrow">Built for credible measurement</p>
-          <h2 id="limits-title">What Prism controls—and what it does not.</h2>
-          <p>Physical AI infrastructure should make its boundaries visible.</p>
-        </div>
-        <div class="limits-grid">
-          <article><h3>Controls</h3><p>Planar placement of rigid objects, scene identity, position, condition history, and replay.</p></article>
-          <article><h3>Measures next</h3><p>Human placement tolerance per task and the residual variance that survives staging.</p></article>
-          <article><h3>Does not solve alone</h3><p>Scoring-rubric ambiguity, deformable-object state, lighting, or robot-side state.</p></article>
-          <article><h3>Gated during capture</h3><p>Visible projection is removed while recording so guidance does not become a visual confound.</p></article>
+      <section class="hands template-section" id="hands-on-work" aria-labelledby="hands-title">
+        <div class="template-canvas hands-canvas">
+          <div class="handoff-layout">
+            <div class="handoff-stack handoff-left">
+              <figure class="handoff-media-card handoff-parts reveal">
+                <video class="viewport-video" data-media-slot="handoff_parts" muted loop playsinline preload="metadata" poster="/media/object-measurement.jpg">
+                  <source src="/media/object-measurement.mp4" type="video/mp4" />
+                </video>
+                <figcaption><span>Part identified</span><strong>Ready for assembly</strong></figcaption>
+              </figure>
+              <img class="handoff-svg-card handoff-instruction reveal" src="/site/assets/illustrations/work-instruction.svg" alt="A projected work instruction prepared by Light Company" />
+            </div>
+
+            <div class="handoff-center section-copy section-copy-center reveal">
+              <img class="handoff-mark" src="/site/assets/brand/light-company-mark.svg" alt="" />
+              <h2 id="hands-title">Keep your hands on the work.</h2>
+              <p>From assembly to debugging and repair,<br />the next step comes to the bench.</p>
+              <div class="handoff-capabilities" aria-label="Light Company capabilities">
+                <span>Observe</span><span>Guide</span><span>Verify</span>
+              </div>
+            </div>
+
+            <div class="handoff-stack handoff-right">
+              <img class="handoff-svg-card handoff-map reveal" src="/site/assets/illustrations/work-map.svg" alt="A live map of active work areas" />
+              <img class="handoff-svg-card handoff-verified reveal" src="/site/assets/illustrations/verification.svg" alt="A completed assembly step verified by Light Company" />
+            </div>
+          </div>
         </div>
       </section>
 
-      <section class="robot-cta">
-        <img src="/site/assets/brand/light-company-mark.svg" alt="" />
-        <p class="eyebrow">Light Company for Robotics</p>
-        <h2>Make every physical eval<br />possible to run again.</h2>
-        <a class="pill pill-light" href="mailto:hello@lght.co?subject=Light%20Company%20Robotics">Call or email</a>
+      <section class="final-cta template-section" id="demo" aria-labelledby="demo-title">
+        <div class="template-canvas final-canvas">
+          <div class="final-copy reveal">
+            <h2 id="demo-title">The bench becomes the interface.<br />The work stays in your hands.</h2>
+            <p>Hands-on demo · San Francisco</p>
+            <a class="pill glass-pill" href="mailto:hello@lght.co?subject=Light%20Company%20Demo">
+              Call or email
+            </a>
+          </div>
+          <article class="research-feature reveal" id="world-model-evals">
+            <video class="research-background viewport-video" data-media-slot="research_background" muted loop playsinline preload="metadata" poster="/site/assets/media/world-model-lab.jpg" aria-label="A Light Company projection running across a live workspace">
+              <source src="/site/assets/media/world-model-lab.mp4" type="video/mp4" />
+            </video>
+            <div class="research-note">
+              <p>Light Company Research</p>
+              <a href="mailto:hello@lght.co?subject=World%20Model%20Research">See how we make world-model<br />evaluations repeatable.</a>
+              <span>Field note from the workbench</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="product-footer" aria-label="Light Company details">
+        <div class="footer-stage">
+          <div class="footer-product footer-product-left">
+            <img class="footer-watermark" src="/site/assets/brand/light-company-mark.svg" alt="" />
+            <h2>Light Company</h2>
+            <p>Projected intelligence for physical work.<br />No Glasses No Headset.</p>
+            <a class="pill glass-pill" href="mailto:hello@lght.co?subject=Light%20Company%20Pre-order">Pre-order today</a>
+          </div>
+          <div class="footer-product footer-product-right">
+            <h2>First public demo</h2>
+            <p>Come build with intelligence in the room</p>
+            <a class="pill glass-pill" href="mailto:hello@lght.co?subject=Light%20Company%20Demo">Call or email</a>
+          </div>
+          <div class="footer-brand">
+            <img src="/site/assets/brand/light-company-mark.svg" alt="" />
+            <p>Copyright 2026 Light Company</p>
+          </div>
+          <nav class="footer-links" aria-label="Footer">
+            <a href="#see-it">See the work</a>
+            <a href="/gallery">Gallery</a>
+            <a href="/Robotics/">Robotics</a>
+            <a href="mailto:hello@lght.co">hello@lght.co</a>
+            <a href="/privacy">Privacy</a>
+            <a href="#top">Back to top</a>
+          </nav>
+        </div>
       </section>
     </main>
 
-    <footer>
-      <span>Light Company · Prism</span>
-      <nav aria-label="Footer"><a href="/#top">Top</a><a href="/gallery">Gallery</a><a href="https://prism.lightcompany.ai">Enterprise Sign in</a><a href="mailto:hello@lght.co">hello@lght.co</a><a href="/privacy">Privacy</a></nav>
-    </footer>
+    <dialog class="vision-dialog" id="vision-dialog" aria-labelledby="vision-title">
+      <button class="dialog-close" type="button" aria-label="Close">Close</button>
+      <div class="dialog-beam" aria-hidden="true"></div>
+      <p class="kicker">Projected intelligence</p>
+      <h2 id="vision-title">No Glasses<br />No Headset</h2>
+      <p>Light Company reads the room, understands the work, and casts the next step directly onto the world in front of you.</p>
+      <div class="dialog-actions">
+        <a class="pill pill-dark" href="/gallery">View the Gallery</a>
+        <a href="mailto:hello@lght.co?subject=Light%20Company%20Demo">Call or email</a>
+        <a href="mailto:hello@lght.co?subject=Light%20Company%20Investor">Investors</a>
+      </div>
+    </dialog>
   </body>
 </html>
