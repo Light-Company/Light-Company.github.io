@@ -18,6 +18,7 @@ test("ships the robotics homepage without the lamp experience", async () => {
   assert.match(main, /Light Company Robotics — Repeatable physical AI evals/);
   assert.match(main, /Make the scene repeatable/);
   assert.match(main, /40% → 3%/);
+  assert.match(main, /\/media\/robot-eval-staging\.mp4/);
   assert.match(main, /No Glasses No Headset/);
   assert.match(main, /href="\/gallery"/);
   assert.match(main, /href="https:\/\/prism\.lightcompany\.ai"/);
