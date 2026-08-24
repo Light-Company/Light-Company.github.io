@@ -24,7 +24,7 @@ test("ships the finished Light Company page without local-only links", async () 
   assert.match(main, /Light Company — AI that points to the work/);
   assert.match(main, /No Glasses No Headset/);
   assert.match(main, /href="\/gallery"/);
-  assert.match(main, /href="\/Robotics\/"/);
+  assert.match(main, /href="\/robotics\/"/);
   assert.match(main, /href="https:\/\/prism\.lightcompany\.ai"/);
   assert.match(main, /https:\/\/lightcompany\.ai\/og\.png/);
   assert.match(script, /\/site\/assets\/media\/placements\.json/);
@@ -55,7 +55,7 @@ test("publishes the dedicated robotics evaluation experience", async () => {
   assert.match(robotics, /media\/robotics\/lab-control\.mp4/);
   assert.match(robotics, /href="\/gallery"/);
   assert.match(robotics, /href="\/#top"/);
-  assert.match(robotics, /https:\/\/lightcompany\.ai\/Robotics\//);
+  assert.match(robotics, /https:\/\/lightcompany\.ai\/robotics\//);
   assert.doesNotMatch(robotics, /127\.0\.0\.1|localhost/);
 });
 
