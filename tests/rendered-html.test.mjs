@@ -49,13 +49,21 @@ test("publishes the dedicated robotics evaluation experience", async () => {
 });
 
 test("keeps the Robotics page on its compact visual-first layout system", async () => {
-  const css = await readFile(roboticsCssUrl, "utf8");
+  const [robotics, css] = await Promise.all([
+    readFile(roboticsUrl, "utf8"),
+    readFile(roboticsCssUrl, "utf8"),
+  ]);
 
   assert.match(css, /--shell:\s*1360px/);
   assert.match(css, /h1\s*\{[\s\S]*?font-size:\s*clamp\(56px,\s*5\.3vw,\s*80px\)/);
-  assert.match(css, /\.hero\s*\{[\s\S]*?min-height:\s*clamp\(720px,\s*86svh,\s*860px\)/);
+  assert.match(css, /\.hero\s*\{[\s\S]*?min-height:\s*100svh/);
+  assert.match(css, /\.hero-media,[\s\S]*?\.sprite-field\s*\{[\s\S]*?inset:\s*0/);
+  assert.match(css, /\.hero-content\s*\{[\s\S]*?text-align:\s*center/);
   assert.match(css, /\.case-study\s*\{[\s\S]*?grid-template-columns:\s*minmax\(0,\s*1\.2fr\)\s*minmax\(420px,\s*0\.8fr\)/);
   assert.match(css, /\.system-stack\s*\{[\s\S]*?grid-template-columns:\s*1\.12fr\s*1fr\s*1fr/);
+  assert.match(robotics, /icons\/robotics\/crosshair\.svg/);
+  assert.match(robotics, /icons\/robotics\/scan-line\.svg/);
+  assert.match(robotics, /icons\/robotics\/activity\.svg/);
 });
 
 test("publishes the Prism playlist gallery grid", async () => {
