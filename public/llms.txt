@@ -1,0 +1,31 @@
+# The Light Company
+
+> The Light Company builds projected intelligence for physical work and robotics evaluation. Its systems use vision, spatial understanding, and projection to put live guidance directly on parts, tools, workbenches, and robot workcells.
+
+## Canonical site
+
+- https://lightcompany.ai/
+- The short brand domain https://lght.co/ permanently redirects to the canonical site.
+
+## Core pages
+
+- [Projected Intelligence](https://lightcompany.ai/projected-intelligence): What projected intelligence is, how it works, and where it is used.
+- [Prism Robotics Evaluation](https://lightcompany.ai/robotics): The Light Company system for staging physical test conditions, verifying scenes, comparing robot policies, and finding regressions.
+- [Field Gallery](https://lightcompany.ai/gallery): Films of projected intelligence and Prism systems operating in physical workspaces.
+- [Privacy Policy](https://lightcompany.ai/privacy): How information submitted through the site is handled.
+
+## Brand names
+
+- Official company name: The Light Company
+- Common name: Light Company
+- Short domain: lght.co
+
+## Product
+
+- Prism is The Light Company's physical AI robotics evaluation system.
+- Prism uses projection to stage a test condition and vision to verify the physical scene before a run.
+- Results remain connected to the physical condition that produced them so teams can compare policies and find regressions.
+
+## Contact
+
+- hello@lght.co

@@ -24,6 +24,31 @@
 
 ---
 
+# Search and discovery foundation
+
+## Direction
+
+- Keep `https://lightcompany.ai/` as the canonical site; use the verified permanent `lght.co` redirect as an alternate brand signal.
+- Target The Light Company, Light Company, projected intelligence, physical AI, robotics evaluation, and Prism through useful visible content rather than keyword repetition.
+- Create one distinct projected-intelligence explainer and strengthen crawlable links to Robotics.
+- Use schema and metadata only for claims and entities already supported by the site.
+
+## Work
+
+- [x] Add unique titles, descriptions, canonical URLs, social metadata, and structured data to each public route.
+- [x] Add a useful `/projected-intelligence` landing page with a strong route to `/robotics`.
+- [x] Add `robots.txt`, `sitemap.xml`, and `llms.txt`, then expose them in both Sites and Pages builds.
+- [x] Strengthen visible internal anchors between the home page, projected intelligence, Robotics, gallery, and privacy.
+- [ ] Add regression coverage, run build and lint, inspect rendered metadata, and publish.
+
+## Risks
+
+- Do not add hidden text, keyword stuffing, fabricated third-party links, fake backlinks, or unsupported claims.
+- Do not split ranking signals between `lightcompany.ai` and `lght.co`; the latter must continue to redirect to the canonical domain.
+- Keep the approved home hero copy and Robotics headline unchanged.
+
+---
+
 # Robotics cinematic hero correction
 
 ## Direction

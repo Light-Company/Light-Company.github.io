@@ -105,6 +105,12 @@ footer {
   font-size: 13px;
 }
 
+footer nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+}
+
 @media (max-width: 620px) {
   header { width: calc(100% - 32px); }
   .brand span { display: none; }
