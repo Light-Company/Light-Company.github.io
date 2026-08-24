@@ -4,6 +4,7 @@ import test from "node:test";
 
 const mainUrl = new URL("../site/main.html", import.meta.url);
 const roboticsUrl = new URL("../site/robotics.html", import.meta.url);
+const roboticsCssUrl = new URL("../public/site/robotics/styles.css", import.meta.url);
 const galleryUrl = new URL("../site/gallery.html", import.meta.url);
 const mainScriptUrl = new URL("../public/site/main/script.js", import.meta.url);
 const galleryScriptUrl = new URL("../public/site/gallery/gallery.js", import.meta.url);
@@ -45,6 +46,16 @@ test("publishes the dedicated robotics evaluation experience", async () => {
   assert.match(robotics, /href="\/#top"/);
   assert.match(robotics, /https:\/\/lightcompany\.ai\/Robotics\//);
   assert.doesNotMatch(robotics, /127\.0\.0\.1|localhost/);
+});
+
+test("keeps the Robotics page on its compact visual-first layout system", async () => {
+  const css = await readFile(roboticsCssUrl, "utf8");
+
+  assert.match(css, /--shell:\s*1360px/);
+  assert.match(css, /h1\s*\{[\s\S]*?font-size:\s*clamp\(56px,\s*5\.3vw,\s*80px\)/);
+  assert.match(css, /\.hero\s*\{[\s\S]*?min-height:\s*clamp\(720px,\s*86svh,\s*860px\)/);
+  assert.match(css, /\.case-study\s*\{[\s\S]*?grid-template-columns:\s*minmax\(0,\s*1\.2fr\)\s*minmax\(420px,\s*0\.8fr\)/);
+  assert.match(css, /\.system-stack\s*\{[\s\S]*?grid-template-columns:\s*1\.12fr\s*1fr\s*1fr/);
 });
 
 test("publishes the Prism playlist gallery grid", async () => {
