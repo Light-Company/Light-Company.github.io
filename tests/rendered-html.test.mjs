@@ -40,15 +40,17 @@ test("publishes the dedicated robotics evaluation experience", async () => {
   ]);
 
   assert.match(robotics, /Stop guessing[\s\S]*Make real progress[\s\S]*in Physical AI/);
-  assert.match(robotics, /Don’t gamble[\s\S]*Find progress[\s\S]*Catch regressions[\s\S]*Iterate faster/);
+  assert.match(robotics, /Don’t test blind[\s\S]*Find progress[\s\S]*Catch regressions[\s\S]*Iterate faster/);
   assert.match(robotics, /See how users improve Physical AI/);
-  assert.match(robotics, /Get accurate policy evaluations in 30 tests instead of 300/);
-  assert.match(robotics, /20,000/);
-  assert.match(robotics, /40%[\s\S]*3%/);
-  assert.match(robotics, /10×[\s\S]*faster evaluation cycles/);
+  assert.match(robotics, /Compare policies under the same physical conditions/);
+  assert.match(robotics, /Project the condition[\s\S]*Verify the scene[\s\S]*Compare and track/);
+  assert.match(robotics, /projection to stage the scene and vision to verify it/i);
   assert.match(robotics, /The Light Company/);
   assert.match(roboticsUi, /10×[\s\S]*faster evaluation cycles/);
   assert.match(roboticsUi, /20,000 hr[\s\S]*Pilot estimate to date/);
+  assert.match(roboticsUi, /30 controlled runs instead of 300 brute-force runs/);
+  assert.match(roboticsUi, /role="tooltip"/);
+  assert.match(roboticsUi, /aria-describedby/);
   assert.match(robotics, /Platform sign in/);
   assert.match(robotics, /Get your own/);
   assert.match(robotics, /site\/robotics\/ui\.js/);

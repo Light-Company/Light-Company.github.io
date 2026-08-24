@@ -71,9 +71,9 @@
 
       <section class="thesis" id="platform" aria-labelledby="thesis-title">
         <div class="thesis-copy reveal">
-          <p class="eyebrow">Don’t gamble</p>
+          <p class="eyebrow">Don’t test blind</p>
           <h2 id="thesis-title">Find progress.<br /><em>Catch regressions.</em><br />Iterate faster.</h2>
-          <p>Prism holds each physical test condition constant. Compare policies against the same scene, catch regressions early, and iterate with confidence.</p>
+          <p>Prism uses projection to stage the scene and vision to verify it. Compare Policy A with Policy B under the same physical conditions, so each result shows a policy change instead of room noise.</p>
         </div>
         <div class="console-shell reveal">
           <div id="prism-console" aria-label="Prism pilot customer evaluation outcomes">
@@ -91,16 +91,15 @@
         <div class="case-overlay" aria-hidden="true"></div>
         <div class="case-content">
           <div class="case-heading reveal">
-            <p class="eyebrow">Evaluation estimates from pilot customers</p>
-            <h2 id="case-title">Get accurate policy evaluations in 30 tests instead of 300.</h2>
-            <p>Find regressions. Measure policy improvements. Know which physical conditions make the robot succeed or fail.</p>
+            <p class="eyebrow">Evaluation method</p>
+            <h2 id="case-title">Compare policies under the same physical conditions.</h2>
+            <p>Prism projects each test condition, verifies it with vision, and stores the result. Operators can repeat the same test and track which conditions cause success or failure.</p>
           </div>
-          <div class="case-metrics reveal" aria-label="Case study outcomes">
-            <div><strong>300 <span>→</span> 30</strong><p>tests per policy evaluation</p></div>
-            <div><strong>40% <span>→</span> 3%</strong><p>physical test variability</p></div>
-            <div><strong>20,000</strong><p>engineering hours saved · pilot estimate to date</p></div>
-            <div><strong>10×</strong><p>faster evaluation cycles</p></div>
-          </div>
+          <ol class="case-method reveal" aria-label="Prism evaluation method">
+            <li><span>01</span><div><strong>Project the condition.</strong><p>Show the required object pose, work area, and task state in the workcell.</p></div></li>
+            <li><span>02</span><div><strong>Verify the scene.</strong><p>Use vision to confirm the physical state before each run starts.</p></div></li>
+            <li><span>03</span><div><strong>Compare and track.</strong><p>Run both policies against the same verified cases and record which conditions cause success or failure.</p></div></li>
+          </ol>
         </div>
       </section>
 

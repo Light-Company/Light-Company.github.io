@@ -41,5 +41,6 @@ test("publishes production contact and privacy links", async () => {
 
   assert.match(home, /hello@lght\.co/);
   assert.match(home, /href="\/privacy"/);
-  assert.match(robotics, /40%[\s\S]*3%/);
+  assert.match(robotics, /https:\/\/lightcompany\.ai\/robotics\//);
+  assert.match(robotics, /site\/robotics\/ui\.js/);
 });
