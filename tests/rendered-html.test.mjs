@@ -22,13 +22,18 @@ test("ships the finished Light Company page without local-only links", async () 
   ]);
 
   assert.match(main, /Light Company — AI that points to the work/);
-  assert.match(main, /No Glasses No Headset/);
+  assert.match(main, /Project Intelligence onto the Physical World/);
+  assert.match(main, /AI that points to the work\. <strong>No Glasses No Headset Needed\.<\/strong>/);
   assert.match(main, /href="\/gallery"/);
   assert.match(main, /href="\/robotics\/"/);
+  assert.match(main, /You’re probably here for Robotics[\s\S]*Go there instead[\s\S]*→/);
   assert.match(main, /href="https:\/\/prism\.lightcompany\.ai"/);
   assert.match(main, /https:\/\/lightcompany\.ai\/og\.png/);
   assert.match(script, /\/site\/assets\/media\/placements\.json/);
-  assert.match(mainCss, /\.hero\.is-lit \.lamp-focus\s*\{\s*opacity:\s*0\.1/);
+  assert.match(mainCss, /\.lamp-title-wrap\s*\{[\s\S]*?top:\s*50%[\s\S]*?transform:\s*translate\(-50%,\s*-50%\)/);
+  assert.match(mainCss, /\.lamp-focus\s*\{[\s\S]*?z-index:\s*6/);
+  assert.match(mainCss, /@media \(hover: hover\) and \(pointer: fine\)[\s\S]*?\.hero\.is-lit \.lamp-focus\s*\{[\s\S]*?opacity:\s*1[\s\S]*?mix-blend-mode:\s*difference/);
+  assert.match(mainCss, /\.hero-robotics-cta:hover[\s\S]*?color:\s*#fff[\s\S]*?background:\s*var\(--ink\)/);
   assert.doesNotMatch(`${main}${script}${manifest}`, /127\.0\.0\.1|localhost/);
   assert.doesNotMatch(`${main}${script}${manifest}`, /"assets\//);
 });
