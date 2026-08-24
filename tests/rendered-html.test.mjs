@@ -31,12 +31,13 @@ test("ships the finished Light Company page without local-only links", async () 
 test("publishes the dedicated robotics evaluation experience", async () => {
   const robotics = await readFile(roboticsUrl, "utf8");
 
-  assert.match(robotics, /Make the physical world programmable/);
-  assert.match(robotics, /Ground truth,/);
+  assert.match(robotics, /The real-world[\s\S]*test system for[\s\S]*Physical AI/);
+  assert.match(robotics, /The policy changes/);
+  assert.match(robotics, /View case study/);
   assert.match(robotics, /10×/);
-  assert.match(robotics, /92%/);
   assert.match(robotics, /40%[\s\S]*3%/);
-  assert.match(robotics, /site\/assets\/icons\/robotics\/brain-circuit\.svg/);
+  assert.match(robotics, /site\/robotics\/ui\.js/);
+  assert.match(robotics, /media\/robotics\/lab-control\.mp4/);
   assert.match(robotics, /href="\/gallery"/);
   assert.match(robotics, /href="\/#top"/);
   assert.match(robotics, /https:\/\/lightcompany\.ai\/Robotics\//);
