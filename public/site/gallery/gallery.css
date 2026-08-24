@@ -103,6 +103,8 @@ button { font: inherit; }
 
 .gallery-header nav {
   justify-self: start;
+  display: flex;
+  gap: 18px;
 }
 
 .gallery-header nav a {

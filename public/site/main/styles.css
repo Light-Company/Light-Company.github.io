@@ -1232,6 +1232,15 @@ a {
   line-height: 1.4;
 }
 
+.footer-product p a {
+  color: inherit;
+  text-underline-offset: 4px;
+}
+
+.footer-product p a:hover {
+  color: var(--ink);
+}
+
 .footer-brand {
   position: absolute;
   bottom: 54px;

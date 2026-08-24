@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://lightcompany.ai/</loc>
+    <lastmod>2026-08-24</lastmod>
+    <image:image>
+      <image:loc>https://lightcompany.ai/site/assets/media/hero-projection.jpg</image:loc>
+      <image:title>The Light Company projected intelligence</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://lightcompany.ai/projected-intelligence</loc>
+    <lastmod>2026-08-24</lastmod>
+    <image:image>
+      <image:loc>https://lightcompany.ai/site/assets/media/hero-projection.jpg</image:loc>
+      <image:title>Projected intelligence for physical work</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://lightcompany.ai/robotics</loc>
+    <lastmod>2026-08-24</lastmod>
+    <image:image>
+      <image:loc>https://lightcompany.ai/media/robot-eval-staging.jpg</image:loc>
+      <image:title>Prism robotics evaluation by The Light Company</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://lightcompany.ai/gallery</loc>
+    <lastmod>2026-08-24</lastmod>
+  </url>
+  <url>
+    <loc>https://lightcompany.ai/privacy</loc>
+    <lastmod>2026-08-24</lastmod>
+  </url>
+</urlset>

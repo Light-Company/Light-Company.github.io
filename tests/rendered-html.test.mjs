@@ -8,6 +8,12 @@ const roboticsUrl = new URL("../site/robotics.html", import.meta.url);
 const roboticsCssUrl = new URL("../public/site/robotics/styles.css", import.meta.url);
 const roboticsUiUrl = new URL("../src/robotics-ui.tsx", import.meta.url);
 const galleryUrl = new URL("../site/gallery.html", import.meta.url);
+const privacyUrl = new URL("../site/privacy.html", import.meta.url);
+const projectedIntelligenceUrl = new URL("../site/projected-intelligence.html", import.meta.url);
+const projectedIntelligenceCssUrl = new URL("../public/site/projected-intelligence/styles.css", import.meta.url);
+const robotsUrl = new URL("../public/robots.txt", import.meta.url);
+const sitemapUrl = new URL("../public/sitemap.xml", import.meta.url);
+const llmsUrl = new URL("../public/llms.txt", import.meta.url);
 const mainScriptUrl = new URL("../public/site/main/script.js", import.meta.url);
 const galleryScriptUrl = new URL("../public/site/gallery/gallery.js", import.meta.url);
 const manifestUrl = new URL("../public/site/assets/media/placements.json", import.meta.url);
@@ -21,12 +27,13 @@ test("ships the finished Light Company page without local-only links", async () 
     readFile(manifestUrl, "utf8"),
   ]);
 
-  assert.match(main, /Light Company — AI that points to the work/);
+  assert.match(main, /The Light Company \| Projected Intelligence for Physical Work/);
   assert.match(main, /<h1 id="hero-title" aria-label="The Light Company">[\s\S]*?<span>The Light Company<\/span>[\s\S]*?<\/h1>/);
   assert.match(main, /AI that points to the work\. <strong>No Glasses No Headset\.<\/strong>/);
   assert.doesNotMatch(main, /Project Intelligence onto the Physical World/);
   assert.match(main, /href="\/gallery"/);
-  assert.match(main, /href="\/robotics\/"/);
+  assert.match(main, /href="\/projected-intelligence"/);
+  assert.match(main, /href="\/robotics"/);
   assert.match(main, /You’re probably here for Robotics[\s\S]*Go there instead[\s\S]*→/);
   assert.match(main, /href="https:\/\/prism\.lightcompany\.ai"/);
   assert.match(main, /https:\/\/lightcompany\.ai\/og\.png/);
@@ -70,8 +77,83 @@ test("publishes the dedicated robotics evaluation experience", async () => {
   assert.match(robotics, /media\/robotics\/lab-control\.mp4/);
   assert.match(robotics, /href="\/gallery"/);
   assert.match(robotics, /href="\/#top"/);
-  assert.match(robotics, /https:\/\/lightcompany\.ai\/robotics\//);
+  assert.match(robotics, /https:\/\/lightcompany\.ai\/robotics/);
   assert.doesNotMatch(robotics, /127\.0\.0\.1|localhost/);
+});
+
+test("publishes a useful projected intelligence explainer", async () => {
+  const [page, css] = await Promise.all([
+    readFile(projectedIntelligenceUrl, "utf8"),
+    readFile(projectedIntelligenceCssUrl, "utf8"),
+  ]);
+
+  assert.match(page, /<title>Projected Intelligence for Physical Work \| The Light Company<\/title>/);
+  assert.match(page, /<h1 id="hero-title">Intelligence that appears on the work\.<\/h1>/);
+  assert.match(page, /Projected intelligence turns the workspace into the interface/);
+  assert.match(page, /Observe the workspace[\s\S]*Understand the task[\s\S]*Project the next move[\s\S]*Verify and continue/);
+  assert.match(page, /href="\/robotics"/);
+  assert.match(page, /href="\/gallery"/);
+  assert.match(page, /https:\/\/lightcompany\.ai\/projected-intelligence/);
+  assert.match(page, /"@type": "BreadcrumbList"/);
+  assert.match(css, /\.hero\s*\{[\s\S]*?min-height:\s*100svh/);
+  assert.doesNotMatch(`${page}${css}`, /127\.0\.0\.1|localhost/);
+});
+
+test("ships unique crawlable metadata and brand entities for every route", async () => {
+  const [home, projected, robotics, gallery, privacy] = await Promise.all([
+    readFile(mainUrl, "utf8"),
+    readFile(projectedIntelligenceUrl, "utf8"),
+    readFile(roboticsUrl, "utf8"),
+    readFile(galleryUrl, "utf8"),
+    readFile(privacyUrl, "utf8"),
+  ]);
+  const pages = [home, projected, robotics, gallery, privacy];
+  const titles = pages.map((page) => page.match(/<title>(.*?)<\/title>/)?.[1]);
+  const canonicals = pages.map((page) => page.match(/<link rel="canonical" href="(.*?)"/i)?.[1]);
+
+  assert.equal(new Set(titles).size, pages.length);
+  assert.deepEqual(canonicals, [
+    "https://lightcompany.ai/",
+    "https://lightcompany.ai/projected-intelligence",
+    "https://lightcompany.ai/robotics",
+    "https://lightcompany.ai/gallery",
+    "https://lightcompany.ai/privacy",
+  ]);
+  for (const page of pages) {
+    assert.match(page, /name="description"/);
+    assert.match(page, /property="og:title"/);
+    assert.match(page, /name="twitter:title"/);
+    assert.match(page, /type="application\/ld\+json"/);
+  }
+  assert.match(home, /"@type": "Organization"/);
+  assert.match(home, /"@type": "WebSite"/);
+  assert.match(home, /"alternateName": \["Light Company", "lght\.co"\]/);
+  assert.match(robotics, /"@type": "Product"/);
+});
+
+test("publishes search and AI discovery files with every canonical page", async () => {
+  const [robots, sitemap, llms] = await Promise.all([
+    readFile(robotsUrl, "utf8"),
+    readFile(sitemapUrl, "utf8"),
+    readFile(llmsUrl, "utf8"),
+  ]);
+  const canonicalUrls = [
+    "https://lightcompany.ai/",
+    "https://lightcompany.ai/projected-intelligence",
+    "https://lightcompany.ai/robotics",
+    "https://lightcompany.ai/gallery",
+    "https://lightcompany.ai/privacy",
+  ];
+
+  assert.match(robots, /User-agent: \*\s+Allow: \//);
+  assert.match(robots, /Sitemap: https:\/\/lightcompany\.ai\/sitemap\.xml/);
+  for (const url of canonicalUrls) {
+    assert.ok(sitemap.includes(`<loc>${url}</loc>`));
+  }
+  assert.match(llms, /The Light Company/);
+  assert.match(llms, /lght\.co/);
+  assert.match(llms, /Projected Intelligence/);
+  assert.match(llms, /Prism Robotics Evaluation/);
 });
 
 test("keeps the Robotics page on its compact visual-first layout system", async () => {
@@ -114,6 +196,7 @@ test("publishes the Prism playlist gallery grid", async () => {
 test("keeps every referenced production asset in the published bundle", async () => {
   const sources = await Promise.all([
     readFile(mainUrl, "utf8"),
+    readFile(projectedIntelligenceUrl, "utf8"),
     readFile(roboticsUrl, "utf8"),
     readFile(galleryScriptUrl, "utf8"),
     readFile(manifestUrl, "utf8"),
