@@ -31,11 +31,14 @@ test("ships the finished Light Company page without local-only links", async () 
 test("publishes the dedicated robotics evaluation experience", async () => {
   const robotics = await readFile(roboticsUrl, "utf8");
 
-  assert.match(robotics, /The real-world[\s\S]*test system for[\s\S]*Physical AI/);
-  assert.match(robotics, /The policy changes/);
-  assert.match(robotics, /View case study/);
-  assert.match(robotics, /10×/);
+  assert.match(robotics, /Stop guessing[\s\S]*Make real progress[\s\S]*in Physical AI/);
+  assert.match(robotics, /Find progress[\s\S]*Find regressions/);
+  assert.match(robotics, /See how users improve Physical AI/);
+  assert.match(robotics, /Get accurate policy evaluations in 30 tests instead of 300/);
+  assert.match(robotics, /2,000/);
   assert.match(robotics, /40%[\s\S]*3%/);
+  assert.match(robotics, /Platform sign in/);
+  assert.match(robotics, /Get your own/);
   assert.match(robotics, /site\/robotics\/ui\.js/);
   assert.match(robotics, /media\/robotics\/lab-control\.mp4/);
   assert.match(robotics, /href="\/gallery"/);

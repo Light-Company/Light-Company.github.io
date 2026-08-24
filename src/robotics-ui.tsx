@@ -1,103 +1,49 @@
-import { useState } from "react";
 import { createRoot } from "react-dom/client";
 
-type Mode = "stage" | "verify" | "compare";
+const dataRows = [
+  { label: "Stations deployed", value: "4", note: "Pilot systems" },
+  { label: "Tests per policy evaluation", value: "30", previous: "Previous: 300" },
+  { label: "Physical test variability", value: "3%", previous: "Previous: 40%" },
+  { label: "Engineering time saved", value: "2,000 hr", note: "Each month" },
+];
 
-const modes: Record<Mode, {
-  name: string;
-  label: string;
-  primary: string;
-  primaryNote: string;
-  secondary: string;
-  secondaryNote: string;
-  footer: string;
-}> = {
-  stage: {
-    name: "Stage",
-    label: "Condition recipe loaded",
-    primary: "± 4 mm",
-    primaryNote: "target pose tolerance",
-    secondary: "6 / 6",
-    secondaryNote: "required objects present",
-    footer: "Scene recipe / PRS-047",
-  },
-  verify: {
-    name: "Verify",
-    label: "Start state verified",
-    primary: "99.2%",
-    primaryNote: "condition match",
-    secondary: "Clear",
-    secondaryNote: "occlusion gate",
-    footer: "Vision gate / frame 1842",
-  },
-  compare: {
-    name: "Compare",
-    label: "Policy delta isolated",
-    primary: "+12 pts",
-    primaryNote: "success-rate change",
-    secondary: "3",
-    secondaryNote: "failure surfaces found",
-    footer: "v0.19.3 / versus v0.18.7",
-  },
-};
-
-function EvaluationConsole() {
-  const [mode, setMode] = useState<Mode>("stage");
-  const active = modes[mode];
-
+function EvaluationDataSheet() {
   return (
-    <div className="eval-console">
-      <div className="eval-toolbar">
-        <span>Prism station 02</span>
-        <strong>Evaluation 047</strong>
+    <article className="data-sheet" aria-labelledby="data-sheet-title">
+      <header className="data-sheet-header">
+        <div>
+          <p>Prism evaluation data sheet</p>
+          <h3 id="data-sheet-title">Pilot customer estimates</h3>
+        </div>
+        <span>Deployed</span>
+      </header>
+
+      <div className="data-sheet-summary">
+        <p>Measured outcome</p>
+        <strong>Clear policy comparison</strong>
+        <span>Prism controls the physical state before each test.</span>
       </div>
 
-      <div className="eval-tabs" role="tablist" aria-label="Evaluation phases">
-        {(Object.keys(modes) as Mode[]).map((key) => (
-          <button
-            className="eval-tab"
-            type="button"
-            role="tab"
-            aria-selected={mode === key}
-            key={key}
-            onClick={() => setMode(key)}
-          >
-            {modes[key].name}
-          </button>
+      <dl className="data-sheet-grid">
+        {dataRows.map((row) => (
+          <div key={row.label}>
+            <dt>{row.label}</dt>
+            <dd>{row.value}</dd>
+            <p>{row.previous || row.note}</p>
+          </div>
         ))}
-      </div>
+      </dl>
 
-      <section className="eval-stage" role="tabpanel" aria-live="polite">
-        <div className="eval-visual" aria-hidden="true">
-          <div className="eval-axis" />
-          <div className="eval-object" />
-          <div className="eval-scan" />
-          <div className="eval-stage-label"><i />{active.label}</div>
-        </div>
-        <div className="eval-detail">
-          <div>
-            <label>{active.primaryNote}</label>
-            <strong>{active.primary}</strong>
-            <p>Measured against the registered physical condition.</p>
-          </div>
-          <div>
-            <label>{active.secondaryNote}</label>
-            <strong>{active.secondary}</strong>
-            <p>Stored with the run for policy-to-policy comparison.</p>
-          </div>
-        </div>
-      </section>
-
-      <div className="eval-footer">
-        <span>{active.footer}</span>
-        <strong>World state valid</strong>
+      <div className="data-sheet-footer">
+        <span>Source</span>
+        <strong>Evaluation estimates from pilot customers</strong>
       </div>
-    </div>
+    </article>
   );
 }
 
 const rootElement = document.getElementById("prism-console");
 
 if (rootElement) {
-  createRoot(rootElement).render(<EvaluationConsole />);
+  createRoot(rootElement).render(<EvaluationDataSheet />);
 }
