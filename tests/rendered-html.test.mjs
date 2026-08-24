@@ -54,7 +54,11 @@ test("publishes the dedicated robotics evaluation experience", async () => {
   assert.match(robotics, /Compare policies under the same physical conditions/);
   assert.match(robotics, /Project the condition[\s\S]*Verify the scene[\s\S]*Compare and track/);
   assert.match(robotics, /projection to stage the scene and vision to verify it/i);
-  assert.match(robotics, /The Light Company/);
+  assert.match(robotics, /aria-label="The Light Company home"/);
+  assert.match(robotics, /class="brand-name">The Light Company<\/span>/);
+  assert.match(robotics, />The Light Company Robotics<\/p>/);
+  assert.match(robotics, /class="footer-brand"[\s\S]*?<span>The Light Company<\/span>/);
+  assert.doesNotMatch(robotics, /(?:aria-label="|>)(?!The )Light Company/);
   assert.match(roboticsUi, /10×[\s\S]*faster evaluation cycles/);
   assert.match(roboticsUi, /20,000 hr[\s\S]*Pilot estimate to date/);
   assert.match(roboticsUi, /30 controlled runs instead of 300 brute-force runs/);
