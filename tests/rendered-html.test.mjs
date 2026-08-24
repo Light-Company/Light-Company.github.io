@@ -3,6 +3,7 @@ import { access, readFile } from "node:fs/promises";
 import test from "node:test";
 
 const mainUrl = new URL("../site/main.html", import.meta.url);
+const mainCssUrl = new URL("../public/site/main/styles.css", import.meta.url);
 const roboticsUrl = new URL("../site/robotics.html", import.meta.url);
 const roboticsCssUrl = new URL("../public/site/robotics/styles.css", import.meta.url);
 const galleryUrl = new URL("../site/gallery.html", import.meta.url);
@@ -12,8 +13,9 @@ const manifestUrl = new URL("../public/site/assets/media/placements.json", impor
 const routeUrl = new URL("../app/api/rsvp/route.ts", import.meta.url);
 
 test("ships the finished Light Company page without local-only links", async () => {
-  const [main, script, manifest] = await Promise.all([
+  const [main, mainCss, script, manifest] = await Promise.all([
     readFile(mainUrl, "utf8"),
+    readFile(mainCssUrl, "utf8"),
     readFile(mainScriptUrl, "utf8"),
     readFile(manifestUrl, "utf8"),
   ]);
@@ -25,6 +27,7 @@ test("ships the finished Light Company page without local-only links", async () 
   assert.match(main, /href="https:\/\/prism\.lightcompany\.ai"/);
   assert.match(main, /https:\/\/lightcompany\.ai\/og\.png/);
   assert.match(script, /\/site\/assets\/media\/placements\.json/);
+  assert.match(mainCss, /\.hero\.is-lit \.lamp-focus\s*\{\s*opacity:\s*0\.1/);
   assert.doesNotMatch(`${main}${script}${manifest}`, /127\.0\.0\.1|localhost/);
   assert.doesNotMatch(`${main}${script}${manifest}`, /"assets\//);
 });
