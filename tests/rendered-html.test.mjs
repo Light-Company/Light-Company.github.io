@@ -22,8 +22,9 @@ test("ships the finished Light Company page without local-only links", async () 
   ]);
 
   assert.match(main, /Light Company — AI that points to the work/);
-  assert.match(main, /Project Intelligence onto the Physical World/);
-  assert.match(main, /AI that points to the work\. <strong>No Glasses No Headset Needed\.<\/strong>/);
+  assert.match(main, /<h1 id="hero-title" aria-label="The Light Company">[\s\S]*?<span>The Light Company<\/span>[\s\S]*?<\/h1>/);
+  assert.match(main, /AI that points to the work\. <strong>No Glasses No Headset\.<\/strong>/);
+  assert.doesNotMatch(main, /Project Intelligence onto the Physical World/);
   assert.match(main, /href="\/gallery"/);
   assert.match(main, /href="\/robotics\/"/);
   assert.match(main, /You’re probably here for Robotics[\s\S]*Go there instead[\s\S]*→/);
@@ -31,8 +32,11 @@ test("ships the finished Light Company page without local-only links", async () 
   assert.match(main, /https:\/\/lightcompany\.ai\/og\.png/);
   assert.match(script, /\/site\/assets\/media\/placements\.json/);
   assert.match(mainCss, /\.lamp-title-wrap\s*\{[\s\S]*?top:\s*50%[\s\S]*?transform:\s*translate\(-50%,\s*-50%\)/);
-  assert.match(mainCss, /\.lamp-focus\s*\{[\s\S]*?z-index:\s*6/);
-  assert.match(mainCss, /@media \(hover: hover\) and \(pointer: fine\)[\s\S]*?\.hero\.is-lit \.lamp-focus\s*\{[\s\S]*?opacity:\s*1[\s\S]*?mix-blend-mode:\s*difference/);
+  assert.match(mainCss, /\.lamp-title-negative\s*\{[\s\S]*?z-index:\s*6[\s\S]*?mask-image:\s*radial-gradient/);
+  assert.match(mainCss, /\.lamp-title-negative h1,[\s\S]*?\.lamp-title-negative p strong\s*\{\s*color:\s*#fff/);
+  assert.match(mainCss, /\.lamp-focus\s*\{[\s\S]*?z-index:\s*4/);
+  assert.match(mainCss, /\.hero\.is-lit \.lamp-focus\s*\{\s*opacity:\s*0\.1/);
+  assert.doesNotMatch(mainCss, /\.hero\.is-lit \.lamp-focus\s*\{[\s\S]*?mix-blend-mode:\s*difference/);
   assert.match(mainCss, /\.hero-robotics-cta:hover[\s\S]*?color:\s*#fff[\s\S]*?background:\s*var\(--ink\)/);
   assert.doesNotMatch(`${main}${script}${manifest}`, /127\.0\.0\.1|localhost/);
   assert.doesNotMatch(`${main}${script}${manifest}`, /"assets\//);
