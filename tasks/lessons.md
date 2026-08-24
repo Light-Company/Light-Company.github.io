@@ -1,0 +1,4 @@
+# Project lessons
+
+- Treat requests to restyle the Robotics landing as visual-only unless the user explicitly asks for copy changes. Preserve the approved headline, body copy, and CTA labels while changing composition, media treatment, or interface chrome.
+- In Robotics proof sections, lead with the customer outcome and the strongest derived comparison. Keep pilot figures visibly labeled as estimates, and do not use station count as the headline proof when faster evaluations and saved engineering time are available.
