@@ -28,11 +28,15 @@ test("ships the finished Light Company page without local-only links", async () 
   assert.doesNotMatch(`${main}${script}${manifest}`, /"assets\//);
 });
 
-test("publishes the smaller dedicated robotics experience", async () => {
+test("publishes the dedicated robotics evaluation experience", async () => {
   const robotics = await readFile(roboticsUrl, "utf8");
 
-  assert.match(robotics, /Light Company for Robotics/);
-  assert.match(robotics, /Make the scene repeatable/);
+  assert.match(robotics, /Make the physical world programmable/);
+  assert.match(robotics, /Ground truth,/);
+  assert.match(robotics, /10×/);
+  assert.match(robotics, /92%/);
+  assert.match(robotics, /40%[\s\S]*3%/);
+  assert.match(robotics, /site\/assets\/icons\/robotics\/brain-circuit\.svg/);
   assert.match(robotics, /href="\/gallery"/);
   assert.match(robotics, /href="\/#top"/);
   assert.match(robotics, /https:\/\/lightcompany\.ai\/Robotics\//);

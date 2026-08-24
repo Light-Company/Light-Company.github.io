@@ -4,13 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="theme-color" content="#ffffff" />
-    <meta name="description" content="Prism makes robot policy evaluation repeatable by staging, verifying, logging, and replaying physical initial conditions." />
-    <title>Light Company Robotics — Repeatable physical AI evals</title>
+    <meta name="description" content="Prism is the ground-truth infrastructure for Physical AI—turning real-world conditions into repeatable, verified inputs for robot evaluation and learning." />
+    <title>Light Company Robotics — Infrastructure for Physical AI</title>
     <link rel="canonical" href="https://lightcompany.ai/Robotics/" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://lightcompany.ai/Robotics/" />
-    <meta property="og:title" content="Light Company Robotics — Repeatable physical AI evals" />
-    <meta property="og:description" content="Stage, verify, log, and replay physical initial conditions for robot evaluation." />
+    <meta property="og:title" content="Light Company Robotics — Infrastructure for Physical AI" />
+    <meta property="og:description" content="Make the physical world programmable with Prism." />
     <meta property="og:image" content="https://lightcompany.ai/og.png" />
     <link rel="icon" href="/site/assets/brand/light-company-mark.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="/site/robotics/styles.css" />
@@ -19,130 +19,227 @@
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
 
-    <header class="topbar">
+    <header class="topbar" data-topbar>
       <a class="brand" href="/#top" aria-label="Light Company home">
         <img src="/site/assets/brand/light-company-mark.svg" alt="" />
-        <span>Light Company <em>Robotics</em></span>
+        <span>Light Company</span>
+        <em>Robotics</em>
       </a>
       <nav aria-label="Primary">
-        <a href="/gallery">Gallery</a>
-        <a href="/#top">Main site</a>
-        <a class="pill pill-dark" href="mailto:hello@lght.co?subject=Light%20Company%20Robotics%20Pre-order"><span class="beam-icon" aria-hidden="true"></span>Pre-order today</a>
+        <a href="#platform">Platform</a>
+        <a href="#system">System</a>
+        <a href="/gallery">Field gallery</a>
+        <a class="pill pill-dark" href="mailto:hello@lght.co?subject=Prism%20for%20our%20robotics%20program">Request a system</a>
       </nav>
     </header>
 
     <main id="main">
-      <section class="robot-hero" aria-labelledby="hero-title">
+      <section class="hero" aria-labelledby="hero-title">
         <div class="hero-copy reveal">
-          <p class="eyebrow">Light Company for Robotics</p>
-          <h1 id="hero-title">Make the scene repeatable.<br />Then measure the model.</h1>
-          <p>Prism stages, verifies, logs, and replays robot eval conditions with projected light—without tape, barcodes, or markers.</p>
+          <p class="eyebrow">Physical AI infrastructure</p>
+          <h1 id="hero-title">Make the physical world programmable.</h1>
+          <p class="hero-deck">Prism is the ground-truth layer for Physical AI. Stage, verify, and replay the real-world conditions your robot policies learn from.</p>
           <div class="hero-actions">
-            <a class="pill pill-dark" href="#eval-loop">See the eval loop</a>
-            <a class="text-link" href="/gallery">View field gallery</a>
+            <a class="pill pill-dark" href="#platform">See Prism in action</a>
+            <a class="text-link" href="mailto:hello@lght.co?subject=Deploy%20Prism">Deploy Prism</a>
           </div>
         </div>
 
-        <div class="hero-media reveal">
-          <video class="viewport-video" muted loop playsinline preload="metadata" poster="/site/assets/media/curated/img-5387-b10dc5e5b.jpg">
-            <source src="/site/assets/media/curated/img-5387-b10dc5e5b.mp4" type="video/mp4" />
+        <figure class="hero-stage reveal">
+          <video class="viewport-video" muted loop playsinline preload="metadata" poster="/media/robot-eval-staging.jpg">
+            <source src="/media/robot-eval-staging.mp4" type="video/mp4" />
           </video>
-          <span class="projection-label">Initial condition verified</span>
-        </div>
+          <div class="beam-wedge" aria-hidden="true"></div>
+          <div class="scan-line" aria-hidden="true"></div>
+          <figcaption class="condition-state">
+            <span class="state-dot" aria-hidden="true"></span>
+            <span>World state verified</span>
+            <strong>Policy ready</strong>
+          </figcaption>
+        </figure>
 
-        <p class="hero-note">No Glasses No Headset</p>
+        <div class="hero-signal" aria-label="Platform outcomes">
+          <p><strong>10×</strong><span>faster evaluation cycles</span></p>
+          <p><strong>92%</strong><span>less evaluation noise</span></p>
+          <p><strong>One layer</strong><span>from benchmark to deployment</span></p>
+        </div>
       </section>
 
-      <section class="proof" aria-label="Deployment results at New Theory">
-        <p class="proof-context">New Theory deployment</p>
-        <div class="proof-grid">
-          <article><strong>40% → 3%</strong><span>Eval score variation</span></article>
-          <article><strong>20%</strong><span>Setup-invalid episodes found before trial</span></article>
-          <article><strong>1 → 4</strong><span>Stations expanded after deployment</span></article>
-        </div>
+      <section class="manifesto" aria-labelledby="manifesto-title">
+        <p class="eyebrow">The missing layer</p>
+        <h2 id="manifesto-title">World models need<br />a measurable world.</h2>
+        <p>Software can copy an input. Robots inherit whatever room, object, and starting condition they are given. Prism turns reality into infrastructure your team can control.</p>
       </section>
 
-      <section class="loop" id="eval-loop" aria-labelledby="loop-title">
+      <section class="platform" id="platform" aria-labelledby="platform-title">
         <div class="section-heading reveal">
-          <p class="eyebrow">Initial-condition control</p>
-          <h2 id="loop-title">A seed and version history<br />for the state of a table.</h2>
-          <p>Control what the robot starts with. Catch setup errors before they become bad data. Recreate the exact scene when a checkpoint changes.</p>
+          <p class="eyebrow">Prism</p>
+          <h2 id="platform-title">Ground truth,<br />at machine speed.</h2>
+          <p>Projected reality defines the condition. Vision verifies the scene. Every run comes back with the context needed to improve the policy.</p>
         </div>
 
-        <div class="loop-grid">
-          <article class="loop-card loop-card-media reveal">
-            <div class="card-media">
-              <video class="viewport-video" muted loop playsinline preload="metadata" poster="/media/registered-guidance.jpg">
-                <source src="/media/registered-guidance.mp4" type="video/mp4" />
-              </video>
-            </div>
-            <div class="card-copy"><span>01</span><h3>Stage</h3><p>Project target object poses directly onto the workspace. The operator places each object to the light.</p></div>
-          </article>
+        <figure class="platform-media reveal">
+          <video class="viewport-video" muted loop playsinline preload="metadata" poster="/media/registered-guidance.jpg">
+            <source src="/media/registered-guidance.mp4" type="video/mp4" />
+          </video>
+          <figcaption>Condition 0047 · registered and ready</figcaption>
+        </figure>
 
-          <article class="loop-card loop-card-media reveal">
-            <div class="card-media">
-              <video class="viewport-video" muted loop playsinline preload="metadata" poster="/media/object-measurement.jpg">
-                <source src="/media/object-measurement.mp4" type="video/mp4" />
-              </video>
-            </div>
-            <div class="card-copy"><span>02</span><h3>Verify</h3><p>Compare identity, position, and residual error against the target before the trial runs.</p></div>
+        <div class="platform-principles">
+          <article class="reveal">
+            <img class="principle-icon" src="/site/assets/icons/robotics/repeat-2.svg" alt="" />
+            <span>Repeat</span>
+            <h3>Give every policy the same world.</h3>
+            <p>Recreate physical starting conditions across runs, checkpoints, and stations.</p>
           </article>
-
-          <article class="loop-card loop-card-visual reveal">
-            <img src="/site/assets/illustrations/work-map.svg" alt="A map of tracked objects and work areas" />
-            <div class="card-copy"><span>03</span><h3>Log</h3><p>Record which objects were where, for which trial, of which policy.</p></div>
+          <article class="reveal">
+            <img class="principle-icon" src="/site/assets/icons/robotics/badge-check.svg" alt="" />
+            <span>Verify</span>
+            <h3>Know the scene before motion begins.</h3>
+            <p>Check object identity, pose, and tolerance before the policy receives control.</p>
           </article>
-
-          <article class="loop-card loop-card-visual reveal">
-            <img src="/site/assets/illustrations/verification.svg" alt="A verified physical scene ready to replay" />
-            <div class="card-copy"><span>04</span><h3>Replay</h3><p>Re-project any logged condition for regression testing, failure analysis, or a new checkpoint.</p></div>
+          <article class="reveal">
+            <img class="principle-icon" src="/site/assets/icons/robotics/brain-circuit.svg" alt="" />
+            <span>Improve</span>
+            <h3>Turn failure into the next training decision.</h3>
+            <p>Connect every outcome to the exact condition that produced it.</p>
           </article>
         </div>
       </section>
 
-      <section class="why" aria-labelledby="why-title">
-        <div class="why-media">
-          <video class="viewport-video" muted loop playsinline preload="metadata" poster="/media/hero-workbench.jpg">
-            <source src="/media/hero-workbench.mp4" type="video/mp4" />
-          </video>
+      <section class="outcomes" aria-labelledby="outcomes-title">
+        <div class="outcomes-lead reveal">
+          <p class="eyebrow">Evaluation, accelerated</p>
+          <h2 id="outcomes-title">Get to the answer<br />10× faster.</h2>
+          <p>Replace hundreds of loosely controlled trials with a compact set of high-signal physical tests.</p>
         </div>
-        <div class="why-copy reveal">
-          <p class="eyebrow">Why this matters</p>
-          <h2 id="why-title">Stop measuring the setup. Start measuring the policy.</h2>
-          <p>A few centimeters of object movement can shift measured success from roughly 95% to 50–75%. Without control and logging, the score mixes model quality with an undocumented placement distribution.</p>
-          <div class="why-points">
-            <span>No tape in the training distribution</span>
-            <span>Bad setups flagged in seconds</span>
-            <span>Conditions comparable across checkpoints</span>
+        <div class="outcomes-metric outcomes-metric-primary reveal">
+          <strong>300 <i>→</i> 30</strong>
+          <span>trials to high-signal evals</span>
+        </div>
+        <div class="outcomes-metric reveal">
+          <strong>40% <i>→</i> 3%</strong>
+          <span>evaluation variability</span>
+        </div>
+        <p class="outcomes-note">The policy changes. The test does not.</p>
+      </section>
+
+      <section class="system" id="system" aria-labelledby="system-title">
+        <div class="section-heading system-heading reveal">
+          <p class="eyebrow">One continuous system</p>
+          <h2 id="system-title">From physical state<br />to learning signal.</h2>
+        </div>
+
+        <div class="system-row system-row-stage reveal">
+          <div class="system-copy">
+            <img class="system-icon" src="/site/assets/icons/robotics/scan-line.svg" alt="" />
+            <span>Stage</span>
+            <h3>Put the benchmark in the room.</h3>
+            <p>Project exact task conditions directly into the workspace. No tape. No guesswork. No screen-to-table translation.</p>
+          </div>
+          <figure class="system-media">
+            <video class="viewport-video" muted loop playsinline preload="metadata" poster="/media/hero-workbench.jpg">
+              <source src="/media/hero-workbench.mp4" type="video/mp4" />
+            </video>
+            <figcaption>Projected condition aligned to the work surface</figcaption>
+          </figure>
+        </div>
+
+        <div class="system-row system-row-verify reveal">
+          <figure class="system-media system-media-portrait">
+            <video class="viewport-video" muted loop playsinline preload="metadata" poster="/media/object-measurement.jpg">
+              <source src="/media/object-measurement.mp4" type="video/mp4" />
+            </video>
+            <figcaption>Object and pose verified before execution</figcaption>
+          </figure>
+          <div class="system-copy">
+            <img class="system-icon" src="/site/assets/icons/robotics/crosshair.svg" alt="" />
+            <span>Verify</span>
+            <h3>Start every run from known reality.</h3>
+            <p>Prism confirms the scene, removes the cue, and releases the policy only when the physical input is valid.</p>
           </div>
         </div>
+
+        <div class="system-row system-row-learn reveal">
+          <div class="system-copy">
+            <img class="system-icon" src="/site/assets/icons/robotics/activity.svg" alt="" />
+            <span>Learn</span>
+            <h3>Make every rollout compound.</h3>
+            <p>Build capability maps, expose failure surfaces, and send the highest-value conditions back into training.</p>
+          </div>
+          <figure class="system-media">
+            <video class="viewport-video" muted loop playsinline preload="metadata" poster="/media/scene-scan.jpg">
+              <source src="/media/scene-scan.mp4" type="video/mp4" />
+            </video>
+            <figcaption>Every verified outcome becomes structured intelligence</figcaption>
+          </figure>
+        </div>
       </section>
 
-      <section class="limits" aria-labelledby="limits-title">
-        <div class="section-heading reveal">
-          <p class="eyebrow">Built for credible measurement</p>
-          <h2 id="limits-title">What Prism controls—and what it does not.</h2>
-          <p>Physical AI infrastructure should make its boundaries visible.</p>
+      <section class="infrastructure" aria-labelledby="infrastructure-title">
+        <div class="infrastructure-copy reveal">
+          <p class="eyebrow">Beyond the benchmark</p>
+          <h2 id="infrastructure-title">The infrastructure behind every robot.</h2>
+          <p>Prism connects evaluation, failure discovery, targeted data collection, and deployment into one physical intelligence loop.</p>
         </div>
-        <div class="limits-grid">
-          <article><h3>Controls</h3><p>Planar placement of rigid objects, scene identity, position, condition history, and replay.</p></article>
-          <article><h3>Measures next</h3><p>Human placement tolerance per task and the residual variance that survives staging.</p></article>
-          <article><h3>Does not solve alone</h3><p>Scoring-rubric ambiguity, deformable-object state, lighting, or robot-side state.</p></article>
-          <article><h3>Gated during capture</h3><p>Visible projection is removed while recording so guidance does not become a visual confound.</p></article>
+        <div class="loop" aria-label="Physical intelligence learning loop">
+          <span>Evaluate</span>
+          <i aria-hidden="true">→</i>
+          <span>Discover</span>
+          <i aria-hidden="true">→</i>
+          <span>Collect</span>
+          <i aria-hidden="true">→</i>
+          <span>Train</span>
+        </div>
+        <p class="infrastructure-foot">One system across policies, embodiments, and environments.</p>
+      </section>
+
+      <section class="field" aria-labelledby="field-title">
+        <div class="field-heading reveal">
+          <p class="eyebrow">In the real world</p>
+          <h2 id="field-title">Built where Physical AI becomes real.</h2>
+          <a class="text-link" href="/gallery">View the field gallery</a>
+        </div>
+        <div class="field-grid">
+          <figure class="field-shot field-shot-main reveal">
+            <video class="viewport-video" muted loop playsinline preload="metadata" poster="/media/robot-eval-staging.jpg">
+              <source src="/media/robot-eval-staging.mp4" type="video/mp4" />
+            </video>
+            <figcaption>Robot evaluation</figcaption>
+          </figure>
+          <figure class="field-shot reveal">
+            <video class="viewport-video" muted loop playsinline preload="metadata" poster="/site/assets/media/curated/img-5387-b10dc5e5b.jpg">
+              <source src="/site/assets/media/curated/img-5387-b10dc5e5b.mp4" type="video/mp4" />
+            </video>
+            <figcaption>Spatial registration</figcaption>
+          </figure>
+          <figure class="field-shot reveal">
+            <video class="viewport-video" muted loop playsinline preload="metadata" poster="/media/img-5010-poster.jpg">
+              <source src="/media/img-5010.mp4" type="video/mp4" />
+            </video>
+            <figcaption>Whole-scene measurement</figcaption>
+          </figure>
         </div>
       </section>
 
-      <section class="robot-cta">
+      <section class="cta" aria-labelledby="cta-title">
         <img src="/site/assets/brand/light-company-mark.svg" alt="" />
-        <p class="eyebrow">Light Company for Robotics</p>
-        <h2>Make every physical eval<br />possible to run again.</h2>
-        <a class="pill pill-light" href="mailto:hello@lght.co?subject=Light%20Company%20Robotics">Call or email</a>
+        <p class="eyebrow">Light Company Robotics</p>
+        <h2 id="cta-title">Give your robots<br />a world they can learn from.</h2>
+        <p>Deploy the ground-truth layer for Physical AI.</p>
+        <a class="pill pill-light" href="mailto:hello@lght.co?subject=Request%20a%20Prism%20system">Request a system</a>
       </section>
     </main>
 
     <footer>
-      <span>Light Company · Prism</span>
-      <nav aria-label="Footer"><a href="/#top">Main site</a><a href="/gallery">Gallery</a><a href="mailto:hello@lght.co">hello@lght.co</a><a href="/privacy">Privacy</a></nav>
+      <a class="footer-brand" href="/#top">Light Company</a>
+      <span>Infrastructure for Physical AI</span>
+      <nav aria-label="Footer">
+        <a href="/#top">Main site</a>
+        <a href="/gallery">Gallery</a>
+        <a href="mailto:hello@lght.co">hello@lght.co</a>
+        <a href="/privacy">Privacy</a>
+      </nav>
     </footer>
   </body>
 </html>
