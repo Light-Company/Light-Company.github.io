@@ -6,6 +6,7 @@ const mainUrl = new URL("../site/main.html", import.meta.url);
 const mainCssUrl = new URL("../public/site/main/styles.css", import.meta.url);
 const roboticsUrl = new URL("../site/robotics.html", import.meta.url);
 const roboticsCssUrl = new URL("../public/site/robotics/styles.css", import.meta.url);
+const roboticsUiUrl = new URL("../src/robotics-ui.tsx", import.meta.url);
 const galleryUrl = new URL("../site/gallery.html", import.meta.url);
 const mainScriptUrl = new URL("../public/site/main/script.js", import.meta.url);
 const galleryScriptUrl = new URL("../public/site/gallery/gallery.js", import.meta.url);
@@ -33,14 +34,21 @@ test("ships the finished Light Company page without local-only links", async () 
 });
 
 test("publishes the dedicated robotics evaluation experience", async () => {
-  const robotics = await readFile(roboticsUrl, "utf8");
+  const [robotics, roboticsUi] = await Promise.all([
+    readFile(roboticsUrl, "utf8"),
+    readFile(roboticsUiUrl, "utf8"),
+  ]);
 
   assert.match(robotics, /Stop guessing[\s\S]*Make real progress[\s\S]*in Physical AI/);
-  assert.match(robotics, /Find progress[\s\S]*Find regressions/);
+  assert.match(robotics, /Don’t gamble[\s\S]*Find progress[\s\S]*Catch regressions[\s\S]*Iterate faster/);
   assert.match(robotics, /See how users improve Physical AI/);
   assert.match(robotics, /Get accurate policy evaluations in 30 tests instead of 300/);
-  assert.match(robotics, /2,000/);
+  assert.match(robotics, /20,000/);
   assert.match(robotics, /40%[\s\S]*3%/);
+  assert.match(robotics, /10×[\s\S]*faster evaluation cycles/);
+  assert.match(robotics, /The Light Company/);
+  assert.match(roboticsUi, /10×[\s\S]*faster evaluation cycles/);
+  assert.match(roboticsUi, /20,000 hr[\s\S]*Pilot estimate to date/);
   assert.match(robotics, /Platform sign in/);
   assert.match(robotics, /Get your own/);
   assert.match(robotics, /site\/robotics\/ui\.js/);

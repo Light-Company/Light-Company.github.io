@@ -1,10 +1,9 @@
 import { createRoot } from "react-dom/client";
 
 const dataRows = [
-  { label: "Stations deployed", value: "4", note: "Pilot systems" },
-  { label: "Tests per policy evaluation", value: "30", previous: "Previous: 300" },
-  { label: "Physical test variability", value: "3%", previous: "Previous: 40%" },
-  { label: "Engineering time saved", value: "2,000 hr", note: "Each month" },
+  { label: "Tests per policy evaluation", value: "30", note: "From 300" },
+  { label: "Physical test variability", value: "3%", note: "From 40%" },
+  { label: "Engineering time saved", value: "20,000 hr", note: "Pilot estimate to date" },
 ];
 
 function EvaluationDataSheet() {
@@ -12,16 +11,16 @@ function EvaluationDataSheet() {
     <article className="data-sheet" aria-labelledby="data-sheet-title">
       <header className="data-sheet-header">
         <div>
-          <p>Prism evaluation data sheet</p>
+          <p>Policy evaluation outcomes</p>
           <h3 id="data-sheet-title">Pilot customer estimates</h3>
         </div>
-        <span>Deployed</span>
+        <span>Pilot estimates</span>
       </header>
 
       <div className="data-sheet-summary">
-        <p>Measured outcome</p>
-        <strong>Clear policy comparison</strong>
-        <span>Prism controls the physical state before each test.</span>
+        <p>Measured impact</p>
+        <strong><b>10×</b><span>faster evaluation cycles</span></strong>
+        <span>Reduce a 300-test loop to 30 controlled evaluations.</span>
       </div>
 
       <dl className="data-sheet-grid">
@@ -29,7 +28,7 @@ function EvaluationDataSheet() {
           <div key={row.label}>
             <dt>{row.label}</dt>
             <dd>{row.value}</dd>
-            <p>{row.previous || row.note}</p>
+            <p>{row.note}</p>
           </div>
         ))}
       </dl>

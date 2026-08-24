@@ -47,3 +47,29 @@
 - Keep the headline readable without hiding the robotics footage.
 - Do not add a third-party runtime or load remote assets.
 - Preserve keyboard focus, reduced-motion behavior, and all production links.
+
+---
+
+# Robotics marketing proof pass
+
+## Direction
+
+- Lead with the customer outcome: 10x faster evaluation cycles.
+- Keep supporting numbers large, sparse, and easy to scan in three seconds.
+- Replace the electric blue with a darker cyan that belongs to the existing Light Company palette.
+- Keep the 20,000-hour claim explicitly framed as a pilot estimate to date.
+
+## Work
+
+- [x] Rewrite the Why Prism section around gambling less, catching regressions, and iterating faster.
+- [x] Rebuild the evaluation sheet around one dominant result and three supporting proof points.
+- [x] Align the case-study metric with the 20,000-hour pilot estimate.
+- [x] Change the Robotics footer lockup to The Light Company.
+- [x] Update regression assertions and verify desktop and mobile renders.
+- [x] Run the full build, tests, lint, and diff review.
+
+## Risks
+
+- Do not present an unsupported estimate as an audited result.
+- Avoid adding more decorative cards or dashboard chrome.
+- Preserve the existing hero, media, routes, and CTA labels.
