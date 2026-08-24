@@ -256,7 +256,8 @@ a {
   filter: blur(0);
 }
 
-.lamp-title-wrap h1 {
+.lamp-title-wrap h1,
+.lamp-title-negative h1 {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -270,8 +271,30 @@ a {
   text-shadow: none;
 }
 
-.lamp-negative-copy {
-  color: var(--ink);
+.lamp-title-negative {
+  position: absolute;
+  z-index: 6;
+  inset: 0;
+  opacity: 0;
+  filter: blur(12px);
+  -webkit-mask-image: radial-gradient(circle 245px at var(--light-x) var(--light-y), #000 0%, #000 52%, transparent 78%);
+  mask-image: radial-gradient(circle 245px at var(--light-x) var(--light-y), #000 0%, #000 52%, transparent 78%);
+  transition: opacity 0.8s ease, filter 0.8s ease;
+  pointer-events: none;
+}
+
+.hero.is-lit .lamp-title-negative {
+  opacity: 1;
+  filter: blur(0);
+}
+
+.lamp-title-negative-inner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: min(92vw, 1180px);
+  text-align: center;
+  transform: translate(-50%, -50%);
 }
 
 .lamp-brand-mark {
@@ -294,12 +317,32 @@ a {
   filter: drop-shadow(0 0 14px rgba(82, 193, 255, 0.55));
 }
 
-.lamp-title-wrap p {
+.lamp-title-wrap p,
+.lamp-title-negative p {
   margin: 17px 0 0;
   color: var(--ink-45);
   font-size: clamp(15px, 1.35vw, 19px);
   font-weight: 520;
   letter-spacing: -0.02em;
+}
+
+.lamp-title-negative h1,
+.lamp-title-negative p,
+.lamp-title-negative p strong {
+  color: #fff;
+}
+
+.lamp-brand-mark-negative path:first-of-type {
+  stroke: #fff;
+}
+
+.lamp-brand-mark-negative .brand-projection {
+  fill: #fff;
+  filter: none;
+}
+
+.lamp-title-negative-spacer {
+  visibility: hidden;
 }
 
 .lamp-photo {
@@ -357,7 +400,7 @@ a {
 
 .lamp-focus {
   position: absolute;
-  z-index: 6;
+  z-index: 4;
   top: var(--light-y);
   left: var(--light-x);
   width: 390px;
@@ -1296,6 +1339,11 @@ a {
     mask-image: radial-gradient(circle 210px at var(--light-x) var(--light-y), #000 0%, #000 50%, transparent 78%);
   }
 
+  .lamp-title-negative {
+    -webkit-mask-image: radial-gradient(circle 210px at var(--light-x) var(--light-y), #000 0%, #000 50%, transparent 78%);
+    mask-image: radial-gradient(circle 210px at var(--light-x) var(--light-y), #000 0%, #000 50%, transparent 78%);
+  }
+
   .lamp-focus {
     width: 340px;
     height: 340px;
@@ -1547,7 +1595,8 @@ a {
     width: 92vw;
   }
 
-  .lamp-title-wrap h1 {
+  .lamp-title-wrap h1,
+  .lamp-title-negative h1 {
     flex-direction: column;
     gap: 10px;
     font-size: clamp(42px, 12vw, 58px);
@@ -1558,12 +1607,18 @@ a {
     width: 66px;
   }
 
-  .lamp-title-wrap p {
+  .lamp-title-wrap p,
+  .lamp-title-negative p {
     margin-top: 12px;
     font-size: 14px;
   }
 
   .lamp-photo {
+    -webkit-mask-image: radial-gradient(circle 174px at var(--light-x) var(--light-y), #000 0%, #000 48%, transparent 78%);
+    mask-image: radial-gradient(circle 174px at var(--light-x) var(--light-y), #000 0%, #000 48%, transparent 78%);
+  }
+
+  .lamp-title-negative {
     -webkit-mask-image: radial-gradient(circle 174px at var(--light-x) var(--light-y), #000 0%, #000 48%, transparent 78%);
     mask-image: radial-gradient(circle 174px at var(--light-x) var(--light-y), #000 0%, #000 48%, transparent 78%);
   }
@@ -2324,8 +2379,9 @@ a {
   background: var(--blue-soft);
 }
 
-.lamp-title-wrap h1 {
-  font-size: clamp(42px, 5.35vw, 78px);
+.lamp-title-wrap h1,
+.lamp-title-negative h1 {
+  font-size: clamp(46px, 6.1vw, 88px);
 }
 
 .lamp-brand-mark {
@@ -2335,16 +2391,6 @@ a {
 .lamp-title-wrap p strong {
   color: var(--ink);
   font-weight: 590;
-}
-
-@media (hover: hover) and (pointer: fine) {
-  .hero.is-lit .lamp-focus {
-    opacity: 1;
-    border-color: transparent;
-    background: #fff;
-    box-shadow: none;
-    mix-blend-mode: difference;
-  }
 }
 
 .hero-actions {
