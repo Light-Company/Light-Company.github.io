@@ -74,7 +74,14 @@ test("publishes the dedicated robotics evaluation experience", async () => {
   assert.match(robotics, /Platform sign in/);
   assert.match(robotics, /Get your own/);
   assert.match(robotics, /site\/robotics\/ui\.js/);
+  assert.match(robotics, /media\/robotics\/robot-policy-evaluation\.mp4/);
+  assert.match(robotics, /media\/robotics\/live-scene-tracking\.mp4/);
+  assert.match(robotics, /04 \/ Track[\s\S]*Keep the projection locked to the scene/);
   assert.match(robotics, /media\/robotics\/lab-control\.mp4/);
+  assert.match(robotics, /media\/robotics\/projected-test-run\.mp4/);
+  assert.match(robotics, /media\/robotics\/lab-team\.webp/);
+  assert.match(robotics, /media\/robotics\/multi-station-lab\.webp/);
+  assert.equal((robotics.match(/class="field-shot/g) || []).length, 6);
   assert.match(robotics, /href="\/gallery"/);
   assert.match(robotics, /href="\/#top"/);
   assert.match(robotics, /https:\/\/lightcompany\.ai\/robotics/);
@@ -168,7 +175,9 @@ test("keeps the Robotics page on its compact visual-first layout system", async 
   assert.match(css, /\.hero-media,[\s\S]*?\.sprite-field\s*\{[\s\S]*?inset:\s*0/);
   assert.match(css, /\.hero-content\s*\{[\s\S]*?text-align:\s*center/);
   assert.match(css, /\.case-study\s*\{[\s\S]*?grid-template-columns:\s*minmax\(0,\s*1\.2fr\)\s*minmax\(420px,\s*0\.8fr\)/);
-  assert.match(css, /\.system-stack\s*\{[\s\S]*?grid-template-columns:\s*1\.12fr\s*1fr\s*1fr/);
+  assert.match(css, /\.system-stack\s*\{[\s\S]*?grid-template-columns:\s*1\.12fr\s*repeat\(3,\s*1fr\)/);
+  assert.match(css, /\.field-reel\s*\{[\s\S]*?grid-template-columns:\s*repeat\(12,\s*minmax\(0,\s*1fr\)\)/);
+  assert.match(css, /\.field-shot-main\s*\{[\s\S]*?grid-column:\s*1\s*\/\s*span\s*8[\s\S]*?grid-row:\s*1\s*\/\s*span\s*2/);
   assert.match(robotics, /icons\/robotics\/crosshair\.svg/);
   assert.match(robotics, /icons\/robotics\/scan-line\.svg/);
   assert.match(robotics, /icons\/robotics\/activity\.svg/);
