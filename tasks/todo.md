@@ -1,3 +1,30 @@
+# Robotics lab media expansion
+
+## Direction
+
+- Keep the current Robotics copy, product hierarchy, and visual system unchanged.
+- Use the supplied policy-evaluation video as the Robotics hero without changing the approved hero copy.
+- Treat the supplied video as the motion anchor and the two supplied photos as real-world evidence of the lab and multi-station setup.
+- Add the supplied tracking footage to the product process as a fourth, concrete capability proof.
+- Expand the existing field gallery into one asymmetric six-item reel instead of adding an unrelated section.
+- Preserve source media outside the repository and ship web-optimized derivatives only.
+
+## Work
+
+- [x] Create optimized web derivatives and accessible media descriptions.
+- [x] Replace the hero media and add a responsive live-tracking proof card.
+- [x] Recompose the field gallery around the new video, two photos, and the three existing clips.
+- [x] Add responsive and rendered-markup regression coverage.
+- [x] Verify the gallery visually at desktop and mobile sizes, then run the complete test and lint gates.
+
+## Risks
+
+- Do not change approved Robotics copy or CTA labels.
+- Keep autoplay video muted, inline, and compatible with reduced-motion behavior.
+- Do not publish or push without a separate request.
+
+---
+
 # Robotics visual-structure correction
 
 ## Direction
