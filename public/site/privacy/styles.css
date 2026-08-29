@@ -4,6 +4,7 @@
   --ink-10: rgba(7, 17, 28, 0.1);
   --blue: #09a8f7;
   --font: "Helvetica Neue", "Arial Nova", Arial, sans-serif;
+  --font-display: "Instrument Sans", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
 }
 
 * { box-sizing: border-box; }
@@ -35,7 +36,6 @@ a { color: inherit; text-underline-offset: 4px; }
 
 .skip-link:focus { transform: translate(-50%, 0); }
 
-header,
 footer {
   display: flex;
   width: min(calc(100% - 40px), 1180px);
@@ -44,19 +44,52 @@ footer {
   justify-content: space-between;
 }
 
-header { min-height: 92px; }
+header {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 50;
+  display: flex;
+  min-height: 64px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 clamp(20px, 4vw, 48px);
+  background: #fff;
+  border-bottom: 1px solid rgba(7, 17, 28, 0.07);
+}
 
 .brand {
   display: inline-flex;
   align-items: center;
   gap: 12px;
+  font-family: var(--font-display);
   font-size: 15px;
-  font-weight: 650;
+  font-weight: 600;
+  letter-spacing: -0.01em;
   text-decoration: none;
 }
 
 .brand img { width: 48px; height: 44px; object-fit: contain; }
-.contact { color: var(--ink-62); font-size: 14px; font-weight: 600; }
+
+.contact {
+  color: var(--ink-62);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  transition: color 0.2s ease;
+}
+
+.contact:hover { color: var(--ink); }
+
+footer a {
+  color: var(--ink-62);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+footer a:hover { color: var(--ink); }
 
 main {
   width: min(calc(100% - 40px), 760px);
@@ -74,12 +107,13 @@ main {
 }
 
 h1 {
-  max-width: 10ch;
+  max-width: 12ch;
   margin: 18px 0 30px;
-  font-size: clamp(58px, 8vw, 102px);
-  font-weight: 570;
-  line-height: 0.9;
-  letter-spacing: -0.07em;
+  font-family: var(--font-display);
+  font-size: clamp(48px, 6.6vw, 84px);
+  font-weight: 600;
+  line-height: 1.04;
+  letter-spacing: -0.026em;
   text-wrap: balance;
 }
 
@@ -94,7 +128,7 @@ h1 {
 
 .effective { margin: 38px 0 90px; }
 section { padding: 40px 0; border-top: 1px solid var(--ink-10); scroll-margin-top: 30px; }
-section h2 { margin: 0 0 18px; font-size: 25px; font-weight: 620; letter-spacing: -0.035em; }
+section h2 { margin: 0 0 18px; font-family: var(--font-display); font-size: 24px; font-weight: 600; letter-spacing: -0.02em; }
 section p { margin: 0 0 14px; color: var(--ink-62); font-size: 17px; line-height: 1.65; }
 section p:last-child { margin-bottom: 0; }
 
@@ -106,7 +140,6 @@ footer {
 }
 
 @media (max-width: 620px) {
-  header { width: calc(100% - 32px); }
   .brand span { display: none; }
   main { width: calc(100% - 36px); padding-top: 80px; }
   footer { width: calc(100% - 36px); align-items: flex-start; flex-direction: column; justify-content: center; gap: 12px; }

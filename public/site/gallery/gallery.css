@@ -7,6 +7,7 @@
   --soft: #f2f6f9;
   --blue: #09a8f7;
   --font: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Arial Nova", Arial, sans-serif;
+  --font-display: "Instrument Sans", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
 }
 
 * { box-sizing: border-box; }
@@ -80,10 +81,10 @@ button { font: inherit; }
   align-items: center;
   gap: 9px;
   color: var(--ink);
-  font-size: 12px;
-  font-weight: 500;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
   text-decoration: none;
 }
 
@@ -106,11 +107,10 @@ button { font: inherit; }
 }
 
 .gallery-header nav a {
-  color: var(--ink-42);
-  font-size: 11px;
+  color: var(--ink-65);
+  font-size: 13px;
   font-weight: 500;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+  letter-spacing: -0.01em;
   text-decoration: none;
   transition: color 0.25s ease;
 }
@@ -131,9 +131,8 @@ button { font: inherit; }
   aspect-ratio: 16 / 9;
   margin: 0 auto;
   overflow: hidden;
-  border-radius: clamp(14px, 1.6vw, 26px);
+  border-radius: 2px;
   background: #05080c;
-  box-shadow: 0 30px 80px rgba(7, 17, 28, 0.2);
 }
 
 .hero-film-poster,
@@ -252,7 +251,6 @@ button { font: inherit; }
   background: var(--soft);
   cursor: pointer;
   isolation: isolate;
-  border: 1px solid rgba(7, 17, 28, 0.07);
 }
 
 .tile:focus-visible { outline-offset: -3px; }
@@ -316,10 +314,9 @@ button { font: inherit; }
 }
 
 .tile-label {
-  font-size: clamp(11px, 1vw, 13px);
-  font-weight: 500;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: 560;
+  letter-spacing: -0.01em;
   color: var(--ink);
 }
 
@@ -374,9 +371,8 @@ button { font: inherit; }
   width: 100%;
   aspect-ratio: 16 / 9;
   overflow: hidden;
-  border-radius: clamp(12px, 1.6vw, 20px);
+  border-radius: 2px;
   background: #000;
-  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.55);
   transform: scale(0.96);
   transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
@@ -482,9 +478,10 @@ button { font: inherit; }
 .gallery-end p {
   margin: 28px 0 26px;
   color: var(--ink);
+  font-family: var(--font-display);
   font-size: clamp(22px, 2.6vw, 30px);
-  font-weight: 300;
-  letter-spacing: -0.01em;
+  font-weight: 500;
+  letter-spacing: -0.015em;
 }
 
 .gallery-end a {

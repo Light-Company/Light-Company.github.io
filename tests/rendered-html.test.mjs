@@ -17,8 +17,8 @@ test("ships the finished Light Company page without local-only links", async () 
     readFile(manifestUrl, "utf8"),
   ]);
 
-  assert.match(main, /Light Company — AI that points to the work/);
-  assert.match(main, /No Glasses No Headset/);
+  assert.match(main, /Prism by The Light Co\./);
+  assert.match(main, /No glasses\. No headset\./);
   assert.match(main, /href="\/gallery"/);
   assert.match(main, /href="\/Robotics\/"/);
   assert.match(main, /href="https:\/\/prism\.lightcompany\.ai"/);
