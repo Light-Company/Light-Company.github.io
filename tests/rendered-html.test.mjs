@@ -192,6 +192,7 @@ test("publishes the Prism playlist gallery grid", async () => {
   assert.match(gallery, /data-gallery-grid/);
   assert.match(gallery, /data-lightbox-player/);
   assert.match(gallery, /data-lightbox-poster/);
+  assert.match(gallery, /href="mailto:hello@lght\.co\?subject=Light%20Company%20Pre-order"/);
   assert.match(gallery, /rel="preconnect" href="https:\/\/www\.youtube-nocookie\.com"/);
   assert.match(gallery, /rel="preconnect" href="https:\/\/www\.youtube\.com"/);
   assert.match(galleryScript, /const playlist = \[/);
