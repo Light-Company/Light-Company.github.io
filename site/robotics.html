@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <meta name="theme-color" content="#ffffff" />
+    <meta name="theme-color" content="#05080d" />
     <meta name="author" content="The Light Company" />
     <meta name="description" content="Prism by The Light Company uses projected intelligence and vision to control physical AI test conditions, compare robot policies, catch regressions, and accelerate robotics evaluation." />
     <title>Prism Robotics Evaluation | The Light Company</title>
@@ -18,13 +18,9 @@
     <meta name="twitter:title" content="Prism Robotics Evaluation | The Light Company" />
     <meta name="twitter:description" content="Control physical AI test conditions, compare robot policies, catch regressions, and accelerate robotics evaluation." />
     <meta name="twitter:image" content="https://lightcompany.ai/og.png" />
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@500;600;700&display=swap" />
+    <link rel="icon" href="/site/assets/brand/light-company-mark.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="/site/robotics/styles.css" />
     <script src="/site/robotics/script.js" defer></script>
-    <script src="/site/assets/gmail-compose.js" defer></script>
     <script type="module" src="/site/robotics/ui.js"></script>
     <script type="application/ld+json">
       {
@@ -64,17 +60,18 @@
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
 
-    <header class="topbar" aria-label="Main navigation">
-      <a class="topbar-mark" href="/" aria-label="The Light Company home">
-        <img src="/site/assets/brand/light-company-mark.svg" alt="" />
-        <span>Prism</span>
+    <header class="topbar" data-topbar>
+      <a class="brand" href="/#top" aria-label="The Light Company home">
+        <span class="brand-mark"><img src="/site/assets/brand/light-company-mark.svg" alt="" /></span>
+        <span class="brand-name">The Light Company</span>
+        <span class="brand-division">Robotics</span>
       </a>
-      <nav class="topbar-links" aria-label="Primary">
-        <a href="/projected-intelligence">Projected intelligence</a>
-        <a href="/gallery">Gallery</a>
-        <a aria-current="page" href="/robotics">Robotics</a>
-        <a href="mailto:hello@lght.co?subject=Light%20Company%20Investor">Investors</a>
-        <a href="https://prism.lightcompany.ai">Enterprise sign in</a>
+      <nav aria-label="Primary">
+        <a href="#platform">Platform</a>
+        <a href="#case-study">Case study</a>
+        <a href="/gallery">Field gallery</a>
+        <a class="nav-signin" href="https://prism.lightcompany.ai">Platform sign in</a>
+        <a class="nav-cta" href="mailto:hello@lght.co?subject=Get%20a%20Prism%20station">Get your own</a>
       </nav>
       <a class="topbar-wordmark" href="/">
         <span>The Light Company</span>
@@ -83,59 +80,78 @@
     </header>
 
     <main id="main">
-      <section class="hero" aria-labelledby="hero-title">
-        <video class="hero-video" data-hero-video autoplay muted loop playsinline preload="metadata" poster="/media/robotics/robot-policy-evaluation.jpg" aria-label="A robot policy running through a projected evaluation condition">
-          <source src="/media/robotics/robot-policy-evaluation.mp4" type="video/mp4" />
-        </video>
-        <div class="hero-scrim" aria-hidden="true"></div>
+      <section class="hero" aria-labelledby="hero-title" data-hero>
+        <div class="hero-media" aria-hidden="true">
+          <video class="viewport-video" muted loop playsinline preload="metadata" poster="/media/robotics/robot-policy-evaluation.jpg">
+            <source src="/media/robotics/robot-policy-evaluation.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <div class="hero-wash" aria-hidden="true"></div>
+        <div class="hero-grid" aria-hidden="true"></div>
 
-        <div class="hero-copy reveal">
-          <p class="kicker">Physical policy evaluation</p>
-          <h1 id="hero-title">Stop guessing. Make real progress in Physical AI.</h1>
-          <p>Prism controls and checks each test condition. Your team can find regressions, measure progress, and see where a robot fails.</p>
-          <div class="hero-actions">
-            <a class="pill pill-light" href="#field">See how users improve Physical AI</a>
-            <a class="pill pill-ghost" href="mailto:hello@lght.co?subject=Get%20a%20Prism%20station">Get your own</a>
-          </div>
+        <div class="sprite-field" aria-hidden="true">
+          <span style="--x: 7%; --y: 19%; --delay: -1.2s"></span>
+          <span style="--x: 17%; --y: 68%; --delay: -3.8s"></span>
+          <span style="--x: 36%; --y: 28%; --delay: -2.4s"></span>
+          <span style="--x: 55%; --y: 74%; --delay: -4.2s"></span>
+          <span style="--x: 69%; --y: 18%; --delay: -0.9s"></span>
+          <span style="--x: 82%; --y: 56%; --delay: -2.9s"></span>
+          <span style="--x: 94%; --y: 33%; --delay: -5.1s"></span>
         </div>
 
-        <button class="hero-pause" type="button" data-hero-pause aria-label="Pause background video">
-          <svg class="icon-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5h3v14H8zM13 5h3v14h-3z" fill="currentColor" /></svg>
-          <svg class="icon-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.5 5.5v13l10-6.5z" fill="currentColor" /></svg>
-        </button>
-
-        <a class="hero-scroll" href="#platform" aria-label="Scroll to the evaluation console">
-          <svg viewBox="0 0 36 36" aria-hidden="true"><path d="m10 14 8 8 8-8" /></svg>
-        </a>
-      </section>
-
-      <section class="section" id="platform" aria-labelledby="thesis-title">
-        <div class="section-grid section-grid-text-media">
-          <div class="section-copy reveal">
-            <p class="kicker">Don't test blind</p>
-            <h2 id="thesis-title">Find progress. Catch regressions. Iterate faster.</h2>
-            <p>Prism uses projection to stage the scene and vision to verify it. Compare Policy A with Policy B under the same physical conditions, so each result shows a policy change instead of room noise.</p>
-          </div>
-          <div class="console-shell reveal">
-            <div id="prism-console" aria-label="Prism pilot customer evaluation outcomes">
-              <div class="console-fallback">Loading evaluation data…</div>
+        <div class="hero-content">
+          <div class="hero-copy reveal">
+            <p class="eyebrow"><span class="signal-dot"></span>Physical policy evaluation</p>
+            <h1 id="hero-title"><span>Stop guessing.</span><span>Make real progress</span><span class="accent-line">in Physical AI.</span></h1>
+            <p class="hero-deck">Prism controls and checks each test condition. Your team can find regressions, measure progress, and see where a robot fails.</p>
+            <div class="hero-actions">
+              <a class="button button-primary" href="#case-study">See how users improve Physical AI</a>
+              <a class="button button-ghost" href="mailto:hello@lght.co?subject=Get%20a%20Prism%20station">Get your own <span aria-hidden="true">↗</span></a>
             </div>
           </div>
+
         </div>
       </section>
 
-      <section class="section" id="case-study" aria-labelledby="case-title">
-        <div class="section-grid section-grid-text-media section-grid-flip">
-          <div class="section-copy reveal">
-            <p class="kicker">Evaluation method</p>
+      <section class="thesis" id="platform" aria-labelledby="thesis-title">
+        <div class="thesis-copy reveal">
+          <p class="eyebrow">Don’t test blind</p>
+          <h2 id="thesis-title">Find progress.<br /><em>Catch regressions.</em><br />Iterate faster.</h2>
+          <p>Prism uses projection to stage the scene and vision to verify it. Compare Policy A with Policy B under the same physical conditions, so each result shows a policy change instead of room noise.</p>
+        </div>
+        <div class="console-shell reveal">
+          <div id="prism-console" aria-label="Prism pilot customer evaluation outcomes">
+            <div class="console-fallback">Loading evaluation data…</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-study" id="case-study" aria-labelledby="case-title">
+        <div class="case-media" aria-hidden="true">
+          <video class="viewport-video" muted loop playsinline preload="metadata" poster="/media/robotics/arm-stage.jpg">
+            <source src="/media/robotics/arm-stage.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <div class="case-overlay" aria-hidden="true"></div>
+        <div class="case-content">
+          <div class="case-heading reveal">
+            <p class="eyebrow">Evaluation method</p>
             <h2 id="case-title">Compare policies under the same physical conditions.</h2>
             <p>Prism projects each test condition, verifies it with vision, and stores the result. Operators can repeat the same test and track which conditions cause success or failure.</p>
           </div>
-          <figure class="frame reveal">
-            <video class="viewport-video" muted loop playsinline preload="metadata" poster="/media/robotics/arm-stage.jpg">
-              <source src="/media/robotics/arm-stage.mp4" type="video/mp4" />
-            </video>
-          </figure>
+          <ol class="case-method reveal" aria-label="Prism evaluation method">
+            <li><span>01</span><div><strong>Project the condition.</strong><p>Show the required object pose, work area, and task state in the workcell.</p></div></li>
+            <li><span>02</span><div><strong>Verify the scene.</strong><p>Use vision to confirm the physical state before each run starts.</p></div></li>
+            <li><span>03</span><div><strong>Compare and track.</strong><p>Run both policies against the same verified cases and record which conditions cause success or failure.</p></div></li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="system" id="system" aria-labelledby="system-title">
+        <div class="system-heading reveal">
+          <p class="eyebrow">How Prism works</p>
+          <h2 id="system-title">Control each test.<br />Measure each policy.</h2>
+          <p>Prism shows the operator how to set the scene. Vision checks the physical state. Prism starts the evaluation only when the state is correct.</p>
         </div>
         <ol class="method reveal" aria-label="Prism evaluation method">
           <li><span>01</span><h3>Project the condition.</h3><p>Show the required object pose, work area, and task state in the workcell.</p></li>
@@ -144,46 +160,59 @@
         </ol>
       </section>
 
-      <section class="section" aria-labelledby="system-title">
-        <div class="section-copy section-copy-center reveal">
-          <p class="kicker">How Prism works</p>
-          <h2 id="system-title">Control each test. Measure each policy.</h2>
-          <p>Prism shows the operator how to set the scene. Vision checks the physical state. Prism starts the evaluation only when the state is correct.</p>
-        </div>
-
-        <div class="bento bento-4 reveal">
-          <figure class="frame">
+        <div class="system-stack">
+          <article class="system-card system-card-wide reveal">
             <video class="viewport-video" muted loop playsinline preload="metadata" poster="/media/robotics/lab-control.jpg">
               <source src="/media/robotics/lab-control.mp4" type="video/mp4" />
             </video>
-            <figcaption>01 / Stage: set the test condition</figcaption>
-          </figure>
+            <div class="system-card-shade"></div>
+            <div class="system-card-copy">
+              <span><img src="/site/assets/icons/robotics/crosshair.svg" alt="" aria-hidden="true" />01 / Stage</span>
+              <h3>Set the test condition.</h3>
+              <p>Project the required object position and task setup into the workcell.</p>
+            </div>
+          </article>
 
-          <figure class="frame">
+          <article class="system-card reveal">
             <video class="viewport-video" muted loop playsinline preload="metadata" poster="/media/robotics/condition-stage.jpg">
               <source src="/media/robotics/condition-stage.mp4" type="video/mp4" />
             </video>
-            <figcaption>02 / Verify: check the physical state</figcaption>
-          </figure>
+            <div class="system-card-shade"></div>
+            <div class="system-card-copy">
+              <span><img src="/site/assets/icons/robotics/scan-line.svg" alt="" aria-hidden="true" />02 / Verify</span>
+              <h3>Check the physical state.</h3>
+              <p>Check object identity, pose, occlusion, and tolerance before the robot moves.</p>
+            </div>
+          </article>
 
-          <figure class="frame">
+          <article class="system-card reveal">
             <video class="viewport-video" muted loop playsinline preload="metadata" poster="/media/scene-scan.jpg">
               <source src="/media/scene-scan.mp4" type="video/mp4" />
             </video>
-            <figcaption>03 / Learn: compare the result</figcaption>
-          </figure>
+            <div class="system-card-shade"></div>
+            <div class="system-card-copy">
+              <span><img src="/site/assets/icons/robotics/activity.svg" alt="" aria-hidden="true" />03 / Learn</span>
+              <h3>Compare the result.</h3>
+              <p>Link each success or failure to the physical state that caused it.</p>
+            </div>
+          </article>
 
-          <figure class="frame">
+          <article class="system-card system-card-tracking reveal">
             <video class="viewport-video" muted loop playsinline preload="metadata" poster="/media/robotics/live-scene-tracking.jpg" aria-label="A projected interface stays registered while tracked markers move across a work surface">
               <source src="/media/robotics/live-scene-tracking.mp4" type="video/mp4" />
             </video>
-            <figcaption>04 / Track: keep the projection locked to the scene</figcaption>
-          </figure>
+            <div class="system-card-shade"></div>
+            <div class="system-card-copy">
+              <span><img src="/site/assets/icons/robotics/repeat-2.svg" alt="" aria-hidden="true" />04 / Track</span>
+              <h3>Keep the projection locked to the scene.</h3>
+              <p>Prism tracks the surface and objects as the physical scene moves.</p>
+            </div>
+          </article>
         </div>
       </section>
 
-      <section class="section world-layer" aria-labelledby="world-title">
-        <figure class="frame world-frame reveal">
+      <section class="world-layer" aria-labelledby="world-title">
+        <div class="world-media" aria-hidden="true">
           <video class="viewport-video" muted loop playsinline preload="metadata" poster="/site/assets/media/curated/img-5387-b10dc5e5b.jpg">
             <source src="/site/assets/media/curated/img-5387-b10dc5e5b.mp4" type="video/mp4" />
           </video>
@@ -194,86 +223,82 @@
           <h2 id="world-title">Map where the robot works and fails.</h2>
           <p>Prism changes one test condition at a time: position, orientation, clutter, objects, or light. The result shows where each policy works and fails.</p>
         </div>
-        <div class="chip-row reveal" aria-label="Physical intelligence loop">
-          <span class="chip">Evaluate</span>
-          <span class="chip">Discover</span>
-          <span class="chip">Collect</span>
-          <span class="chip">Train</span>
+        <div class="world-mask" aria-hidden="true"></div>
+        <div class="world-copy reveal">
+          <p class="eyebrow">Capability maps</p>
+          <h2 id="world-title">Map where the robot<br />works and fails.</h2>
+          <p>Prism changes one test condition at a time: position, orientation, clutter, objects, or light. The result shows where each policy works and fails.</p>
+          <div class="world-loop" aria-label="Physical intelligence loop">
+            <span>Evaluate</span><i></i><span>Discover</span><i></i><span>Collect</span><i></i><span>Train</span>
+          </div>
         </div>
       </section>
 
-      <section class="section mosaic-section" id="field" aria-labelledby="field-title">
+      <section class="field" aria-labelledby="field-title">
         <div class="field-heading reveal">
-          <div class="section-copy">
-            <p class="kicker">Deployed systems</p>
-            <h2 id="field-title">See Prism in the lab.</h2>
-          </div>
-          <a class="pill pill-dark" href="/gallery">Open the field gallery</a>
+          <p class="eyebrow">Deployed systems</p>
+          <h2 id="field-title">See Prism in the lab.</h2>
+          <a class="button button-dark" href="/gallery">Open the field gallery <span aria-hidden="true">↗</span></a>
         </div>
-
-        <div class="bento reveal">
-          <figure class="frame b-lg">
+        <div class="field-reel reveal">
+          <figure class="field-shot field-shot-main">
             <video class="viewport-video" muted loop playsinline preload="metadata" poster="/media/robotics/projected-test-run.jpg" aria-label="A projected Prism test condition changes over a robotic workcell">
               <source src="/media/robotics/projected-test-run.mp4" type="video/mp4" />
             </video>
-            <figcaption>Projected test conditions</figcaption>
+            <figcaption><span>Projected test conditions</span><b>01</b></figcaption>
           </figure>
-
-          <figure class="frame">
+          <figure class="field-shot field-shot-support">
             <img src="/media/robotics/lab-team.webp" alt="Two operators review three Prism robotic test stations in The Light Company lab." loading="lazy" decoding="async" />
-            <figcaption>Operators in the lab</figcaption>
+            <figcaption><span>Operators in the lab</span><b>02</b></figcaption>
           </figure>
-
-          <figure class="frame">
+          <figure class="field-shot field-shot-support">
             <img src="/media/robotics/multi-station-lab.webp" alt="Three robotic arms operate across projected test grids in The Light Company lab." loading="lazy" decoding="async" />
-            <figcaption>Multi-station evaluation</figcaption>
+            <figcaption><span>Multi-station evaluation</span><b>03</b></figcaption>
           </figure>
-
-          <figure class="frame">
+          <figure class="field-shot field-shot-archive">
             <video class="viewport-video" muted loop playsinline preload="metadata" poster="/media/robot-eval-staging.jpg">
               <source src="/media/robot-eval-staging.mp4" type="video/mp4" />
             </video>
-            <figcaption>Robot evaluation</figcaption>
+            <figcaption><span>Robot evaluation</span><b>04</b></figcaption>
           </figure>
-
-          <figure class="frame">
+          <figure class="field-shot field-shot-archive">
             <video class="viewport-video" muted loop playsinline preload="metadata" poster="/media/robotics/arm-stage.jpg">
               <source src="/media/robotics/arm-stage.mp4" type="video/mp4" />
             </video>
-            <figcaption>Robotic test cell</figcaption>
+            <figcaption><span>Robotic test cell</span><b>05</b></figcaption>
           </figure>
-
-          <figure class="frame">
+          <figure class="field-shot field-shot-archive">
             <video class="viewport-video" muted loop playsinline preload="metadata" poster="/media/robotics/lab-control.jpg">
               <source src="/media/robotics/lab-control.mp4" type="video/mp4" />
             </video>
-            <figcaption>Evaluation operations</figcaption>
+            <figcaption><span>Evaluation operations</span><b>06</b></figcaption>
           </figure>
         </div>
       </section>
 
       <section class="cta" aria-labelledby="cta-title">
-        <img src="/site/assets/brand/light-company-mark.svg" alt="" />
-        <p class="kicker">The Light Company Robotics</p>
-        <h2 id="cta-title">Deploy Prism in your lab.</h2>
-        <p>Use Prism for policy evaluation, regression testing, and capability mapping.</p>
-        <div class="hero-actions">
-          <a class="pill pill-light" href="mailto:hello@lght.co?subject=Get%20a%20Prism%20station">Get your own</a>
-          <a class="pill pill-ghost" href="tel:+1-415-523-0660">Call +1 415 523 0660</a>
+        <div class="cta-orbit" aria-hidden="true"><span></span><span></span><span></span></div>
+        <div class="cta-copy reveal">
+          <p class="eyebrow">The Light Company Robotics</p>
+          <h2 id="cta-title">Deploy Prism in your lab.</h2>
+          <p>Use Prism for policy evaluation, regression testing, and capability mapping.</p>
+          <div class="cta-actions">
+            <a class="button button-light" href="mailto:hello@lght.co?subject=Get%20a%20Prism%20station">Get your own</a>
+            <a class="button button-line-light" href="tel:+1-415-523-0660">Call +1 415 523 0660</a>
+          </div>
         </div>
       </section>
     </main>
 
-    <footer class="site-footer">
-      <img src="/site/assets/brand/light-company-mark.svg" alt="" />
+    <footer>
+      <a class="footer-brand" href="/#top"><img src="/site/assets/brand/light-company-mark.svg" alt="" /><span>The Light Company</span></a>
       <p>Test robot policies in the physical world.</p>
-      <nav class="footer-links" aria-label="Footer">
+      <nav aria-label="Footer">
         <a href="/projected-intelligence">Projected intelligence</a>
         <a href="/gallery">Gallery</a>
         <a href="mailto:hello@lght.co">hello@lght.co</a>
         <a href="/privacy">Privacy</a>
       </nav>
-      <p class="footer-copyright">Copyright 2026 The Light Company</p>
     </footer>
   </body>
 </html>
