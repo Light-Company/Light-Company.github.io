@@ -584,7 +584,11 @@ a {
   display: grid;
   width: min(100%, var(--content));
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  grid-auto-rows: clamp(120px, 16vw, 235px);
+  /* The 11 tiles occupy 16 cells across 4 columns, so the mosaic is always 4
+     rows. Sizing the container to the viewport and letting rows share it
+     equally keeps the whole gallery visible without scrolling. */
+  height: clamp(400px, calc(100svh - 110px), 900px);
+  grid-auto-rows: minmax(0, 1fr);
   grid-auto-flow: dense;
   gap: 2px;
   margin: clamp(64px, 8vw, 100px) auto 0;
@@ -857,6 +861,9 @@ a {
 
   .bento {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+    /* Two columns means eight rows; fitting those into one screen would
+       flatten each tile into a strip, so let the mosaic scroll instead. */
+    height: auto;
     grid-auto-rows: clamp(130px, 24vw, 220px);
   }
 
@@ -928,6 +935,7 @@ a {
   }
 
   .bento {
+    height: auto;
     grid-auto-rows: clamp(110px, 26vw, 170px);
   }
 
