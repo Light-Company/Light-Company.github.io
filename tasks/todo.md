@@ -1,0 +1,127 @@
+# Robotics lab media expansion
+
+## Direction
+
+- Keep the current Robotics copy, product hierarchy, and visual system unchanged.
+- Use the supplied policy-evaluation video as the Robotics hero without changing the approved hero copy.
+- Treat the supplied video as the motion anchor and the two supplied photos as real-world evidence of the lab and multi-station setup.
+- Add the supplied tracking footage to the product process as a fourth, concrete capability proof.
+- Expand the existing field gallery into one asymmetric six-item reel instead of adding an unrelated section.
+- Preserve source media outside the repository and ship web-optimized derivatives only.
+
+## Work
+
+- [x] Create optimized web derivatives and accessible media descriptions.
+- [x] Replace the hero media and add a responsive live-tracking proof card.
+- [x] Recompose the field gallery around the new video, two photos, and the three existing clips.
+- [x] Add responsive and rendered-markup regression coverage.
+- [x] Verify the gallery visually at desktop and mobile sizes, then run the complete test and lint gates.
+
+## Risks
+
+- Do not change approved Robotics copy or CTA labels.
+- Keep autoplay video muted, inline, and compatible with reduced-motion behavior.
+- Do not publish or push without a separate request.
+
+---
+
+# Robotics visual-structure correction
+
+## Direction
+
+- Keep Light Company media, routes, copy, and brand assets unchanged.
+- Use the robot footage as the primary visual and treat copy as annotation.
+- Use one 1,360 px desktop grid, an 8 px spacing rhythm, and four type roles.
+- Keep Barlow Semi Condensed for restrained display text, Barlow for body copy, and IBM Plex Mono for data labels.
+- Use cold black, white, slate, and Light Company cyan. Remove decorative layers that do not explain the product.
+
+## Work
+
+- [x] Replace oversized global type clamps with a controlled type scale.
+- [x] Recompose the hero as an inset cinematic stage with compact copy and one data rail.
+- [x] Rebuild the proof, case-study, process, gallery, and CTA sections on the same grid.
+- [x] Add stylesheet regression assertions for the desktop hierarchy.
+- [x] Verify the real page at desktop and mobile breakpoints, then run the full suite.
+
+## Risks
+
+- Preserve all video paths and production routes.
+- Avoid CSS override layers; remove obsolete rules instead of stacking more overrides.
+- Do not deploy or push from this branch without a separate request.
+
+---
+
+# Search and discovery foundation
+
+## Direction
+
+- Keep `https://lightcompany.ai/` as the canonical site; use the verified permanent `lght.co` redirect as an alternate brand signal.
+- Target The Light Company, Light Company, projected intelligence, physical AI, robotics evaluation, and Prism through useful visible content rather than keyword repetition.
+- Create one distinct projected-intelligence explainer and strengthen crawlable links to Robotics.
+- Use schema and metadata only for claims and entities already supported by the site.
+
+## Work
+
+- [x] Add unique titles, descriptions, canonical URLs, social metadata, and structured data to each public route.
+- [x] Add a useful `/projected-intelligence` landing page with a strong route to `/robotics`.
+- [x] Add `robots.txt`, `sitemap.xml`, and `llms.txt`, then expose them in both Sites and Pages builds.
+- [x] Strengthen visible internal anchors between the home page, projected intelligence, Robotics, gallery, and privacy.
+- [ ] Add regression coverage, run build and lint, inspect rendered metadata, and publish.
+
+## Risks
+
+- Do not add hidden text, keyword stuffing, fabricated third-party links, fake backlinks, or unsupported claims.
+- Do not split ranking signals between `lightcompany.ai` and `lght.co`; the latter must continue to redirect to the canonical domain.
+- Keep the approved home hero copy and Robotics headline unchanged.
+
+---
+
+# Robotics cinematic hero correction
+
+## Direction
+
+- Use the full viewport as the video canvas; center the message over the robot footage.
+- Remove the illustrative dashboard card so the centered message and footage carry the hero.
+- Use the existing Light Company videos and the repository's ISC-licensed Lucide SVG set.
+- Join the hero directly to the proof section with no empty white band.
+
+## Work
+
+- [x] Rebuild the hero markup around the unchanged centered copy.
+- [x] Remove the inset-frame and left-column hero rules at every breakpoint.
+- [x] Move vector product cues into the existing Stage, Verify, and Learn cards.
+- [x] Correct the hero-to-proof transition and white-gap regression.
+- [x] Update rendered-layout assertions for the full-bleed hero.
+- [x] Verify desktop and mobile renders, then run the complete test and lint gates.
+
+## Risks
+
+- Keep the headline readable without hiding the robotics footage.
+- Do not add a third-party runtime or load remote assets.
+- Preserve keyboard focus, reduced-motion behavior, and all production links.
+
+---
+
+# Robotics marketing proof pass
+
+## Direction
+
+- Lead with the customer outcome: 10x faster evaluation cycles.
+- Keep supporting numbers large, sparse, and easy to scan in three seconds.
+- Replace the electric blue with a darker cyan that belongs to the existing Light Company palette.
+- Keep the 20,000-hour claim explicitly framed as a pilot estimate to date.
+
+## Work
+
+- [x] Rewrite the Why Prism section around gambling less, catching regressions, and iterating faster.
+- [x] Rebuild the evaluation sheet around one dominant result and three supporting proof points.
+- [x] Align the case-study metric with the 20,000-hour pilot estimate.
+- [x] Change the Robotics footer lockup to The Light Company.
+- [x] Update regression assertions and verify desktop and mobile renders.
+- [x] Run the full build, tests, lint, and diff review.
+
+## Risks
+
+- Do not present an unsupported estimate as an audited result.
+- Avoid adding more decorative cards or dashboard chrome.
+- Preserve the existing hero, media, routes, and CTA labels.
