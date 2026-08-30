@@ -62,60 +62,96 @@ button { font: inherit; }
 
 .skip-link:focus { transform: translate(-50%, 0); }
 
-.gallery-header {
+.topbar {
   position: fixed;
   inset: 0 0 auto;
-  z-index: 50;
+  z-index: 100;
   display: grid;
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
   min-height: 64px;
   padding: 0 clamp(20px, 4vw, 48px);
-  background: #fff;
-  border-bottom: 1px solid rgba(7, 17, 28, 0.07);
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(20px) saturate(1.6);
+  -webkit-backdrop-filter: blur(20px) saturate(1.6);
+  border-bottom: 1px solid rgba(7, 17, 28, 0.08);
 }
 
-.brand {
-  justify-self: center;
+.topbar-mark {
+  justify-self: start;
   display: inline-flex;
   align-items: center;
-  gap: 9px;
+  gap: 12px;
+  text-decoration: none;
+}
+
+.topbar-mark img {
+  width: 40px;
+  height: 36px;
+  object-fit: contain;
+}
+
+.topbar-mark span {
   color: var(--ink);
   font-family: var(--font-display);
   font-size: 15px;
   font-weight: 600;
   letter-spacing: -0.01em;
-  text-decoration: none;
 }
 
-.brand svg {
-  width: 26px;
-  height: 22px;
-  overflow: visible;
+.topbar-links {
+  display: flex;
+  justify-self: center;
+  align-items: center;
+  gap: clamp(22px, 3vw, 40px);
 }
 
-.brand-line {
-  fill: none;
-  stroke: var(--ink);
-  stroke-width: 10;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
-.gallery-header nav {
-  justify-self: start;
-}
-
-.gallery-header nav a {
+.topbar-links > a {
   color: var(--ink-65);
   font-size: 13px;
   font-weight: 500;
   letter-spacing: -0.01em;
   text-decoration: none;
-  transition: color 0.25s ease;
+  transition: color 0.2s ease;
 }
 
-.gallery-header nav a:hover { color: var(--ink); }
+.topbar-links > a:hover,
+.topbar-links > a[aria-current="page"] {
+  color: var(--ink);
+}
+
+.topbar-wordmark {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 3px;
+  justify-self: end;
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.topbar-locale {
+  color: var(--ink-42);
+  font-family: var(--font);
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+@media (max-width: 760px) {
+  .topbar {
+    grid-template-columns: auto 1fr;
+  }
+
+  .topbar-links {
+    display: none;
+  }
+}
 
 /* Hero film — the centerpiece */
 
@@ -512,8 +548,6 @@ button { font: inherit; }
 }
 
 @media (max-width: 720px) {
-  .gallery-header nav a { font-size: 10px; }
-
   .hero-btn { min-height: 42px; padding: 0 20px; font-size: 11px; }
 
   .gallery-shell { padding: 64px 22px 90px; }

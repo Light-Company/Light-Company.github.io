@@ -639,6 +639,10 @@ a {
   margin: clamp(64px, 8vw, 100px) auto 0;
 }
 
+.grid-3:first-child {
+  margin-top: 0;
+}
+
 /* Steps */
 
 .steps {

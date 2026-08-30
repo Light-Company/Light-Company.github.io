@@ -20,8 +20,12 @@ PAGES = {
     "": "main.html",
     "/gallery": "gallery.html",
     "/gallery/": "gallery.html",
+    "/robotics": "robotics.html",
+    "/robotics/": "robotics.html",
     "/Robotics": "robotics.html",
     "/Robotics/": "robotics.html",
+    "/projected-intelligence": "projected-intelligence.html",
+    "/projected-intelligence/": "projected-intelligence.html",
     "/privacy": "privacy.html",
     "/privacy/": "privacy.html",
 }

@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="author" content="The Light Company" />
     <meta
       name="description"
       content="Prism: a new type of hardware that turns the room into a computer."
@@ -12,10 +13,14 @@
     <link rel="canonical" href="https://lightcompany.ai/" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://lightcompany.ai/" />
+    <meta property="og:site_name" content="The Light Company" />
     <meta property="og:title" content="Prism by The Light Co." />
     <meta property="og:description" content="Prism: a new type of hardware that turns the room into a computer." />
     <meta property="og:image" content="https://lightcompany.ai/og.png" />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Prism by The Light Co." />
+    <meta name="twitter:description" content="Prism: a new type of hardware that turns the room into a computer." />
+    <meta name="twitter:image" content="https://lightcompany.ai/og.png" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -23,18 +28,45 @@
     <link rel="stylesheet" href="/site/main/styles.css" />
     <script src="/site/main/script.js" defer></script>
     <script src="/site/assets/gmail-compose.js" defer></script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": "https://lightcompany.ai/#organization",
+            "name": "The Light Company",
+            "alternateName": ["Light Company", "lght.co"],
+            "url": "https://lightcompany.ai/",
+            "logo": "https://lightcompany.ai/site/assets/brand/light-company-mark.svg",
+            "email": "hello@lght.co",
+            "description": "The Light Company builds projected intelligence for physical work and robotics evaluation.",
+            "sameAs": ["https://lght.co/"]
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://lightcompany.ai/#website",
+            "url": "https://lightcompany.ai/",
+            "name": "The Light Company",
+            "alternateName": ["Light Company", "lght.co"],
+            "publisher": { "@id": "https://lightcompany.ai/#organization" }
+          }
+        ]
+      }
+    </script>
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
 
     <header class="topbar" aria-label="Main navigation">
-      <a class="topbar-mark" href="#top" aria-label="Light Company home">
+      <a class="topbar-mark" href="#top" aria-label="The Light Company home">
         <img src="/site/assets/brand/light-company-mark.svg" alt="" />
         <span>Prism</span>
       </a>
       <nav class="topbar-links" aria-label="Primary">
+        <a href="/projected-intelligence">Projected intelligence</a>
         <a href="/gallery">Gallery</a>
-        <a href="/Robotics/">Robotics</a>
+        <a href="/robotics">Robotics</a>
         <a href="mailto:hello@lght.co?subject=Light%20Company%20Investor">Investors</a>
         <a href="https://prism.lightcompany.ai">Enterprise sign in</a>
       </nav>
@@ -89,7 +121,7 @@
           </figure>
 
           <figure class="frame b-lg">
-            <img src="/site/assets/media/hero-projection.jpg" alt="Light Company projecting guidance onto a workbench" data-media-slot="hero_projection" />
+            <img src="/site/assets/media/hero-projection.jpg" alt="The Light Company projecting guidance onto a workbench" data-media-slot="hero_projection" />
             <figcaption>Intelligence in the room</figcaption>
           </figure>
 
@@ -202,12 +234,7 @@
         </div>
       </section>
 
-      <section class="section answers" aria-labelledby="answers-title">
-        <div class="section-copy section-copy-center reveal">
-          <h2 id="answers-title">Get answers you can see.</h2>
-          <p>Light Company puts the next instruction on the thing you are working on.</p>
-        </div>
-
+      <section class="section answers" aria-label="What Prism sees">
         <div class="grid-3 reveal">
           <article class="frame answer-card">
             <video class="viewport-video" data-media-slot="founder_intro" muted loop playsinline preload="metadata" poster="/media/founder-intro.jpg">
@@ -233,10 +260,10 @@
       <section class="section done" id="how-it-works" aria-labelledby="done-title">
         <div class="section-copy section-copy-center reveal">
           <h2 id="done-title">From step one to done.</h2>
-          <p>Light Company breaks a whole build down into what your hands can do next.</p>
+          <p>The Light Company breaks a whole build down into what your hands can do next.</p>
         </div>
 
-        <div class="chip-row chip-row-wrap reveal" aria-label="What Light Company does">
+        <div class="chip-row chip-row-wrap reveal" aria-label="What The Light Company does">
           <span class="chip">Find the right part</span>
           <span class="chip">Follow the assembly</span>
           <span class="chip">Check the result</span>
@@ -256,8 +283,8 @@
           </li>
           <li class="step">
             <span class="step-number">02</span>
-            <img src="/site/assets/illustrations/build-plan.svg" alt="Light Company turns the request into a visual assembly plan" />
-            <p>Light Company turns it into a plan.</p>
+            <img src="/site/assets/illustrations/build-plan.svg" alt="The Light Company turns the request into a visual assembly plan" />
+            <p>The Light Company turns it into a plan.</p>
           </li>
           <li class="step-arrow" aria-hidden="true">
             <svg viewBox="0 0 24 24"><path d="m9 6 6 6-6 6" /></svg>
@@ -280,7 +307,7 @@
               <figcaption>Part identified · Ready for assembly</figcaption>
             </figure>
             <figure class="frame">
-              <img src="/site/assets/illustrations/work-instruction.svg" alt="A projected work instruction prepared by Light Company" />
+              <img src="/site/assets/illustrations/work-instruction.svg" alt="A projected work instruction prepared by The Light Company" />
             </figure>
           </div>
 
@@ -300,7 +327,7 @@
               <img src="/site/assets/illustrations/work-map.svg" alt="A live map of active work areas" />
             </figure>
             <figure class="frame">
-              <img src="/site/assets/illustrations/verification.svg" alt="A completed assembly step verified by Light Company" />
+              <img src="/site/assets/illustrations/verification.svg" alt="A completed assembly step verified by The Light Company" />
             </figure>
           </div>
         </div>
@@ -314,11 +341,11 @@
         </div>
 
         <figure class="frame research-feature reveal">
-          <video class="viewport-video" data-media-slot="research_background" muted loop playsinline preload="metadata" poster="/site/assets/media/world-model-lab.jpg" aria-label="A Light Company projection running across a live workspace">
+          <video class="viewport-video" data-media-slot="research_background" muted loop playsinline preload="metadata" poster="/site/assets/media/world-model-lab.jpg" aria-label="A projection from The Light Company running across a live workspace">
             <source src="/site/assets/media/world-model-lab.mp4" type="video/mp4" />
           </video>
           <figcaption>
-            <span>Light Company Research</span>
+            <span>The Light Company Research</span>
             <a href="mailto:hello@lght.co?subject=World%20Model%20Research">See how we make world-model evaluations repeatable.</a>
           </figcaption>
         </figure>
@@ -331,13 +358,14 @@
       <a class="footer-cta" href="mailto:hello@lght.co?subject=Light%20Company%20Pre-order">Pre-order today</a>
       <nav class="footer-links" aria-label="Footer">
         <a href="#see-it">See the work</a>
+        <a href="/projected-intelligence">Projected intelligence</a>
         <a href="/gallery">Gallery</a>
-        <a href="/Robotics/">Robotics</a>
+        <a href="/robotics">Robotics</a>
         <a href="mailto:hello@lght.co">hello@lght.co</a>
         <a href="/privacy">Privacy</a>
         <a href="#top">Back to top</a>
       </nav>
-      <p class="footer-copyright">Copyright 2026 Light Company</p>
+      <p class="footer-copyright">Copyright 2026 The Light Company</p>
     </footer>
   </body>
 </html>
