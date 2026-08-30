@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <meta name="theme-color" content="#07111c" />
+    <meta name="theme-color" content="#ffffff" />
     <meta name="author" content="The Light Company" />
     <meta
       name="description"
@@ -11,7 +11,7 @@
     />
     <title>Projected Intelligence for Physical Work | The Light Company</title>
     <link rel="canonical" href="https://lightcompany.ai/projected-intelligence" />
-    <link rel="icon" href="/site/assets/brand/light-company-mark.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://lightcompany.ai/projected-intelligence" />
     <meta property="og:site_name" content="The Light Company" />
@@ -28,7 +28,12 @@
       content="See how projected intelligence places live guidance directly on physical work without glasses or a headset."
     />
     <meta name="twitter:image" content="https://lightcompany.ai/og.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@500;600;700&display=swap" />
     <link rel="stylesheet" href="/site/projected-intelligence/styles.css" />
+    <script src="/site/projected-intelligence/script.js" defer></script>
+    <script src="/site/assets/gmail-compose.js" defer></script>
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -57,18 +62,8 @@
             "@type": "BreadcrumbList",
             "@id": "https://lightcompany.ai/projected-intelligence#breadcrumb",
             "itemListElement": [
-              {
-                "@type": "ListItem",
-                "position": 1,
-                "name": "The Light Company",
-                "item": "https://lightcompany.ai/"
-              },
-              {
-                "@type": "ListItem",
-                "position": 2,
-                "name": "Projected Intelligence",
-                "item": "https://lightcompany.ai/projected-intelligence"
-              }
+              { "@type": "ListItem", "position": 1, "name": "The Light Company", "item": "https://lightcompany.ai/" },
+              { "@type": "ListItem", "position": 2, "name": "Projected Intelligence", "item": "https://lightcompany.ai/projected-intelligence" }
             ]
           }
         ]
@@ -77,34 +72,42 @@
   </head>
   <body>
     <a class="skip-link" href="#content">Skip to projected intelligence</a>
-    <header>
-      <a class="brand" href="/" aria-label="The Light Company home">
-        <img src="/site/assets/brand/light-company-mark.svg" alt="" width="50" height="46" />
-        <span>The Light Company</span>
+
+    <header class="topbar" aria-label="Main navigation">
+      <a class="topbar-mark" href="/" aria-label="The Light Company home">
+        <img src="/site/assets/brand/light-company-mark.svg" alt="" />
+        <span>Prism</span>
       </a>
-      <nav aria-label="Primary">
+      <nav class="topbar-links" aria-label="Primary">
         <a aria-current="page" href="/projected-intelligence">Projected intelligence</a>
-        <a href="/robotics">Robotics</a>
         <a href="/gallery">Gallery</a>
-        <a class="nav-cta" href="mailto:hello@lght.co?subject=The%20Light%20Company%20Demo">See it in the room</a>
+        <a href="/robotics">Robotics</a>
+        <a href="mailto:hello@lght.co?subject=Light%20Company%20Investor">Investors</a>
+        <a href="https://prism.lightcompany.ai">Enterprise sign in</a>
       </nav>
+      <a class="topbar-wordmark" href="/">
+        <span>The Light Company</span>
+        <span class="topbar-locale">San Francisco, CA</span>
+      </a>
     </header>
 
     <main id="content">
       <section class="hero" aria-labelledby="hero-title">
-        <div class="hero-media">
-          <img src="/site/assets/media/hero-projection.jpg" alt="Projected guidance aligned with a physical work surface" />
-        </div>
-        <div class="hero-copy">
-          <p class="eyebrow">The Light Company · Projected intelligence</p>
+        <div class="section-copy hero-copy reveal">
+          <p class="kicker">The Light Company · Projected intelligence</p>
           <h1 id="hero-title">Intelligence that appears on the work.</h1>
-          <p class="hero-deck">The Light Company sees a live workspace, understands the task, and projects the next instruction onto the part, tool, or workcell. No glasses. No headset.</p>
+          <p>The Light Company sees a live workspace, understands the task, and projects the next instruction onto the part, tool, or workcell. No glasses. No headset.</p>
           <div class="hero-actions">
-            <a class="button button-primary" href="/robotics">See Prism for robotics</a>
-            <a class="button button-secondary" href="/gallery">Watch projected intelligence</a>
+            <a class="pill pill-dark" href="/robotics">See Prism for robotics</a>
+            <a class="pill pill-outline" href="/gallery">Watch projected intelligence</a>
           </div>
         </div>
-        <dl class="hero-terms" aria-label="Projected intelligence capabilities">
+
+        <figure class="frame hero-frame reveal">
+          <img src="/site/assets/media/hero-projection.jpg" alt="Projected guidance aligned with a physical work surface" />
+        </figure>
+
+        <dl class="terms reveal">
           <div><dt>See</dt><dd>Read the live scene</dd></div>
           <div><dt>Understand</dt><dd>Connect the task to the workspace</dd></div>
           <div><dt>Project</dt><dd>Place guidance on the physical target</dd></div>
@@ -112,77 +115,84 @@
         </dl>
       </section>
 
-      <section class="definition" aria-labelledby="definition-title">
-        <div>
-          <p class="eyebrow">What it is</p>
-          <h2 id="definition-title">Projected intelligence turns the workspace into the interface.</h2>
-        </div>
-        <div class="definition-copy">
-          <p>Traditional software puts instructions on a screen. Wearable augmented reality puts them in a headset. Projected intelligence puts them on the physical work itself.</p>
-          <p>The system combines cameras, spatial understanding, task logic, and projection. It can point to a fastener, outline a placement, show the next assembly step, or stage a repeatable robotics test condition where the operator needs it.</p>
+      <section class="section">
+        <div class="section-grid section-grid-text-media">
+          <div class="section-copy reveal">
+            <p class="kicker">What it is</p>
+            <h2>Projected intelligence turns the workspace into the interface.</h2>
+          </div>
+          <div class="section-copy definition-copy reveal">
+            <p>Traditional software puts instructions on a screen. Wearable augmented reality puts them in a headset. Projected intelligence puts them on the physical work itself.</p>
+            <p>The system combines cameras, spatial understanding, task logic, and projection. It can point to a fastener, outline a placement, show the next assembly step, or stage a repeatable robotics test condition where the operator needs it.</p>
+          </div>
         </div>
       </section>
 
-      <section class="process" aria-labelledby="process-title">
-        <p class="eyebrow">How it works</p>
-        <h2 id="process-title">From live scene to visible action.</h2>
-        <ol>
-          <li><span>01</span><div><h3>Observe the workspace.</h3><p>Vision identifies the person, parts, tools, surfaces, and current physical state.</p></div></li>
-          <li><span>02</span><div><h3>Understand the task.</h3><p>The system connects the live scene to the procedure, policy, or goal.</p></div></li>
-          <li><span>03</span><div><h3>Project the next move.</h3><p>Guidance appears on the exact object or area where the action happens.</p></div></li>
-          <li><span>04</span><div><h3>Verify and continue.</h3><p>The system checks the result, updates its state, and points to what comes next.</p></div></li>
+      <section class="section">
+        <div class="section-copy section-copy-center reveal">
+          <p class="kicker">How it works</p>
+          <h2>From live scene to visible action.</h2>
+        </div>
+        <ol class="process reveal">
+          <li><span>01</span><h3>Observe the workspace.</h3><p>Vision identifies the person, parts, tools, surfaces, and current physical state.</p></li>
+          <li><span>02</span><h3>Understand the task.</h3><p>The system connects the live scene to the procedure, policy, or goal.</p></li>
+          <li><span>03</span><h3>Project the next move.</h3><p>Guidance appears on the exact object or area where the action happens.</p></li>
+          <li><span>04</span><h3>Verify and continue.</h3><p>The system checks the result, updates its state, and points to what comes next.</p></li>
         </ol>
       </section>
 
-      <section class="applications" aria-labelledby="applications-title">
-        <div class="applications-heading">
-          <p class="eyebrow">Where it works</p>
-          <h2 id="applications-title">One spatial interface. Many physical workflows.</h2>
+      <section class="section">
+        <div class="section-copy section-copy-center reveal">
+          <p class="kicker">Where it works</p>
+          <h2>One spatial interface. Many physical workflows.</h2>
         </div>
-        <div class="application-grid">
+        <div class="application-grid reveal">
           <article>
-            <p>Assembly and repair</p>
+            <p class="application-kicker">Assembly and repair</p>
             <h3>Keep hands and attention on the work.</h3>
             <span>Show parts, placements, fasteners, sequences, and checks directly on the bench.</span>
           </article>
           <article>
-            <p>Robotics evaluation</p>
+            <p class="application-kicker">Robotics evaluation</p>
             <h3>Control the physical test condition.</h3>
             <span>Prism projects each scene, verifies the state with vision, and links outcomes to the condition that produced them.</span>
             <a href="/robotics">Explore Prism Robotics →</a>
           </article>
           <article>
-            <p>Training and operations</p>
+            <p class="application-kicker">Training and operations</p>
             <h3>Put the instruction where the decision happens.</h3>
             <span>Guide hands-on work without pulling the operator to a separate screen or wearable display.</span>
           </article>
         </div>
       </section>
 
-      <section class="robotics-callout" aria-labelledby="robotics-title">
-        <div class="robotics-media">
-          <video muted loop playsinline autoplay preload="metadata" poster="/media/robot-eval-staging.jpg">
-            <source src="/media/robot-eval-staging.mp4" type="video/mp4" />
-          </video>
-        </div>
-        <div class="robotics-copy">
-          <p class="eyebrow">The Light Company Robotics</p>
-          <h2 id="robotics-title">Projected intelligence for physical AI evaluation.</h2>
-          <p>Prism helps robotics teams stage repeatable test conditions, verify the physical state, compare policies, and catch regressions with less room noise.</p>
-          <a class="button button-primary" href="/robotics">Open the Robotics system</a>
+      <section class="section">
+        <div class="section-grid section-grid-text-media section-grid-flip">
+          <div class="section-copy reveal">
+            <p class="kicker">The Light Company Robotics</p>
+            <h2>Projected intelligence for physical AI evaluation.</h2>
+            <p>Prism helps robotics teams stage repeatable test conditions, verify the physical state, compare policies, and catch regressions with less room noise.</p>
+            <a class="pill pill-dark section-pill" href="/robotics">Open the Robotics system</a>
+          </div>
+          <figure class="frame reveal">
+            <video class="viewport-video" muted loop playsinline preload="metadata" poster="/media/robot-eval-staging.jpg">
+              <source src="/media/robot-eval-staging.mp4" type="video/mp4" />
+            </video>
+          </figure>
         </div>
       </section>
     </main>
 
-    <footer>
-      <a class="footer-brand" href="/"><img src="/site/assets/brand/light-company-mark.svg" alt="" /><span>The Light Company</span></a>
+    <footer class="site-footer">
+      <img src="/site/assets/brand/light-company-mark.svg" alt="" />
       <p>Projected intelligence for physical work.</p>
-      <nav aria-label="Footer">
+      <nav class="footer-links" aria-label="Footer">
         <a href="/robotics">Robotics evaluation</a>
         <a href="/gallery">Gallery</a>
         <a href="mailto:hello@lght.co">hello@lght.co</a>
         <a href="/privacy">Privacy</a>
       </nav>
+      <p class="footer-copyright">Copyright 2026 The Light Company</p>
     </footer>
   </body>
 </html>

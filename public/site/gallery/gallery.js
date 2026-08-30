@@ -69,7 +69,7 @@
       return;
     }
     const gif = document.createElement("img");
-    gif.src = `/media/prism/${tile.dataset.slug}.gif`;
+    gif.src = `/media/prism/${tile.dataset.slug}.gif?v=2`;
     gif.alt = "";
     frame.append(gif);
     frame.dataset.loaded = "true";

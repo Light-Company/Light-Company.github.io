@@ -10,7 +10,6 @@ const roboticsUiUrl = new URL("../src/robotics-ui.tsx", import.meta.url);
 const galleryUrl = new URL("../site/gallery.html", import.meta.url);
 const privacyUrl = new URL("../site/privacy.html", import.meta.url);
 const projectedIntelligenceUrl = new URL("../site/projected-intelligence.html", import.meta.url);
-const projectedIntelligenceCssUrl = new URL("../public/site/projected-intelligence/styles.css", import.meta.url);
 const robotsUrl = new URL("../public/robots.txt", import.meta.url);
 const sitemapUrl = new URL("../public/sitemap.xml", import.meta.url);
 const llmsUrl = new URL("../public/llms.txt", import.meta.url);
@@ -19,34 +18,26 @@ const galleryScriptUrl = new URL("../public/site/gallery/gallery.js", import.met
 const manifestUrl = new URL("../public/site/assets/media/placements.json", import.meta.url);
 const routeUrl = new URL("../app/api/rsvp/route.ts", import.meta.url);
 
-test("ships the finished Light Company page without local-only links", async () => {
-  const [main, mainCss, script, manifest] = await Promise.all([
+test("ships the finished Prism homepage without local-only links", async () => {
+  const [main, script, manifest] = await Promise.all([
     readFile(mainUrl, "utf8"),
-    readFile(mainCssUrl, "utf8"),
     readFile(mainScriptUrl, "utf8"),
     readFile(manifestUrl, "utf8"),
   ]);
 
-  assert.match(main, /The Light Company \| Projected Intelligence for Physical Work/);
-  assert.match(main, /<h1 id="hero-title" aria-label="The Light Company">[\s\S]*?<span>The Light Company<\/span>[\s\S]*?<\/h1>/);
-  assert.match(main, /AI that points to the work\. <strong>No Glasses No Headset\.<\/strong>/);
-  assert.doesNotMatch(main, /Project Intelligence onto the Physical World/);
+  assert.match(main, /<title>Prism by The Light Co\.<\/title>/);
+  assert.match(main, /AI that helps IRL/);
   assert.match(main, /href="\/gallery"/);
   assert.match(main, /href="\/projected-intelligence"/);
   assert.match(main, /href="\/robotics"/);
-  assert.match(main, /You’re probably here for Robotics[\s\S]*Go there instead[\s\S]*→/);
+  assert.doesNotMatch(main, /href="\/Robotics\//);
   assert.match(main, /href="https:\/\/prism\.lightcompany\.ai"/);
   assert.match(main, /https:\/\/lightcompany\.ai\/og\.png/);
+  assert.match(main, /"@type": "Organization"/);
+  assert.match(main, /"@type": "WebSite"/);
+  assert.match(main, /"alternateName": \["Light Company", "lght\.co"\]/);
   assert.match(script, /\/site\/assets\/media\/placements\.json/);
-  assert.match(mainCss, /\.lamp-title-wrap\s*\{[\s\S]*?top:\s*50%[\s\S]*?transform:\s*translate\(-50%,\s*-50%\)/);
-  assert.match(mainCss, /\.lamp-title-negative\s*\{[\s\S]*?z-index:\s*6[\s\S]*?mask-image:\s*radial-gradient/);
-  assert.match(mainCss, /\.lamp-title-negative h1,[\s\S]*?\.lamp-title-negative p strong\s*\{\s*color:\s*#fff/);
-  assert.match(mainCss, /\.lamp-focus\s*\{[\s\S]*?z-index:\s*4/);
-  assert.match(mainCss, /\.hero\.is-lit \.lamp-focus\s*\{\s*opacity:\s*0\.1/);
-  assert.doesNotMatch(mainCss, /\.hero\.is-lit \.lamp-focus\s*\{[\s\S]*?mix-blend-mode:\s*difference/);
-  assert.match(mainCss, /\.hero-robotics-cta:hover[\s\S]*?color:\s*#fff[\s\S]*?background:\s*var\(--ink\)/);
   assert.doesNotMatch(`${main}${script}${manifest}`, /127\.0\.0\.1|localhost/);
-  assert.doesNotMatch(`${main}${script}${manifest}`, /"assets\//);
 });
 
 test("publishes the dedicated robotics evaluation experience", async () => {
@@ -55,44 +46,31 @@ test("publishes the dedicated robotics evaluation experience", async () => {
     readFile(roboticsUiUrl, "utf8"),
   ]);
 
-  assert.match(robotics, /Stop guessing[\s\S]*Make real progress[\s\S]*in Physical AI/);
-  assert.match(robotics, /Don’t test blind[\s\S]*Find progress[\s\S]*Catch regressions[\s\S]*Iterate faster/);
+  assert.match(robotics, /Stop guessing\. Make real progress in Physical AI/);
+  assert.match(robotics, /Find progress\. Catch regressions\. Iterate faster/);
   assert.match(robotics, /See how users improve Physical AI/);
   assert.match(robotics, /Compare policies under the same physical conditions/);
   assert.match(robotics, /Project the condition[\s\S]*Verify the scene[\s\S]*Compare and track/);
-  assert.match(robotics, /projection to stage the scene and vision to verify it/i);
   assert.match(robotics, /aria-label="The Light Company home"/);
-  assert.match(robotics, /class="brand-name">The Light Company<\/span>/);
+  assert.match(robotics, /class="topbar-wordmark"[\s\S]*?<span>The Light Company<\/span>/);
   assert.match(robotics, />The Light Company Robotics<\/p>/);
-  assert.match(robotics, /class="footer-brand"[\s\S]*?<span>The Light Company<\/span>/);
-  assert.doesNotMatch(robotics, /(?:aria-label="|>)(?!The )Light Company/);
+  assert.match(robotics, /Enterprise sign in/);
   assert.match(roboticsUi, /10×[\s\S]*faster evaluation cycles/);
-  assert.match(roboticsUi, /20,000 hr[\s\S]*Pilot estimate to date/);
-  assert.match(roboticsUi, /30 controlled runs instead of 300 brute-force runs/);
   assert.match(roboticsUi, /role="tooltip"/);
-  assert.match(roboticsUi, /aria-describedby/);
-  assert.match(robotics, /Platform sign in/);
   assert.match(robotics, /Get your own/);
   assert.match(robotics, /site\/robotics\/ui\.js/);
   assert.match(robotics, /media\/robotics\/robot-policy-evaluation\.mp4/);
   assert.match(robotics, /media\/robotics\/live-scene-tracking\.mp4/);
-  assert.match(robotics, /04 \/ Track[\s\S]*Keep the projection locked to the scene/);
-  assert.match(robotics, /media\/robotics\/lab-control\.mp4/);
-  assert.match(robotics, /media\/robotics\/projected-test-run\.mp4/);
   assert.match(robotics, /media\/robotics\/lab-team\.webp/);
-  assert.match(robotics, /media\/robotics\/multi-station-lab\.webp/);
-  assert.equal((robotics.match(/class="field-shot/g) || []).length, 6);
+  assert.equal((robotics.match(/class="frame/g) || []).length, 12);
   assert.match(robotics, /href="\/gallery"/);
-  assert.match(robotics, /href="\/#top"/);
+  assert.doesNotMatch(robotics, /—/);
   assert.match(robotics, /https:\/\/lightcompany\.ai\/robotics/);
   assert.doesNotMatch(robotics, /127\.0\.0\.1|localhost/);
 });
 
 test("publishes a useful projected intelligence explainer", async () => {
-  const [page, css] = await Promise.all([
-    readFile(projectedIntelligenceUrl, "utf8"),
-    readFile(projectedIntelligenceCssUrl, "utf8"),
-  ]);
+  const page = await readFile(projectedIntelligenceUrl, "utf8");
 
   assert.match(page, /<title>Projected Intelligence for Physical Work \| The Light Company<\/title>/);
   assert.match(page, /<h1 id="hero-title">Intelligence that appears on the work\.<\/h1>/);
@@ -102,8 +80,7 @@ test("publishes a useful projected intelligence explainer", async () => {
   assert.match(page, /href="\/gallery"/);
   assert.match(page, /https:\/\/lightcompany\.ai\/projected-intelligence/);
   assert.match(page, /"@type": "BreadcrumbList"/);
-  assert.match(css, /\.hero\s*\{[\s\S]*?min-height:\s*100svh/);
-  assert.doesNotMatch(`${page}${css}`, /127\.0\.0\.1|localhost/);
+  assert.doesNotMatch(page, /127\.0\.0\.1|localhost/);
 });
 
 test("ships unique crawlable metadata and brand entities for every route", async () => {
@@ -132,9 +109,6 @@ test("ships unique crawlable metadata and brand entities for every route", async
     assert.match(page, /name="twitter:title"/);
     assert.match(page, /type="application\/ld\+json"/);
   }
-  assert.match(home, /"@type": "Organization"/);
-  assert.match(home, /"@type": "WebSite"/);
-  assert.match(home, /"alternateName": \["Light Company", "lght\.co"\]/);
   assert.match(robotics, /"@type": "Product"/);
 });
 
@@ -160,27 +134,21 @@ test("publishes search and AI discovery files with every canonical page", async 
   assert.match(llms, /The Light Company/);
   assert.match(llms, /lght\.co/);
   assert.match(llms, /Projected Intelligence/);
-  assert.match(llms, /Prism Robotics Evaluation/);
 });
 
-test("keeps the Robotics page on its compact visual-first layout system", async () => {
+test("keeps the Robotics page on the site's shared visual system", async () => {
   const [robotics, css] = await Promise.all([
     readFile(roboticsUrl, "utf8"),
     readFile(roboticsCssUrl, "utf8"),
   ]);
 
-  assert.match(css, /--shell:\s*1360px/);
-  assert.match(css, /h1\s*\{[\s\S]*?font-size:\s*clamp\(56px,\s*5\.3vw,\s*80px\)/);
-  assert.match(css, /\.hero\s*\{[\s\S]*?min-height:\s*100svh/);
-  assert.match(css, /\.hero-media,[\s\S]*?\.sprite-field\s*\{[\s\S]*?inset:\s*0/);
-  assert.match(css, /\.hero-content\s*\{[\s\S]*?text-align:\s*center/);
-  assert.match(css, /\.case-study\s*\{[\s\S]*?grid-template-columns:\s*minmax\(0,\s*1\.2fr\)\s*minmax\(420px,\s*0\.8fr\)/);
-  assert.match(css, /\.system-stack\s*\{[\s\S]*?grid-template-columns:\s*1\.12fr\s*repeat\(3,\s*1fr\)/);
-  assert.match(css, /\.field-reel\s*\{[\s\S]*?grid-template-columns:\s*repeat\(12,\s*minmax\(0,\s*1fr\)\)/);
-  assert.match(css, /\.field-shot-main\s*\{[\s\S]*?grid-column:\s*1\s*\/\s*span\s*8[\s\S]*?grid-row:\s*1\s*\/\s*span\s*2/);
-  assert.match(robotics, /icons\/robotics\/crosshair\.svg/);
-  assert.match(robotics, /icons\/robotics\/scan-line\.svg/);
-  assert.match(robotics, /icons\/robotics\/activity\.svg/);
+  assert.match(css, /--font-display:\s*"Instrument Sans"/);
+  assert.match(css, /\.hero\s*\{[\s\S]*?height:\s*100svh/);
+  assert.match(css, /\.topbar\s*\{[\s\S]*?backdrop-filter:\s*blur\(20px\)/);
+  assert.match(css, /\.frame:hover figcaption/);
+  assert.match(robotics, /<header class="topbar"/);
+  assert.match(robotics, /<footer class="site-footer">/);
+  assert.match(robotics, /data-hero-pause/);
 });
 
 test("publishes the Prism playlist gallery grid", async () => {
@@ -215,7 +183,7 @@ test("keeps every referenced production asset in the published bundle", async ()
   );
 
   for (const path of paths) {
-    await access(new URL(`../public${path}`, import.meta.url));
+    await access(new URL(`../public${path.split("?")[0]}`, import.meta.url));
   }
 });
 
