@@ -9,7 +9,6 @@
 
 ## Core pages
 
-- [Projected Intelligence](https://lightcompany.ai/projected-intelligence): What projected intelligence is, how it works, and where it is used.
 - [Prism Robotics Evaluation](https://lightcompany.ai/robotics): The Light Company system for staging physical test conditions, verifying scenes, comparing robot policies, and finding regressions.
 - [Field Gallery](https://lightcompany.ai/gallery): Films of projected intelligence and Prism systems operating in physical workspaces.
 - [Privacy Policy](https://lightcompany.ai/privacy): How information submitted through the site is handled.

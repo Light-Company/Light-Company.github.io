@@ -7,7 +7,6 @@ const outputRoot = new URL("../.pages-dist/", import.meta.url);
 test("builds every public GitHub Pages route", async () => {
   const routes = [
     "index.html",
-    "projected-intelligence/index.html",
     "robotics/index.html",
     "Robotics/index.html",
     "gallery/index.html",
@@ -25,7 +24,6 @@ test("keeps the public media and brand assets in the Pages artifact", async () =
     "media/hero-workbench.mp4",
     "site/main/styles.css",
     "site/main/script.js",
-    "site/projected-intelligence/styles.css",
     "site/robotics/ui.js",
     "media/robotics/arm-stage.mp4",
     "site/assets/fonts/barlow-semi-condensed-700.woff2",
@@ -46,7 +44,6 @@ test("publishes production contact and privacy links", async () => {
 
   assert.match(home, /hello@lght\.co/);
   assert.match(home, /href="\/privacy"/);
-  assert.match(home, /href="\/projected-intelligence"/);
   assert.match(robotics, /https:\/\/lightcompany\.ai\/robotics/);
   assert.match(robotics, /site\/robotics\/ui\.js/);
 });

@@ -78,9 +78,10 @@ a {
   position: fixed;
   inset: 0 0 auto;
   z-index: 100;
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
+  display: flex;
   align-items: center;
+  justify-content: space-between;
+  gap: 24px;
   min-height: 64px;
   padding: 0 clamp(20px, 4vw, 48px);
   background: rgba(255, 255, 255, 0.82);
@@ -89,8 +90,14 @@ a {
   border-bottom: 1px solid var(--line);
 }
 
+.topbar-start {
+  display: flex;
+  align-items: center;
+  gap: clamp(24px, 3.2vw, 46px);
+  min-width: 0;
+}
+
 .topbar-mark {
-  justify-self: start;
   display: inline-flex;
   align-items: center;
   gap: 12px;
@@ -113,9 +120,8 @@ a {
 
 .topbar-links {
   display: flex;
-  justify-self: center;
   align-items: center;
-  gap: clamp(22px, 3vw, 40px);
+  gap: clamp(20px, 2.4vw, 32px);
 }
 
 .topbar-links > a {
@@ -137,7 +143,6 @@ a {
   flex-direction: column;
   align-items: flex-end;
   gap: 3px;
-  justify-self: end;
   color: var(--ink);
   font-family: var(--font-display);
   font-size: 14px;
@@ -940,10 +945,6 @@ a {
 }
 
 @media (max-width: 760px) {
-  .topbar {
-    grid-template-columns: auto 1fr;
-  }
-
   .topbar-links {
     display: none;
   }
@@ -982,5 +983,106 @@ a {
   .reveal {
     opacity: 1;
     translate: none;
+  }
+}
+
+/* Enterprise sign in -------------------------------------------------------
+   The one committed action in the header, so it is built as a solid object
+   rather than an outline: a rounded rectangle with a lit top edge, a contact
+   shadow plus an ambient one, and a press state that genuinely depresses
+   (inset shadow, no lift, faster easing). Sits to the left of the wordmark so
+   the eye reaches the action before the address. */
+
+.topbar-end {
+  display: flex;
+  align-items: center;
+  gap: clamp(16px, 1.8vw, 26px);
+}
+
+.signin {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  height: 34px;
+  padding: 0 14px;
+  border: 0;
+  border-radius: 9px;
+  color: #fff;
+  background: var(--ink);
+  font-size: 12.5px;
+  font-weight: 560;
+  letter-spacing: -0.008em;
+  text-decoration: none;
+  white-space: nowrap;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.12),
+    0 1px 1px rgba(7, 17, 28, 0.16),
+    0 2px 6px rgba(7, 17, 28, 0.07);
+  transition:
+    transform 0.18s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.18s cubic-bezier(0.22, 1, 0.36, 1),
+    background 0.18s ease;
+}
+
+.signin:hover {
+  background: #142234;
+  transform: translateY(-1px);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.16),
+    0 2px 3px rgba(7, 17, 28, 0.18),
+    0 5px 14px rgba(7, 17, 28, 0.12);
+}
+
+.signin:active {
+  transform: translateY(0) scale(0.985);
+  box-shadow:
+    inset 0 1px 2px rgba(0, 0, 0, 0.30),
+    0 1px 2px rgba(7, 17, 28, 0.20);
+  transition-duration: 0.06s;
+}
+
+.signin:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 3px;
+}
+
+.signin-arrow {
+  width: 13px;
+  height: 13px;
+  flex: 0 0 auto;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0.7;
+  transition: transform 0.18s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.18s ease;
+}
+
+.signin:hover .signin-arrow {
+  opacity: 1;
+  transform: translateX(2px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .signin,
+  .signin:hover,
+  .signin:active,
+  .signin-arrow,
+  .signin:hover .signin-arrow {
+    transition: none;
+    transform: none;
+  }
+}
+
+@media (max-width: 860px) {
+  .topbar-end .topbar-locale {
+    display: none;
+  }
+}
+
+@media (max-width: 620px) {
+  .topbar-end .topbar-wordmark {
+    display: none;
   }
 }

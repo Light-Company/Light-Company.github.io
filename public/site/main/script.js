@@ -69,15 +69,42 @@
     const dots = [...carousel.querySelectorAll("[data-carousel-dot]")];
     const currentIndex = () => Math.round(track.scrollLeft / track.clientWidth);
     const setActiveDot = (i) => dots.forEach((dot, j) => dot.classList.toggle("is-active", j === i));
+    // Instant, not smooth: scroll-snap mandatory fights animated programmatic
+    // scrolls, which left the arrows doing nothing. The slide still changes
+    // immediately, and swiping keeps its native feel.
     const goTo = (i) => {
       const clamped = Math.max(0, Math.min(slides.length - 1, i));
-      track.scrollLeft = clamped * track.clientWidth;
+      track.scrollTo({ left: clamped * track.clientWidth, behavior: "auto" });
       setActiveDot(clamped);
     };
     carousel.querySelector("[data-carousel-prev]")?.addEventListener("click", () => goTo(currentIndex() - 1));
     carousel.querySelector("[data-carousel-next]")?.addEventListener("click", () => goTo(currentIndex() + 1));
     dots.forEach((dot, i) => dot.addEventListener("click", () => goTo(i)));
     track.addEventListener("scroll", () => setActiveDot(currentIndex()), { passive: true });
+  }
+
+  const answers = document.querySelector("[data-answers]");
+  if (answers) {
+    const slides = [...answers.querySelectorAll("[data-answer-slide]")];
+    let active = Math.max(0, slides.findIndex((s) => s.classList.contains("is-active")));
+
+    // The selected slide gets its emphasis set directly rather than relying on
+    // a class-driven restyle, so the change is applied no matter what.
+    const show = (next) => {
+      active = (next + slides.length) % slides.length;
+      slides.forEach((slide, i) => {
+        const on = i === active;
+        slide.classList.toggle("is-active", on);
+        slide.style.opacity = on ? "1" : "";
+        slide.style.transform = on ? "scale(1)" : "";
+      });
+    };
+
+    show(active);
+
+    answers.querySelector("[data-answers-prev]")?.addEventListener("click", () => show(active - 1));
+    answers.querySelector("[data-answers-next]")?.addEventListener("click", () => show(active + 1));
+    slides.forEach((slide, i) => slide.addEventListener("click", () => show(i)));
   }
 
   const revealObserver = new IntersectionObserver(

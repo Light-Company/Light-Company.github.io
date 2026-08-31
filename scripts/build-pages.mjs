@@ -7,7 +7,6 @@ const outputRoot = join(projectRoot, ".pages-dist");
 
 const pages = [
   ["site/main.html", "index.html"],
-  ["site/projected-intelligence.html", "projected-intelligence/index.html"],
   ["site/robotics.html", "robotics/index.html"],
   ["site/robotics.html", "Robotics/index.html"],
   ["site/gallery.html", "gallery/index.html"],
