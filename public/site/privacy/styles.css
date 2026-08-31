@@ -97,21 +97,59 @@ footer nav {
 .topbar-links {
   display: flex;
   align-items: center;
-  gap: clamp(20px, 2.4vw, 32px);
+  gap: clamp(26px, 3vw, 44px);
+  padding-left: clamp(28px, 3.2vw, 48px);
 }
 
+/* No pills, no rules: the spacing carries the grouping and a hairline
+   carries the state. */
 .topbar-links > a {
-  color: var(--ink-62);
-  font-size: 13px;
+  position: relative;
+  padding: 3px 0;
+  color: rgba(7, 17, 28, 0.55);
+  font-size: 14px;
   font-weight: 500;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.008em;
   text-decoration: none;
-  transition: color 0.2s ease;
+  transition: color 0.22s ease;
 }
 
-.topbar-links > a:hover,
+.topbar-links > a::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 1px;
+  background: currentColor;
+  opacity: 0;
+  transform: scaleX(0.55);
+  transform-origin: left center;
+  transition: opacity 0.22s ease, transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.topbar-links > a:hover {
+  color: var(--ink);
+}
+
+.topbar-links > a:hover::after {
+  opacity: 0.3;
+  transform: scaleX(1);
+}
+
 .topbar-links > a[aria-current="page"] {
   color: var(--ink);
+}
+
+.topbar-links > a[aria-current="page"]::after {
+  opacity: 0.8;
+  transform: scaleX(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .topbar-links > a::after {
+    transition: none;
+  }
 }
 
 .topbar-wordmark {
