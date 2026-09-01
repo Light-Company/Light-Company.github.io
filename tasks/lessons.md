@@ -5,3 +5,5 @@
 - Preserve the main hero copy exactly when reshaping the home page: "The Light Company" and "AI that points to the work. No Glasses No Headset."
 - Reverse only a duplicate text layer inside the moving spotlight; never invert the photograph or replace its soft feathered mask with a hard circle.
 - Use the full brand name "The Light Company" in every visible Robotics-page reference and accessibility label; reserve lowercase lightcompany only for URLs and asset paths.
+- For the launch selector, use one continuous 8px solid white center seam. Do not use SVG dash styling or angled geometry that stretches into fragments.
+- Do not autofocus either selector card on launch. Both cards must begin in the same idle state and show the same active frame only on hover or keyboard focus.

@@ -24,6 +24,8 @@ test("keeps the public media and brand assets in the Pages artifact", async () =
     "media/hero-workbench.mp4",
     "site/main/styles.css",
     "site/main/script.js",
+    "site/gateway/styles.css",
+    "site/gateway/animation.js",
     "site/robotics/ui.js",
     "media/robotics/arm-stage.mp4",
     "site/assets/fonts/barlow-semi-condensed-700.woff2",

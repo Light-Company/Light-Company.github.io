@@ -26,7 +26,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@500;600;700&display=swap" />
     <link rel="stylesheet" href="/site/main/styles.css" />
+    <link rel="stylesheet" href="/site/gateway/styles.css" />
     <script src="/site/main/script.js" defer></script>
+    <script type="module" src="/site/gateway/animation.js"></script>
     <script src="/site/assets/gmail-compose.js" defer></script>
     <script type="application/ld+json">
       {
@@ -57,6 +59,60 @@
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
+
+    <section class="experience-gateway" data-experience-gateway aria-labelledby="experience-gateway-title">
+      <div class="gateway-brand" aria-hidden="true">
+        <img src="/site/assets/brand/light-company-mark.svg" alt="" />
+        <span>The Light Company</span>
+      </div>
+      <p class="gateway-prompt" id="experience-gateway-title">Intelligence, projected.</p>
+      <a class="gateway-corner-action gateway-preorder" href="https://forms.gle/rVGYU4TRfpJBHDjH6" target="_blank" rel="noopener">Pre-order Prism</a>
+      <a class="gateway-corner-action gateway-signin" href="https://prism.lightcompany.ai">Platform sign in <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5" /></svg></a>
+
+      <div class="gateway-options">
+        <a class="gateway-option" href="#top" data-gateway-choice="irl" aria-describedby="gateway-irl-description">
+          <video class="gateway-option-video" autoplay muted loop playsinline preload="metadata" poster="/media/hero-reel.jpg" aria-hidden="true">
+            <source src="/media/hero-reel.mp4" type="video/mp4" />
+          </video>
+          <span class="gateway-option-blue" aria-hidden="true"></span>
+          <span class="gateway-option-content">
+            <span class="gateway-index">01 · Projected intelligence</span>
+            <h2>AI that helps IRL</h2>
+            <span class="gateway-option-description" id="gateway-irl-description">Turn the room into a computer.</span>
+            <span class="gateway-enter">Explore Prism <svg viewBox="0 0 32 16" aria-hidden="true"><path d="M1 8h28M23 2l6 6-6 6" /></svg></span>
+          </span>
+        </a>
+
+        <a class="gateway-option" href="/robotics" data-gateway-choice="robotics" aria-describedby="gateway-robotics-description">
+          <video class="gateway-option-video" autoplay muted loop playsinline preload="metadata" poster="/media/robotics/robot-policy-evaluation.jpg" aria-hidden="true">
+            <source src="/media/robotics/robot-policy-evaluation.mp4" type="video/mp4" />
+          </video>
+          <span class="gateway-option-blue" aria-hidden="true"></span>
+          <span class="gateway-option-content">
+            <span class="gateway-index">02 · Robotics</span>
+            <h2>Evals for Physical AI</h2>
+            <span class="gateway-option-description" id="gateway-robotics-description">Project every condition. Verify every scene.</span>
+            <span class="gateway-enter">Open Robotics <svg viewBox="0 0 32 16" aria-hidden="true"><path d="M1 8h28M23 2l6 6-6 6" /></svg></span>
+          </span>
+        </a>
+      </div>
+
+      <svg class="gateway-divider" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+        <g class="gateway-divider-vertical">
+          <path class="gateway-divider-line" pathLength="1" d="M50 0V100" />
+        </g>
+        <g class="gateway-divider-horizontal">
+          <path class="gateway-divider-line" pathLength="1" d="M0 50H100" />
+        </g>
+      </svg>
+
+      <div class="gateway-transition" data-gateway-transition aria-hidden="true">
+        <video muted loop playsinline preload="metadata"><source src="" type="video/mp4" /></video>
+        <span class="gateway-transition-blue"></span>
+        <span class="gateway-transition-white"></span>
+        <span class="gateway-transition-label" data-transition-label></span>
+      </div>
+    </section>
 
     <header class="topbar" aria-label="Main navigation">
       <div class="topbar-start">

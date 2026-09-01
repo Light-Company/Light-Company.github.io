@@ -8,15 +8,17 @@
   "scripts": {
     "dev": "WRANGLER_LOG_PATH=.wrangler/wrangler.log vinext dev",
     "robotics:build": "vite build --config vite.robotics.config.ts",
-    "build": "npm run robotics:build && WRANGLER_LOG_PATH=.wrangler/wrangler.log vinext build",
+    "build": "npm run gateway:build && npm run robotics:build && WRANGLER_LOG_PATH=.wrangler/wrangler.log vinext build",
+    "gateway:build": "vite build --config vite.gateway.config.ts",
     "pages:build": "node scripts/build-pages.mjs",
     "start": "WRANGLER_LOG_PATH=.wrangler/wrangler.log vinext start",
     "test": "npm run build && npm run pages:build && node --test tests/*.test.mjs",
-    "lint": "eslint . --ignore-pattern dist --ignore-pattern .next",
+    "lint": "eslint . --ignore-pattern dist --ignore-pattern .next --ignore-pattern .pages-dist --ignore-pattern public/site/gateway/animation.js",
     "db:generate": "drizzle-kit generate"
   },
   "dependencies": {
     "drizzle-orm": "0.45.2",
+    "gsap": "^3.13.0",
     "next": "16.2.6",
     "react": "19.2.6",
     "react-dom": "19.2.6"

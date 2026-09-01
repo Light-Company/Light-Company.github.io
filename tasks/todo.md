@@ -1,3 +1,90 @@
+# Connected selector cards
+
+## Direction
+
+- Inset both choices as one connected floating card with curved outer edges and a shared bottom shadow.
+- Use a clearly thick center seam, a larger Prism mark, and a blue prompt badge with white text.
+- Start with equal idle states; reveal an active frame and full-color video only on hover or keyboard focus.
+
+## Work
+
+- [x] Recompose the desktop and mobile selector as one inset connected card.
+- [x] Remove forced initial focus and give both choices identical interaction behavior.
+- [x] Verify settled, left-hover, right-hover, keyboard-focus, and narrow-screen states.
+
+## Risks
+
+- Preserve the approved selector copy, destinations, videos, and click transition.
+- Keep touch targets accessible and avoid layout animation on hover.
+
+---
+
+# Selector hover performance and center divider
+
+## Direction
+
+- Reveal each video in full color on hover and keyboard focus.
+- Remove full-screen filter and custom-property animation from the hover path.
+- Replace the stretched, dashed zigzag with one continuous solid white center divider.
+
+## Work
+
+- [x] Move hover feedback to compositor-friendly opacity and transform changes.
+- [x] Draw continuous desktop and mobile center-divider paths without dash styling.
+- [x] Rebuild, run the full checks, and keep the local preview live.
+
+## Risks
+
+- Keep the existing selector copy, destinations, videos, and click transition unchanged.
+- Preserve focus parity and reduced-motion behavior.
+
+---
+
+# Full-screen experience selector demo
+
+## Direction
+
+- Keep Omkar's homepage and the restored live Robotics page unchanged behind a launch selector.
+- Open with two full-bleed product videos on an electric-blue field.
+- Use one clean white line as the divider and one GSAP transition as the signature interaction.
+- Let the selected side turn white on hover or keyboard focus, then fill the viewport on activation.
+
+## Work
+
+- [x] Add the two-path selector and responsive mobile composition.
+- [x] Bundle GSAP locally and add an interruptible transition into each destination.
+- [x] Verify keyboard, reduced-motion, desktop, and mobile behavior in the implementation and regression checks.
+- [x] Run the full build and tests, then serve the demo locally for review.
+
+## Risks
+
+- Do not change the existing homepage or Robotics copy.
+- Do not publish this selector before the user approves the local demo.
+
+---
+
+# Preserve Omkar site with live Robotics
+
+## Direction
+
+- Keep the current `main` homepage, gallery, privacy page, navigation, and shared brand assets unchanged.
+- Restore only the `/robotics` experience from the last approved live Robotics release.
+- Keep every existing link to `/robotics` intact so the current site opens the restored page.
+
+## Work
+
+- [ ] Restore the Robotics page, styling, and client script from the approved live release.
+- [ ] Update only Robotics-specific regression checks.
+- [ ] Verify the full build, tests, lint, and exact change boundary.
+- [ ] Merge through protected `main`, publish, and verify the live route.
+
+## Risks
+
+- Do not roll back Omkar's homepage, gallery, privacy page, or shared brand mark.
+- Do not publish until the restored route and unchanged routes pass the production checks.
+
+---
+
 # Robotics lab media expansion
 
 ## Direction
