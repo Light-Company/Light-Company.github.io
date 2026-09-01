@@ -29,7 +29,7 @@ test("ships the finished Prism homepage without local-only links", async () => {
 
   assert.match(main, /<title>Prism by The Light Co\.<\/title>/);
   assert.match(main, /AI that helps IRL/);
-  assert.match(main, /Intelligence, projected\./);
+  assert.match(main, /Intelligence in every beam\./);
   assert.match(main, /Evals for Physical AI/);
   assert.match(main, /Project every condition\. Verify every scene\./);
   assert.match(main, /data-gateway-choice="irl"/);
