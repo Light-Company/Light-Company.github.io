@@ -171,21 +171,24 @@ test("publishes search and AI discovery files with every canonical page", async 
   assert.match(llms, /lght\.co/);
 });
 
-test("keeps the Robotics page on its compact visual-first layout system", async () => {
+test("keeps the Robotics page in one centered visual story", async () => {
   const [robotics, css] = await Promise.all([
     readFile(roboticsUrl, "utf8"),
     readFile(roboticsCssUrl, "utf8"),
   ]);
 
-  assert.match(css, /--shell:\s*1360px/);
-  assert.match(css, /h1\s*\{[\s\S]*?font-size:\s*clamp\(56px,\s*5\.3vw,\s*80px\)/);
+  assert.match(css, /--shell:\s*1180px/);
+  assert.match(css, /--sans:\s*-apple-system/);
+  assert.match(css, /h1\s*\{[\s\S]*?font-size:\s*clamp\(56px,\s*7\.2vw,\s*96px\)/);
   assert.match(css, /\.hero\s*\{[\s\S]*?min-height:\s*100svh/);
-  assert.match(css, /\.hero-media,[\s\S]*?\.sprite-field\s*\{[\s\S]*?inset:\s*0/);
   assert.match(css, /\.hero-content\s*\{[\s\S]*?text-align:\s*center/);
-  assert.match(css, /\.case-study\s*\{[\s\S]*?grid-template-columns:\s*minmax\(0,\s*1\.2fr\)\s*minmax\(420px,\s*0\.8fr\)/);
-  assert.match(css, /\.system-stack\s*\{[\s\S]*?grid-template-columns:\s*1\.12fr\s*repeat\(3,\s*1fr\)/);
-  assert.match(css, /\.field-reel\s*\{[\s\S]*?grid-template-columns:\s*repeat\(12,\s*minmax\(0,\s*1fr\)\)/);
-  assert.match(css, /\.field-shot-main\s*\{[\s\S]*?grid-column:\s*1\s*\/\s*span\s*8[\s\S]*?grid-row:\s*1\s*\/\s*span\s*2/);
+  assert.match(css, /\.case-study\s*\{[\s\S]*?display:\s*flex;[\s\S]*?flex-direction:\s*column/);
+  assert.match(css, /\.case-media\s*\{[\s\S]*?order:\s*2;[\s\S]*?aspect-ratio:\s*16\s*\/\s*9/);
+  assert.match(css, /\.system-stack\s*\{[\s\S]*?grid-template-columns:\s*1fr/);
+  assert.match(css, /\.system-card video\s*\{[\s\S]*?aspect-ratio:\s*16\s*\/\s*9/);
+  assert.match(css, /\.field-reel\s*\{[\s\S]*?grid-template-columns:\s*1fr/);
+  assert.equal((robotics.match(/class="field-shot/g) || []).length, 6);
+  assert.doesNotMatch(robotics, /hero-grid|sprite-field|cta-orbit/);
   assert.match(robotics, /icons\/robotics\/crosshair\.svg/);
   assert.match(robotics, /icons\/robotics\/scan-line\.svg/);
   assert.match(robotics, /icons\/robotics\/activity\.svg/);

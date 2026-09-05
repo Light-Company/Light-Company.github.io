@@ -1,5 +1,29 @@
 # Connected selector cards
 
+# Robotics single-story sample
+
+## Direction
+
+- Keep the approved Robotics copy, claims, media, routes, and brand identity.
+- Replace competing multi-column grids with one centered vertical reading lane.
+- Use large system typography, generous white space, and one matched visual at a time.
+- Make "See Prism in the lab" a simple vertical media sequence instead of a mosaic.
+
+## Work
+
+- [x] Rebuild the Robotics stylesheet around a restrained single-column system.
+- [x] Remove decorative hero and CTA layers that compete with the product footage.
+- [x] Update layout regression checks for the new vertical structure.
+- [x] Verify desktop and mobile screenshots, motion behavior, and the full test suite.
+
+## Risks
+
+- Do not rewrite approved claims or replace existing product media.
+- Keep the sample local until the user explicitly asks to publish it.
+- Preserve keyboard focus, responsive navigation, and reduced-motion behavior.
+
+---
+
 ## Direction
 
 - Inset both choices as one connected floating card with curved outer edges and a shared bottom shadow.
