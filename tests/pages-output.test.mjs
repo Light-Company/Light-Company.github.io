@@ -66,7 +66,8 @@ test("publishes the approved layouts at the canonical addresses with working cor
   for (const html of [home, robotics]) {
     assert.doesNotMatch(html, /noindex|experience-gateway|href="\/(?:prism|robotics)-vision"/);
     assert.match(html, /rel="canonical"/);
-    assert.match(html, /property="og:image" content="https:\/\/lightcompany.ai\/og.png"/);
+    assert.match(html, /property="og:image" content="https:\/\/lightcompany.ai\/og-blue.png"/);
+    assert.match(html, /name="twitter:image" content="https:\/\/lightcompany.ai\/og-blue.png"/);
     assert.match(html, /type="application\/ld\+json"/);
     const assets = new Set([...html.matchAll(/(?:src|poster|href)="(\/(?:site|media)\/[^"?#]+)/g)].map((match) => match[1]));
     await Promise.all([...assets].map((path) => access(new URL(path.slice(1), outputRoot))));

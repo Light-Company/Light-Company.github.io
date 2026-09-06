@@ -1,5 +1,6 @@
 # Publish approved Vision designs
 
+- [x] User selected the blue link-preview card; use it for both canonical pages, keep the dark alternative and original image, and preserve the headline wording.
 - [x] User approved replacing the public homepage and /robotics. Serve the approved designs at both canonical addresses, preserve existing search/share metadata, and link the corner peels between the public pages.
 - [x] Full production build, 22 tests, lint error checks, and static output/assets pass. Prior layouts retained in source for rollback.
 - [ ] Push the validated source, publish through the existing public Sites project, and verify both public pages and the new hero asset.
