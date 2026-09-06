@@ -19,6 +19,21 @@ const galleryScriptUrl = new URL("../public/site/gallery/gallery.js", import.met
 const manifestUrl = new URL("../public/site/assets/media/placements.json", import.meta.url);
 const routeUrl = new URL("../app/api/rsvp/route.ts", import.meta.url);
 
+test("uses hi@lightcompany.ai for every website contact email", async () => {
+  const files = ["main", "robotics", "gallery", "privacy", "prism-vision", "robotics-vision"];
+  for (const file of files) {
+    const html = await readFile(new URL(`../site/${file}.html`, import.meta.url), "utf8");
+    const recipients = [...html.matchAll(/href="mailto:([^"?]+)/g)].map((match) => match[1]);
+    assert.ok(recipients.length > 0, `${file} must retain its contact links`);
+    assert.ok(recipients.every((email) => email === "hi@lightcompany.ai"), file);
+    assert.doesNotMatch(html, /hello@lght\.co/);
+  }
+  const [main, llms] = await Promise.all([readFile(mainUrl, "utf8"), readFile(llmsUrl, "utf8")]);
+  assert.match(main, /"email": "hi@lightcompany\.ai"/);
+  assert.match(llms, /hi@lightcompany\.ai/);
+  assert.doesNotMatch(llms, /hello@lght\.co/);
+});
+
 test("ships the finished Prism homepage without local-only links", async () => {
   const [main, script, gatewayScript, manifest] = await Promise.all([
     readFile(mainUrl, "utf8"),

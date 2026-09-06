@@ -7,3 +7,6 @@
 - Use the full brand name "The Light Company" in every visible Robotics-page reference and accessibility label; reserve lowercase lightcompany only for URLs and asset paths.
 - For the launch selector, use one continuous 8px solid white center seam. Do not use SVG dash styling or angled geometry that stretches into fragments.
 - Do not autofocus either selector card on launch. Both cards must begin in the same idle state and show the same active frame only on hover or keyboard focus.
+- When asked to crop portrait videos into their display frames, preserve full playback duration and choose a focal point from the footage. Do not substitute blurred sidebars for the requested crop.
+- Resolve ambiguous video swaps from the marked sections. Swap the source, poster, and video description together without changing other copies of the same media.
+- Corner peels must be triangular and flush with the actual top-right page corner, not floating rectangles below navigation. Keep the crease attached and move the assembly together; reserve space for navigation and playback controls on both pages.

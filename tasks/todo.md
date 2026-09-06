@@ -1,3 +1,71 @@
+# Publish approved Vision designs
+
+- [x] User approved replacing the public homepage and /robotics. Serve the approved designs at both canonical addresses, preserve existing search/share metadata, and link the corner peels between the public pages.
+- [x] Full production build, 22 tests, lint error checks, and static output/assets pass. Prior layouts retained in source for rollback.
+- [ ] Push the validated source, publish through the existing public Sites project, and verify both public pages and the new hero asset.
+
+# Supplied Robotics landing video
+
+- [x] Inspect the complete supplied IMG_5578 3 (1).mov and make a full-length, silent H.264/SDR web copy with a matching action poster. Preserve the original.
+- [x] Replace only the Robotics reference hero video and poster; preserve text, other media, and playback controls. Scope desktop/mobile framing to this hero.
+- [x] Full build, all 21 tests, lint error checks, and local HTML/video responses pass. Full 113.3-second silent clip verified; no publication.
+
+# Flush triangular corner peels
+
+- [x] Replace the floating rectangle with a triangular blue reveal pinned to top: 0 / right: 0. Keep both crease endpoints attached while the whole fold opens on hover.
+- [x] Add reciprocal IRL and Robotics links on both reference previews; preserve all page content and video placements.
+- [x] Reserve navigation clearance and use a compact two-row mobile header so contact and primary actions remain accessible. Keep native first-tap navigation, focus indication, and reduced-motion support.
+- [x] Verified source geometry, full build, all 21 tests, lint error checks, and both local preview responses. No publication.
+
+# IRL corner-peel tab
+
+- [x] Add a fixed blue “Check out IRL” link from the Robotics reference preview to `/prism-vision`, with a folded paper corner and brief entry/hover animation.
+- [x] Match the existing blue and type; place the tab top-right below the navigation, with the hero video control on the opposite side. Include keyboard focus, safe-area spacing, touch sizing, and reduced-motion support.
+- [x] Full build, all 20 tests, lint error checks, and local preview response pass; no publication performed.
+
+# Video framing, marked Robotics swap, and contact email
+
+- [x] Swap only the marked standalone Robotics operation video and the Capability maps chapter, including posters and media descriptions. Keep the hero, gallery, section copy, and playback controls unchanged.
+- [x] Fill the four new IRL video frames, preserving full duration. Use clip-specific focal points, cap the wide-screen piano close-up at 4:3 to retain keys and hands, and keep its stage full-height on mobile to avoid empty scroll space.
+- [x] Point all site contact links, visible contact addresses, organization metadata, and discovery text to `hi@lightcompany.ai`; preserve email subjects.
+- [x] Full build, 19 regression tests, lint error checks, and both local preview responses pass. No publication performed.
+
+# New IRL footage placement
+
+- Keep the approved main-page design, headline, hero, and Robotics sample unchanged.
+- Add full desk-timer and gesture-dial clips beside the everyday-use gallery examples.
+- Group the two piano clips with learning: the live side view in the gallery, the longer first-person view as a centered cinematic chapter before notebook guidance.
+- Preserve portrait framing, complete video duration, muted loops, pause controls, and reduced-motion behavior. Tone-map the HLG originals to SDR browser copies without changing the originals.
+- Touch only the main sample HTML/CSS, new media and source records, and regression tests. Confirm source durations, all assets, and the full build/tests.
+
+## Complete
+
+- [x] Added all four full-length clips; originals remain unchanged.
+- [x] Grouped the timer and gesture dial in the daily-use gallery, then piano footage with the learning examples.
+- [x] Verified portrait orientation, H.264/SDR conversion, and full durations to within one frame of each source.
+- [x] All 17 tests, full build, and lint error checks pass; local preview responds successfully.
+- [x] Confirmed the original homepage, Robotics sample, and shared behavior/styles are byte-for-byte unchanged from the start of this edit.
+
+# Vision Pro reference sample
+
+- Build the matching main Prism sample at `/prism-vision`, reusing the approved reference typography, spacing, gallery, and motion treatment.
+- Preserve the original homepage and both Robotics samples. This is local review only.
+- Use actual Prism demos and preserve tall source footage. Convert existing GIFs to controlled, reduced-motion-aware video clips.
+- Saved the first Robotics sample in commit `695676e`; it remains at `/robotics`.
+- Build the new reference adaptation independently at `/robotics-vision`.
+- Match the supplied page: 980px content grid, 80/64/40px section titles, full-screen media, a blurred manifesto transition, and an inline closer-look carousel.
+- Preserve The Light Company branding, approved Robotics claims, copy, and media. Keep pilot outcomes identified as estimates.
+- Verify the carousel, video controls, reduced motion, mobile layout, and build. Keep both samples local.
+
+## Verification and follow-up
+
+- [x] Desktop and 390px mobile previews checked for both samples; no horizontal overflow.
+- [x] Full gallery navigation, manual playback, offscreen pausing, reduced motion, and hidden hero keyboard focus checked.
+- [x] Preserve the approved Robotics sample and original homepage; add independent preview routes only.
+- [x] Replace 3.1-second main-gallery loops with full newspaper, chess, books, and drawing source videos. Full air hockey uses its inline YouTube player because direct retrieval returned 403; playback verified.
+- [x] Replace the Robotics “Set the test condition” visual with the complete 11.833-second user upload; convert HDR to SDR for consistent browser playback.
+- [x] Final full build, all 16 tests, and lint error checks pass after the full-video follow-up.
+
 # Connected selector cards
 
 # Robotics single-story sample

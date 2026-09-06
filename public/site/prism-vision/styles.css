@@ -1,0 +1,69 @@
+/* Reuse the approved Robotics reference scale; only media framing differs. */
+.prism-home .full-demo { background: #000; }
+.prism-home .full-demo iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.prism-home .full-demo-poster { position: relative; z-index: 1; }
+.prism-home .full-demo.is-ready .full-demo-poster { opacity: 0; pointer-events: none; }
+.prism-home .full-demo-fallback { position: absolute; z-index: 2; left: 20px; bottom: 22px; padding: 10px 14px; background: #fff; color: var(--ink); border-radius: 20px; font-size: 13px; }
+.prism-home .full-demo.is-ready .full-demo-fallback { display: none; }
+.prism-home .full-demo [hidden] { display: none; }
+.prism-home .gallery-media-portrait { background: #151519; }
+.prism-home .gallery-media-portrait video { position: relative; object-fit: cover; }
+.prism-home .gallery-media-timer video { object-position: 50% 70%; }
+.prism-home .gallery-media-dial video { object-position: 50% 75%; }
+.prism-home .gallery-media-piano video { object-position: 50% 60%; }
+.prism-home .product-introduction,
+.prism-home .founders-story,
+.prism-home .robotics-entry { padding: 180px 0 0; text-align: center; }
+.prism-home .product-introduction h2,
+.prism-home .founders-story h2,
+.prism-home .robotics-entry h2 { font-size: 80px; line-height: 84px; letter-spacing: -.015em; font-weight: 700; }
+.prism-home .product-portrait { width: min(692px, 87.5%); margin: 90px auto 0; }
+.prism-home .product-portrait img { width: 100%; height: auto; border-radius: 20px; }
+.prism-home .cinematic-portrait .cinematic-stage { background: #151519; }
+.prism-home .cinematic-backdrop { position: absolute; inset: -5%; width: 110%; max-width: none; height: 110%; object-fit: cover; filter: blur(35px); opacity: .3; }
+.prism-home .cinematic-portrait video { object-fit: contain; }
+/* Cap the piano close-up at 4:3 on wide screens; retain a full-height stage on phones. */
+.prism-home .cinematic-piano .cinematic-stage { width: min(100%, calc((100svh - var(--nav)) * 4 / 3)); height: calc(100svh - var(--nav)); min-height: 0; margin-inline: auto; }
+.prism-home .cinematic-piano video { object-fit: cover; object-position: 50% 75%; }
+.prism-home .perception { padding-bottom: 150px; }
+.prism-home .perception-film { position: relative; width: min(1000px, 100%); margin: 90px auto 0; }
+.prism-home .perception-film video { width: 100%; }
+.prism-home .perception-copy { margin-top: 60px; text-align: center; font-size: 24px; line-height: 32px; font-weight: 600; color: var(--gray); }
+.prism-home .founders-story { padding-bottom: 180px; }
+.prism-home .founders-photo { margin-top: 85px; }
+.prism-home .founders-photo img { width: 100%; height: auto; border-radius: 20px; }
+.prism-home .robotics-entry { background: #000; color: #f5f5f7; overflow: hidden; }
+.prism-home .robotics-entry p:not(.eyebrow) { max-width: 620px; margin: 35px auto 25px; font-size: 24px; line-height: 32px; font-weight: 600; color: var(--gray); }
+.prism-home .robotics-entry .text-link { color: #2997ff; font-size: 21px; }
+.prism-home .robotics-entry-visual { display: block; position: relative; margin-top: 80px; }
+.prism-home .robotics-entry-visual img { width: 100%; height: auto; max-height: 760px; object-fit: cover; }
+.prism-home .robotics-entry-visual::after { content: ""; position: absolute; inset: 0; background: linear-gradient(#000, transparent 30%); pointer-events: none; }
+@media (max-width: 1068px) {
+  .prism-home .product-introduction,
+  .prism-home .founders-story,
+  .prism-home .robotics-entry { padding-top: 130px; }
+  .prism-home .product-introduction h2,
+  .prism-home .founders-story h2,
+  .prism-home .robotics-entry h2 { font-size: 64px; line-height: 68px; letter-spacing: -.009em; }
+  .prism-home .founders-story { padding-bottom: 130px; }
+}
+@media (max-width: 734px) {
+  .prism-home .hero-actions .button:first-child { width: auto; }
+  .prism-home .hero-video { object-position: center; }
+  .prism-home .product-introduction,
+  .prism-home .founders-story,
+  .prism-home .robotics-entry { padding-top: 110px; }
+  .prism-home .product-introduction h2,
+  .prism-home .founders-story h2,
+  .prism-home .robotics-entry h2 { font-size: 40px; line-height: 44px; letter-spacing: 0; }
+  .prism-home .product-portrait,
+  .prism-home .founders-photo { margin-top: 55px; }
+  .prism-home .perception { padding-bottom: 100px; }
+  .prism-home .perception-film { margin-top: 55px; }
+  .prism-home .perception-copy { margin-top: 40px; font-size: 19px; line-height: 27px; }
+  .prism-home .founders-story { padding-bottom: 110px; }
+  .prism-home .robotics-entry p:not(.eyebrow) { font-size: 19px; line-height: 27px; }
+  .prism-home .robotics-entry .text-link { font-size: 17px; }
+  .prism-home .robotics-entry-visual { margin-top: 55px; }
+  .prism-home .robotics-entry-visual img { height: 380px; object-position: center; }
+}

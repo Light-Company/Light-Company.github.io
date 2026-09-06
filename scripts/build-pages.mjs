@@ -1,4 +1,5 @@
-import { cp, mkdir, rm, writeFile } from "node:fs/promises";
+import { cp, mkdir, readFile, rm, writeFile } from "node:fs/promises";
+import { publishedVisionHtml } from "../lib/published-vision.mjs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -20,7 +21,16 @@ await cp(join(projectRoot, "public"), outputRoot, { recursive: true });
 for (const [source, destination] of pages) {
   const destinationPath = join(outputRoot, destination);
   await mkdir(dirname(destinationPath), { recursive: true });
-  await cp(join(projectRoot, source), destinationPath);
+  const sample = source === "site/main.html" ? "prism-vision" : source === "site/robotics.html" ? "robotics-vision" : null;
+  if (sample) {
+    const [approved, previous] = await Promise.all([
+      readFile(join(projectRoot, `site/${sample}.html`), "utf8"),
+      readFile(join(projectRoot, source), "utf8"),
+    ]);
+    await writeFile(destinationPath, publishedVisionHtml(approved, previous));
+  } else {
+    await cp(join(projectRoot, source), destinationPath);
+  }
 }
 
 await writeFile(join(outputRoot, ".nojekyll"), "");

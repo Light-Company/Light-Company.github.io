@@ -1,0 +1,11 @@
+{
+  "robotics-hero-full.mp4": {
+    "sourceFile": "IMG_5578 3 (1).mov",
+    "sourceDurationSeconds": 113.293333,
+    "durationSeconds": 113.3,
+    "encoding": "1920x1080 H.264, 30 fps, SDR BT.709, muted, fast-start",
+    "edit": "Full source duration retained; HLG tone-mapped to SDR. Original untouched.",
+    "poster": "robotics-hero-full.jpg",
+    "posterTimeSeconds": 62.5
+  }
+}
