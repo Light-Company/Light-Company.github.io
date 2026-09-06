@@ -1,0 +1,11 @@
+{
+  "piano-guidance-full.mp4": { "sourceFile": "IMG_8907.mov", "durationSeconds": 22.878333, "edit": "Full-length portrait video; HLG to SDR BT.709; muted H.264 MP4" },
+  "piano-live-full.mp4": { "sourceFile": "IMG_8908.mov", "durationSeconds": 15.7467, "edit": "Full-length portrait video; HLG to SDR BT.709; muted H.264 MP4" },
+  "desk-timer-full.mp4": { "sourceFile": "IMG_8979.mov", "durationSeconds": 21.39, "edit": "Full-length portrait video; HLG to SDR BT.709; muted H.264 MP4" },
+  "gesture-dial-full.mp4": { "sourceFile": "IMG_8973.mov", "durationSeconds": 31.545, "edit": "Full-length portrait video; HLG to SDR BT.709; muted H.264 MP4" },
+  "newspaper-full.mp4": { "source": "https://www.youtube.com/watch?v=y228KXS4wVg", "durationSeconds": 17.4, "edit": "Full video stream; audio removed; fast-start MP4" },
+  "chess-full.mp4": { "source": "https://www.youtube.com/watch?v=H-fQiTYJAV4", "durationSeconds": 41.133333, "edit": "Full video stream; audio removed; fast-start MP4" },
+  "books-full.mp4": { "source": "https://www.youtube.com/watch?v=8l_HrdypTt8", "durationSeconds": 37.733333, "edit": "Full video stream; audio removed; fast-start MP4" },
+  "drawing-full.mp4": { "source": "https://www.youtube.com/watch?v=MpvXBa2JWww", "durationSeconds": 28.666667, "edit": "Full video stream; audio removed; fast-start MP4" },
+  "air-hockey": { "source": "https://www.youtube.com/watch?v=HG1q5wkIn6g", "durationSeconds": 76, "playback": "Full inline player; muted loop" }
+}
