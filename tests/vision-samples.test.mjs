@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { access, readFile } from "node:fs/promises";
+import { access, readFile, stat } from "node:fs/promises";
 import test from "node:test";
 
 for (const name of ["robotics-vision", "prism-vision"]) {
@@ -126,6 +126,8 @@ test("uses the full supplied Robotics landing video without changing other place
   const source = sources["robotics-hero-full.mp4"];
   assert.equal(source.sourceFile, "IMG_5578 3 (1).mov");
   assert.ok(Math.abs(source.sourceDurationSeconds - source.durationSeconds) < 1 / 30);
+  const video = await stat(new URL("../public/site/robotics-vision/robotics-hero-full.mp4", import.meta.url));
+  assert.ok(video.size < 25 * 1024 * 1024, "Hero must fit the hosting static-asset limit");
 });
 
 test("offers reciprocal triangular corner-peel links on both previews", async () => {

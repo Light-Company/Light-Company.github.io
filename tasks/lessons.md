@@ -10,3 +10,4 @@
 - When asked to crop portrait videos into their display frames, preserve full playback duration and choose a focal point from the footage. Do not substitute blurred sidebars for the requested crop.
 - Resolve ambiguous video swaps from the marked sections. Swap the source, poster, and video description together without changing other copies of the same media.
 - Corner peels must be triangular and flush with the actual top-right page corner, not floating rectangles below navigation. Keep the crease attached and move the assembly together; reserve space for navigation and playback controls on both pages.
+- Keep hosted video files below the 25 MiB static-asset limit and verify full duration after compression. Large source-history uploads can fail even when the current output is valid; use an exact-tree release snapshot based on the existing Sites head without including superseded oversized video blobs.

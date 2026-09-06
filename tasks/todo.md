@@ -4,6 +4,7 @@
 - [x] User approved replacing the public homepage and /robotics. Serve the approved designs at both canonical addresses, preserve existing search/share metadata, and link the corner peels between the public pages.
 - [x] Full production build, 22 tests, lint error checks, and static output/assets pass. Prior layouts retained in source for rollback.
 - [ ] Push the validated source, publish through the existing public Sites project, and verify both public pages and the new hero asset.
+- Transfer finding: bulk source push failed with HTTP 413; the 38 MB hero blob failed twice with HTTP 500. IRL media transfer succeeded. Optimize the full hero below 25 MiB and publish an identical-tree source snapshot based on the existing Sites head, retaining the full original history on GitHub.
 
 # Supplied Robotics landing video
 
