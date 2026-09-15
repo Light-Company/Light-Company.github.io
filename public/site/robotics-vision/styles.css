@@ -39,6 +39,9 @@ figure, h1, h2, h3, p { margin: 0; }
 .local-nav nav { display: flex; align-items: center; gap: 25px; font-size: 12px; }
 .button { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 11px 21px; border: 1px solid transparent; border-radius: 999px; background: var(--blue); color: #fff; font-size: 17px; line-height: 20px; text-align: center; transition: background 160ms ease, color 160ms ease; }
 .button-small { min-height: 28px; padding: 4px 13px; font-size: 12px; line-height: 18px; }
+.button-investor { gap: 10px; }
+.button-investor:hover { background: #0065cd; }
+.local-nav nav > .investor-nav-link { color: var(--blue); font-weight: 600; }
 .button-black { background: var(--ink); }
 .button-black:hover { background: #363638; }
 .button-outline { border-color: var(--ink); background: transparent; color: var(--ink); }
