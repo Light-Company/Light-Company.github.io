@@ -7,7 +7,8 @@ const projectRoot = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const outputRoot = join(projectRoot, ".pages-dist");
 
 const pages = [
-  ["site/main.html", "index.html"],
+  ["site/robotics.html", "index.html"],
+  ["site/main.html", "prism-vision/index.html"],
   ["site/robotics.html", "robotics/index.html"],
   ["site/robotics.html", "Robotics/index.html"],
   ["site/gallery.html", "gallery/index.html"],
@@ -29,7 +30,8 @@ for (const [source, destination] of pages) {
       readFile(join(projectRoot, `site/${sample}.html`), "utf8"),
       readFile(join(projectRoot, source), "utf8"),
     ]);
-    await writeFile(destinationPath, publishedVisionHtml(approved, previous));
+    const canonicalUrl = sample === "robotics-vision" ? "https://lightcompany.ai/" : "https://lightcompany.ai/prism-vision";
+    await writeFile(destinationPath, publishedVisionHtml(approved, previous, { canonicalUrl }));
   } else {
     await cp(join(projectRoot, source), destinationPath);
   }

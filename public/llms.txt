@@ -9,6 +9,9 @@
 
 ## Core pages
 
+- [Robotics homepage](https://lightcompany.ai/): Prism robotics evaluation is the default experience; the direct /robotics route remains available.
+- [AR without glasses](https://lightcompany.ai/prism-vision): The original Prism vision and demonstrations of intelligent projected light for physical work.
+- [Prism investor story](https://lightcompany.ai/robotics/investors): Customer results, demonstrations, evaluation cases, and the software and data opportunity.
 - [Prism Robotics Evaluation](https://lightcompany.ai/robotics): The Light Company system for staging physical test conditions, verifying scenes, comparing robot policies, and finding regressions.
 - [Field Gallery](https://lightcompany.ai/gallery): Films of projected intelligence and Prism systems operating in physical workspaces.
 - [Privacy Policy](https://lightcompany.ai/privacy): How information submitted through the site is handled.

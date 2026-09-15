@@ -9,6 +9,7 @@ test("builds every public GitHub Pages route", async () => {
     "index.html",
     "robotics/index.html",
     "Robotics/index.html",
+    "prism-vision/index.html",
     "gallery/index.html",
     "privacy/index.html",
     "404.html",
@@ -55,16 +56,22 @@ test("publishes production contact and privacy links", async () => {
   assert.match(robotics, /site\/robotics-vision\/script\.js/);
 });
 
-test("publishes the approved layouts at the canonical addresses with working corner links", async () => {
+test("opens Robotics by default and preserves the direct Robotics and AR experiences", async () => {
   const home = await readFile(new URL("index.html", outputRoot), "utf8");
   const robotics = await readFile(new URL("robotics/index.html", outputRoot), "utf8");
-  assert.match(home, /AI that helps IRL\./);
-  assert.match(home, /class="corner-peel-link" href="\/robotics"/);
-  assert.match(robotics, /class="corner-peel-link" href="\/"/);
+  const ar = await readFile(new URL("prism-vision/index.html", outputRoot), "utf8");
+  assert.equal(home, robotics);
+  assert.match(home, /Stop guessing\. Make real progress/);
+  assert.match(home, /rel="canonical" href="https:\/\/lightcompany.ai\/"/);
+  assert.match(robotics, /class="corner-peel-link" href="\/prism-vision"/);
   assert.match(robotics, /robotics-hero-full.mp4/);
-  assert.match(home, /piano-guidance-full.mp4/);
-  for (const html of [home, robotics]) {
-    assert.doesNotMatch(html, /noindex|experience-gateway|href="\/(?:prism|robotics)-vision"/);
+  assert.match(ar, /AI that helps IRL\./);
+  assert.match(ar, /class="corner-peel-link" href="\/robotics"/);
+  assert.match(ar, /piano-guidance-full.mp4/);
+  assert.match(ar, /rel="canonical" href="https:\/\/lightcompany.ai\/prism-vision"/);
+  for (const html of [home, robotics, ar]) {
+    assert.doesNotMatch(html, /noindex|experience-gateway|href="\/robotics-vision"/);
+    assert.match(html, /class="button button-investor" href="\/robotics\/investors"/);
     assert.match(html, /rel="canonical"/);
     assert.match(html, /property="og:image" content="https:\/\/lightcompany.ai\/og-blue.png"/);
     assert.match(html, /name="twitter:image" content="https:\/\/lightcompany.ai\/og-blue.png"/);

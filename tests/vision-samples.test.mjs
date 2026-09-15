@@ -3,7 +3,7 @@ import { access, readFile, stat } from "node:fs/promises";
 import test from "node:test";
 
 for (const name of ["robotics-vision", "prism-vision"]) {
-  test(`${name} is an independent, non-indexed reference preview`, async () => {
+  test(`${name} retains its standalone video template and controls`, async () => {
     const html = await readFile(new URL(`../site/${name}.html`, import.meta.url), "utf8");
     const route = await readFile(new URL(`../app/${name}/route.ts`, import.meta.url), "utf8");
     assert.ok(route.includes(`site/${name}.html?raw`));
@@ -26,7 +26,7 @@ for (const name of ["robotics-vision", "prism-vision"]) {
   });
 }
 
-test("main reference sample shares the approved presentation without replacing the homepage", async () => {
+test("the original AR presentation and legacy source remain available", async () => {
   const [sample, main, css, script] = await Promise.all([
     readFile(new URL("../site/prism-vision.html", import.meta.url), "utf8"),
     readFile(new URL("../site/main.html", import.meta.url), "utf8"),

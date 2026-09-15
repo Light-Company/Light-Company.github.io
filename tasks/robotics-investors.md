@@ -11,6 +11,7 @@ Visual system: existing system sans; white/ink/soft gray; blue action and improv
 - [x] Complete actual video chapters, data explorer, software economics, founder and AR vision.
 - [x] Link from Robotics and the existing document library.
 - [x] Add blue For investors entry buttons to the homepage and Robotics opening, with matching links in their section navigation.
+- [x] Make Robotics the default homepage while preserving /robotics and the original AR experience at /prism-vision. Keep IRL and wider-vision links directed to the AR page.
 - [x] Verify calculations, empty coverage, asset paths, accessibility fallbacks, full build and existing regressions.
 - [x] Review source diff and prepare the checked build for publication through the existing public Sites project.
 
