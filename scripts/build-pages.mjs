@@ -14,6 +14,7 @@ const pages = [
   ["site/gallery.html", "gallery/index.html"],
   ["site/investors.html", "investors/index.html"],
   ["site/robotics-investors.html", "robotics/investors/index.html"],
+  ["site/demo.html", "demo/index.html"],
   ["site/privacy.html", "privacy/index.html"],
 ];
 
