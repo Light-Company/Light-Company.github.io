@@ -14,7 +14,7 @@
 - [x] Integrate Stripe Payment Links with exact host validation and inactive fallback until the real offer is supplied.
 - [x] Connect existing purchase CTAs, preserve the rest of the site, and add static export/discovery entries.
 - [x] Verify desktop/mobile (320, 390, 768 and 1280px), gallery, hardware selectors, pause control, FAQ, full build and 39 tests. Reduced motion CSS reviewed. Changed-file ESLint and diff checks pass. Full lint has no errors and 704 existing warnings. Type check has the same 3 Cloudflare type errors as the unchanged live baseline.
-- [ ] Push complete branch and create reviewable pull request; show the local page.
+- [x] Push feat/prism-order-page and create draft PR #15; publish Sites version 24 and verify https://lightcompany.ai/order in the browser.
 
 ## Release dependencies
 - The public site has conflicting historical $250 preorder and $1,500 station offers. User confirmation of the current offer is pending.
@@ -27,3 +27,10 @@
 - Both new studio views were generated from the original supplied Prism design; the working prototype and lab images are real photographs.
 - Browser verification found no console errors, broken images or horizontal overflow at the tested widths.
 - All purchasing CTAs on the live Robotics homepage now enter /order.
+
+## Release result
+- Implementation commit: c4b2d188aabae34dea319e01abfd1653d7ed9831.
+- Published Sites version 24, deployment appgdep_6ac98e033330819184b2439b5bbd6ea7.
+- Live browser checks: product images load, hardware selector and prototype gallery work, no console errors, contact-to-order link resolves correctly.
+- GitHub draft PR: https://github.com/Light-Company/Light-Company.github.io/pull/15. GitHub main differs from the existing live Sites history; merge reconciliation remains separate from this successful Sites publication.
+- Stripe activation remains pending the current price and live Payment Link. No live charges made.
