@@ -2,6 +2,8 @@
 
 ## Current release — preorder interest
 
+- Homepage follow-up: add a blue `Order now` link in the initial header and scrolling product navigation, targeting `/order#preorder`. Keep it visible at phone/tablet widths beside the existing corner peel. Browser navigation and header spacing checked at 320, 778, and 1280 CSS pixels; build and all 49 tests pass.
+
 - User-directed revision: continue the existing Robotics site, prioritize a compact lead form, and use the approved robot-arm projection artwork and October 1 product PDF.
 - Implementation commit: `4c73365946fcdb6535404ce8adaee99bb5a1e893`.
 - Sites version 25, deployment `appgdep_6ac991ddaa6c8191a04ad7d5f0e725c7`, succeeded. Live: https://lightcompany.ai/order.

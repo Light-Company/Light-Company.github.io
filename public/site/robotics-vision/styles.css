@@ -39,6 +39,8 @@ figure, h1, h2, h3, p { margin: 0; }
 .local-nav nav { display: flex; align-items: center; gap: 25px; font-size: 12px; }
 .button { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 11px 21px; border: 1px solid transparent; border-radius: 999px; background: var(--blue); color: #fff; font-size: 17px; line-height: 20px; text-align: center; transition: background 160ms ease, color 160ms ease; }
 .button-small { min-height: 28px; padding: 4px 13px; font-size: 12px; line-height: 18px; }
+.global-nav .nav-order { flex-shrink: 0; min-height: 32px; }
+.global-nav .nav-order:hover { background: #0065cd; color: #fff; }
 .button-investor { gap: 10px; }
 .button-investor:hover { background: #0065cd; }
 .local-nav nav > .investor-nav-link { color: var(--blue); font-weight: 600; }
@@ -151,6 +153,7 @@ footer a:hover { text-decoration: underline; }
 @media (max-width: 1068px) {
   :root { --content: 692px; --gallery-wide: 692px; --gallery-narrow: 336px; --gallery-height: 446px; }
   .global-nav nav { gap: 16px; }
+  .global-nav-order nav > a:not(.company):not(.nav-order) { display: none; }
   .hero-lockup { font-size: 58px; }
   .hero-lockup img { width: 55px; height: 55px; }
   .hero-lower { align-items: flex-start; flex-direction: column; gap: 22px; }
