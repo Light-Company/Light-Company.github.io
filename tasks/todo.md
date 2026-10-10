@@ -317,5 +317,5 @@
 - [x] Add form, projection assets and approved product PDF; remove the long launch sequence.
 - [x] Add validated same-origin POST and additive D1 migration; test invalid, failed and repeated submissions.
 - [x] Verify responsive page, playing lab video and real persistence locally. Final build and all 49 tests pass; changed-file lint and diff checks pass. Independent review resolved.
-- [ ] Verify production migration and a labeled synthetic submission in the live database.
-- [ ] Push same branch, update PR, publish, show the live revision.
+- [x] Verify production migration and a labeled synthetic submission in the live database. The browser showed success; readback confirmed all submitted fields and unchecked update consent.
+- [x] Push same branch, update PR, publish, show the live revision. Sites version 25 is live at https://lightcompany.ai/order.

@@ -1,5 +1,19 @@
 # Prism order page
 
+## Current release — preorder interest
+
+- User-directed revision: continue the existing Robotics site, prioritize a compact lead form, and use the approved robot-arm projection artwork and October 1 product PDF.
+- Implementation commit: `4c73365946fcdb6535404ce8adaee99bb5a1e893`.
+- Sites version 25, deployment `appgdep_6ac991ddaa6c8191a04ad7d5f0e725c7`, succeeded. Live: https://lightcompany.ai/order.
+- Production database migration confirmed. Browser submission displayed success, and private D1 readback confirmed the labeled synthetic `example.com` record with name, company, setup details, quantity, and `updates_opt_in=0`.
+- Full build and all 49 tests passed. Changed-file lint, diff review, desktop/mobile layout, optional-field validation, and real lab video playback verified.
+- No payment is taken; the Stripe module is retained but unused by this page. See `docs/preorder-leads.md` for storage and operating notes.
+- Branch pushed and draft PR #15 updated. GitHub main reconciliation remains separate from this Sites publication.
+
+## Previous release — version 24
+
+The following notes record the earlier launch-page design, superseded by the preorder interest revision above.
+
 ## Direction
 - Add `/order` to the existing live source ffe0e6a without replacing the homepage or lab evidence.
 - Use the supplied Prism concept as the product identity, two new generated studio views, real lab photos, and the existing thermal Light Company flag.
