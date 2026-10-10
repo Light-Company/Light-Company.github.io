@@ -13,3 +13,4 @@
 - Keep hosted video files below the 25 MiB static-asset limit and verify full duration after compression. Large source-history uploads can fail even when the current output is valid; use an exact-tree release snapshot based on the existing Sites head without including superseded oversized video blobs.
 
 - A product preorder page should continue the existing site’s typography and navigation, keep lead capture prominent, and use the approved projection/workcell material. Do not expand it into a separate launch website when the desired conversion is name, email, company, and use case.
+- For a requested video swap, resolve both the named source section and the destination page from the conversation. The Stage / Set the test condition clip was requested for the order page; ambient homepage browser context did not make the homepage the edit target.
