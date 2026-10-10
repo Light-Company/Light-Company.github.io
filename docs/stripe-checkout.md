@@ -1,8 +1,8 @@
 # Prism orders and Stripe
 
-The order page uses a Stripe-hosted Payment Link. It works on both the existing Sites Worker and the static GitHub Pages export without a payment API or a Stripe SDK. Card details are entered on Stripe, never on this website.
+The current order page collects preorder interest in the private site database and does not take payment. See [Preorder interest](preorder-leads.md) for the live form and storage behavior.
 
-The checked-in offer is in inquiry mode: `active` is `false`, and `unitAmount` and `paymentLink` are `null`. Buyers can contact `hi@lightcompany.ai` to order. The repository's older $250 pre-order label and $1,500 investor hardware price do not determine the new offer.
+The Stripe Payment Link module is retained for a future confirmed paid offer. Its checked-in configuration is inactive: `active` is `false`, and `unitAmount` and `paymentLink` are `null`. The current page does not load this configuration; changing it alone will not enable checkout. The repository's older $250 pre-order label and $1,500 investor hardware price do not determine a new offer.
 
 ## Configure the actual offer
 
@@ -10,7 +10,7 @@ The checked-in offer is in inquiry mode: `active` is `false`, and `unitAmount` a
 2. Agree on delivery timing, supported destinations, shipping charges, cancellation/refund terms, and any warranty or software costs. Add the confirmed terms to the order page and relevant Stripe checkout fields. Do not use the current delivery summary as a promised ship date.
 3. In Stripe Dashboard, create the Product and one-time Price for that offer. Create a Payment Link for that Price. Configure billing/shipping information, permitted destinations, shipping rates, taxes as applicable, customer contact details, and quantity limits in Stripe. The website does not override the price or quantity.
 4. Configure the Stripe confirmation page and receipt settings. A website return page must not treat a URL parameter or a visit as evidence that payment succeeded. Use Stripe's payment record for manual fulfillment. If fulfillment is automated later, use verified webhook events with duplicate-event handling.
-5. Exercise the flow in Stripe's test environment before activation. `resolveOffer(config, { live: false })` permits a `test_` Payment Link for a development test. The public page calls `resolveOffer(config)` and requires a live link; a `live` property in the public JSON cannot disable this check.
+5. Exercise the flow in Stripe's test environment before activation. `resolveOffer(config, { live: false })` permits a `test_` Payment Link for a development test. When connecting checkout to the page, call `resolveOffer(config)` to require a live link; a `live` property in the public JSON cannot disable this check.
 6. Copy the real live `https://buy.stripe.com/...` URL into `public/site/order/offer.json`. Set `unitAmount` to the price in integer cents, `currency` to `USD`, `kind` to `hardware` or `preorder`, and populate `includes` and `shippingSummary` from the confirmed offer. Keep `maxQuantity` consistent with the Stripe configuration. Set `active` to `true` only when the displayed offer and Stripe checkout match.
 7. Run `npm test` and `npm run lint`, review the order page and the Stripe-hosted checkout, and publish through the normal branch/review process. Do not submit a live payment as a site verification step.
 

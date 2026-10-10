@@ -9,7 +9,7 @@
 
 ## Core pages
 
-- [Order Prism](https://lightcompany.ai/order): Explore Prism hardware, laboratory results, and ordering options for robot evaluation.
+- [Preorder Prism](https://lightcompany.ai/order): Join the Prism preorder interest list, share your company and use case, and explore projected guidance and vision verification. No payment is taken by the form.
 - [Robotics homepage](https://lightcompany.ai/): Prism robotics evaluation is the default experience; the direct /robotics route remains available.
 - [AR without glasses](https://lightcompany.ai/prism-vision): The original Prism vision and demonstrations of intelligent projected light for physical work.
 - [Prism investor story](https://lightcompany.ai/robotics/investors): Customer results, demonstrations, evaluation cases, and the software and data opportunity.

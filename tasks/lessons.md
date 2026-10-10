@@ -11,3 +11,5 @@
 - Resolve ambiguous video swaps from the marked sections. Swap the source, poster, and video description together without changing other copies of the same media.
 - Corner peels must be triangular and flush with the actual top-right page corner, not floating rectangles below navigation. Keep the crease attached and move the assembly together; reserve space for navigation and playback controls on both pages.
 - Keep hosted video files below the 25 MiB static-asset limit and verify full duration after compression. Large source-history uploads can fail even when the current output is valid; use an exact-tree release snapshot based on the existing Sites head without including superseded oversized video blobs.
+
+- A product preorder page should continue the existing site’s typography and navigation, keep lead capture prominent, and use the approved projection/workcell material. Do not expand it into a separate launch website when the desired conversion is name, email, company, and use case.

@@ -306,3 +306,16 @@
 - Do not present an unsupported estimate as an audited result.
 - Avoid adding more decorative cards or dashboard chrome.
 - Preserve the existing hero, media, routes, and CTA labels.
+
+
+# Prism preorder page revision
+
+- Match the existing Robotics typography, white/gray palette (#fff, #f5f5f7, #1d1d1f, #6e6e73) and blue (#0071e3) controls. Use the existing global navigation and footer.
+- Replace the cinematic launch page with a compact two-column product explanation and preorder interest form. The approved robot-arm projection illustration is the main visual.
+- Required: full name, work email, company/lab. Optional: use case, role, robot, quantity, product update consent. Save to private D1; success only after the server confirms persistence.
+- [x] Existing baseline: build and 39 tests pass.
+- [x] Add form, projection assets and approved product PDF; remove the long launch sequence.
+- [x] Add validated same-origin POST and additive D1 migration; test invalid, failed and repeated submissions.
+- [x] Verify responsive page, playing lab video and real persistence locally. Final build and all 49 tests pass; changed-file lint and diff checks pass. Independent review resolved.
+- [ ] Verify production migration and a labeled synthetic submission in the live database.
+- [ ] Push same branch, update PR, publish, show the live revision.
