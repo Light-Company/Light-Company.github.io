@@ -441,11 +441,27 @@ h3, .h3 { font-size: clamp(18px, 1.3vw, 20px); line-height: 1.1; letter-spacing:
 @keyframes deepIn { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
 @media (max-width: 760px) { .deep summary { grid-template-columns: 36px 1fr auto; gap: 12px; } .deep-d { grid-column: 2 / -1; grid-row: 2; } .deep-x { font-size: 0; } .deep-x::after { font-size: 22px; } }
 
-/* team logos: where we come from, who backs us */
-.logos { list-style: none; margin: 32px 0 0; padding: 22px 0 0; border-top: 1px solid var(--line); display: flex; flex-wrap: wrap; align-items: center; gap: 18px 40px; }
-.logos li { display: inline-flex; align-items: center; gap: 10px; color: var(--text); opacity: 0.86; transition: opacity 0.25s; }
-.logos li:hover { opacity: 1; }
-.logos li > span { font: 600 17px/1 var(--display); letter-spacing: -0.02em; }
-.logos .logo-apple { width: 22px; height: 22px; margin-top: -3px; }
-.logos .logo-cmu { font: 600 14.5px/1.08 Georgia, "Times New Roman", serif !important; letter-spacing: 0 !important; }
-.logos img { width: 26px; height: 26px; border-radius: 6px; background: #1a1a1a; padding: 3px; }
+/* credentials: who built it, who backs it. quiet, monochrome */
+.creds { display: flex; flex-wrap: wrap; gap: 12px 28px; margin: 0 0 28px; font-size: 14px; color: var(--text); text-shadow: 0 1px 14px rgba(0,0,0,0.6); }
+.creds .mono { font-size: 11px; color: rgba(255,255,255,0.7); margin-right: 4px; }
+.creds-g { display: inline-flex; align-items: center; gap: 14px; }
+.creds-g + .creds-g { padding-left: 28px; border-left: 1px solid var(--line-2); }
+.creds img { opacity: 0.9; }
+.creds .cl-apple { width: 15px; height: 15px; margin-top: -3px; }
+.creds .cl-cmu { width: auto; height: 13px; }
+.creds .cl-fi { width: 18px; height: 18px; border-radius: 4px; background: #1a1a1a; padding: 2px; margin-right: 6px; }
+.creds a { display: inline-flex; align-items: center; color: var(--text); font-weight: 500; }
+@media (max-width: 760px) { .creds-g + .creds-g { padding-left: 0; border-left: 0; } }
+
+.logos { display: flex; flex-wrap: wrap; gap: 24px 56px; margin: 32px 0 0; padding-top: 24px; border-top: 1px solid var(--line); }
+.logos .mono { display: block; font-size: 11px; margin-bottom: 14px; }
+.logo-row { display: flex; align-items: center; gap: 28px; height: 28px; }
+.logo-row img { opacity: 0.88; }
+.logos .cl-apple { width: 24px; height: 24px; margin-top: -4px; }
+.logos .cl-cmu { width: auto; height: 17px; }
+.logos .fi { display: inline-flex; align-items: center; gap: 10px; font: 600 17px/1 var(--display); letter-spacing: -0.02em; color: var(--text); }
+.logos .cl-fi { width: 26px; height: 26px; border-radius: 6px; background: #1a1a1a; padding: 3px; }
+.hero-foot { font-size: 11px; letter-spacing: 0.12em; }
+.hero-foot span { white-space: nowrap; }
+@media (max-width: 760px) { .hero-foot span { white-space: normal; } }
+@media (max-width: 760px) { .hero::before { background: linear-gradient(180deg, rgba(5,6,8,0.5) 0%, rgba(5,6,8,0.25) 25%, rgba(5,6,8,0.78) 55%, var(--bg) 100%); } }

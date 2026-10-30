@@ -43,7 +43,7 @@
           </video>
         </div>
         <div class="wrap hero-body">
-          <a class="backed rv" href="https://f.inc" target="_blank" rel="noopener"><img class="no-invert" src="/site/assets/brand/founders-inc-mark.png" alt="" width="22" height="22" /><span>Backed by <b>Founders, Inc.</b></span></a>
+          <div class="creds rv"><span class="creds-g"><span class="mono">Built by</span><img src="/site/assets/brand/apple-logo.svg" alt="Apple" class="cl-apple" width="16" height="16" /><img src="/site/assets/brand/cmu-wordmark.svg" alt="Carnegie Mellon University" class="cl-cmu" width="168" height="15" /></span><span class="creds-g"><span class="mono">Backed by</span><a href="https://f.inc" target="_blank" rel="noopener"><img src="/site/assets/brand/founders-inc-mark.png" alt="" class="cl-fi no-invert" width="18" height="18" />Founders, Inc.</a></span></div>
           <h1 class="display rv rv-d1" id="hero-title">Stop guessing.<br />Make real progress.</h1>
           <div class="hero-sub">
             <p class="lede rv rv-d2">Prism sets up every test the same way, checks the scene before the robot moves, scores every trial, and turns the results into one source of truth your whole team can ship on.</p>
@@ -143,6 +143,66 @@
         </div>
       </section>
 
+      <!-- console -->
+      <section class="sec" id="console" aria-labelledby="console-title" style="padding-top: 0">
+        <div class="wrap">
+          <div class="sec-head">
+            <div><p class="eyebrow rv">Light Console</p><h2 class="rv rv-d1" id="console-title">Every run, every position,<br />one view.</h2></div>
+            <p class="lede rv rv-d1">See where each policy wins and fails across the table, how it compares to the last checkpoint, and which runs need a look.</p>
+          </div>
+          <div class="rv">
+          <div class="console" aria-label="Light Console showing sample evaluation data" role="img">
+            <div class="console-bar"><span class="dots"><i></i><i></i><i></i></span><span class="url">prism.lightcompany.ai/tracking</span></div>
+            <div class="console-body">
+              <div class="console-side" aria-hidden="true">
+                <div class="brandline"><img src="/site/assets/brand/light-company-mark-inverse.svg" alt="" />LIGHT CONSOLE</div>
+                <span>Overview</span><span class="on">Tracking</span><span>Compare</span><span>Cases</span><span>Devices</span><span>Members</span><span>API keys</span><span>Docs</span>
+              </div>
+              <div class="console-main">
+                <h4>Pick and place · v3 suite <small>Policy B vs Policy A · last 7 days</small></h4>
+                <div class="tiles">
+                  <div class="tile"><span>Pass rate</span><b>82<em>%</em></b><span class="up">▲ 11 pts vs A</span></div>
+                  <div class="tile"><span>Trials scored</span><b>1,284</b><span class="up">▲ 312 this week</span></div>
+                  <div class="tile"><span>Stations online</span><b>20<em>/20</em></b><span class="up">All verified</span></div>
+                  <div class="tile"><span>Regressions</span><b>3</b><span class="down">▼ needs review</span></div>
+                </div>
+                <div class="panes">
+                  <div class="pane">
+                    <div class="pane-h"><span>Pass rate by start position</span><span>50 cells</span></div>
+                    <div class="heat"><i style="background:#ff6b5e60">8</i><i style="background:#ff6b5e60">18</i><i style="background:#ff6b5e60">39</i><i style="background:#ffd60a60">55</i><i style="background:#ff6b5e60">41</i><i style="background:#ff6b5e60">42</i><i style="background:#ffd60a60">52</i><i style="background:#ff6b5e60">30</i><i style="background:#ff6b5e60">25</i><i style="background:#ff6b5e60">16</i><i style="background:#ff6b5e60">25</i><i style="background:#ffd60a60">57</i><i style="background:#ffd60a60">61</i><i style="background:#ffd60a60">67</i><i style="background:#ffd60a60">73</i><i style="background:#4ade80a3">84</i><i style="background:#4ade809c">79</i><i style="background:#ffd60a60">57</i><i style="background:#ff6b5e60">48</i><i style="background:#ff6b5e60">26</i><i style="background:#ffd60a60">50</i><i style="background:#ffd60a60">64</i><i style="background:#ffd60a60">67</i><i style="background:#4ade80b2">96</i><i style="background:#4ade80a9">89</i><i style="background:#4ade80ae">93</i><i style="background:#4ade80b5">98</i><i style="background:#4ade80a5">86</i><i style="background:#ffd60a60">69</i><i style="background:#ff6b5e60">34</i><i style="background:#ff6b5e60">42</i><i style="background:#ffd60a60">59</i><i style="background:#ffd60a60">67</i><i style="background:#ffd60a60">67</i><i style="background:#4ade809b">78</i><i style="background:#ffd60a60">72</i><i style="background:#4ade80a1">83</i><i style="background:#ffd60a60">59</i><i style="background:#ffd60a60">50</i><i style="background:#ff6b5e60">37</i><i style="background:#ff6b5e60">5</i><i style="background:#ff6b5e60">31</i><i style="background:#ff6b5e60">30</i><i style="background:#ffd60a60">53</i><i style="background:#ff6b5e60">49</i><i style="background:#ffd60a60">57</i><i style="background:#ff6b5e60">40</i><i style="background:#ff6b5e60">30</i><i style="background:#ff6b5e60">32</i><i style="background:#ff6b5e60">16</i></div>
+                    <div class="legend"><span><i style="background:#ff6b5e"></i>Fails</span><span><i style="background:#ffd60a"></i>Mixed</span><span><i style="background:#4ade80"></i>Strong</span></div>
+                  </div>
+                  <div class="pane">
+                    <div class="pane-h"><span>By condition</span><span>A vs B</span></div>
+                    <div class="cmp">
+                      <div class="cmp-row"><span>Baseline</span><span class="cmp-bars"><i style="width:84%"></i><i style="width:93%"></i></span></div>
+                      <div class="cmp-row"><span>Rotated 45°</span><span class="cmp-bars"><i style="width:61%"></i><i style="width:80%"></i></span></div>
+                      <div class="cmp-row"><span>Clutter</span><span class="cmp-bars"><i style="width:52%"></i><i style="width:71%"></i></span></div>
+                      <div class="cmp-row"><span>Low light</span><span class="cmp-bars"><i style="width:66%"></i><i style="width:58%"></i></span></div>
+                      <div class="cmp-row"><span>New object</span><span class="cmp-bars"><i style="width:38%"></i><i style="width:62%"></i></span></div>
+                    </div>
+                    <div class="legend"><span><i style="background:rgba(255,255,255,0.22)"></i>Policy A</span><span><i style="background:var(--accent)"></i>Policy B</span></div>
+                  </div>
+                </div>
+                <div class="pane">
+                  <div class="pane-h"><span>Recent runs</span><span>Newest first</span></div>
+                  <table class="runs">
+                    <thead><tr><th>Run</th><th>Case</th><th>Result</th><th>Station</th><th>Scored by</th></tr></thead>
+                    <tbody>
+                      <tr><td>run-4f2a</td><td>cup-to-plate · rot-45</td><td><span class="pill ok">9 / 10</span></td><td>lab-a / 07</td><td>Prism VLM</td></tr>
+                      <tr><td>run-4f29</td><td>cup-to-plate · clutter</td><td><span class="pill warn">6 / 10</span></td><td>lab-a / 03</td><td>Prism VLM</td></tr>
+                      <tr><td>run-4f28</td><td>drawer-open · low-light</td><td><span class="pill bad">4 / 10</span></td><td>lab-b / 12</td><td>Prism VLM + review</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+          <p class="mono dim console-note">Sample data shown</p>
+                  </div>
+        </div>
+      </section>
+
       <!-- why prism -->
       <section class="sec" id="why" aria-labelledby="why-title">
         <div class="wrap">
@@ -203,68 +263,15 @@
           </div>
                     </div>
           </details>
-          <details class="deep" id="console">
-            <summary><span class="num mono">02</span><span class="deep-t">Light Console</span><span class="deep-d">Every run, every position and every policy comparison in one view.</span><span class="deep-x mono">Read more</span></summary>
-            <div class="deep-body">
-          <div class="console" aria-label="Light Console showing sample evaluation data" role="img">
-            <div class="console-bar"><span class="dots"><i></i><i></i><i></i></span><span class="url">prism.lightcompany.ai/tracking</span></div>
-            <div class="console-body">
-              <div class="console-side" aria-hidden="true">
-                <div class="brandline"><img src="/site/assets/brand/light-company-mark-inverse.svg" alt="" />LIGHT CONSOLE</div>
-                <span>Overview</span><span class="on">Tracking</span><span>Compare</span><span>Cases</span><span>Devices</span><span>Members</span><span>API keys</span><span>Docs</span>
-              </div>
-              <div class="console-main">
-                <h4>Pick and place · v3 suite <small>Policy B vs Policy A · last 7 days</small></h4>
-                <div class="tiles">
-                  <div class="tile"><span>Pass rate</span><b>82<em>%</em></b><span class="up">▲ 11 pts vs A</span></div>
-                  <div class="tile"><span>Trials scored</span><b>1,284</b><span class="up">▲ 312 this week</span></div>
-                  <div class="tile"><span>Stations online</span><b>20<em>/20</em></b><span class="up">All verified</span></div>
-                  <div class="tile"><span>Regressions</span><b>3</b><span class="down">▼ needs review</span></div>
-                </div>
-                <div class="panes">
-                  <div class="pane">
-                    <div class="pane-h"><span>Pass rate by start position</span><span>50 cells</span></div>
-                    <div class="heat"><i style="background:#ff6b5e60">8</i><i style="background:#ff6b5e60">18</i><i style="background:#ff6b5e60">39</i><i style="background:#ffd60a60">55</i><i style="background:#ff6b5e60">41</i><i style="background:#ff6b5e60">42</i><i style="background:#ffd60a60">52</i><i style="background:#ff6b5e60">30</i><i style="background:#ff6b5e60">25</i><i style="background:#ff6b5e60">16</i><i style="background:#ff6b5e60">25</i><i style="background:#ffd60a60">57</i><i style="background:#ffd60a60">61</i><i style="background:#ffd60a60">67</i><i style="background:#ffd60a60">73</i><i style="background:#4ade80a3">84</i><i style="background:#4ade809c">79</i><i style="background:#ffd60a60">57</i><i style="background:#ff6b5e60">48</i><i style="background:#ff6b5e60">26</i><i style="background:#ffd60a60">50</i><i style="background:#ffd60a60">64</i><i style="background:#ffd60a60">67</i><i style="background:#4ade80b2">96</i><i style="background:#4ade80a9">89</i><i style="background:#4ade80ae">93</i><i style="background:#4ade80b5">98</i><i style="background:#4ade80a5">86</i><i style="background:#ffd60a60">69</i><i style="background:#ff6b5e60">34</i><i style="background:#ff6b5e60">42</i><i style="background:#ffd60a60">59</i><i style="background:#ffd60a60">67</i><i style="background:#ffd60a60">67</i><i style="background:#4ade809b">78</i><i style="background:#ffd60a60">72</i><i style="background:#4ade80a1">83</i><i style="background:#ffd60a60">59</i><i style="background:#ffd60a60">50</i><i style="background:#ff6b5e60">37</i><i style="background:#ff6b5e60">5</i><i style="background:#ff6b5e60">31</i><i style="background:#ff6b5e60">30</i><i style="background:#ffd60a60">53</i><i style="background:#ff6b5e60">49</i><i style="background:#ffd60a60">57</i><i style="background:#ff6b5e60">40</i><i style="background:#ff6b5e60">30</i><i style="background:#ff6b5e60">32</i><i style="background:#ff6b5e60">16</i></div>
-                    <div class="legend"><span><i style="background:#ff6b5e"></i>Fails</span><span><i style="background:#ffd60a"></i>Mixed</span><span><i style="background:#4ade80"></i>Strong</span></div>
-                  </div>
-                  <div class="pane">
-                    <div class="pane-h"><span>By condition</span><span>A vs B</span></div>
-                    <div class="cmp">
-                      <div class="cmp-row"><span>Baseline</span><span class="cmp-bars"><i style="width:84%"></i><i style="width:93%"></i></span></div>
-                      <div class="cmp-row"><span>Rotated 45°</span><span class="cmp-bars"><i style="width:61%"></i><i style="width:80%"></i></span></div>
-                      <div class="cmp-row"><span>Clutter</span><span class="cmp-bars"><i style="width:52%"></i><i style="width:71%"></i></span></div>
-                      <div class="cmp-row"><span>Low light</span><span class="cmp-bars"><i style="width:66%"></i><i style="width:58%"></i></span></div>
-                      <div class="cmp-row"><span>New object</span><span class="cmp-bars"><i style="width:38%"></i><i style="width:62%"></i></span></div>
-                    </div>
-                    <div class="legend"><span><i style="background:rgba(255,255,255,0.22)"></i>Policy A</span><span><i style="background:var(--accent)"></i>Policy B</span></div>
-                  </div>
-                </div>
-                <div class="pane">
-                  <div class="pane-h"><span>Recent runs</span><span>Newest first</span></div>
-                  <table class="runs">
-                    <thead><tr><th>Run</th><th>Case</th><th>Result</th><th>Station</th><th>Scored by</th></tr></thead>
-                    <tbody>
-                      <tr><td>run-4f2a</td><td>cup-to-plate · rot-45</td><td><span class="pill ok">9 / 10</span></td><td>lab-a / 07</td><td>Prism VLM</td></tr>
-                      <tr><td>run-4f29</td><td>cup-to-plate · clutter</td><td><span class="pill warn">6 / 10</span></td><td>lab-a / 03</td><td>Prism VLM</td></tr>
-                      <tr><td>run-4f28</td><td>drawer-open · low-light</td><td><span class="pill bad">4 / 10</span></td><td>lab-b / 12</td><td>Prism VLM + review</td></tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
-          </div>
-          <p class="mono dim console-note">Sample data shown</p>
-                    </div>
-          </details>
           <details class="deep">
-            <summary><span class="num mono">03</span><span class="deep-t">Capability maps</span><span class="deep-d">Change one condition at a time and see exactly where a policy holds up and where it breaks.</span><span class="deep-x mono">Read more</span></summary>
+            <summary><span class="num mono">02</span><span class="deep-t">Capability maps</span><span class="deep-d">Change one condition at a time and see exactly where a policy holds up and where it breaks.</span><span class="deep-x mono">Read more</span></summary>
             <div class="deep-body">
             <div class="frame" style="aspect-ratio: 16 / 9"><video data-auto muted loop playsinline preload="none" poster="/media/robot-eval-staging.jpg" aria-label="A staged robot evaluation in the lab"><source src="/media/robot-eval-staging.mp4" type="video/mp4" /></video><span class="shade"></span></div>
             <p class="lede" style="margin-top: 24px">Prism changes one condition at a time: position, orientation, clutter, objects or light. You get a map of exactly where each policy holds up and where it breaks, before your customers find out.</p>
             </div>
           </details>
           <details class="deep">
-            <summary><span class="num mono">04</span><span class="deep-t">Built for every team</span><span class="deep-d">What research, eval operations and leadership each get from Prism.</span><span class="deep-x mono">Read more</span></summary>
+            <summary><span class="num mono">03</span><span class="deep-t">Built for every team</span><span class="deep-d">What research, eval operations and leadership each get from Prism.</span><span class="deep-x mono">Read more</span></summary>
             <div class="deep-body">
           <div class="trio">
             <div><span class="kicker">Research</span><h3>Know a checkpoint is better.</h3><p>Compare policies under identical physical conditions and see real gains, without arguing over whose run was cleaner.</p></div>
@@ -274,7 +281,7 @@
                     </div>
           </details>
           <details class="deep">
-            <summary><span class="num mono">05</span><span class="deep-t">Deployment</span><span class="deep-d">Mount, claim, calibrate, run. Scored trials the same afternoon.</span><span class="deep-x mono">Read more</span></summary>
+            <summary><span class="num mono">04</span><span class="deep-t">Deployment</span><span class="deep-d">Mount, claim, calibrate, run. Scored trials the same afternoon.</span><span class="deep-x mono">Read more</span></summary>
             <div class="deep-body">
           <div class="deploy">
             <div><span class="num kicker">Step 1</span><h3>Mount it.</h3><p>Place the station over your workcell and plug it in.</p></div>
@@ -285,7 +292,7 @@
                     </div>
           </details>
           <details class="deep" id="lab-more">
-            <summary><span class="num mono">06</span><span class="deep-t">In the lab</span><span class="deep-d">Real stations, real operators, real runs.</span><span class="deep-x mono">Read more</span></summary>
+            <summary><span class="num mono">05</span><span class="deep-t">In the lab</span><span class="deep-d">Real stations, real operators, real runs.</span><span class="deep-x mono">Read more</span></summary>
             <div class="deep-body">
           <div class="bento">
             <figure class="frame b-wide" style="margin: 0"><video data-auto muted loop playsinline preload="none" poster="/media/robotics/condition-stage.jpg" aria-label="Staging a test condition"><source src="/media/robotics/condition-stage.mp4" type="video/mp4" /></video><span class="shade"></span><figcaption class="tag">Staging a condition</figcaption></figure>
@@ -331,11 +338,10 @@
             <p class="eyebrow rv">The company</p>
             <h2 class="rv rv-d1" id="team-title">Built by Apple engineers<br />and Carnegie Mellon researchers.</h2>
             <p class="lede rv rv-d2" style="margin-top: 20px">We have shipped products to millions and run robots in research labs. Now we build the tool we always wanted: a way to set up the physical world exactly, every time, and trust the number that comes out. Based in San Francisco.</p>
-            <ul class="logos rv rv-d3" aria-label="Where we come from and who backs us">
-              <li title="Apple"><svg class="logo-apple" aria-hidden="true" fill="currentColor" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Apple</title><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg><span>Apple</span></li>
-              <li title="Carnegie Mellon University"><span class="logo-cmu">Carnegie Mellon<br />University</span></li>
-              <li title="Founders, Inc."><img class="no-invert" src="/site/assets/brand/founders-inc-mark.png" alt="" width="26" height="26" /><span>Founders, Inc.</span></li>
-            </ul>
+            <div class="logos rv rv-d3">
+              <div><span class="mono dim">Built by</span><div class="logo-row"><img src="/site/assets/brand/apple-logo.svg" alt="Apple" class="cl-apple" width="26" height="26" /><img src="/site/assets/brand/cmu-wordmark.svg" alt="Carnegie Mellon University" class="cl-cmu" width="200" height="18" /></div></div>
+              <div><span class="mono dim">Backed by</span><div class="logo-row"><a href="https://f.inc" target="_blank" rel="noopener" class="fi"><img src="/site/assets/brand/founders-inc-mark.png" alt="" class="cl-fi no-invert" width="26" height="26" />Founders, Inc.</a></div></div>
+            </div>
             <p class="rv rv-d3" style="margin-top: 28px"><a class="link" href="mailto:hi@lightcompany.ai?subject=Hello%20from%20lightcompany.ai">Talk to the founders <span aria-hidden="true">↗</span></a></p>
           </div>
         </div>
