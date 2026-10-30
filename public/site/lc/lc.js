@@ -31,17 +31,72 @@
   const rio = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("in"); rio.unobserve(e.target); } }), { rootMargin: "0px 0px -8% 0px" });
   $$(".rv").forEach((el) => (reduce ? el.classList.add("in") : rio.observe(el)));
 
-  // footer lockup: fit the viewBox to the real glyphs, draw it in once seen, then start the light sweep
-  $$(".footer-logo").forEach((box) => {
-    const svg = $("svg", box);
-    const fit = () => { try { const b = svg.getBBox(); svg.setAttribute("viewBox", `${b.x - 4} ${b.y - 4} ${b.width + 8} ${b.height + 8}`); } catch {} };
-    (document.fonts?.ready || Promise.resolve()).then(fit);
-    const lio = new IntersectionObserver(([e]) => {
-      if (!e.isIntersecting) return;
-      box.classList.add("in"); lio.disconnect();
-      if (!reduce) setTimeout(() => $("#fl-sweep animateTransform", box)?.beginElement?.(), 3000);
-    }, { threshold: 0.3 });
-    lio.observe(box);
+  // footer lockup: the real logo sampled into a character grid. Cells scramble in left to right,
+  // then the beam keeps streaming outward and a slow light band crosses the wordmark.
+  $$(".footer-ascii").forEach((cv) => {
+    const RAMP = " .:-=+*#%@", BEAM = "=>~-*+:", NOISE = "01/\\|<>[]{}#%&$*+=-";
+    const ctx = cv.getContext("2d"), img = new Image();
+    let cells = [], cols = 0, rows = 0, cw = 0, ch = 0, start = 0, raf = 0, seen = false;
+    const css = getComputedStyle(document.documentElement);
+    const accent = css.getPropertyValue("--accent").trim() || "#3cb4ff";
+    const mono = css.getPropertyValue("--mono").trim() || "monospace";
+    const build = () => {
+      const w = cv.clientWidth; if (!w || !img.complete) return;
+      cols = w < 640 ? 110 : 168; cw = w / cols; ch = cw * 1.9;
+      rows = Math.round((w * 64 / 356) / ch);
+      const dpr = Math.min(2, devicePixelRatio || 1);
+      cv.width = Math.round(w * dpr); cv.height = Math.round(rows * ch * dpr);
+      cv.style.aspectRatio = `${cv.width} / ${cv.height}`;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      const sx = 4, sy = 8, off = document.createElement("canvas");
+      off.width = cols * sx; off.height = rows * sy;
+      const o = off.getContext("2d");
+      for (const [dx, dy] of [[0, 0], [1, 0], [0, 1], [1, 1]]) o.drawImage(img, dx, dy, off.width, off.height);
+      const d = o.getImageData(0, 0, off.width, off.height).data;
+      cells = [];
+      for (let y = 0; y < rows; y++) for (let x = 0; x < cols; x++) {
+        let a = 0, r = 0, b = 0;
+        for (let j = 0; j < sy; j++) for (let i = 0; i < sx; i++) {
+          const k = ((y * sy + j) * off.width + x * sx + i) * 4, al = d[k + 3] / 255;
+          a += al; r += d[k] * al; b += d[k + 2] * al;
+        }
+        const cov = a / (sx * sy); if (cov < 0.06) continue;
+        cells.push({ x, y, cov, beam: r < b * 0.6, t: x / cols * 0.75 + Math.random() * 0.25, g: 0 });
+      }
+    };
+    const draw = (now) => {
+      const t = (now - start) / 1000, rev = reduce ? 9 : t / 1.8;
+      ctx.clearRect(0, 0, cv.width, cv.height);
+      ctx.font = `${Math.round(ch * 0.92)}px ${mono}`; ctx.textBaseline = "top";
+      const band = ((t * 0.16) % 1.4 - 0.2) * cols;
+      for (const c of cells) {
+        if (rev < c.t) continue;
+        const settling = rev < c.t + 0.18;
+        let chr, alpha;
+        if (settling || (!reduce && c.g > now)) { chr = NOISE[(Math.random() * NOISE.length) | 0]; alpha = 0.7; }
+        else if (c.beam) {
+          chr = reduce ? "=" : BEAM[((c.x * 0.5 - t * 9 + c.y * 0.3) % BEAM.length + BEAM.length) % BEAM.length | 0];
+          alpha = 0.45 + 0.55 * c.cov;
+        } else {
+          chr = RAMP[Math.min(RAMP.length - 1, 1 + Math.floor(c.cov * (RAMP.length - 1)))];
+          alpha = 0.26 + 0.5 * c.cov + (reduce ? 0 : Math.max(0, 1 - Math.abs(c.x - band) / 9) * 0.5);
+          if (!reduce && Math.random() < 0.0004) c.g = now + 120;
+        }
+        ctx.globalAlpha = Math.min(1, alpha);
+        ctx.fillStyle = c.beam && !settling ? accent : "#f5f4ef";
+        ctx.fillText(chr, c.x * cw, c.y * ch);
+      }
+      ctx.globalAlpha = 1;
+      if (!reduce && seen) raf = requestAnimationFrame(draw);
+    };
+    const go = () => { cancelAnimationFrame(raf); raf = requestAnimationFrame(draw); };
+    img.onload = () => (document.fonts?.ready || Promise.resolve()).then(() => { build(); if (seen || reduce) go(); });
+    img.src = cv.dataset.logo;
+    new IntersectionObserver(([e]) => {
+      if (e.isIntersecting && !seen) { seen = true; if (!start) start = performance.now(); go(); }
+      else if (!e.isIntersecting) { seen = false; cancelAnimationFrame(raf); }
+    }, { threshold: 0.2 }).observe(cv);
+    let rt; addEventListener("resize", () => { clearTimeout(rt); rt = setTimeout(() => { build(); go(); }, 150); });
   });
 
   // manifesto: split into words, light them as the paragraph crosses the viewport

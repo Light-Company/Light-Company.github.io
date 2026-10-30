@@ -242,15 +242,9 @@ h3, .h3 { font-size: clamp(18px, 1.3vw, 20px); line-height: 1.1; letter-spacing:
 .footer ul a { color: var(--mute); transition: color 0.25s; font-size: 15px; }
 .footer ul a:hover { color: var(--text); }
 .footer-tag { color: var(--mute); max-width: 30ch; margin: 20px 0 0; }
-/* footer lockup: the mark draws itself, the beam lights, the wordmark traces in, then a slow light sweep */
-.footer-logo { margin: 80px 0 40px; user-select: none; }
-.footer-logo-svg { display: block; width: 100%; height: auto; overflow: visible; }
-.fl-tri { fill: none; stroke: rgba(255,255,255,0.5); stroke-width: 10; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 1; stroke-dashoffset: 1; transition: stroke-dashoffset 1.6s var(--ease); }
-.fl-beam { opacity: 0; transform-box: fill-box; transform-origin: 0% 50%; transform: scaleX(0.2); transition: opacity 0.9s var(--ease) 1.2s, transform 0.9s var(--ease) 1.2s; }
-.fl-word { font: 700 200px/1 var(--display); letter-spacing: -0.05em; fill: transparent; stroke: rgba(255,255,255,0.22); stroke-width: 1.4; stroke-dasharray: 900; stroke-dashoffset: 900; transition: stroke-dashoffset 2.6s var(--ease) 0.5s; }
-.fl-shine { stroke: url(#fl-sweep); stroke-width: 2; }
-.footer-logo.in .fl-tri, .footer-logo.in .fl-word { stroke-dashoffset: 0; }
-.footer-logo.in .fl-beam { opacity: 1; transform: none; }
+/* footer lockup: the logo rendered as ASCII; it scrambles in, then the beam keeps flowing */
+.footer-logo { margin: 72px 0 36px; user-select: none; }
+.footer-ascii { display: block; width: 100%; height: auto; aspect-ratio: 356 / 64; }
 .footer-legal { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; padding-top: 24px; border-top: 1px solid var(--line); }
 @media (max-width: 860px) { .footer-grid { grid-template-columns: 1fr 1fr; } .footer-grid > :first-child { grid-column: 1 / -1; } }
 
@@ -276,8 +270,6 @@ h3, .h3 { font-size: clamp(18px, 1.3vw, 20px); line-height: 1.1; letter-spacing:
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .rv { opacity: 1; transform: none; transition: none; }
-  .fl-tri, .fl-word, .fl-beam { transition: none; stroke-dashoffset: 0; opacity: 1; transform: none; }
-  .fl-shine { display: none; }
   .hero-media video, .hero-media img { animation: none; transform: none; }
   .manifesto .w { color: var(--text); }
 }
