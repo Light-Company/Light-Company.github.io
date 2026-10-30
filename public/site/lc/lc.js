@@ -37,6 +37,7 @@
     const RAMP = " .:-=+*#%@", BEAM = "=>~-*+:", NOISE = "01/\\|<>[]{}#%&$*+=-";
     const ctx = cv.getContext("2d"), img = new Image();
     let cells = [], cols = 0, rows = 0, cw = 0, ch = 0, start = 0, raf = 0, seen = false;
+    let mx = -1e3, my = -1e3, hover = 0, hoverOn = false; // pointer in grid cells; hover eases 0..1
     const css = getComputedStyle(document.documentElement);
     const accent = css.getPropertyValue("--accent").trim() || "#3cb4ff";
     const mono = css.getPropertyValue("--mono").trim() || "monospace";
@@ -69,6 +70,8 @@
       ctx.clearRect(0, 0, cv.width, cv.height);
       ctx.font = `${Math.round(ch * 0.92)}px ${mono}`; ctx.textBaseline = "top";
       const band = ((t * 0.16) % 1.4 - 0.2) * cols;
+      hover += ((hoverOn ? 1 : 0) - hover) * (reduce ? 1 : 0.12);
+      const R = cols * 0.16;
       for (const c of cells) {
         if (rev < c.t) continue;
         const settling = rev < c.t + 0.18;
@@ -82,12 +85,15 @@
           alpha = 0.26 + 0.5 * c.cov + (reduce ? 0 : Math.max(0, 1 - Math.abs(c.x - band) / 9) * 0.5);
           if (!reduce && Math.random() < 0.0004) c.g = now + 120;
         }
-        ctx.globalAlpha = Math.min(1, alpha);
-        ctx.fillStyle = c.beam && !settling ? accent : "#f5f4ef";
+        // hover: colour and flicker follow the pointer, hue running red to violet across the logo; the beam stays blue
+        const lit = c.beam ? 0 : hover * Math.max(0, 1 - Math.hypot(c.x - mx, (c.y - my) * 1.9) / R);
+        if (!settling && lit > 0.05 && Math.random() < lit * 0.35) chr = NOISE[(Math.random() * NOISE.length) | 0];
+        ctx.globalAlpha = Math.min(1, alpha + lit * 0.6);
+        ctx.fillStyle = settling ? "#f5f4ef" : lit > 0.02 ? `hsl(${(c.x / cols) * 290} 95% ${78 - lit * 22}%)` : c.beam ? accent : "#f5f4ef";
         ctx.fillText(chr, c.x * cw, c.y * ch);
       }
       ctx.globalAlpha = 1;
-      if (!reduce && seen) raf = requestAnimationFrame(draw);
+      if ((!reduce && seen) || Math.abs(hover - (hoverOn ? 1 : 0)) > 0.01) raf = requestAnimationFrame(draw);
     };
     const go = () => { cancelAnimationFrame(raf); raf = requestAnimationFrame(draw); };
     img.onload = () => (document.fonts?.ready || Promise.resolve()).then(() => { build(); if (seen || reduce) go(); });
@@ -96,6 +102,12 @@
       if (e.isIntersecting && !seen) { seen = true; if (!start) start = performance.now(); go(); }
       else if (!e.isIntersecting) { seen = false; cancelAnimationFrame(raf); }
     }, { threshold: 0.2 }).observe(cv);
+    cv.addEventListener("pointermove", (e) => {
+      const r = cv.getBoundingClientRect();
+      mx = (e.clientX - r.left) / r.width * cols; my = (e.clientY - r.top) / r.height * rows;
+      hoverOn = true; if (reduce || !seen) go();
+    });
+    cv.addEventListener("pointerleave", () => { hoverOn = false; if (reduce || !seen) go(); });
     let rt; addEventListener("resize", () => { clearTimeout(rt); rt = setTimeout(() => { build(); go(); }, 150); });
   });
 
