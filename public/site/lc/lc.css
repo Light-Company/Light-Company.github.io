@@ -465,3 +465,10 @@ h3, .h3 { font-size: clamp(18px, 1.3vw, 20px); line-height: 1.1; letter-spacing:
 .hero-foot span { white-space: nowrap; }
 @media (max-width: 760px) { .hero-foot span { white-space: normal; } }
 @media (max-width: 760px) { .hero::before { background: linear-gradient(180deg, rgba(5,6,8,0.5) 0%, rgba(5,6,8,0.25) 25%, rgba(5,6,8,0.78) 55%, var(--bg) 100%); } }
+
+/* global scale: the whole interface at 70%, the way it reads best.
+   Full-screen footage is sized back up so it still fills the viewport. */
+html { zoom: 0.7; }
+.hero { min-height: calc(100svh / 0.7); }
+.reel { height: calc(100svh / 0.7); }
+@media (max-width: 760px) { html { zoom: 1; } .hero { min-height: 100svh; } .reel { height: 72svh; } }
