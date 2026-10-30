@@ -7,9 +7,10 @@ const projectRoot = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const outputRoot = join(projectRoot, ".pages-dist");
 
 const pages = [
-  ["site/main.html", "index.html"],
-  ["site/robotics.html", "robotics/index.html"],
-  ["site/robotics.html", "Robotics/index.html"],
+  ["site/robotics.html", "index.html", "https://lightcompany.ai/"],
+  ["site/robotics.html", "robotics/index.html", "https://lightcompany.ai/"],
+  ["site/robotics.html", "Robotics/index.html", "https://lightcompany.ai/"],
+  ["site/main.html", "prism/index.html", "https://lightcompany.ai/prism"],
   ["site/gallery.html", "gallery/index.html"],
   ["site/privacy.html", "privacy/index.html"],
 ];
@@ -18,7 +19,7 @@ await rm(outputRoot, { recursive: true, force: true });
 await mkdir(outputRoot, { recursive: true });
 await cp(join(projectRoot, "public"), outputRoot, { recursive: true });
 
-for (const [source, destination] of pages) {
+for (const [source, destination, canonical] of pages) {
   const destinationPath = join(outputRoot, destination);
   await mkdir(dirname(destinationPath), { recursive: true });
   const sample = source === "site/main.html" ? "prism-vision" : source === "site/robotics.html" ? "robotics-vision" : null;
@@ -27,7 +28,7 @@ for (const [source, destination] of pages) {
       readFile(join(projectRoot, `site/${sample}.html`), "utf8"),
       readFile(join(projectRoot, source), "utf8"),
     ]);
-    await writeFile(destinationPath, publishedVisionHtml(approved, previous));
+    await writeFile(destinationPath, publishedVisionHtml(approved, previous, canonical));
   } else {
     await cp(join(projectRoot, source), destinationPath);
   }

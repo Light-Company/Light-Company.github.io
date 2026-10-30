@@ -1,8 +1,8 @@
-import mainHtml from "../site/main.html?raw";
-import prismVisionHtml from "../site/prism-vision.html?raw";
+import roboticsHtml from "../site/robotics.html?raw";
+import roboticsVisionHtml from "../site/robotics-vision.html?raw";
 import { publishedVisionHtml } from "../lib/published-vision.mjs";
 import { htmlResponse } from "./html-response";
 
 export function GET() {
-  return htmlResponse(publishedVisionHtml(prismVisionHtml, mainHtml));
+  return htmlResponse(publishedVisionHtml(roboticsVisionHtml, roboticsHtml, "https://lightcompany.ai/"));
 }

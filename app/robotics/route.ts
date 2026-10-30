@@ -4,5 +4,5 @@ import { publishedVisionHtml } from "../../lib/published-vision.mjs";
 import { htmlResponse } from "../html-response";
 
 export function GET() {
-  return htmlResponse(publishedVisionHtml(roboticsVisionHtml, roboticsHtml));
+  return htmlResponse(publishedVisionHtml(roboticsVisionHtml, roboticsHtml, "https://lightcompany.ai/"));
 }

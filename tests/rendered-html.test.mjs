@@ -172,7 +172,7 @@ test("publishes search and AI discovery files with every canonical page", async 
   ]);
   const canonicalUrls = [
     "https://lightcompany.ai/",
-    "https://lightcompany.ai/robotics",
+    "https://lightcompany.ai/prism",
     "https://lightcompany.ai/gallery",
     "https://lightcompany.ai/privacy",
   ];
