@@ -471,4 +471,4 @@ h3, .h3 { font-size: clamp(18px, 1.3vw, 20px); line-height: 1.1; letter-spacing:
 html { zoom: 0.7; }
 .hero { min-height: calc(100svh / 0.7); }
 .reel { height: calc(100svh / 0.7); }
-@media (max-width: 760px) { html { zoom: 1; } .hero { min-height: 100svh; } .reel { height: 72svh; } }
+@media (max-width: 760px) { html { zoom: 0.85; } .hero { min-height: calc(100svh / 0.85); } .reel { height: calc(72svh / 0.85); } }
