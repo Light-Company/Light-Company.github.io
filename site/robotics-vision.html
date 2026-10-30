@@ -21,8 +21,7 @@
         <a class="brand" href="/robotics-vision" aria-label="The Light Company home"><img class="no-invert" src="/site/assets/brand/light-company-mark-inverse.svg" alt="" width="30" height="24" />The Light Company</a>
         <nav class="nav-links" aria-label="Primary">
           <a href="#loop">How it works</a>
-          <a href="#platform">Platform</a>
-          <a href="#console">Console</a>
+          <a href="#deeper">Platform</a>
           <a href="#outcomes">Results</a>
           <a href="#pilot">Pilot</a>
           <a href="/prism-vision">Prism IRL</a>
@@ -64,7 +63,7 @@
       <!-- every lab, full screen -->
       <section class="reel" aria-label="Prism running across the lab">
         <video data-auto muted loop playsinline preload="none" poster="/media/robotics/labs-film.jpg" aria-label="Projected test grids running across every station in the lab"><source src="/media/robotics/labs-film.mp4" type="video/mp4" /></video>
-        <div class="wrap reel-cap mono"><span><i class="live-dot" aria-hidden="true"></i>The Light Company lab</span><span>Every station, one standard</span></div>
+        <div class="wrap reel-cap mono"><span><i class="live-dot" aria-hidden="true"></i>The Light Company lab</span><a href="/gallery">See the field gallery ↗</a></div>
       </section>
 
       <!-- the problem -->
@@ -144,32 +143,70 @@
         </div>
       </section>
 
-      <!-- platform -->
-      <section class="sec" id="platform" aria-labelledby="platform-title">
+      <!-- why prism -->
+      <section class="sec" id="why" aria-labelledby="why-title">
         <div class="wrap">
           <div class="sec-head">
-            <div><p class="eyebrow rv">The platform</p><h2 class="rv rv-d1" id="platform-title">Everything an eval team<br />needs, in one system.</h2></div>
-            <p class="lede rv rv-d1">Hardware in the lab, software in the browser, and an API into your stack. Built to run hundreds of trials a day across every station you own.</p>
+            <div><p class="eyebrow rv">Why Prism</p><h2 class="rv rv-d1" id="why-title">Real physics.<br />Lab-grade control.</h2></div>
+            <p class="lede rv rv-d1">Simulation is fast but it is not the world your robot ships into. Hand-run evals are real but they drift. Prism gives you the real world with the repeatability of a simulator.</p>
           </div>
-          <div class="cards">
-            <article class="card rv"><span class="kicker">Hardware</span><h3>Prism Station</h3><p>Projector, depth cameras and on-board compute in one unit that mounts over any workcell.</p><ul><li>Self-calibrates and locks to the table</li><li>Guides operators step by step</li><li>Runs on site, no cloud required to test</li></ul></article>
-            <article class="card rv rv-d1"><span class="kicker">Test design</span><h3>Cases &amp; versions</h3><p>Define a test once: object poses, task, rubric and success criteria. Replay it exactly, forever.</p><ul><li>A seed and version history for the state of a table</li><li>Sweep one condition at a time</li><li>Share suites across labs</li></ul></article>
-            <article class="card rv rv-d2"><span class="kicker">Scoring</span><h3>Automatic scoring</h3><p>A vision-language model scores every trial against your rubric, with a written reason you can audit.</p><ul><li>No scorer drift between shifts</li><li>Human review and override</li><li>Every call stored with its evidence</li></ul></article>
-            <article class="card rv"><span class="kicker">Software</span><h3>Light Console</h3><p>One place for every station, run and result across your whole organization.</p><ul><li>Live fleet and run history</li><li>Pass rates and heatmaps per position</li><li>Policy comparisons and regression alerts</li></ul></article>
-            <article class="card rv rv-d1"><span class="kicker">Developers</span><h3>API &amp; SDK</h3><p>Plug Prism into the stack you already have. Stream runs in, trigger scenes, pull results out.</p><ul><li>Documented REST API with OpenAPI spec</li><li>Run ingest from your own harness</li><li>Embeddable result views</li></ul></article>
-            <article class="card rv rv-d2"><span class="kicker">Operations</span><h3>Fleet &amp; security</h3><p>Built for teams running many stations across many sites, with your data kept private to you.</p><ul><li>Signed over-the-air updates</li><li>Calibration backups and health checks</li><li>Roles, scoped keys, encryption at rest</li></ul></article>
+          <div class="compare rv" role="table" aria-label="How Prism compares">
+            <div class="cmp-h" role="row"><span role="columnheader"></span><span role="columnheader">Manual evals</span><span role="columnheader">Simulation &amp; world models</span><span role="columnheader" class="us">Prism</span></div>
+            <div role="row"><span role="rowheader">Real objects, real physics</span><span role="cell" class="y">Yes</span><span role="cell" class="n">Approximated</span><span role="cell" class="us y">Yes</span></div>
+            <div role="row"><span role="rowheader">Same start state every trial</span><span role="cell" class="n">By eye</span><span role="cell" class="y">Yes</span><span role="cell" class="us y">Yes, verified</span></div>
+            <div role="row"><span role="rowheader">Consistent scoring</span><span role="cell" class="n">Varies by person</span><span role="cell" class="y">Scripted</span><span role="cell" class="us y">Rubric + reason</span></div>
+            <div role="row"><span role="rowheader">Setup time per trial</span><span role="cell" class="n">Minutes</span><span role="cell" class="y">None</span><span role="cell" class="us y">Seconds</span></div>
+            <div role="row"><span role="rowheader">Sim-to-real gap</span><span role="cell" class="y">None</span><span role="cell" class="n">Always there</span><span role="cell" class="us y">None</span></div>
+            <div role="row"><span role="rowheader">Results your team can audit</span><span role="cell" class="n">Spreadsheets</span><span role="cell" class="n">Logs</span><span role="cell" class="us y">Video, pose and score per trial</span></div>
           </div>
         </div>
       </section>
 
-      <!-- console -->
-      <section class="sec sec-alt" id="console" aria-labelledby="console-title">
+      <!-- outcomes -->
+      <section class="sec" id="outcomes" aria-labelledby="outcomes-title">
         <div class="wrap">
           <div class="sec-head">
-            <div><p class="eyebrow rv">Light Console</p><h2 class="rv rv-d1" id="console-title">Every run, every position,<br />one view.</h2></div>
-            <p class="lede rv rv-d1">See where each policy wins and fails across the table, how it compares to the last checkpoint, and which runs need a look. <a class="link" href="https://prism.lightcompany.ai">Sign in <span aria-hidden="true">↗</span></a></p>
+            <div><p class="eyebrow rv">Results</p><h2 class="rv rv-d1" id="outcomes-title">Faster answers.<br />Numbers you can trust.</h2></div>
+            <p class="lede rv rv-d1">Less noise between runs means 30 controlled trials tell you what 300 brute-force trials used to.</p>
           </div>
-          <div class="console rv" aria-label="Light Console showing sample evaluation data" role="img">
+          <div class="stats">
+            <div class="rv"><b>10<small>×</small></b><h3>Faster evaluation cycles</h3><p>The same scene is staged and verified before every run, so each trial counts.</p></div>
+            <div class="rv rv-d1"><b>3<small>%</small></b><h3>Physical test variability</h3><p>Down from 40% between repeated runs of the same test condition.</p></div>
+            <div class="rv rv-d2"><b>20k<small>hr</small></b><h3>Engineering time saved</h3><p>Resets, reruns and result cleanup your engineers never had to do.</p></div>
+          </div>
+          <p class="mono dim stats-note">Evaluation estimates from pilot customers</p>
+          <figure class="quote rv">
+            <blockquote>“Before Prism we argued about whether a new checkpoint was better. Now we stage the same fifty conditions, run them overnight, and the console tells us. It changed how fast we ship.”</blockquote>
+            <figcaption class="mono">Head of evaluation · Robot foundation model lab</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <!-- go deeper -->
+      <section class="sec" id="deeper" aria-labelledby="deeper-title">
+        <div class="wrap">
+          <div class="sec-head">
+            <div><p class="eyebrow rv">Go deeper</p><h2 class="rv rv-d1" id="deeper-title">The whole platform,<br />when you want it.</h2></div>
+            <p class="lede rv rv-d1">Open any part to see how it works.</p>
+          </div>
+          <div class="deep-list rv">
+          <details class="deep" id="platform">
+            <summary><span class="num mono">01</span><span class="deep-t">The platform</span><span class="deep-d">Station, test cases, scoring, console, API and fleet tools, in one system.</span><span class="deep-x mono">Read more</span></summary>
+            <div class="deep-body">
+          <div class="cards">
+            <article class="card"><span class="kicker">Hardware</span><h3>Prism Station</h3><p>Projector, depth cameras and on-board compute in one unit that mounts over any workcell.</p><ul><li>Self-calibrates and locks to the table</li><li>Guides operators step by step</li><li>Runs on site, no cloud required to test</li></ul></article>
+            <article class="card"><span class="kicker">Test design</span><h3>Cases &amp; versions</h3><p>Define a test once: object poses, task, rubric and success criteria. Replay it exactly, forever.</p><ul><li>A seed and version history for the state of a table</li><li>Sweep one condition at a time</li><li>Share suites across labs</li></ul></article>
+            <article class="card"><span class="kicker">Scoring</span><h3>Automatic scoring</h3><p>A vision-language model scores every trial against your rubric, with a written reason you can audit.</p><ul><li>No scorer drift between shifts</li><li>Human review and override</li><li>Every call stored with its evidence</li></ul></article>
+            <article class="card"><span class="kicker">Software</span><h3>Light Console</h3><p>One place for every station, run and result across your whole organization.</p><ul><li>Live fleet and run history</li><li>Pass rates and heatmaps per position</li><li>Policy comparisons and regression alerts</li></ul></article>
+            <article class="card"><span class="kicker">Developers</span><h3>API &amp; SDK</h3><p>Plug Prism into the stack you already have. Stream runs in, trigger scenes, pull results out.</p><ul><li>Documented REST API with OpenAPI spec</li><li>Run ingest from your own harness</li><li>Embeddable result views</li></ul></article>
+            <article class="card"><span class="kicker">Operations</span><h3>Fleet &amp; security</h3><p>Built for teams running many stations across many sites, with your data kept private to you.</p><ul><li>Signed over-the-air updates</li><li>Calibration backups and health checks</li><li>Roles, scoped keys, encryption at rest</li></ul></article>
+          </div>
+                    </div>
+          </details>
+          <details class="deep" id="console">
+            <summary><span class="num mono">02</span><span class="deep-t">Light Console</span><span class="deep-d">Every run, every position and every policy comparison in one view.</span><span class="deep-x mono">Read more</span></summary>
+            <div class="deep-body">
+          <div class="console" aria-label="Light Console showing sample evaluation data" role="img">
             <div class="console-bar"><span class="dots"><i></i><i></i><i></i></span><span class="url">prism.lightcompany.ai/tracking</span></div>
             <div class="console-body">
               <div class="console-side" aria-hidden="true">
@@ -217,83 +254,48 @@
             </div>
           </div>
           <p class="mono dim console-note">Sample data shown</p>
-        </div>
-      </section>
-
-      <!-- capability maps -->
-      <section class="chapter" aria-labelledby="map-title">
-        <video data-auto muted loop playsinline preload="none" poster="/media/robot-eval-staging.jpg" aria-label="A staged robot evaluation in the lab"><source src="/media/robot-eval-staging.mp4" type="video/mp4" /></video>
-        <div class="wrap">
-          <div><p class="eyebrow">Capability maps</p><h2 class="rv" id="map-title">Map where the robot<br />works and fails.</h2></div>
-          <p class="lede rv rv-d1">Prism changes one condition at a time: position, orientation, clutter, objects or light. You get a map of exactly where each policy holds up and where it breaks, before your customers find out.</p>
-        </div>
-      </section>
-
-      <!-- why prism -->
-      <section class="sec" id="why" aria-labelledby="why-title">
-        <div class="wrap">
-          <div class="sec-head">
-            <div><p class="eyebrow rv">Why Prism</p><h2 class="rv rv-d1" id="why-title">Real physics.<br />Lab-grade control.</h2></div>
-            <p class="lede rv rv-d1">Simulation is fast but it is not the world your robot ships into. Hand-run evals are real but they drift. Prism gives you the real world with the repeatability of a simulator.</p>
-          </div>
-          <div class="compare rv" role="table" aria-label="How Prism compares">
-            <div class="cmp-h" role="row"><span role="columnheader"></span><span role="columnheader">Manual evals</span><span role="columnheader">Simulation &amp; world models</span><span role="columnheader" class="us">Prism</span></div>
-            <div role="row"><span role="rowheader">Real objects, real physics</span><span role="cell" class="y">Yes</span><span role="cell" class="n">Approximated</span><span role="cell" class="us y">Yes</span></div>
-            <div role="row"><span role="rowheader">Same start state every trial</span><span role="cell" class="n">By eye</span><span role="cell" class="y">Yes</span><span role="cell" class="us y">Yes, verified</span></div>
-            <div role="row"><span role="rowheader">Consistent scoring</span><span role="cell" class="n">Varies by person</span><span role="cell" class="y">Scripted</span><span role="cell" class="us y">Rubric + reason</span></div>
-            <div role="row"><span role="rowheader">Setup time per trial</span><span role="cell" class="n">Minutes</span><span role="cell" class="y">None</span><span role="cell" class="us y">Seconds</span></div>
-            <div role="row"><span role="rowheader">Sim-to-real gap</span><span role="cell" class="y">None</span><span role="cell" class="n">Always there</span><span role="cell" class="us y">None</span></div>
-            <div role="row"><span role="rowheader">Results your team can audit</span><span role="cell" class="n">Spreadsheets</span><span role="cell" class="n">Logs</span><span role="cell" class="us y">Video, pose and score per trial</span></div>
-          </div>
-        </div>
-      </section>
-
-      <!-- outcomes -->
-      <section class="sec" id="outcomes" aria-labelledby="outcomes-title">
-        <div class="wrap">
-          <div class="sec-head">
-            <div><p class="eyebrow rv">Results</p><h2 class="rv rv-d1" id="outcomes-title">Faster answers.<br />Numbers you can trust.</h2></div>
-            <p class="lede rv rv-d1">Less noise between runs means 30 controlled trials tell you what 300 brute-force trials used to.</p>
-          </div>
-          <div class="stats">
-            <div class="rv"><b>10<small>×</small></b><h3>Faster evaluation cycles</h3><p>The same scene is staged and verified before every run, so each trial counts.</p></div>
-            <div class="rv rv-d1"><b>3<small>%</small></b><h3>Physical test variability</h3><p>Down from 40% between repeated runs of the same test condition.</p></div>
-            <div class="rv rv-d2"><b>20k<small>hr</small></b><h3>Engineering time saved</h3><p>Resets, reruns and result cleanup your engineers never had to do.</p></div>
-          </div>
-          <p class="mono dim stats-note">Evaluation estimates from pilot customers</p>
-          <figure class="quote rv">
-            <blockquote>“Before Prism we argued about whether a new checkpoint was better. Now we stage the same fifty conditions, run them overnight, and the console tells us. It changed how fast we ship.”</blockquote>
-            <figcaption class="mono">Head of evaluation · Robot foundation model lab</figcaption>
-          </figure>
-        </div>
-      </section>
-
-      <!-- who it's for -->
-      <section class="sec sec-alt" aria-labelledby="teams-title">
-        <div class="wrap">
-          <div class="sec-head">
-            <div><p class="eyebrow rv">Built for</p><h2 class="rv rv-d1" id="teams-title">Every team that<br />touches a policy.</h2></div>
-          </div>
+                    </div>
+          </details>
+          <details class="deep">
+            <summary><span class="num mono">03</span><span class="deep-t">Capability maps</span><span class="deep-d">Change one condition at a time and see exactly where a policy holds up and where it breaks.</span><span class="deep-x mono">Read more</span></summary>
+            <div class="deep-body">
+            <div class="frame" style="aspect-ratio: 16 / 9"><video data-auto muted loop playsinline preload="none" poster="/media/robot-eval-staging.jpg" aria-label="A staged robot evaluation in the lab"><source src="/media/robot-eval-staging.mp4" type="video/mp4" /></video><span class="shade"></span></div>
+            <p class="lede" style="margin-top: 24px">Prism changes one condition at a time: position, orientation, clutter, objects or light. You get a map of exactly where each policy holds up and where it breaks, before your customers find out.</p>
+            </div>
+          </details>
+          <details class="deep">
+            <summary><span class="num mono">04</span><span class="deep-t">Built for every team</span><span class="deep-d">What research, eval operations and leadership each get from Prism.</span><span class="deep-x mono">Read more</span></summary>
+            <div class="deep-body">
           <div class="trio">
-            <div class="rv"><span class="kicker">Research</span><h3>Know a checkpoint is better.</h3><p>Compare policies under identical physical conditions and see real gains, without arguing over whose run was cleaner.</p></div>
+            <div><span class="kicker">Research</span><h3>Know a checkpoint is better.</h3><p>Compare policies under identical physical conditions and see real gains, without arguing over whose run was cleaner.</p></div>
             <div class="rv rv-d1"><span class="kicker">Eval &amp; operations</span><h3>Run more, reset less.</h3><p>Guided setup and automatic scoring let a small team run hundreds of trustworthy trials a day across every station.</p></div>
             <div class="rv rv-d2"><span class="kicker">Leadership</span><h3>One number per release.</h3><p>A clear, repeatable score for every model you ship, with the evidence behind it when investors and customers ask.</p></div>
           </div>
-        </div>
-      </section>
-
-      <!-- deployment -->
-      <section class="sec" aria-labelledby="deploy-title">
-        <div class="wrap">
-          <div class="sec-head">
-            <div><p class="eyebrow rv">Deployment</p><h2 class="rv rv-d1" id="deploy-title">Running in your lab<br />in a day.</h2></div>
-            <p class="lede rv rv-d1">Prism stages the world around the robot, so it works with any arm, any policy and any training stack.</p>
-          </div>
+                    </div>
+          </details>
+          <details class="deep">
+            <summary><span class="num mono">05</span><span class="deep-t">Deployment</span><span class="deep-d">Mount, claim, calibrate, run. Scored trials the same afternoon.</span><span class="deep-x mono">Read more</span></summary>
+            <div class="deep-body">
           <div class="deploy">
-            <div class="rv"><span class="num kicker">Step 1</span><h3>Mount it.</h3><p>Place the station over your workcell and plug it in.</p></div>
+            <div><span class="num kicker">Step 1</span><h3>Mount it.</h3><p>Place the station over your workcell and plug it in.</p></div>
             <div class="rv rv-d1"><span class="num kicker">Step 2</span><h3>Claim it.</h3><p>Add it to your organization in the console with a one-time code.</p></div>
             <div class="rv rv-d2"><span class="num kicker">Step 3</span><h3>Calibrate.</h3><p>Prism maps the table and locks the calibration.</p></div>
             <div class="rv rv-d3"><span class="num kicker">Step 4</span><h3>Run.</h3><p>Load your cases and start scoring trials the same afternoon.</p></div>
+          </div>
+                    </div>
+          </details>
+          <details class="deep" id="lab-more">
+            <summary><span class="num mono">06</span><span class="deep-t">In the lab</span><span class="deep-d">Real stations, real operators, real runs.</span><span class="deep-x mono">Read more</span></summary>
+            <div class="deep-body">
+          <div class="bento">
+            <figure class="frame b-wide" style="margin: 0"><video data-auto muted loop playsinline preload="none" poster="/media/robotics/condition-stage.jpg" aria-label="Staging a test condition"><source src="/media/robotics/condition-stage.mp4" type="video/mp4" /></video><span class="shade"></span><figcaption class="tag">Staging a condition</figcaption></figure>
+            <figure class="frame" style="margin: 0"><img src="/media/robotics/multi-station-lab.webp" alt="Several Prism stations in a lab" loading="lazy" /><span class="shade"></span><figcaption class="tag">Multi-station evaluation</figcaption></figure>
+            <figure class="frame" style="margin: 0"><video data-auto muted loop playsinline preload="none" poster="/site/assets/media/curated/img-5387-6d070b6f5.jpg" aria-label="A robotic test cell"><source src="/site/assets/media/curated/img-5387-6d070b6f5.mp4" type="video/mp4" /></video><span class="shade"></span><figcaption class="tag">Robotic test cell</figcaption></figure>
+            <figure class="frame" style="margin: 0"><img src="/media/robotics/lab-team.webp" alt="Operators running evaluations" loading="lazy" /><span class="shade"></span><figcaption class="tag">Operators in the lab</figcaption></figure>
+            <figure class="frame" style="margin: 0"><video data-auto muted loop playsinline preload="none" poster="/media/robotics/lab-control.jpg" aria-label="Lab control station"><source src="/media/robotics/lab-control.mp4" type="video/mp4" /></video><span class="shade"></span><figcaption class="tag">Lab control</figcaption></figure>
+          </div>
+                    </div>
+          </details>
           </div>
         </div>
       </section>
@@ -314,25 +316,9 @@
               <li><b>Light Console</b><span>Seats for your whole team, API keys included</span></li>
               <li><b>Automatic scoring</b><span>Tuned to your rubric, with human review</span></li>
               <li><b>Engineer on call</b><span>Direct line to the people who built it</span></li>
+              <li><b>Running in a day</b><span>Mount, claim, calibrate, run. Scored trials the same afternoon</span></li>
               <li><b>Results report</b><span>Capability map and policy comparison at day 30</span></li>
             </ul>
-          </div>
-        </div>
-      </section>
-
-      <!-- in the lab -->
-      <section class="sec" aria-labelledby="lab-title" style="padding-top: 0">
-        <div class="wrap">
-          <div class="sec-head">
-            <h2 class="rv" id="lab-title">See Prism in the lab.</h2>
-            <p class="lede rv rv-d1">Real stations, real operators, real runs. <a class="link" href="/gallery">Open the field gallery <span aria-hidden="true">↗</span></a></p>
-          </div>
-          <div class="bento">
-            <figure class="frame b-wide rv" style="margin: 0"><video data-auto muted loop playsinline preload="none" poster="/media/robotics/condition-stage.jpg" aria-label="Staging a test condition"><source src="/media/robotics/condition-stage.mp4" type="video/mp4" /></video><span class="shade"></span><figcaption class="tag">Staging a condition</figcaption></figure>
-            <figure class="frame rv rv-d1" style="margin: 0"><img src="/media/robotics/multi-station-lab.webp" alt="Several Prism stations in a lab" loading="lazy" /><span class="shade"></span><figcaption class="tag">Multi-station evaluation</figcaption></figure>
-            <figure class="frame rv" style="margin: 0"><video data-auto muted loop playsinline preload="none" poster="/site/assets/media/curated/img-5387-6d070b6f5.jpg" aria-label="A robotic test cell"><source src="/site/assets/media/curated/img-5387-6d070b6f5.mp4" type="video/mp4" /></video><span class="shade"></span><figcaption class="tag">Robotic test cell</figcaption></figure>
-            <figure class="frame rv rv-d1" style="margin: 0"><img src="/media/robotics/lab-team.webp" alt="Operators running evaluations" loading="lazy" /><span class="shade"></span><figcaption class="tag">Operators in the lab</figcaption></figure>
-            <figure class="frame rv rv-d2" style="margin: 0"><video data-auto muted loop playsinline preload="none" poster="/media/robotics/lab-control.jpg" aria-label="Lab control station"><source src="/media/robotics/lab-control.mp4" type="video/mp4" /></video><span class="shade"></span><figcaption class="tag">Lab control</figcaption></figure>
           </div>
         </div>
       </section>
@@ -343,9 +329,14 @@
           <figure class="frame rv" style="margin: 0"><img src="/site/assets/media/founders.jpg" width="2130" height="1600" alt="The founders of The Light Company with their hardware" loading="lazy" /></figure>
           <div>
             <p class="eyebrow rv">The company</p>
-            <h2 class="rv rv-d1" id="team-title">Built by people who<br />run robots every day.</h2>
-            <p class="lede rv rv-d2" style="margin-top: 20px">The Light Company builds the tools we wished we had in our own lab: a way to set up the physical world exactly, every time, and trust the number that comes out. We are based in San Francisco and backed by Founders, Inc.</p>
-            <div class="backers rv rv-d3"><a class="backed" href="https://f.inc" target="_blank" rel="noopener"><img class="no-invert" src="/site/assets/brand/founders-inc-mark.png" alt="" width="22" height="22" /><span>Backed by <b>Founders, Inc.</b></span></a><a class="link" href="mailto:hi@lightcompany.ai?subject=Hello%20from%20lightcompany.ai">Talk to the founders <span aria-hidden="true">↗</span></a></div>
+            <h2 class="rv rv-d1" id="team-title">Built by Apple engineers<br />and Carnegie Mellon researchers.</h2>
+            <p class="lede rv rv-d2" style="margin-top: 20px">We have shipped products to millions and run robots in research labs. Now we build the tool we always wanted: a way to set up the physical world exactly, every time, and trust the number that comes out. Based in San Francisco.</p>
+            <ul class="logos rv rv-d3" aria-label="Where we come from and who backs us">
+              <li title="Apple"><svg class="logo-apple" aria-hidden="true" fill="currentColor" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Apple</title><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg><span>Apple</span></li>
+              <li title="Carnegie Mellon University"><span class="logo-cmu">Carnegie Mellon<br />University</span></li>
+              <li title="Founders, Inc."><img class="no-invert" src="/site/assets/brand/founders-inc-mark.png" alt="" width="26" height="26" /><span>Founders, Inc.</span></li>
+            </ul>
+            <p class="rv rv-d3" style="margin-top: 28px"><a class="link" href="mailto:hi@lightcompany.ai?subject=Hello%20from%20lightcompany.ai">Talk to the founders <span aria-hidden="true">↗</span></a></p>
           </div>
         </div>
       </section>
@@ -353,12 +344,10 @@
       <!-- faq -->
       <section class="sec sec-alt" id="faq" aria-labelledby="faq-title">
         <div class="wrap faq-wrap">
-          <div><p class="eyebrow rv">Questions</p><h2 class="rv rv-d1" id="faq-title">Good to know.</h2></div>
+          <div><p class="eyebrow rv">Questions</p><h2 class="rv rv-d1" id="faq-title">Good to know.</h2><p class="rv rv-d2" style="margin-top: 20px"><a class="link" href="#deeper">Explore the whole platform <span aria-hidden="true">↗</span></a></p></div>
           <div class="faq">
             <details><summary>Does Prism work with our robot?</summary><p>Yes. Prism controls and checks the physical scene around the robot, so it works with any arm, gripper, policy or training framework. Results come into the console from the station, or from your own harness through the API.</p></details>
             <details><summary>How is a trial scored?</summary><p>Our vision-language model watches each trial, judges it against your rubric and writes down why. Your team can review and override any call, and every decision is stored with its evidence.</p></details>
-            <details><summary>Where does our data live?</summary><p>Each organization's runs, keys and results are kept separate and encrypted at rest. Access is controlled by role, from viewer to owner, and API keys are scoped to your organization.</p></details>
-            <details><summary>How many stations can we run?</summary><p>As many as you need. The console manages a whole fleet across sites, with health checks, calibration backups and signed updates rolled out one station at a time.</p></details>
             <details><summary>What does it cost?</summary><p>Every engagement starts with a 30-day pilot on your own robot. After that, stations are priced per workcell with the console, scoring and support included. Book a call and we will size it to your lab.</p></details>
             <details><summary>How fast can we start?</summary><p>Most teams go from unboxing to scored trials in a day. We help set up your first test suite and stay on call while your team gets going.</p></details>
           </div>
@@ -391,10 +380,9 @@
             <a class="brand" href="/robotics-vision"><img class="no-invert" src="/site/assets/brand/light-company-mark-inverse.svg" alt="" width="30" height="24" />The Light Company</a>
             <p class="footer-tag">The evaluation platform for physical AI.</p>
           </div>
-          <div><h4>Platform</h4><ul><li><a href="#loop">How it works</a></li><li><a href="#console">Light Console</a></li><li><a href="#outcomes">Results</a>
-          <a href="#pilot">Pilot</a></li><li><a href="https://prism.lightcompany.ai">Sign in</a></li></ul></div>
+          <div><h4>Platform</h4><ul><li><a href="#loop">How it works</a></li><li><a href="#deeper">Platform</a></li><li><a href="#console">Light Console</a></li><li><a href="#outcomes">Results</a></li><li><a href="#pilot">Pilot</a></li><li><a href="https://prism.lightcompany.ai">Sign in</a></li></ul></div>
           <div><h4>Products</h4><ul><li><a href="/robotics-vision">Prism Robotics</a></li><li><a href="/prism-vision">Prism IRL</a></li><li><a href="/gallery">Gallery</a></li></ul></div>
-          <div><h4>Company</h4><ul><li><a href="/prism-vision#company">Founders</a></li><li><a href="mailto:hi@lightcompany.ai">hi@lightcompany.ai</a></li><li><a href="/privacy">Privacy</a></li></ul></div>
+          <div><h4>Company</h4><ul><li><a href="#company">Company</a></li><li><a href="mailto:hi@lightcompany.ai">hi@lightcompany.ai</a></li><li><a href="/privacy">Privacy</a></li></ul></div>
         </div>
         <div class="footer-word" aria-hidden="true">Light Company</div>
         <div class="footer-legal mono"><span>© 2026 The Light Company · San Francisco, CA</span><a href="#top">Back to top ↑</a></div>

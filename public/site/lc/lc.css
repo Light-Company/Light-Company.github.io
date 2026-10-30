@@ -423,3 +423,29 @@ h3, .h3 { font-size: clamp(18px, 1.3vw, 20px); line-height: 1.1; letter-spacing:
   .compare > div { grid-template-columns: 1.2fr 1fr 1fr 1fr; min-width: 560px; }
   .compare span { padding: 12px; }
 }
+
+/* go deeper: expandable platform detail */
+.deep-list { border-top: 1px solid var(--line); }
+.deep { border-bottom: 1px solid var(--line); }
+.deep summary { list-style: none; cursor: pointer; display: grid; grid-template-columns: 48px minmax(0, 4fr) minmax(0, 6fr) auto; gap: 24px; align-items: baseline; padding: 24px 0; transition: background 0.3s; }
+.deep summary::-webkit-details-marker { display: none; }
+.deep summary .num { color: var(--accent); margin: 0; }
+.deep-t { font: 500 clamp(18px, 1.4vw, 21px)/1.2 var(--display); letter-spacing: -0.02em; }
+.deep-d { color: var(--mute); font-size: 15px; }
+.deep-x { color: var(--mute); display: inline-flex; gap: 10px; align-items: center; transition: color 0.25s; }
+.deep-x::after { content: "+"; font: 300 22px/1 var(--body); transition: transform 0.3s var(--ease); }
+.deep summary:hover .deep-x { color: var(--text); }
+.deep[open] .deep-x::after { transform: rotate(45deg); }
+.deep[open] summary .deep-x { color: var(--text); }
+.deep-body { padding: 8px 0 48px; animation: deepIn 0.5s var(--ease); }
+@keyframes deepIn { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
+@media (max-width: 760px) { .deep summary { grid-template-columns: 36px 1fr auto; gap: 12px; } .deep-d { grid-column: 2 / -1; grid-row: 2; } .deep-x { font-size: 0; } .deep-x::after { font-size: 22px; } }
+
+/* team logos: where we come from, who backs us */
+.logos { list-style: none; margin: 32px 0 0; padding: 22px 0 0; border-top: 1px solid var(--line); display: flex; flex-wrap: wrap; align-items: center; gap: 18px 40px; }
+.logos li { display: inline-flex; align-items: center; gap: 10px; color: var(--text); opacity: 0.86; transition: opacity 0.25s; }
+.logos li:hover { opacity: 1; }
+.logos li > span { font: 600 17px/1 var(--display); letter-spacing: -0.02em; }
+.logos .logo-apple { width: 22px; height: 22px; margin-top: -3px; }
+.logos .logo-cmu { font: 600 14.5px/1.08 Georgia, "Times New Roman", serif !important; letter-spacing: 0 !important; }
+.logos img { width: 26px; height: 26px; border-radius: 6px; background: #1a1a1a; padding: 3px; }

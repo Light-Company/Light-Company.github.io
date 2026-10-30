@@ -73,7 +73,7 @@ test("the Robotics page keeps its landing video, method and qualified pilot numb
   assert.match(html, /\/site\/robotics-vision\/test-condition-full.mp4/);
   assert.match(html, /\/media\/robotics\/projected-test-run.mp4/);
   assert.match(html, /data-film-inline[\s\S]*\/media\/brand-film\/evals-explainer.mp4/);
-  assert.match(html, /Map where the robot<br \/>works and fails\./);
+  assert.match(html, /id="deeper"[\s\S]*Capability maps[\s\S]*robot-eval-staging.mp4/);
   assert.match(html, /id="outcomes"[\s\S]*Evaluation estimates from pilot customers/);
   const source = sources["robotics-hero-full.mp4"];
   assert.equal(source.sourceFile, "IMG_5578 3 (1).mov");
