@@ -31,6 +31,19 @@
   const rio = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("in"); rio.unobserve(e.target); } }), { rootMargin: "0px 0px -8% 0px" });
   $$(".rv").forEach((el) => (reduce ? el.classList.add("in") : rio.observe(el)));
 
+  // footer lockup: fit the viewBox to the real glyphs, draw it in once seen, then start the light sweep
+  $$(".footer-logo").forEach((box) => {
+    const svg = $("svg", box);
+    const fit = () => { try { const b = svg.getBBox(); svg.setAttribute("viewBox", `${b.x - 4} ${b.y - 4} ${b.width + 8} ${b.height + 8}`); } catch {} };
+    (document.fonts?.ready || Promise.resolve()).then(fit);
+    const lio = new IntersectionObserver(([e]) => {
+      if (!e.isIntersecting) return;
+      box.classList.add("in"); lio.disconnect();
+      if (!reduce) setTimeout(() => $("#fl-sweep animateTransform", box)?.beginElement?.(), 3000);
+    }, { threshold: 0.3 });
+    lio.observe(box);
+  });
+
   // manifesto: split into words, light them as the paragraph crosses the viewport
   $$("[data-manifesto]").forEach((p) => {
     const hl = new Set((p.dataset.highlight || "").toLowerCase().split(",").map((s) => s.trim()).filter(Boolean));
