@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="128 124 225 183" fill="none">
+  <defs>
+    <linearGradient id="projection-beam" x1="230.365" y1="223" x2="344.365" y2="223" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#075BFF"/>
+      <stop offset=".52" stop-color="#009FF4"/>
+      <stop offset="1" stop-color="#24D4FF"/>
+    </linearGradient>
+  </defs>
+  <path d="M264.268 192.995 233.422 135.867c-1.729-3.266-6.295-3.266-8.023 0l-83.688 152.441c-1.729 3.266.545 7.18 4.012 7.18h157.375c3.467 0 5.74-3.914 4.012-7.18l-17.283-34.566c-1.729-3.266-6.295-3.266-8.023 0" stroke="#0A1118" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M344.365 183.912 230.365 222.995 344.365 262.078V183.912Z" fill="url(#projection-beam)"/>
+</svg>
