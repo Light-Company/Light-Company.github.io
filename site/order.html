@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#08090a" />
+    <title>Preorder Prism | The Light Company</title>
+    <meta name="description" content="Preorder Prism for your lab. Project every test onto the table, verify the scene before the robot moves, and get a real answer from every robot evaluation." />
+    <link rel="canonical" href="https://lightcompany.ai/order" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Preorder Prism | The Light Company" />
+    <meta property="og:description" content="More signal per physical trial. Bring Prism to your lab." />
+    <meta property="og:url" content="https://lightcompany.ai/order" />
+    <meta property="og:image" content="https://lightcompany.ai/site/order/images/prism-visual-intelligence.webp" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href="/site/assets/brand/light-company-mark.svg" type="image/svg+xml" />
+    <link rel="preload" href="/site/assets/fonts/Satoshi-700.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/site/assets/fonts/inter-variable.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/site/order/images/prism-visual-intelligence.webp" as="image" fetchpriority="high" />
+    <link rel="stylesheet" href="/site/lc/lc.css" />
+    <script src="/site/lc/lc.js" defer></script>
+    <script type="module" src="/site/order/script.js"></script>
+  </head>
+  <body class="order-page">
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="nav">
+      <div class="wrap nav-inner">
+        <a class="brand" href="/" aria-label="The Light Company home"><img class="no-invert" src="/site/assets/brand/light-company-mark-inverse.svg" alt="" width="30" height="24" />The Light Company</a>
+        <nav class="nav-links" aria-label="Primary">
+          <a href="/">Prism Robotics</a>
+          <a href="#how">How it works</a>
+          <a href="/products/Prism-Product-Sheet.pdf">Product sheet</a>
+          <a href="/prism">Prism IRL</a>
+        </nav>
+        <div class="nav-cta">
+          <a class="btn btn-ghost btn-sm" href="https://prism.lightcompany.ai">Sign in</a>
+          <a class="btn btn-primary btn-sm" href="#preorder">Preorder</a>
+        </div>
+        <button class="nav-toggle" aria-label="Menu" aria-expanded="false"><span></span></button>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="sec order-hero" id="top" aria-labelledby="order-title">
+        <div class="wrap order-grid">
+          <div class="order-product">
+            <p class="eyebrow rv">Prism for robotics · Preorder</p>
+            <h1 class="display rv rv-d1" id="order-title">More signal<br />per physical trial.</h1>
+            <p class="lede rv rv-d2">Project the setup. Verify the scene. Know exactly what made the robot better. Prism turns every robot evaluation into a result your team can trust, in a tenth of the trials.</p>
+            <figure class="frame order-figure rv rv-d2" style="margin: 0"><img src="/site/order/images/prism-visual-intelligence.webp" alt="Prism projecting a grid and object-placement outlines onto a robot workcell while its camera checks the cup and tray" width="1536" height="1024" fetchpriority="high" /><span class="shade"></span><figcaption class="tag">Projected guidance and vision verification in one workcell</figcaption></figure>
+            <ul class="order-points rv rv-d3">
+              <li><b>Put the test on the table.</b><span>Object positions from your code, projected onto the work surface.</span></li>
+              <li><b>Start from the same conditions.</b><span>Cameras verify the scene before the policy runs.</span></li>
+              <li><b>Every trial scored and kept.</b><span>Video, pose and score for every run, in the Light Console.</span></li>
+              <li><b>Works with the robots you have.</b><span>Any arm, any gripper, any policy. Up and running in a day.</span></li>
+            </ul>
+          </div>
+
+          <div class="preorder-panel rv rv-d1" id="preorder">
+            <div data-form-content>
+              <h2>Preorder Prism.</h2>
+              <p class="form-intro">Reserve a station for your lab. We'll follow up within one business day with availability, configuration and pricing.</p>
+              <p class="no-payment mono">No payment required to join</p>
+              <form action="/api/preorder" method="post" data-preorder-form>
+                <div class="form-field"><label for="full-name">Full name</label><input id="full-name" name="fullName" autocomplete="name" maxlength="120" required /><p class="field-error" id="fullName-error" hidden></p></div>
+                <div class="form-field"><label for="email">Work email</label><input id="email" name="email" type="email" autocomplete="email" maxlength="254" required /><p class="field-error" id="email-error" hidden></p></div>
+                <div class="form-field"><label for="company">Company or lab</label><input id="company" name="company" autocomplete="organization" maxlength="160" required /><p class="field-error" id="company-error" hidden></p></div>
+                <div class="form-field"><label for="use-case">What would you use Prism for? <span>Optional</span></label><textarea id="use-case" name="useCase" rows="3" maxlength="2000" placeholder="Your task, workflow or research project"></textarea><p class="field-error" id="useCase-error" hidden></p></div>
+                <details class="extra-details">
+                  <summary>Add details about your team <span>Optional</span></summary>
+                  <div class="extra-fields">
+                    <div class="form-field"><label for="role">Your role</label><input id="role" name="role" autocomplete="organization-title" maxlength="120" /><p class="field-error" id="role-error" hidden></p></div>
+                    <div class="form-field"><label for="robot">Robot or platform</label><input id="robot" name="robot" maxlength="200" placeholder="Your arm, gripper or platform" /><p class="field-error" id="robot-error" hidden></p></div>
+                    <div class="form-field"><label for="quantity">Stations you're considering</label><input id="quantity" name="quantity" type="number" min="1" max="1000" step="1" inputmode="numeric" placeholder="Leave blank if you're not sure" /><p class="field-error" id="quantity-error" hidden></p></div>
+                  </div>
+                </details>
+                <div class="form-trap" aria-hidden="true"><label for="website">Website</label><input id="website" name="website" tabindex="-1" autocomplete="off" /></div>
+                <label class="updates-option"><input type="checkbox" name="updatesOptIn" value="true" /><span>Also send me occasional Prism product updates.</span></label>
+                <p class="form-status" data-form-status role="status" aria-live="polite" tabindex="-1" hidden></p>
+                <button class="btn btn-primary preorder-submit" type="submit" data-submit>Join the preorder list</button>
+                <p class="privacy-note">We'll use these details to follow up about Prism. <a class="link" href="/privacy">Privacy policy</a></p>
+              </form>
+            </div>
+            <div class="preorder-success" data-success hidden tabindex="-1" role="status">
+              <span class="success-mark" aria-hidden="true">✓</span>
+              <h2>You're on the list.</h2>
+              <p>Thanks for your interest in Prism. Jon will follow up about your setup and next steps.</p>
+              <div class="hero-actions"><a class="btn btn-ghost" href="/products/Prism-Product-Sheet.pdf">Product sheet ↗</a><a class="btn btn-ghost" href="/">Back to Prism</a></div>
+            </div>
+            <p class="direct-contact mono">Prefer to talk? <a class="link" href="mailto:jon@lightcompany.ai?subject=Prism%20preorder">jon@lightcompany.ai</a></p>
+          </div>
+        </div>
+      </section>
+
+      <section class="reel" aria-label="Projected test conditions in the lab">
+        <video data-auto muted loop playsinline preload="none" poster="/site/robotics-vision/test-condition-full.jpg" aria-label="Projected coordinates and object labels around cups on a robot workbench"><source src="/site/robotics-vision/test-condition-full.mp4" type="video/mp4" /></video>
+        <div class="wrap reel-cap mono"><span>Your test case</span><span>Right on the table</span></div>
+      </section>
+
+      <section class="sec" id="how" aria-labelledby="how-title">
+        <div class="wrap">
+          <div class="sec-head">
+            <div><p class="eyebrow rv">How it works</p><h2 class="rv rv-d1" id="how-title">Your test case.<br />Right on the table.</h2></div>
+            <p class="lede rv rv-d1">Prism connects the case in your code to the scene in front of your robot, then keeps the evidence of every run.</p>
+          </div>
+          <ol class="inv-steps rv">
+            <li><span class="num mono">01</span><h3>Define and stage.</h3><p>Specify a case in code. Placements, outlines and task cues are projected so anyone can reset the scene in seconds.</p></li>
+            <li><span class="num mono">02</span><h3>Verify.</h3><p>Object identity, pose and tolerance are checked before the policy runs. Bad setups never become bad data.</p></li>
+            <li><span class="num mono">03</span><h3>Evaluate.</h3><p>Every trial is scored against your rubric and tied to the exact conditions that produced it.</p></li>
+            <li><span class="num mono">04</span><h3>Map and retest.</h3><p>Compare models across starting conditions. Revisit failures, catch regressions, close coverage gaps.</p></li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="sec sec-alt" aria-labelledby="next-title">
+        <div class="wrap faq-wrap">
+          <div><p class="eyebrow rv">What happens next</p><h2 class="rv rv-d1" id="next-title">From list<br />to lab.</h2></div>
+          <div class="faq">
+            <details open><summary>We talk about your lab.</summary><p>Jon follows up within one business day to understand your robots, tasks and how you evaluate today.</p></details>
+            <details><summary>We size the station.</summary><p>Configuration, delivery date and pricing are confirmed with you before anything is ordered. Joining the list never charges you.</p></details>
+            <details><summary>We install it with you.</summary><p>We mount, calibrate and build your first test suite with your team. Scored trials the same day.</p></details>
+            <details><summary>You keep the answers.</summary><p>Your stations, runs and results live in the Light Console, with an engineer on call while your team gets going.</p></details>
+          </div>
+        </div>
+      </section>
+
+      <section class="sec closing" aria-labelledby="get-title">
+        <div class="wrap">
+          <div class="mark-wrap"><img class="mark" src="/site/assets/brand/light-company-mark-inverse.svg" alt="The Light Company" /></div>
+          <h2 id="get-title" class="rv">Make every eval count.</h2>
+          <div class="hero-actions rv rv-d2"><a class="btn btn-primary" href="#preorder">Join the preorder list</a><a class="btn btn-ghost" href="/products/Prism-Product-Sheet.pdf">Read the product sheet</a></div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="wrap">
+        <div class="footer-grid">
+          <div>
+            <a class="brand" href="/"><img class="no-invert" src="/site/assets/brand/light-company-mark-inverse.svg" alt="" width="30" height="24" />The Light Company</a>
+            <p class="footer-tag">The evaluation platform for physical AI.</p>
+          </div>
+          <div><h4>Prism</h4><ul><li><a href="/">Prism Robotics</a></li><li><a href="/prism">Prism IRL</a></li><li><a href="/products/Prism-Product-Sheet.pdf">Product sheet</a></li></ul></div>
+          <div><h4>Company</h4><ul><li><a href="/investors">Investors</a></li><li><a href="/gallery">Gallery</a></li><li><a href="/privacy">Privacy</a></li></ul></div>
+          <div><h4>Contact</h4><ul><li><a href="mailto:jon@lightcompany.ai">jon@lightcompany.ai</a></li><li><a href="https://prism.lightcompany.ai">Sign in</a></li></ul></div>
+        </div>
+        <div class="footer-logo" aria-hidden="true"><canvas class="footer-ascii" data-logo="/site/assets/brand/light-company-logo-full.svg"></canvas></div>
+        <div class="footer-legal mono"><span>© 2026 The Light Company · San Francisco, CA</span><a href="#top">Back to top ↑</a></div>
+      </div>
+    </footer>
+  </body>
+</html>

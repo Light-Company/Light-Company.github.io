@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#08090a" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Investor overview | The Light Company</title>
+    <meta name="description" content="The Light Company builds the measurement layer for physical AI. Prism stages, verifies and records every robot evaluation, so labs can see what actually made the robot better." />
+    <link rel="canonical" href="https://lightcompany.ai/robotics/investors" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Investor overview | The Light Company" />
+    <meta property="og:description" content="Physical AI can't improve what it can't measure. Prism is the measurement layer." />
+    <meta property="og:url" content="https://lightcompany.ai/robotics/investors" />
+    <meta property="og:image" content="https://lightcompany.ai/og-blue.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href="/site/assets/brand/light-company-mark.svg" type="image/svg+xml" />
+    <link rel="preload" href="/site/assets/fonts/Satoshi-700.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/site/assets/fonts/inter-variable.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="/site/lc/lc.css" />
+    <script src="/site/lc/lc.js" defer></script>
+    <script type="module" src="/site/robotics-investors/story.js"></script>
+  </head>
+  <body class="investors">
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="nav">
+      <div class="wrap nav-inner">
+        <a class="brand" href="/" aria-label="The Light Company home"><img class="no-invert" src="/site/assets/brand/light-company-mark-inverse.svg" alt="" width="30" height="24" />The Light Company</a>
+        <nav class="nav-links" aria-label="Investor overview">
+          <a href="#shift">Why now</a>
+          <a href="#proof">Proof</a>
+          <a href="#data">Data</a>
+          <a href="#business">Business</a>
+          <a href="#vision">Vision</a>
+          <a href="#round">Round</a>
+        </nav>
+        <div class="nav-cta">
+          <a class="btn btn-ghost btn-sm" href="/investors">Documents</a>
+          <a class="btn btn-primary btn-sm" href="mailto:jon@lightcompany.ai?subject=The%20Light%20Company">Talk with Jon</a>
+        </div>
+        <button class="nav-toggle" aria-label="Menu" aria-expanded="false"><span></span></button>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="hero" id="top" aria-labelledby="hero-title">
+        <div class="hero-media">
+          <video data-auto autoplay muted loop playsinline preload="auto" poster="/media/robotics/labs-film.jpg" aria-label="Projected test grids running across every station in the lab">
+            <source src="/media/robotics/labs-film.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <div class="wrap hero-body">
+          <p class="eyebrow rv">The Light Company · Investor overview</p>
+          <h1 class="display rv rv-d1" id="hero-title">Physical AI can't<br />improve what it<br />can't measure.</h1>
+          <div class="hero-sub">
+            <p class="lede rv rv-d2">Robots now learn like software. They still get tested like it's 1995: by hand, by eye, one trial at a time. Prism is the measurement layer for physical AI. Every robot that ships will be tested on it.</p>
+            <div class="hero-actions rv rv-d3">
+              <a class="btn btn-primary" href="mailto:jon@lightcompany.ai?subject=The%20Light%20Company">Talk with Jon</a>
+              <a class="btn btn-ghost" href="#film"><span class="play" aria-hidden="true"></span>Watch Prism work</a>
+            </div>
+          </div>
+          <div class="hero-foot mono">
+            <span><i class="live-dot" aria-hidden="true"></i>10 paid units installed</span>
+            <span>3 paying customers · Enact · New Theory · Trossen Robotics</span>
+            <span>Backed by Founders, Inc.</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- 01 the shift -->
+      <section class="sec manifesto" id="shift" aria-labelledby="shift-title">
+        <div class="wrap">
+          <p class="eyebrow" id="shift-title">01 · The shift</p>
+          <p data-manifesto data-highlight="test,suite,measure">Every robotics lab is becoming a model company. They train, change a checkpoint, and train again. Software teams ship that loop a hundred times a day because they have a test suite. The physical world has no test suite. So labs rerun trials, argue about results, and ship on a feeling.</p>
+          <div class="figures">
+            <div class="rv"><b>$10B+</b><p>Invested in robot foundation models since 2024. Every dollar of it needs a way to measure progress.</p></div>
+            <div class="rv rv-d1"><b>100+</b><p>Labs training generalist robot policies today, from startups to the largest AI companies.</p></div>
+            <div class="rv rv-d2"><b>~40%</b><p>Of a robot learning team's time spent running and resetting physical evaluations.</p></div>
+            <div class="rv rv-d3"><b>0</b><p>Standard ways to test a robot policy in the real world. Prism is building the first.</p></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 02 the missing control -->
+      <section class="sec" id="control" aria-labelledby="control-title" style="padding-top: 0">
+        <div class="wrap">
+          <div class="sec-head">
+            <div><p class="eyebrow rv">02 · The missing control</p><h2 class="rv rv-d1" id="control-title">A few centimeters<br />change the answer.</h2></div>
+            <p class="lede rv rv-d1">Did the model get better, or did someone put the cup in an easier spot? When the setup moves between runs, a real improvement disappears into the noise. The only fix today is brute force: hundreds more trials.</p>
+          </div>
+          <div class="spread rv" data-spread>
+            <div class="spread-top">
+              <p class="mono dim">Same two models. Model A scores 60, model B scores 70.</p>
+              <div class="seg" role="group" aria-label="How the scene is set up">
+                <button type="button" aria-pressed="true" data-mode="eye">Set up by eye</button>
+                <button type="button" aria-pressed="false" data-mode="prism">Set up by Prism</button>
+              </div>
+            </div>
+            <div class="spread-plot" aria-hidden="true">
+              <div class="spread-row"><span class="mono">Model A</span><div class="spread-track" data-track="a"></div></div>
+              <div class="spread-row"><span class="mono">Model B</span><div class="spread-track" data-track="b"></div></div>
+              <div class="spread-axis mono"><span>0</span><span>25</span><span>50</span><span>75</span><span>100</span></div>
+            </div>
+            <p class="spread-read" data-spread-read role="status" aria-live="polite">The results overlap. Nobody can say B is better without hundreds more trials.</p>
+            <p class="mono dim spread-note">Illustration of the principle, not customer data.</p>
+          </div>
+          <div class="figures" style="margin-top: clamp(48px, 6vw, 80px)">
+            <div class="rv"><b>50%+</b><p>Swing in success rate from centimeter-scale shifts in where objects start.</p></div>
+            <div class="rv rv-d1"><b>~30%</b><p>Disagreement between human scorers watching the same trial.</p></div>
+            <div class="rv rv-d2"><b>1 in 5</b><p>Episodes thrown out because the scene was set up wrong.</p></div>
+            <div class="rv rv-d3"><b>10×</b><p>More trials needed to see a real policy change through the noise.</p></div>
+          </div>
+          <p class="mono dim figures-note rv">Figures from published robot-eval research, summarized in our <a class="link" href="/investors/white-paper.pdf">white paper <span aria-hidden="true">↗</span></a></p>
+        </div>
+      </section>
+
+      <!-- 03 what prism does -->
+      <section class="reel" aria-label="Staging a test condition">
+        <video data-auto muted loop playsinline preload="none" poster="/site/robotics-vision/test-condition-full.jpg" aria-label="Projected coordinates and object labels around cups on a robot workbench"><source src="/site/robotics-vision/test-condition-full.mp4" type="video/mp4" /></video>
+        <div class="wrap reel-cap mono"><span>03 · What Prism does</span><span>Software reaches the surface</span></div>
+      </section>
+
+      <section class="sec" id="product" aria-labelledby="product-title">
+        <div class="wrap">
+          <div class="sec-head">
+            <div><p class="eyebrow rv">03 · What Prism does</p><h2 class="rv rv-d1" id="product-title">The test starts<br />before the robot moves.</h2></div>
+            <p class="lede rv rv-d1">Test code can name a position. It can't make anyone put the cup there. Prism closes that gap: it projects the setup onto the table, checks it with cameras, and ties every result to the exact scene that produced it.</p>
+          </div>
+          <ol class="inv-steps rv">
+            <li><span class="num mono">01</span><h3>Define the case.</h3><p>Placements come from the lab's own code through our SDK, or Prism generates a set for the task.</p></li>
+            <li><span class="num mono">02</span><h3>Project, place, verify.</h3><p>The setup appears on the table. Cameras confirm identity, pose and tolerance before anything runs.</p></li>
+            <li><span class="num mono">03</span><h3>Run the robot.</h3><p>Any arm, any policy. Every model faces the same verified starting conditions.</p></li>
+            <li><span class="num mono">04</span><h3>Keep the evidence.</h3><p>Outcome, model version and verified setup are stored together, so a result can be trusted, compared and replayed.</p></li>
+          </ol>
+          <div class="film-inline rv" id="film" data-film-inline style="margin-top: clamp(48px, 6vw, 80px)">
+            <video playsinline preload="none" poster="/media/brand-film/evals-explainer.jpg" src="/media/brand-film/evals-explainer.mp4" aria-label="Prism Robotics evaluation film"></video>
+            <button class="film-cover" aria-label="Play the Prism Robotics film"><span class="big-play" aria-hidden="true"></span><span class="meta mono">Prism in a working robot cell · 1:58</span></button>
+          </div>
+        </div>
+      </section>
+
+      <!-- 04 proof -->
+      <section class="sec sec-alt" id="proof" aria-labelledby="proof-title">
+        <div class="wrap">
+          <div class="sec-head">
+            <div><p class="eyebrow rv">04 · Proof</p><h2 class="rv rv-d1" id="proof-title">Fewer trials.<br />A clearer answer.</h2></div>
+            <p class="lede rv rv-d1">Prism is paid for and running in customer labs today. Every customer that installed it kept it, and two of them measured exactly what changed.</p>
+          </div>
+          <div class="inv-proof">
+            <article class="rv">
+              <p class="kicker">Enact · robotics lab</p>
+              <b>10<small>×</small></b>
+              <h3>Fewer evaluations for the same answer.</h3>
+              <p>Their earlier process took roughly 300 to 400 evaluations to get useful engineering feedback on a model change. With verified starting conditions, about 30.</p>
+            </article>
+            <article class="rv rv-d1">
+              <p class="kicker">New Theory · 30-day measurement</p>
+              <b>40<small>%</small> <i aria-hidden="true">→</i> 3<small>%</small></b>
+              <h3>Evaluation variability.</h3>
+              <p>Same test, run again and again. Consistent physical starting conditions made it possible to see whether the next model actually improved.</p>
+            </article>
+          </div>
+          <div class="ledger rv">
+            <div><b>10</b><span>Paid units installed</span></div>
+            <div><b>3</b><span>Paying customers</span></div>
+            <div><b>20</b><span>Stations running in labs</span></div>
+          </div>
+          <p class="mono dim stats-note">Variability describes repeatability of the same test, not model accuracy. The 10× comparison uses 300 evaluations as the baseline.</p>
+        </div>
+      </section>
+
+      <!-- 05 data -->
+      <section class="sec" id="data" aria-labelledby="data-title">
+        <div class="wrap">
+          <div class="sec-head">
+            <div><p class="eyebrow rv">05 · The data opportunity</p><h2 class="rv rv-d1" id="data-title">Find a failure once.<br />Use it forever.</h2></div>
+            <p class="lede rv rv-d1">A single success rate hides everything useful. Because Prism verifies every starting condition, each trial becomes a case a lab can run again: on another station, after the next update, in another building. That library of real-world cases is the asset, and it compounds with every run. Over time it becomes the benchmark the whole industry reports against: the ImageNet of physical AI.</p>
+          </div>
+          <div class="casemap rv" data-casemap>
+            <div class="casemap-top">
+              <p class="mono dim">Illustrative workflow · one task, 36 table positions, two model versions</p>
+              <div class="seg" role="group" aria-label="What the map shows">
+                <button type="button" aria-pressed="false" data-view="earlier">Earlier model</button>
+                <button type="button" aria-pressed="true" data-view="newer">New model</button>
+                <button type="button" aria-pressed="false" data-view="change">What changed</button>
+              </div>
+            </div>
+            <div class="casemap-body">
+              <div class="casemap-grid" data-grid role="grid" aria-label="Success rate by table position"></div>
+              <div class="casemap-side" role="status" aria-live="polite">
+                <p class="mono dim">Selected physical condition</p>
+                <h3 data-case-id>Position C4</h3>
+                <p class="mono" data-case-pos>x 30 cm · y 40 cm</p>
+                <div class="casemap-nums">
+                  <div><span class="mono dim">Earlier</span><b data-case-a>50%</b><small data-case-at>10 / 20 valid trials</small></div>
+                  <div><span class="mono dim">New</span><b data-case-b>85%</b><small data-case-bt>17 / 20 valid trials</small></div>
+                </div>
+                <p data-case-read>+35 points at the same starting position.</p>
+                <p class="mono dim casemap-next" data-next></p>
+              </div>
+            </div>
+            <p class="mono dim spread-note">The average went up. Look at the map and two positions got worse, and eight were never tested. That is what a single number hides.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 06 business -->
+      <section class="sec sec-alt" id="business" aria-labelledby="business-title">
+        <div class="wrap">
+          <div class="sec-head">
+            <div><p class="eyebrow rv">06 · The business</p><h2 class="rv rv-d1" id="business-title">A station in the lab.<br />Software on every run.</h2></div>
+            <p class="lede rv rv-d1">Hardware opens the door. The recurring business is the software every evaluation runs through: staging, verification, scoring, the console and the case library behind it. More robots in more labs means more evaluations, and every evaluation goes through Prism. Robot evaluation is a multi-billion-dollar line item that no one owns yet.</p>
+          </div>
+          <div class="cards cards-3">
+            <article class="card rv"><span class="kicker">Land</span><h3>Prism Station</h3><p>Mounted over an existing workcell. Works with the robots a lab already has, so there is nothing to replace.</p></article>
+            <article class="card rv rv-d1"><span class="kicker">Expand</span><h3>Software per evaluation</h3><p>Every staged, verified and scored trial runs through Prism. Usage grows with the lab's robot count and training cadence.</p></article>
+            <article class="card rv rv-d2"><span class="kicker">Compound</span><h3>The case library</h3><p>Verified physical test cases shared across stations and teams. The longer a lab uses Prism, the harder it is to test without it.</p></article>
+          </div>
+          <div class="calc rv" data-calc>
+            <div class="calc-in">
+              <p class="mono dim">Targets · not current traction</p>
+              <label for="calc-stations">Stations running Prism <b data-calc-stations-out>1,000</b></label>
+              <input id="calc-stations" type="range" min="10" max="10000" step="10" value="1000" data-calc-stations />
+              <p class="mono dim">At 100 evaluations a day, 250 working days a year, $1 of software per evaluation.</p>
+            </div>
+            <div class="calc-out"><span class="mono dim">Annual software revenue</span><b data-calc-out>$25M</b></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 07 vision -->
+      <section class="sec" id="vision" aria-labelledby="vision-title">
+        <div class="wrap split">
+          <figure class="frame rv" style="margin: 0; aspect-ratio: 16 / 10"><video data-auto muted loop playsinline preload="none" poster="/site/prism-vision/media/piano-guidance-full.jpg" aria-label="Prism guiding a piano lesson with projected light"><source src="/site/prism-vision/media/piano-guidance-full.mp4" type="video/mp4" /></video><span class="shade"></span><figcaption class="tag">Prism IRL · guidance at the point of action</figcaption></figure>
+          <div>
+            <p class="eyebrow rv">07 · The bigger picture</p>
+            <h2 class="rv rv-d1" id="vision-title">Intelligence that<br />reaches the physical world.</h2>
+            <p class="lede rv rv-d2" style="margin-top: 20px">Under Prism is one capability: a system that sees a surface, understands what is on it, and puts precise light exactly where it is needed. Robot evaluation is where that capability is worth the most today. The same stack already guides people through real tasks, from lab setups to piano lessons, with nothing to wear. Robotics is the wedge. The company is the operating system for every physical workspace: labs, factories, kitchens, classrooms, homes.</p>
+            <p class="rv rv-d3" style="margin-top: 24px"><a class="link" href="/prism">See Prism IRL <span aria-hidden="true">↗</span></a></p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 08 founder -->
+      <section class="sec" id="founder" aria-labelledby="founder-title" style="padding-top: 0">
+        <div class="wrap split team">
+          <figure class="frame rv" style="margin: 0"><img src="/site/assets/media/founders.jpg" width="2130" height="1600" alt="The founders of The Light Company with their hardware" loading="lazy" /></figure>
+          <div>
+            <p class="eyebrow rv">08 · Jon Solomon, founder</p>
+            <h2 class="rv rv-d1" id="founder-title">Built beside the people<br />who use it.</h2>
+            <p class="lede rv rv-d2" style="margin-top: 20px">“I helped ship Apple Vision Pro, leading two stability labs with about 150 robots and fixtures. I know what it costs when you can't trust a test. I built Prism with the labs that needed it, working next to their operators. Now we're turning those first deployments into the standard way physical AI is measured.”</p>
+            <div class="logos rv rv-d3">
+              <div><span class="mono dim">Built by</span><div class="logo-row"><img src="/site/assets/brand/apple-logo.svg" alt="Apple" class="cl-apple" width="26" height="26" /><img src="/site/assets/brand/cmu-wordmark.svg" alt="Carnegie Mellon University" class="cl-cmu" width="200" height="18" /></div></div>
+              <div><span class="mono dim">Backed by</span><div class="logo-row"><a href="https://f.inc" target="_blank" rel="noopener" class="fi"><img src="/site/assets/brand/founders-inc-mark.png" alt="" class="cl-fi no-invert" width="26" height="26" />Founders, Inc.</a></div></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 09 the round -->
+      <section class="sec sec-alt" id="round" aria-labelledby="round-title">
+        <div class="wrap">
+          <div class="sec-head">
+            <div><p class="eyebrow rv">09 · The round</p><h2 class="rv rv-d1" id="round-title">Raising our seed<br />to own the category.</h2></div>
+            <p class="lede rv rv-d1">The product works, customers pay for it, and the labs that use it don't go back. This round turns ten stations into a fleet, and a fleet into the standard.</p>
+          </div>
+          <div class="cards cards-3">
+            <article class="card rv"><span class="kicker">Ship</span><h3>100 stations in labs</h3><p>Productized Prism Station, built and installed for every major robot learning lab in the US.</p></article>
+            <article class="card rv rv-d1"><span class="kicker">Scale</span><h3>Self-serve software</h3><p>Console, scoring and SDK that a lab can turn on without us in the room.</p></article>
+            <article class="card rv rv-d2"><span class="kicker">Own</span><h3>The public benchmark</h3><p>The first shared library of verified physical test cases, published with partner labs.</p></article>
+          </div>
+        </div>
+      </section>
+
+      <!-- close -->
+      <section class="sec closing" aria-labelledby="get-title">
+        <div class="wrap">
+          <div class="mark-wrap"><img class="mark" src="/site/assets/brand/light-company-mark-inverse.svg" alt="The Light Company" /></div>
+          <h2 id="get-title" class="rv">Physical AI should iterate<br />at the speed of code.</h2>
+          <p class="lede rv rv-d1">Change the model. Recreate the conditions. Measure the improvement. Know what to train next.</p>
+          <div class="hero-actions rv rv-d2">
+            <a class="btn btn-primary" href="mailto:jon@lightcompany.ai?subject=The%20Light%20Company">Talk with Jon</a>
+            <a class="btn btn-ghost" href="/investors/The_Light_Company_Deck.pdf">Read the deck</a>
+          </div>
+          <p class="aside mono dim rv"><a class="link" href="/investors/white-paper.pdf">White paper ↗</a> · <a class="link" href="/investors/overview.pdf">One-page overview ↗</a></p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="wrap">
+        <div class="footer-grid">
+          <div>
+            <a class="brand" href="/"><img class="no-invert" src="/site/assets/brand/light-company-mark-inverse.svg" alt="" width="30" height="24" />The Light Company</a>
+            <p class="footer-tag">Intelligence for the physical world.</p>
+          </div>
+          <div><h4>Investors</h4><ul><li><a href="/investors">Documents</a></li><li><a href="/investors/The_Light_Company_Deck.pdf">Deck</a></li><li><a href="/investors/white-paper.pdf">White paper</a></li></ul></div>
+          <div><h4>Products</h4><ul><li><a href="/">Prism Robotics</a></li><li><a href="/prism">Prism IRL</a></li><li><a href="/order">Preorder</a></li></ul></div>
+          <div><h4>Company</h4><ul><li><a href="mailto:jon@lightcompany.ai">jon@lightcompany.ai</a></li><li><a href="/privacy">Privacy</a></li></ul></div>
+        </div>
+        <div class="footer-logo" aria-hidden="true"><canvas class="footer-ascii" data-logo="/site/assets/brand/light-company-logo-full.svg"></canvas></div>
+        <div class="footer-legal mono"><span>© 2026 The Light Company · San Francisco, CA</span><a href="#top">Back to top ↑</a></div>
+      </div>
+    </footer>
+  </body>
+</html>
