@@ -9,12 +9,12 @@ No Search Console, keyword-volume or analytics account was available for this au
 
 | Page | Primary intent / query hypothesis | Reader's question | Distinct contribution |
 | --- | --- | --- | --- |
-| /prism-robotics | robot evaluation platform; Prism Robotics | What is it and how would it fit our lab? | Actual physical mechanism, footage, limits and contact path |
-| /prism-robotics/how-it-works | robot evaluation setup; projected staging | What happens during a trial? | Calibration-to-review workflow grounded in workcell operations |
+| /prism-robotics | robot evaluation platform; Prism Robotics | What is it and how would it fit our lab? | Scene setup, evaluation operations, evidence, footage and contact path |
+| /prism-robotics/how-it-works | robot evaluation setup; projected staging | What happens during a trial? | Task-to-report workflow grounded in workcell operations |
 | /resources/robot-evaluation | real-world robot evaluation protocol | How should we plan an evaluation? | Decision-first planning guide and downloadable checklist |
 | /resources/initial-conditions | robot evaluation initial conditions; reset variance | Why do our results move? | Intended/observed/accepted scene distinction |
 | /resources/capability-maps | robot policy capability map; robustness evaluation | Where does the policy fail? | Named axes, blank cells, counts and experimental scope |
-| /resources/physical-version-control | physical version control; Git for physical space | What should a scene record preserve? | Product-direction essay with the limits of reconstruction |
+| /resources/physical-version-control | physical version control; Git for physical space | What should a scene record preserve? | Practical scene records, version comparison and replay |
 | /company | The Light Company | Who is building this and why? | Coherent company purpose and product-family map |
 
 Avoid separate near-duplicate pages for every synonym. The resource hub connects the guides; each guide links to an appropriate next question and the product. No doorway pages or fabricated competitor comparisons.
@@ -22,7 +22,7 @@ Avoid separate near-duplicate pages for every synonym. The resource hub connects
 ## Implemented technical work
 - Unique page titles, descriptions, one H1, canonical URLs, social metadata and visible main content in server/static HTML.
 - Organization, WebPage, BreadcrumbList and Article metadata matching visible content. No fake reviews, ratings, job postings or result datasets in schema.
-- A sitemap limited to canonical, indexable pages. The illustrative benchmark and scene-history concept remain noindex; investor pages retain their existing noindex setting and are omitted from the sitemap. /demo is an alias, not a separate canonical entry.
+- A sitemap limited to canonical, indexable pages. The illustrative benchmark and example scene-history walkthrough remain noindex; investor pages retain their existing noindex setting and are omitted from the sitemap. /demo is an alias, not a separate canonical entry.
 - Useful navigation and footer links from existing product and investor pages; Prism Robotics and Prism IRL keep distinct destinations.
 - Local fonts, deferred enhancement scripts, user-controlled video on new editorial pages and reduced-motion behavior.
 - Public llms.txt, llms-full.txt and agents.md mirror the product distinctions. These are optional reading aids, not search-ranking promises.
@@ -31,9 +31,9 @@ Avoid separate near-duplicate pages for every synonym. The resource hub connects
 
 | Week | Website work | Distribution package | Evidence / owner dependency |
 | --- | --- | --- | --- |
-| 1 | Publish product explanation, workflow, hub and four guides (this release) | “The room should remember” launch post and two short excerpts | Use existing film; label the future concept |
+| 1 | Publish product explanation, workflow, hub and four guides (this release) | Product workflow post and two short excerpts | Use existing film and identify example data |
 | 2 | Review inquiry language and revise unclear sections | Initial-conditions post linked to planning checklist | Distribution is prepared, not sent |
-| 3 | Prepare an annotated calibration walkthrough | One short clip explaining intended vs observed scene | Record a current setup; do not invent precision |
+| 3 | Prepare an annotated scene-setup walkthrough | One short clip explaining intended vs observed scene | Record a current setup; do not invent precision |
 | 4 | Add a worked capability-map example from a real evaluation | A map and its methodology in one post | Requires publishable trials, counts and conditions |
 | 5 | Publish a scoring-rubric guide with reviewer examples | “A good reset does not fix an unclear rubric” | Obtain actual rubric and permission for examples |
 | 6 | Turn one repeated lab question into a practical guide | An answer excerpt with a product link | Use actual questions; anonymize private details |

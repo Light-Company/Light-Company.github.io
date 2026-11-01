@@ -68,7 +68,7 @@ test("the Robotics page keeps its landing video, method and qualified pilot numb
   ]);
   const hero = html.match(/<section class="hero"[\s\S]*?<\/section>/)?.[0];
   assert.ok(hero);
-  assert.match(hero, /Stop guessing\.<br \/>Make real progress/);
+  assert.match(hero, /Robot evaluation,<br \/>from setup to results/);
   assert.match(hero, /poster="\/site\/robotics-vision\/test-condition-full.jpg"/);
   assert.match(hero, /src="\/site\/robotics-vision\/test-condition-full.mp4"/);
   assert.match(html, /aria-label="Prism in the lab"[\s\S]*?robotics-hero-lab.mp4/);

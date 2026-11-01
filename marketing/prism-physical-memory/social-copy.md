@@ -2,47 +2,39 @@
 
 Prepared drafts only. No posts sent.
 
-## Launch: the room should remember
+## Product introduction
 
-A robot trial begins before the robot moves.
+Prism connects scene setup, robot evaluation and results.
 
-Someone places the cup. Turns the handle. Clears the table.
-
-Prism brings projected guidance and camera-based checks to that starting point.
-
-The room should remember.
+Define a task. Stage and verify the scene. Run the policy. Review the recording, scores and telemetry in one workspace.
 
 https://lightcompany.ai/prism-robotics
 
 ## Capability maps
 
-Change one variable: position, orientation, clutter, objects, lighting.
+Change one variable at a time: position, orientation, clutter, objects, lighting.
 
-Then ask where the policy works, where it breaks, and what you haven't tested.
-
-A capability map gives the success rate its context.
+You get more than one success rate. You get a capability map: where your policy works, where it breaks, and what you have not tested.
 
 https://lightcompany.ai/resources/capability-maps
 
-## Physical version control: concept announcement
+## Scene history
 
 Git for your physical space.
 
-That's a direction we're exploring with Prism: give a scene a history, see what changed, and return to the condition that mattered.
+Save a test scene. Change a variable. Compare the next run with the last. Prism keeps the scene, model settings and evidence connected so your team can reproduce the test.
 
-Explore the product concept:
+Explore an example:
 https://lightcompany.ai/prism-robotics/scene-history
 
 ## Founder note
 
-The interesting part of a robot evaluation often disappears before anyone writes the result down.
+Comparing robot policies takes more than running each model a few times. The starting scene, instructions and scoring criteria need to stay consistent too.
 
-The cup was a little farther away. The camera had moved. Someone reset the scene differently. The person who ran the trial remembers; the spreadsheet does not.
+Prism connects that work in one evaluation platform. Teams define tasks and rubrics, guide and verify scene setup, assign runs to stations, and review recordings, telemetry and scores together.
 
-We are building Prism around that missing context. Projected light makes a target scene visible in the workcell. Cameras help check the setup. The record should keep the physical condition connected to the result.
+Change one condition at a time to see where a policy succeeds and where it fails. Save the setup so the next model can run against the same test.
 
-Our longer-term direction is a kind of version history for physical space. Not a promise that the world can be restored perfectly, but a way to understand what changed and reconstruct the experiment with its limits in view.
-
-We have put that thinking into a new product explanation, practical evaluation guides and a clearly labeled scene-history concept. If your team is wrestling with resets, comparisons or a failure you cannot reproduce, we would like to understand the scene.
+The new website explains the workflow, with lab footage, practical evaluation guides and an interactive scene-history example.
 
 https://lightcompany.ai/prism-robotics

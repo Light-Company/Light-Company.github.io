@@ -18,7 +18,7 @@ if (history) {
       history.querySelector("#scene-plan-desc").textContent = scene.description;
       history.querySelector("[data-scene-change]").textContent = scene.change;
       history.querySelector("[data-scene-question]").textContent = scene.question;
-      history.querySelector("[data-scene-status]").textContent = `Viewing ${scene.label.toLowerCase()} · example only · no physical verification`;
+      history.querySelector("[data-scene-status]").textContent = `Viewing ${scene.label.toLowerCase()} · example scene`;
     });
   }
 }

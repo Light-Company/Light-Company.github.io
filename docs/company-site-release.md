@@ -1,3 +1,5 @@
+> Historical record of the initial expansion in PR22. The brand-cohesion revision supersedes its concept framing and visual design; see brand-cohesion-release.md.
+
 # Prism/company website expansion · November 1, 2026
 
 Built on recovered main 4e0dafc. The full source stays on GitHub; the existing Sites project receives a matching release tree with unused media omitted.

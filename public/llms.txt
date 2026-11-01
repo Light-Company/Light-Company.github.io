@@ -10,23 +10,23 @@
 - [Lab films](https://lightcompany.ai/gallery): recorded demonstrations, not proof of universal accuracy or compatibility.
 - [Prism IRL](https://lightcompany.ai/prism): projected interfaces for everyday surfaces.
 
-## Concepts and illustrative content
+## Product walkthroughs and sample data
 
-- [Scene history](https://lightcompany.ai/prism-robotics/scene-history): proposed “Git for your physical space” experience. The controls change a local diagram only. Scene branching, collaborative review and automated regression scheduling are product direction, not verified available services.
+- [Scene history](https://lightcompany.ai/prism-robotics/scene-history): interactive walkthrough of scene history using example data. Prism keeps scene revisions connected to evaluation records; the public controls demonstrate the workflow in a diagram.
 - [Benchmarks](https://lightcompany.ai/benchmarks): illustrative scores and sample trial records. Do not cite them as measured model performance, a winner or a vendor endorsement.
 
 ## Company and practical information
 
-- [Prism Robotics: physical AI evaluation](https://lightcompany.ai/prism-robotics): Meet Prism: projected scene staging, camera-based verification and a record of physical conditions for more useful robot policy evaluation.
-- [How Prism works: from scene to evidence](https://lightcompany.ai/prism-robotics/how-it-works): Follow a physical robot evaluation through calibration, projected staging, scene verification, recording and review with Prism.
-- [About The Light Company](https://lightcompany.ai/company): The Light Company builds Prism: light and vision for physical work, from robot evaluation to interfaces on the surfaces around us.
-- [Careers and collaboration](https://lightcompany.ai/careers): Explore work at The Light Company across robotics, perception, optics, software and design. Share your work and interest in Prism.
-- [Contact the Prism team](https://lightcompany.ai/contact): Contact The Light Company about a Prism workcell, research collaboration, investment, careers, support or a website question.
-- [Robot evaluation guides and resources](https://lightcompany.ai/resources): Practical guides to robot policy evaluation, initial conditions, capability maps and physical scene history, plus Prism lab films and a technical brief.
-- [How to plan a real-world robot evaluation](https://lightcompany.ai/resources/robot-evaluation): A practical guide to defining a robot task, preparing conditions, recording interventions and reporting results another team can understand.
+- [Prism Robotics: physical AI evaluation](https://lightcompany.ai/prism-robotics): Stage, verify and record real-world robot evaluations with Prism. Compare policies, map failures and replay the conditions behind a result.
+- [How Prism runs a physical robot evaluation](https://lightcompany.ai/prism-robotics/how-it-works): Define a task, stage and verify the scene, run a policy and review its evidence. See the complete Prism robot evaluation workflow.
+- [About The Light Company](https://lightcompany.ai/company): The Light Company builds Prism, an evaluation platform for physical AI combining projected staging, scene verification and software for robot labs.
+- [Careers at The Light Company](https://lightcompany.ai/careers): Work on Prism across robotics, perception, software, hardware and product design. Share your experience and interest with The Light Company.
+- [Contact The Light Company](https://lightcompany.ai/contact): Contact The Light Company for a Prism demo, station deployment, research partnership, investment, careers or support.
+- [Robot evaluation guides and resources](https://lightcompany.ai/resources): Practical guides to robot evaluation, initial conditions, capability maps and scene history. Explore Prism lab films and the technical brief.
+- [How to plan a real-world robot evaluation](https://lightcompany.ai/resources/robot-evaluation): Plan a robot evaluation with defined tasks, controlled conditions, scoring rules and a record of every trial.
 - [Why robot evaluation starts with the reset](https://lightcompany.ai/resources/initial-conditions): Object placement, camera setup and scoring rules can change an evaluation. Learn how to separate intended conditions from what actually happened.
 - [Capability maps for robot policies](https://lightcompany.ai/resources/capability-maps): Go beyond a single robot success rate. Organize evaluation by position, orientation, clutter, objects and lighting while preserving untested conditions.
-- [Git for physical space: what should a scene remember?](https://lightcompany.ai/resources/physical-version-control): An essay on physical version control: scene identity, revision history, evidence and the limits of replay in a changing world.
+- [Git for physical space: what should a scene remember?](https://lightcompany.ai/resources/physical-version-control): How scene versions connect physical conditions, policy checkpoints and run evidence for repeatable robot evaluation.
 - [Website terms of service](https://lightcompany.ai/terms): Terms for using The Light Company's public website, including content, concept demonstrations, interest forms and third-party links.
 - [Privacy notice](https://lightcompany.ai/privacy): How The Light Company's public website handles inquiry information, station interest forms, technical service data and third-party media.
 - [Cookies and browser storage](https://lightcompany.ai/cookies): Learn about session storage, third-party media and service cookies on The Light Company's website, and the choices available in your browser.
