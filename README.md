@@ -10,7 +10,7 @@ The production marketing site for [lightcompany.ai](https://lightcompany.ai): pr
 - Merging to `main` publishes the site through GitHub Pages automatically.
 - `@Jonnysol` and `@CoolGuy2982` are code owners for the site.
 
-The deployment is intentionally static. The public pages, images, and videos are produced from the same source used by the local Vinext application.
+The public pages, images, and videos have a static export. The current live Sites deployment also runs a Worker and D1 database for form submissions. The Prism preorder form requires that server; a static export alone cannot collect leads.
 
 ## Local development
 
@@ -32,3 +32,5 @@ This builds the Vinext application, creates the GitHub Pages artifact in `.pages
 ## Production
 
 The workflow in `.github/workflows/deploy-production.yml` publishes only from `main`. GitHub Pages is the intended production host after the `lightcompany.ai` DNS records are cut over. Until then, the current OpenAI Sites deployment remains live so there is no interruption.
+
+Do not move the preorder page to a static-only host without preserving a functioning `/api/preorder` endpoint. See `docs/preorder-leads.md` for storage, migration, and verification details.

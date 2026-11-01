@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#ffffff" />
+  <title>Prism: the physical layer of robot evaluation | The Light Company</title>
+  <meta name="description" content="See Prism in real robotics labs. Project the test setup, verify the scene, and find out whether the next model is better. The Light Company’s robotics and data opportunity." />
+  <link rel="canonical" href="https://lightcompany.ai/robotics/investors" />
+  <meta property="og:title" content="The physical layer of robot evaluation — The Light Company" />
+  <meta property="og:description" content="Real lab footage, customer results, and the data opportunity behind Prism." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://lightcompany.ai/robotics/investors" />
+  <meta property="og:image" content="https://lightcompany.ai/og-blue.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://lightcompany.ai/og-blue.png" />
+  <link rel="icon" href="/site/assets/brand/light-company-mark.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="/site/robotics-investors/styles.css" />
+  <script type="module" src="/site/robotics-investors/script.js"></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="nav-shell">
+    <nav class="wrap nav" aria-label="Main navigation">
+      <a class="brand" href="/"><img src="/site/assets/brand/light-company-mark.svg" alt="" />The Light Company</a>
+      <div class="nav-path"><a href="/robotics">Robotics</a><span aria-hidden="true">/</span><span>Investors</span></div>
+      <a class="nav-cta" href="mailto:hi@lightcompany.ai?subject=Prism%20%2F%20Investor%20conversation">Talk with Jon <span aria-hidden="true">↗</span></a>
+    </nav>
+    <nav class="chapter-nav wrap" aria-label="On this page"><a href="#product">Product</a><a href="#results">Results</a><a href="#data">Data</a><a href="#business">Business</a><a href="#vision">Vision</a></nav>
+  </header>
+  <main id="main">
+    <section class="hero wrap" id="product" aria-labelledby="hero-title">
+      <p class="eyebrow">PRISM · THE ROBOTICS OPPORTUNITY</p>
+      <h1 id="hero-title">Know what made<br />the robot better.</h1>
+      <p class="hero-intro">The Light Company helps physical AI labs get reliable model evaluations. Prism projects each setup onto the work surface and uses cameras to verify it.</p>
+      <div class="hero-links"><a href="#results">See the results <span aria-hidden="true">↓</span></a><a href="/investors/white-paper.pdf">Read the white paper <span aria-hidden="true">↗</span></a></div>
+      <figure class="hero-film film">
+        <video controls muted loop playsinline preload="metadata" data-auto-film poster="/site/robotics-vision/test-condition-full.jpg" aria-label="Prism projects a labeled placement grid directly onto a robot work surface beside cups and a gripper"><source src="/site/robotics-vision/test-condition-full.mp4" type="video/mp4" /></video>
+        <figcaption><span><i class="live-dot" aria-hidden="true"></i>Actual Prism footage</span><span>Guidance where the work happens. Nothing to wear.</span></figcaption>
+      </figure>
+      <div class="intro-proof"><p><strong>10</strong> paid units installed</p><p><strong>3</strong> customers</p><p>Enact <span>·</span> New Theory <span>·</span> Trossen Robotics</p></div>
+    </section>
+    <section class="problem wrap section" aria-labelledby="problem-title">
+      <div class="section-top"><p class="eyebrow">01 / THE MISSING CONTROL</p><span class="chapter-note">Same code. Different physical world.</span></div>
+      <div class="split-heading"><h2 id="problem-title">A few centimeters<br />can change the answer.</h2><p>A team trains a new robot model. The result improves. But did the model get better—or did someone place the cup in an easier spot?<br /><br />When operators and starting positions change between runs, teams keep repeating trials just to find a useful signal.</p></div>
+      <div class="compare-board" data-spread-demo>
+        <div class="board-top"><div><p class="eyebrow">MAKE THE IMPROVEMENT VISIBLE</p><h3>The model change stays the same.<br />Move the setup control.</h3></div><span class="sample-tag">Conceptual illustration</span></div>
+        <svg id="spread-chart" viewBox="0 0 960 300" role="img" aria-labelledby="spread-title spread-description"><title id="spread-title">Physical setup variability can hide a model improvement</title><desc id="spread-description">Model A is centered at 60 and Model B at 70. The slider changes only the spread of the illustrative results, not the ten-point model improvement.</desc><g id="spread-drawing"></g></svg>
+        <div class="spread-control"><div><label for="setup-spread">Physical setup variation</label><output id="spread-value" for="setup-spread">High</output></div><input id="setup-spread" type="range" min="3" max="40" value="40" step="1" aria-describedby="spread-help" /><div class="range-ends"><span>Controlled setup</span><span>Inconsistent setup</span></div></div>
+        <p id="spread-help" class="chart-caption">A fixed model improvement, with changing setup variation. These dots explain the principle; they are not customer measurements.</p>
+        <p class="diagram-conclusion" id="spread-conclusion" aria-live="polite">The results overlap. The improvement is hard to see.</p><noscript><p class="noscript-note">The example holds Model A at 60 and Model B at 70. Narrowing setup variation makes their ten-point difference easier to distinguish.</p></noscript>
+      </div>
+    </section>
+    <section class="wrap section" id="how" aria-labelledby="how-title">
+      <div class="section-top"><p class="eyebrow">02 / SOFTWARE REACHES THE SURFACE</p><span class="chapter-note">See the physical loop</span></div>
+      <div class="split-heading"><h2 id="how-title">The test starts<br />before the robot moves.</h2><p>Test code can specify a position. It cannot make an operator put the cup there. Prism closes that gap with projected guidance and camera verification, connected to the lab’s code through our SDK.</p></div>
+      <div class="loop-layout">
+        <figure class="film loop-film"><video controls muted loop playsinline preload="none" poster="/site/robotics-vision/robotics-hero-full.jpg" aria-label="Full Prism lab demonstration: an operator stages objects and a robot loads a cup and plate into a dish rack"><source src="/site/robotics-vision/robotics-hero-full.mp4" type="video/mp4" /></video><figcaption><span>Prism in a working robot cell</span><span>Full demonstration · 1:53</span></figcaption></figure>
+        <ol class="loop-steps">
+          <li><span>01</span><div><h3>Define the case.</h3><p>Upload placements through the SDK, or generate a set for the task.</p></div></li>
+          <li><span>02</span><div><h3>Project. Place. Verify.</h3><p>The instructions appear on the table. Cameras check the actual physical setup.</p></div></li>
+          <li><span>03</span><div><h3>Run the robot.</h3><p>Clear the guidance before the evaluation. Compare models against the same starting conditions.</p></div></li>
+          <li><span>04</span><div><h3>Connect the result.</h3><p>Link the outcome from the lab’s evaluator or Prism’s scoring workflow to the task, model version, and verified setup.</p></div></li>
+        </ol>
+      </div>
+      <div class="technical-strip"><strong>Understand. Guide. Verify.</strong><p>Perception, calibration, projected guidance, camera verification, placement generation, and the SDK. Each layer has to agree about the same object on the same surface.</p></div><div class="test-modes"><p><b>Compare models.</b> Recreate the same conditions to measure a change.</p><p><b>Explore capability.</b> Vary conditions deliberately to find weaknesses.</p></div>
+    </section>
+    <section class="results dark" id="results" aria-labelledby="results-title">
+      <div class="wrap section">
+        <div class="section-top"><p class="eyebrow">03 / WHAT CHANGED IN THE LAB</p><span class="chapter-note">Field results · Updated September 2026</span></div>
+        <h2 id="results-title">Fewer trials.<br /><span class="muted">A clearer answer.</span></h2>
+        <div class="result-row">
+          <div class="result-context"><p class="eyebrow">ENACT · ROBOTICS LAB</p><h3>Engineering feedback<br />in about one-tenth<br />the evaluations.</h3><p>Prism guides and verifies the starting conditions. Engineers can compare model changes with far less repetition.</p></div>
+          <div class="result-graphic"><div class="number-pair trial-numbers"><span>300–400</span><span class="number-arrow" aria-hidden="true">→</span><strong><small>~</small>30</strong></div><p>evaluations for useful engineering feedback</p><div class="trial-comparison"><div class="trial-line"><span>Before</span><div class="trial-bar" style="--bar:100%"></div><b>300</b></div><div class="trial-line after"><span>With Prism</span><div class="trial-bar" style="--bar:10%"></div><b>~30</b></div></div><div class="result-takeaway"><b>10×</b><span>fewer evaluations<br />using the 300-to-30 comparison</span></div></div>
+        </div>
+        <div class="result-row">
+          <div class="result-context"><p class="eyebrow">NEW THEORY · 30-DAY MEASUREMENT</p><h3>Evaluation variability<br />fell from 40% to 3%.</h3><p>Consistent physical starting conditions make it easier to see whether the next model actually improved.</p></div>
+          <div class="result-graphic"><div class="number-pair percentages"><span>40<small>%</small></span><span class="number-arrow" aria-hidden="true">→</span><strong>3<small>%</small></strong></div><div class="variability-rule"><span class="before-mark">40% before</span><span class="after-mark">3% with Prism</span></div><div class="result-takeaway"><b>92.5%</b><span>relative reduction<br />in evaluation variability</span></div></div>
+        </div>
+        <p class="result-note">Two customer workflows, two measures of improvement. Enact’s earlier process took roughly 300–400 evaluations; the 10× comparison uses 300. New Theory’s 40% and 3% describe evaluation variability, not model accuracy.</p>
+      </div>
+    </section>
+
+    <section class="data-section" id="data" aria-labelledby="data-title">
+      <div class="wrap section">
+        <div class="section-top"><p class="eyebrow">04 / THE DATA OPPORTUNITY</p><span class="chapter-note">From “did it work?” to “where does it fail?”</span></div>
+        <div class="split-heading"><h2 id="data-title">Find a failure once.<br />Make it useful again.</h2><p>A single success rate hides the useful detail. A failure tied to a verified physical setup becomes a case a team can run again—across stations, after a model update, and when deciding what to investigate next.</p></div>
+        <div class="explorer" data-explorer>
+          <div class="explorer-top"><div><p class="eyebrow">FOLLOW ONE PHYSICAL TEST CASE</p><h3>A better average can hide<br />a new weakness.</h3></div><span class="sample-tag">Illustrative workflow · example data</span></div>
+          <div class="map-tabs" role="group" aria-label="Choose model map"><button type="button" data-map="earlier" aria-pressed="true">Earlier model</button><button type="button" data-map="newer" aria-pressed="false">New model</button><button type="button" data-map="change" aria-pressed="false">What changed</button></div>
+          <div class="explorer-body">
+            <div class="map-stage"><div class="map-axis"><span>OBJECT STARTING POSITION</span><span>Task: place cup in tray</span></div><div class="heatmap" id="heatmap" role="group" aria-label="Tested positions on the work surface" aria-describedby="map-instructions"></div><div class="map-legend" id="map-legend"><span><i class="legend-low"></i>Lower success</span><span><i class="legend-high"></i>Higher success</span><span><i class="legend-none"></i>Untested</span></div><p class="map-hint" id="map-instructions">Choose a position. Arrow keys move across the table. Compare the same case in both models.</p></div>
+            <aside class="cell-inspector" aria-label="Selected position details" aria-live="polite">
+              <p class="eyebrow">SELECTED PHYSICAL CONDITION</p><h3>Position <span id="cell-name">C4</span></h3><p id="cell-position" class="inspector-position">x 30 cm · y 40 cm</p>
+              <div class="cell-score"><div><span>Earlier model</span><strong id="cell-earlier">50%</strong><small id="cell-earlier-count">10 / 20 valid trials</small></div><span aria-hidden="true">→</span><div><span>New model</span><strong id="cell-newer">85%</strong><small id="cell-newer-count">17 / 20 valid trials</small></div></div>
+              <p id="cell-insight" class="cell-insight">+35 percentage points at the same starting position.</p>
+              <dl class="episode-fields">
+                <div><dt>Task / success</dt><dd>Cup inside tray, released</dd></div>
+                <div><dt>Object</dt><dd>Rigid cup, same specification</dd></div>
+                <div><dt>Reference frame</dt><dd>Calibrated work surface</dd></div>
+                <div><dt>Orientation / tolerance</dt><dd>0° yaw / ±5 mm position</dd></div>
+                <div><dt>Model versions</dt><dd>policy-v1 → policy-v2</dd></div>
+                <div><dt>Outcome source</dt><dd>Example evaluator results</dd></div>
+                <div><dt>Valid trials</dt><dd id="cell-valid">20 per model</dd></div>
+                <div><dt>Rejected setups, v1 / v2</dt><dd id="cell-rejected">2 / 0</dd></div>
+              </dl>
+              <p class="quality-note">Rejected setups are excluded from task success scores. An untested position has no score. All values in this example are illustrative.</p>
+              <button class="save-case" id="save-case" type="button">Preserve this example case <span aria-hidden="true">↓</span></button>
+            </aside>
+          </div>
+          <div class="coverage-bar"><div><b id="coverage-count">28 / 36</b><span>positions sampled</span></div><div><b id="episode-count">560</b><span>valid trials per model</span></div><button id="next-test" type="button">Find a missing test <span aria-hidden="true">↗</span></button></div>
+          <p class="next-explanation" id="next-explanation" aria-live="polite">Eight positions are untested. A high average score cannot tell you what happens there.</p>
+          <section class="case-reuse" id="case-reuse" aria-labelledby="reuse-title">
+            <div class="reuse-heading"><div><p class="eyebrow">FROM A RESULT TO A REUSABLE CASE</p><h3 id="reuse-title">Keep the conditions.<br />Test the next model.</h3></div><span class="case-id" id="case-id">CUP-TO-TRAY-C4</span></div>
+            <div class="reuse-tabs" role="group" aria-label="Explore case reuse"><button type="button" data-reuse="customer" aria-pressed="true">Within your lab</button><button type="button" data-reuse="labs" aria-pressed="false">Across similar labs</button><button type="button" data-reuse="robots" aria-pressed="false">Different robots</button></div>
+            <div class="reuse-detail"><div><h4 id="reuse-headline">A failure becomes a regression test.</h4><p id="reuse-description">Recreate this setup on a compatible, calibrated station. Run the next model against it and check whether the weakness returns.</p></div><div><p class="eyebrow">WHAT TRAVELS WITH THE CASE</p><ul><li>Task and success criterion</li><li>Object requirements, placement, and tolerance</li><li>Model versions, results, and verification context</li></ul></div></div>
+            <p class="reuse-local" id="reuse-local"><strong>Establish locally:</strong> matching objects, a calibrated work surface, a feasible task, and the same scoring rule.</p>
+            <div class="case-actions"><button type="button" id="download-case">Download example case</button><button type="button" id="share-case">Copy link to this case</button><span id="case-action-status" role="status"></span></div>
+            <p class="quality-note">This illustrates the product direction. It does not connect to a robot or use customer records.</p>
+          </section>
+          <noscript><p class="noscript-note">Enable JavaScript to explore this example. At position C4, the earlier model succeeds in 10 of 20 trials; the new model succeeds in 17 of 20. Eight of the 36 positions have no valid trials.</p></noscript>
+        </div>
+        <div class="data-bottom"><h3>The next test<br />starts with what<br />we already learned.</h3><div><p>We have tested initial and final image capture, task-completion scoring, and spatial success maps. We are rolling that fuller loop into customer deployments, building on the placement and verification system already in the field.</p><p class="muted">Our next data product is a library of recreatable failure cases. Start with the customer’s own history, then add cases contributed by comparable labs. A team pays for useful challenges it has not discovered itself—and evidence about what to test next.</p></div></div>
+      </div>
+    </section>
+    <section class="wrap section" id="business" aria-labelledby="business-title">
+      <div class="section-top"><p class="eyebrow">05 / CUSTOMERS INSTALL THE INFRASTRUCTURE</p><span class="chapter-note">Hardware opens the door. Usage expands the business.</span></div>
+      <h2 id="business-title">One station.<br />Then the rest of the lab.</h2>
+      <div class="adoption">
+        <div class="adoption-number"><b>10</b><span>paid units<br />installed and running</span></div>
+        <div class="customer-list"><div><span>Enact <small>Robotics · YC</small></span><b>5 units</b></div><div><span>New Theory <small>Physical AI</small></span><b>4 units</b></div><div><span>Trossen Robotics <small>Evaluating Prism to offer alongside its robots</small></span><b>1 unit</b></div></div>
+      </div>
+      <p class="adoption-story">Enact came through another lab, tried a unit, and expanded to five. We built and installed those units by hand. The next step is standardized production and setup that customers can complete without us onsite.</p>
+      <div class="unit-economics"><div><span>Price per unit</span><b>$1,500</b></div><div><span>Build &amp; deployment cost</span><b>$300</b></div><div><span>Contribution per unit</span><b>$1,200</b></div><div class="economics-margin"><span>Unit margin</span><b>80%</b></div></div>
+      <p class="fine-print">Hardware economics before ongoing software, support, payroll, and other operating expenses.</p>
+      <div class="software-value"><h3>Every model release<br />creates another decision.</h3><p>Keep a change. Catch a regression. Choose the next test. Customers build a library of useful cases and return to it as their models evolve. That is the recurring software value we are building.</p></div>
+      <details class="economics-details"><summary>Explore the software economics <span>Illustrative scenarios <span aria-hidden="true">+</span></span></summary><div class="scenario" data-scenario>
+        <div class="scenario-heading"><p class="eyebrow">WHAT USAGE COULD BECOME</p><h3>The more a lab evaluates,<br />the more useful Prism becomes.</h3><p>We are developing recurring software pricing. Explore a monthly model or usage tied to evaluations.</p><span class="sample-tag">Proposed pricing · illustrative scenario</span></div>
+        <div class="scenario-controls">
+          <label for="pricing-mode">Pricing model<select id="pricing-mode"><option value="usage">Per completed, verified evaluation</option><option value="monthly">Per station / month</option></select></label>
+          <label for="station-count">Active paying stations <output id="station-output" for="station-count">1,000</output><input type="range" id="station-count" min="10" max="1000" step="10" value="1000" /></label>
+          <div id="usage-controls"><label for="eval-count">Billable evaluations per station / day <output id="eval-output" for="eval-count">100</output><input type="range" id="eval-count" min="10" max="200" step="10" value="100" /></label></div>
+          <label for="usage-price"><span id="price-label">Price per verified evaluation ($)</span><input type="number" id="usage-price" value="1" min="0" max="1000" step="0.05" aria-describedby="pricing-assumptions" inputmode="decimal" /></label>
+        </div>
+        <p class="price-error" id="price-error" role="status" hidden></p><div class="scenario-result" aria-live="polite"><span>Illustrative annual software revenue</span><strong id="annual-revenue">$25M</strong><p id="revenue-formula">1,000 stations × 100 evaluations × 250 active days × $1</p><p class="fine-print" id="pricing-assumptions">Scenario, not current revenue or a forecast. Assumes the displayed paid adoption, activity, and pricing. Usage counts completed, verified evaluations; rejected setup checks are not extra billable events. Hardware sales are excluded.</p></div>
+      </div>
+      </details><div class="platform-path"><div><span>01 / NOW</span><h3>Stations</h3><p>Paid hardware that fixes a daily problem in the lab.</p></div><div><span>02 / BUILDING</span><h3>Evaluation software</h3><p>Recurring usage for test orchestration, results, coverage, and the next test.</p></div><div><span>03 / THE AMBITION</span><h3>Failure-case library</h3><p>Contributed cases that help another lab discover weaknesses sooner, with benchmarks and data products built from that evidence.</p></div></div>
+    </section>
+    <section class="milestones wrap" aria-labelledby="milestones-title"><div class="section-top"><p class="eyebrow">THE NEXT PROOF</p><span class="chapter-note">Targets · not current traction</span></div><div class="split-heading"><h2 id="milestones-title">Scale the installations.<br />Prove the software.</h2><p>The next stage is about repeatability: units customers can install without us, software they return to, and failure cases useful enough to pay for.</p></div><div class="milestone-grid"><div><b>100</b><span>paid stations</span></div><div><b>20</b><span>evaluation labs</span></div><div><b>10</b><span>labs paying for software</span></div><div><b>50,000</b><span>valid evaluation episodes</span></div></div><div class="pilot-goal"><span class="eyebrow">PAID FAILURE-CASE PILOT</span><p>Show that a contributed case exposes a previously untested weakness in another compatible lab—and is useful enough to run again.</p></div></section>
+    <section class="vision dark" id="vision" aria-labelledby="vision-title">
+      <div class="wrap section">
+        <div class="section-top"><p class="eyebrow">06 / THE LIGHT COMPANY</p><span class="chapter-note">Robotics is where we start.</span></div>
+        <div class="vision-layout"><div class="vision-copy"><h2 id="vision-title">The room becomes<br />the interface.</h2><p class="vision-lead">Our original vision is AR without glasses: intelligent light that understands a workspace, guides the next action, and checks the result.</p><p>Robotics gives us a concrete place to start. The same perception, calibration, task guidance, and verification tools can help people learn, assemble, repair, and work in the physical world. Each new workflow adds its own task knowledge.</p><a href="/prism-vision">Explore the wider vision <span aria-hidden="true">↗</span></a></div><figure class="film vision-film"><video controls muted loop playsinline preload="none" poster="/site/prism-vision/media/piano-guidance-full.jpg" aria-label="Hands follow projected green cues on real piano keys"><source src="/site/prism-vision/media/piano-guidance-full.mp4" type="video/mp4" /></video><figcaption><span>Prism piano demonstration</span><span>Guidance at the point of action.</span></figcaption></figure></div>
+        <div class="founder-line"><div><p class="eyebrow">JON SOLOMON · FOUNDER</p><h3>Built beside<br />the people using it.</h3></div><p>I helped ship Apple Vision Pro, leading two stability labs with about 150 robots and fixtures. I built Prism with the labs that needed it, working beside their operators. Now we’re turning those first deployments into infrastructure that can grow across entire labs.</p></div>
+      </div>
+    </section>
+    <section class="wrap closing" aria-labelledby="closing-title"><p class="eyebrow">THE NEXT CHAPTER</p><h2 id="closing-title">Physical AI should iterate<br />at the speed of code.</h2><p>Change the model. Recreate the conditions.<br />Measure the improvement. Know what to train next.</p><div class="closing-links"><a class="primary-link" href="mailto:hi@lightcompany.ai?subject=Prism%20%2F%20Investor%20conversation">Talk with Jon <span aria-hidden="true">↗</span></a><a href="/investors/white-paper.pdf">Read the white paper <span aria-hidden="true">↗</span></a><a href="/investors">Deck &amp; overview <span aria-hidden="true">↗</span></a></div></section>
+  </main>
+  <footer class="wrap footer"><a class="brand" href="/"><img src="/site/assets/brand/light-company-mark.svg" alt="" />The Light Company</a><nav aria-label="Footer"><a href="/robotics">Robotics</a><a href="/investors">Investor materials</a><a href="mailto:hi@lightcompany.ai">hi@lightcompany.ai</a><a href="/privacy">Privacy</a></nav><p>Intelligence for the physical world.</p></footer>
+</body>
+</html>
