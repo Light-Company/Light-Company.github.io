@@ -5,9 +5,9 @@ This repository is The Light Company's public website. Take generous ownership o
 ## Freedom to do good work
 - Work on a focused branch from current remote main. Read tasks/lessons.md and PRODUCT.md first.
 - Use judgment on copy, composition, information architecture and implementation. Explain consequential assumptions in the handoff; do not stop for routine taste decisions.
-- Make ambitious concepts tangible. A clearly labeled concept may be rich and speculative. Keep that label in the visible experience, metadata and machine-readable documentation.
+- Treat the owner’s explicit capability confirmations as product evidence. Inspect the implemented workflows for useful detail; do not turn internal uncertainty into repeated public hedging. Keep sample data labeled.
 - Research primary sources, follow useful skills, and improve the actual visitor journey rather than adding ceremonial documents.
-- Use plain language. Here, poetry comes from physical things: light on a table, a cup moved, a scene remembered. Technical depth belongs where readers choose it.
+- Use direct product language and normal type sizes. The owner rejected poetic slogans, giant headings and repetitive caveats. Say what Prism does, what the user does and what they get.
 
 ## Respect the work already here
 The recovered rebrand includes the 44-second lab film, blue-beam logo, ASCII footer, preorder and investor pages. Preserve those assets. The user subsequently requested the projected-cup staging clip in the main hero; the lab film now occupies the lower reel. /prism is Prism IRL; /prism-robotics explains the evaluation product. /benchmarks is an illustrative product preview until measured results replace its data.

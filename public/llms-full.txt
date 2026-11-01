@@ -10,23 +10,23 @@
 - [Lab films](https://lightcompany.ai/gallery): recorded demonstrations, not proof of universal accuracy or compatibility.
 - [Prism IRL](https://lightcompany.ai/prism): projected interfaces for everyday surfaces.
 
-## Concepts and illustrative content
+## Product walkthroughs and sample data
 
-- [Scene history](https://lightcompany.ai/prism-robotics/scene-history): proposed “Git for your physical space” experience. The controls change a local diagram only. Scene branching, collaborative review and automated regression scheduling are product direction, not verified available services.
+- [Scene history](https://lightcompany.ai/prism-robotics/scene-history): interactive walkthrough of scene history using example data. Prism keeps scene revisions connected to evaluation records; the public controls demonstrate the workflow in a diagram.
 - [Benchmarks](https://lightcompany.ai/benchmarks): illustrative scores and sample trial records. Do not cite them as measured model performance, a winner or a vendor endorsement.
 
 ## Company and practical information
 
-- [Prism Robotics: physical AI evaluation](https://lightcompany.ai/prism-robotics): Meet Prism: projected scene staging, camera-based verification and a record of physical conditions for more useful robot policy evaluation.
-- [How Prism works: from scene to evidence](https://lightcompany.ai/prism-robotics/how-it-works): Follow a physical robot evaluation through calibration, projected staging, scene verification, recording and review with Prism.
-- [About The Light Company](https://lightcompany.ai/company): The Light Company builds Prism: light and vision for physical work, from robot evaluation to interfaces on the surfaces around us.
-- [Careers and collaboration](https://lightcompany.ai/careers): Explore work at The Light Company across robotics, perception, optics, software and design. Share your work and interest in Prism.
-- [Contact the Prism team](https://lightcompany.ai/contact): Contact The Light Company about a Prism workcell, research collaboration, investment, careers, support or a website question.
-- [Robot evaluation guides and resources](https://lightcompany.ai/resources): Practical guides to robot policy evaluation, initial conditions, capability maps and physical scene history, plus Prism lab films and a technical brief.
-- [How to plan a real-world robot evaluation](https://lightcompany.ai/resources/robot-evaluation): A practical guide to defining a robot task, preparing conditions, recording interventions and reporting results another team can understand.
+- [Prism Robotics: physical AI evaluation](https://lightcompany.ai/prism-robotics): Stage, verify and record real-world robot evaluations with Prism. Compare policies, map failures and replay the conditions behind a result.
+- [How Prism runs a physical robot evaluation](https://lightcompany.ai/prism-robotics/how-it-works): Define a task, stage and verify the scene, run a policy and review its evidence. See the complete Prism robot evaluation workflow.
+- [About The Light Company](https://lightcompany.ai/company): The Light Company builds Prism, an evaluation platform for physical AI combining projected staging, scene verification and software for robot labs.
+- [Careers at The Light Company](https://lightcompany.ai/careers): Work on Prism across robotics, perception, software, hardware and product design. Share your experience and interest with The Light Company.
+- [Contact The Light Company](https://lightcompany.ai/contact): Contact The Light Company for a Prism demo, station deployment, research partnership, investment, careers or support.
+- [Robot evaluation guides and resources](https://lightcompany.ai/resources): Practical guides to robot evaluation, initial conditions, capability maps and scene history. Explore Prism lab films and the technical brief.
+- [How to plan a real-world robot evaluation](https://lightcompany.ai/resources/robot-evaluation): Plan a robot evaluation with defined tasks, controlled conditions, scoring rules and a record of every trial.
 - [Why robot evaluation starts with the reset](https://lightcompany.ai/resources/initial-conditions): Object placement, camera setup and scoring rules can change an evaluation. Learn how to separate intended conditions from what actually happened.
 - [Capability maps for robot policies](https://lightcompany.ai/resources/capability-maps): Go beyond a single robot success rate. Organize evaluation by position, orientation, clutter, objects and lighting while preserving untested conditions.
-- [Git for physical space: what should a scene remember?](https://lightcompany.ai/resources/physical-version-control): An essay on physical version control: scene identity, revision history, evidence and the limits of replay in a changing world.
+- [Git for physical space: what should a scene remember?](https://lightcompany.ai/resources/physical-version-control): How scene versions connect physical conditions, policy checkpoints and run evidence for repeatable robot evaluation.
 - [Website terms of service](https://lightcompany.ai/terms): Terms for using The Light Company's public website, including content, concept demonstrations, interest forms and third-party links.
 - [Privacy notice](https://lightcompany.ai/privacy): How The Light Company's public website handles inquiry information, station interest forms, technical service data and third-party media.
 - [Cookies and browser storage](https://lightcompany.ai/cookies): Learn about session storage, third-party media and service cookies on The Light Company's website, and the choices available in your browser.
@@ -41,277 +41,285 @@ Updated: 2026-11-01
 
 ## Full editorial text
 
-# The room should remember.
+# Evaluate robot policies in the real world.
 Source: https://lightcompany.ai/prism-robotics
 
-Prism is the physical setup layer for robot evaluation. It brings light, cameras and a record of the scene to the space between a promising policy and a result you can trust.
+Prism stages the scene, verifies the setup and records every rollout. Compare models under the same conditions, find where they fail and replay the tests that matter.
 
-## A little light. A much clearer experiment.
+## One workflow for physical evaluation.
 
-Before a robot does anything, someone prepares its world. A cup is set down. A cable is moved. A drawer is left open just far enough. These small decisions become the starting point of the experiment, even when nobody writes them down. Prism makes that starting point visible. A projector shows where objects belong. Cameras help check the scene against the intended setup. The record gives a trial a physical context: what was on the table, what was meant to happen and what should be examined again. It is a system for the workcell around the robot. The robot keeps its own controller and policy; the operator keeps a meaningful role in preparing and reviewing the experiment. A result should carry the room that made it.
+Prism combines a station above the workcell with software for running and reviewing evaluations. The station uses projection to show the target setup and cameras to check the physical scene. The console connects that scene to the policy, recording and result. Your team can run a repeatable test suite, compare checkpoints and investigate failures without rebuilding the context of each trial by hand.
 
-## See. Verify. Record. Return.
+## Stage. Verify. Run. Review.
 
-See Bring the camera's view and the physical workspace into a shared frame. Registration connects a location in the image to a location the projector can mark. Stage Place the instruction on the table itself. Projected outlines and labels guide the operator toward the scene the experiment calls for. Verify Compare the observed scene with the target. A missing object or a placement mismatch should become a question before it becomes an unexplained result. Record Keep the setup with the episode. The technical workflow calls for object identities, positions and trial context to remain connected. Return Use a saved condition to guide another physical setup. Recreating a scene still requires an operator, calibration and verification; a digital record cannot move a cup by itself. Projection is guidance during staging. If it is visible to the policy during recording, it may change the experiment. The trial protocol must account for that, including when guidance turns off.
+Stage the scene Choose a test condition. Prism projects object positions and placement guidance onto the work surface so an operator can prepare the scene. Verify the setup Check the camera observation against the target. Review placement differences and missing objects before accepting the rollout. Run the policy Execute the task with your robot and policy. Keep the condition, checkpoint and recording connected to the episode. Review the result Score each step against the task rubric. Inspect the evidence, flag abnormal runs and keep notes and corrections with the result. Repeat the test Return to a saved condition, stage it again and compare the next run. Use the same cases to check whether a new checkpoint improved. See the complete evaluation workflow .
 
 ## Git for your physical space.
 
-Software has a memory. You can name a version, understand what changed and return to an earlier state. A workbench usually has a photograph, a spreadsheet and the person who remembers where everything went. “Git for your physical space” is our product direction: give a scene an identity; preserve its history; change one condition deliberately; compare what happened; make the important scene possible to find again. That does not mean the world becomes perfectly deterministic. Objects wear. Cameras move. A soft cloth refuses to be the same cloth twice. A useful history preserves those differences rather than hiding them behind a clean success rate. We have made that direction tangible in a scene-history concept . It shows the experience we want to build, with example revisions and a visible scene comparison. It is a product concept, separate from the current station software.
+Save a scene as a versioned condition. Change an object, its position or the surrounding setup. Keep the original, compare the revisions and return to either one for another evaluation. Scene history connects the intended setup, observed state and resulting episodes. When a result changes, your team can inspect both the policy version and the physical conditions behind it. Replay turns a saved condition back into staging guidance. The operator restores the objects and Prism checks the setup before the next run. Explore scene history .
 
-## One number cannot describe a robot.
+## Find the conditions behind the score.
 
-Start with a scene the policy can handle. Move the object. Rotate it. Introduce a distractor. Substitute an object. Change the light. One variable at a time gives the experiment a question you can actually answer. The aim is a capability map : a picture of where the policy works, where it becomes uncertain and where it breaks under the conditions you tested. The gaps matter too. An untested condition should stay untested, rather than borrowing confidence from a neighboring cell. Prism's projected staging directly helps with placement on a calibrated surface. Object choice, lighting, robot state and other conditions still need their own controls and records. See the capability-map guide for a practical way to structure the experiment.
+Change position, orientation, clutter, objects or lighting, then compare outcomes across the tested conditions. A capability map shows where the policy succeeds, where it fails and where you need more trials. Inspect task-level results, compare checkpoints and open the episodes behind a weak region. Keep trial counts and untested conditions visible so a strong average does not hide a recurring failure. The benchmark workspace brings rankings, model comparison, capability maps and trial records into one view. Its public dataset is a sample; the interface is ready to show your evaluation results.
 
-## Built around the real workcell.
+## Use the workcell you already have.
 
-A Prism setup brings together a projector, a camera, local compute, a calibrated workspace and the operator preparing the scene. The exact mounting, field of view and camera-to-projector relationship matter. Good software cannot repair a loose mount by describing it more confidently. The process begins with the actual task: the objects, the reachable surface, the robot's view and what the team needs to compare. We discuss those conditions before proposing a station or an integration. The platform story grows from that physical foundation. Records are useful when their calibration and task context remain attached. Comparisons are useful when the policies faced comparable conditions. A replay is useful when the recreated scene has been checked again. Walk through an evaluation, from first setup to review .
+A Prism station brings together projection, cameras and local compute above the workspace. It guides the person preparing the scene while the robot runs through its existing control system. Set up the station around the robot's reach, the objects and the camera view. Define the placement tolerances and task rules, then connect the evaluation workflow your team uses. Manage repeated conditions across operators and stations. Keep the scene definition, calibration reference and run context attached to the record so comparisons stay understandable as the lab grows.
 
-## Ambition, with the evidence beside it.
+## Run the lab from one workspace.
 
-The lab films show projected guidance and real workcells. Our technical brief describes initial-condition control, camera checks, episode logging and re-projection, along with the limits that still need to be measured. These are different kinds of evidence. A film demonstrates an interaction; it does not establish a placement tolerance or a universal improvement in policy performance. The brief's operational estimates come from a limited partner context, not a cross-industry study. The public benchmark workspace currently uses illustrative data to show the intended analysis experience. It is not a measured ranking of model providers. Scene branching, collaborative history and automated regression scheduling on this site are proposed direction unless explicitly identified otherwise.
+Define tasks and scoring rubrics, assign evaluations to operators and compatible stations, and manage the queue across the lab. Each task can include multiple object placements, step-level scoring conditions and a success threshold. Model presets keep the checkpoint, inference settings and relevant training context together. Evaluation definitions retain the task and model configuration so the comparison stays traceable.
 
-## Questions worth asking.
+## Bring your existing test library.
 
-Is Prism a simulator? Prism Robotics is centered on physical workcells. Simulation can help explore possible conditions; a physical evaluation still needs its own setup, observation and evidence. The website's examples and interactive concept do not run physical trials. Does it reset the world automatically? Projected targets guide a person in restoring the scene. Camera checks can help verify the result. Automatic object manipulation or perfect reconstruction of every scene is not a promise of this product page. Does it decide whether a task succeeded? Scoring requires an explicit rubric and review process. The broader platform direction includes model-assisted review, but scene verification and outcome scoring answer different questions. A correctly placed cup can still be grasped unsuccessfully. Can our team try it? Tell us about your workcell or register interest in a station . We will discuss fit, scope and availability directly. The interest form does not take payment or reserve a delivery date.
+Import task and placement definitions from Notion or CSV, or connect an existing system through the connector API. Assign the resulting tests to stations and keep new imports in the library's history. Export results as CSV and save reports for the team. Compare models by task success, progress through the task and execution time, then open the runs behind the result.
 
-# Before the robot moves, make the scene legible.
+## Every result has a record.
+
+Open a run to inspect its camera recording, 3D telemetry, placement and step-by-step scores. Keep notes and attachments with the episode. Review flagged runs separately and retain the reason a trial was replaced. Use those records to investigate a failure, reproduce a regression or share a comparison with another researcher. The next person should be able to understand the experiment without asking who set up the table. Read the evaluation guides or download the technical brief .
+
+## Common questions
+
+Is Prism a simulator? Prism Robotics runs around physical robot workcells. It controls and checks the setup for real-world evaluations, then connects conditions and results in the console. Who resets the objects? An operator follows the projected placement guidance. Prism checks the scene against the target before the trial is accepted. The robot continues to use its own control system. How are rollouts scored? Your team defines scoring conditions for each task step and the threshold for success. Reviewers score the run against that rubric, flag abnormal trials and keep the decision with its supporting evidence. How do we get started? Book a demo with your robot, task and current evaluation process. We will work through station placement, integrations and the first test suite. You can also register interest in a station .
+
+# From scene setup to a comparable result.
 Source: https://lightcompany.ai/prism-robotics/how-it-works
 
-An evaluation begins before the first action and ends after the final score. Prism's job is to keep the physical setup connected to everything that follows.
+Prism connects the physical setup to the evaluation record. Each run starts from a defined condition and ends with an outcome your team can inspect.
 
-## First, decide what the trial means.
+## Define the task and test conditions.
 
-Name the task in terms someone else can recognize. “Put the mug in the tray” is a start. Does the handle matter? Must the mug remain upright? Is contact with another object a failure? What happens when a camera loses the view? Write the success rule, the timeout, the allowed intervention and the reasons a trial may be invalid. Freeze them before comparing policies. A better reset does not resolve an ambiguous rubric.
+Choose the task, objects, policy checkpoint and success criteria. Specify the timeout, allowed interventions and reasons to reject a rollout. Save the protocol so every candidate is evaluated against the same rules. Build a test suite from the conditions you want to cover. Start with a baseline, then add the changes that matter for your use case.
 
-## Give light and vision a common frame.
+## Set up the station around your workcell.
 
-The projector and camera see the same workspace from different places. Registration connects their views so an instruction lands where it belongs. Mounting, focus, exposure, surface geometry and the usable field of view all affect the result. Check that relationship against the actual table. Keep a calibration reference with the setup. If the camera, projector or table moves, re-check the registration before treating an old scene as reproducible. Acceptance tolerances belong to the task; this site does not claim a universal accuracy figure.
+Register the camera and projector to the work surface. Check the field of view, mounting and placement accuracy against the objects and robot reach. Prism keeps the calibration reference with the scene context. When equipment moves or the workspace changes, check the station before reusing existing conditions.
 
-## Put the instruction where the hands are.
+## Project the target scene.
 
-Choose the target condition. The projector marks placement guides on the work surface, and the operator brings the physical objects into the scene. The instruction is shared: the person preparing the table and the person reviewing the trial can refer to the same intended arrangement. Light becomes an instruction in the place the work happens. Recorded Prism staging footage; playback does not control a robot. For a planar rigid object, an outline can communicate location and some orientation. It cannot fully specify the folds of a towel, the friction of a surface or the contents of an opaque container. Those conditions need additional controls.
+Select a saved condition or create a new one. Prism projects placement targets and labels directly onto the table. The operator positions the objects using the guidance in the workspace. Change the condition without redrawing marks or rebuilding a fixture. The scene definition stays available for the next operator and the next run.
 
-## Check the scene before asking the policy a question.
+## Verify before the rollout starts.
 
-Compare the camera observation with the target condition. The useful outcome is not a decorative green light; it is an understandable decision about whether this setup is acceptable for this trial. Keep the intended condition, observed placement and unresolved mismatch distinct. When the scene cannot be verified, preserve that uncertainty and resolve it before including the episode in a comparison. Detection confidence alone is not a physical guarantee.
+Cameras compare the prepared scene with the intended condition. Review missing objects, placement differences and the task's acceptance criteria before running the policy. The record keeps the target and observation distinct. A setup rejection is handled separately from a valid trial that the policy fails.
 
-## Let the trial happen under its declared conditions.
+## Run the policy and capture the episode.
 
-Once the operator accepts the setup, the robot runs through its own execution system. Guidance must be handled consistently: projected marks visible to the policy may become an unintended cue. Decide when they disappear, and verify that behavior in the recording. Record the policy or checkpoint identity, robot configuration, relevant sensor settings, condition identifier and any intervention. Preserve a failed trial as carefully as a successful one. A failure is often the most useful thing the experiment produces.
+Your robot executes the task through its existing control system. Prism connects the episode to the scene, policy version and evaluation protocol. Keep the recording and any intervention with the run. Use a consistent protocol for when projected guidance is visible so it does not become an unintended cue during policy evaluation.
 
-## Keep the reason beside the result.
+## Score, inspect and compare.
 
-Review the outcome against the declared rubric. Link the observation or recording that supports the decision, and separate setup-invalid episodes from policy failures. If a reviewer changes a score, keep the reason for the change. This is the intended evidence chain for a useful evaluation system. Specific recording formats, scoring integrations and review workflows must be agreed for a deployment; the public website is not an API specification.
+Score each task step against the evaluation rubric. Review camera recordings and telemetry, flag abnormal runs and record the reason for a correction. Keep the score, reviewer and timestamps with the result. Compare candidates on the same test suite. Move from an aggregate score to task results, individual trials and the conditions behind a failure.
 
-## Make the interesting scene possible to find again.
+## Replay a failure against the next checkpoint.
 
-When a new checkpoint arrives, return to a saved condition and stage it again. Re-check the physical state; do not assume yesterday's calibration and today's table are identical. Compare the new episode with the earlier one and keep the context of both. The long-term product direction is a shared history of scenes and results. Explore the interactive scene-history concept or use the evaluation planning guide to prepare a first experiment.
+Select a saved condition and project the setup again. Restore the objects, verify the scene and run the new policy. Compare the episodes using the same task definition. Build regression suites from the cases your team wants to retain. Scene history keeps those cases connected as the setup and policy evolve.
 
-# Git for your physical space.
+# Version your scenes. Replay your evaluations.
 Source: https://lightcompany.ai/prism-robotics/scene-history
-Status: proposed concept, not a connected product.
+Status: interactive product walkthrough with example data.
 
-A place can have a past. A test can have a lineage. A failure can become a scene your whole team knows how to find.
+Keep a versioned record of the physical setup. Change one condition, compare the result and return to the same test when a new checkpoint is ready.
 
-## Save the condition, not just a picture.
+## Keep the scene with the run.
 
-A photograph can remind you what a table looked like. A useful scene record should also explain what mattered: the objects, target arrangement, calibration, task, policy and acceptance rules. It should distinguish what the system observed from what a person intended. Our proposed scene history gives that context a stable identity. A trial refers back to a scene revision, so the result does not become detached from its starting point when a video moves folders or someone renames a spreadsheet.
+A scene record connects the objects, target arrangement and station configuration to the task. Every episode can refer back to the condition it started from. Review the intended setup alongside the observed state. Keep the policy version, recording and result attached so the experiment remains useful after the session ends.
 
-## Change one thing. Keep the question clear.
+## Change one condition at a time.
 
-Imagine branching from a known scene to test a new object position. The baseline remains available. The branch makes the intended difference explicit, and the comparison asks a specific question: did this policy still succeed when the cup moved? Position, orientation, clutter, objects and lighting are useful experimental axes. They do not all have the same physical controls. A future workflow should make both the intended change and the limits of its verification visible.
+Create a revision from a baseline scene. Move the target, turn it, introduce clutter, substitute an object or change the lighting setup. Preserve the original condition and name the difference. Use those revisions to build a test suite that answers a specific question. Compare matched conditions across policies, then examine combinations when you want to test interactions.
 
-## A difference you can point to.
+## See what changed and what happened.
 
-The proposed comparison view brings two conditions and their episodes together. The reviewer sees what changed in the setup, which policy ran and what evidence supports the result. A changed rubric or camera configuration should be visible alongside a changed object position. The goal is a conversation with fewer missing pieces: “this is the scene,” “this is the change,” “this is what we observed.”
+Compare scene versions together with their episodes. Inspect the setup difference, policy checkpoint and outcome, then open the evidence behind the score. A change in the rubric or station configuration belongs in that comparison too. The record gives the team a common reference when a result improves or regresses.
 
-## Return to the question that mattered.
+## Restore the setup for another run.
 
-A physical replay would take a saved condition and project the staging instructions again. An operator restores the objects. The station checks what it can observe. The next trial gets its own record, linked to the earlier condition. Replay is a reconstruction, not time travel. The table may be the same while friction, wear, exposure or a deformable object differs. The product should help the team see those boundaries.
+Select a saved condition and re-project its placement guidance. The operator restores the objects, the station checks the scene, and the new episode joins the same evaluation history. Use replay to investigate a failure, test a fix or compare a checkpoint against the cases your team wants to retain.
 
-## The lab's memory, shared.
+## Build a regression suite from real failures.
 
-Beyond individual scene records, we are exploring collaborative review, named test suites, scheduled regression runs and a history of why a result was accepted or questioned. These are product directions shown here to make the ambition concrete; this page does not announce their availability. The measure of success is human: a new researcher should be able to understand an old failure without finding the one person who was in the room. Help shape the scene-history workflow or read the thinking behind physical version control .
+Keep important scenes in a shared test library. Assign them to stations, organize runs and review results with the people responsible for the task. A failure should become a reusable test case. Scene history makes it possible to find the setup, understand the previous result and run the question again. See scene history in a demo or read the guide .
 
-# Intelligence belongs where life happens.
+# The company behind Prism.
 Source: https://lightcompany.ai/company
 
-We spend our days teaching machines about the world. We are building a way for the world to answer back.
+We build evaluation tools for physical AI. Prism combines projection, perception and software so robotics teams can run repeatable tests and understand their results.
 
-## The space beyond the screen.
+## Make robot evaluations more useful.
 
-Much of computing lives in a rectangle. Physical work happens elsewhere: on a bench, beside a machine, around a kitchen table, in the space a hand is about to reach. Light can meet that work where it is. A projected outline can tell a person where to place an object. A camera can help determine whether it arrived. Together, they make an interface that shares the surface with the task. That is the starting point for Prism. We want intelligence to become easier to see, question and use in the physical world.
+Robotics teams need to know whether a new policy is better, where it fails and whether a result can be reproduced. That requires control over the physical setup and a clear record of what happened. We build the station and software that connect those parts of the workflow. Operators can prepare a defined scene, researchers can compare matched conditions, and the team can review the evidence behind a result.
 
-## One idea, two places to begin.
+## Our products
 
-Prism Robotics Robot evaluation needs a physical setup that can be described, checked and revisited. Prism Robotics brings projected staging and camera-based verification to that work, with a broader direction toward a shared history of scenes and results. Prism IRL Prism IRL explores information and interaction on everyday surfaces. The interface comes into the room: guidance where the hands are, information where the object is, light that helps a person act.
+Prism Robotics The evaluation platform for physical AI. Stage and verify scenes, run test suites, score rollouts, compare policies and retain the conditions behind each result. Explore Prism Robotics . Prism IRL Projected interfaces for everyday surfaces. Prism combines vision and light to put information and guidance where people are working. Explore Prism IRL .
 
-## What we want the work to feel like.
+## Built across hardware, software and robotics.
 
-Legible. A person should understand what the system is asking, what it saw and what it still does not know. Grounded. Real footage, real materials and real operating constraints should shape the product. The workbench gets a vote. Open to correction. A failed trial, an uncertain observation or a disagreement is part of the record. Good tools make those moments easier to examine. Generous to the next person. Knowledge should survive a shift change. An experiment should be understandable to someone who was not there.
+Our team brings experience from Apple engineering and Carnegie Mellon research. We work across station hardware, perception, evaluation software and the operator experience. The product is developed around real workcells and the people running them. A useful evaluation tool needs to fit the reset process, preserve the right evidence and make the next decision easier.
 
-## Build the next layer with us.
+## Work with us
 
-This work sits across optics, perception, robotics, software and interaction design. It rewards people who can move between a careful explanation and a stubborn physical problem. For prospective colleagues Show us something you have made, studied or learned to see differently. Explore working together → For investors Explore the company thesis and the opportunity around physical AI evaluation. Read the investor overview → For labs and partners Bring a concrete task. We will start with the scene you need to understand. Start a conversation →
+Labs and research teams Discuss your robot, tasks and evaluation workflow. Book a demo → Careers Explore work across robotics, perception, software, hardware and design. See areas of work → Investors Read the company overview and product strategy. Investor overview →
 
-# Build something you can point to.
+# Build evaluation tools for physical AI.
 Source: https://lightcompany.ai/careers
 
-A beam lands on a table. A camera notices a difference. A person understands what to do next. Making that moment useful takes many kinds of minds.
+We work across robot labs, station hardware and evaluation software. If you want to help build Prism, show us your work and tell us where you can contribute.
 
-## The problems are wonderfully physical.
+## What we work on
 
-We care about the distance between a compelling demo and a tool someone uses again tomorrow. A calibration that survives the day. A record someone can understand six months later. An interface that remains clear when the room is noisy and the operator is tired. Those problems do not belong to one discipline. The best answer may involve a mount, a camera setting, a database record, a sentence or a better question.
+Prism connects physical scene preparation to the software used to run, score and compare robot evaluations. The work spans reliable station operation, perception, evidence capture, analysis and clear interfaces for lab teams. We value people who can investigate a problem, build a useful solution and follow it through to the person using it.
 
-## Where your curiosity might fit.
+## Areas of contribution
 
-Perception & robotics Registration, scene understanding, evaluation methods and the boundaries of what a camera can verify. Systems & software Reliable station software, understandable records, integrations and tools that help a lab recover from mistakes. Optics & hardware Light, cameras, mounting, thermal behavior and the practical details that turn a workbench into a dependable instrument. Design & storytelling Interfaces that explain their own state; films and writing that make physical intelligence tangible without overstating it. Lab operations Repeatable processes, clear documentation and patient observation of the difference between intended and actual work.
+Robotics & perception Scene verification, object tracking, policy evaluation and the connection between observations and physical conditions. Software & systems Station services, evaluation workflows, test libraries, integrations and data that stays understandable across runs. Hardware & optics Projectors, cameras, mounting and the practical requirements of dependable workcell hardware. Product & design Interfaces for operators and researchers, evidence review, comparison tools and product communication. Lab operations Task setup, repeatable procedures, evaluation quality and documentation that helps the next operator.
 
-## Bring a point of view and something to show.
+## Share something you have built.
 
-A project, a repository, a paper, a physical build, a short film or a careful write-up can tell us how you think. Explain what you tried, what surprised you and what you would change. We welcome different educational and professional paths. If a conventional résumé leaves out the most interesting part of your work, tell us that part.
+Send a project, repository, paper, physical build or concise write-up. Explain the problem, your contribution and what you learned. Relevant work can come from research, employment, independent projects or other paths.
 
-## Start with the work.
+## Get in touch
 
-Email hi@lightcompany.ai with a short introduction, relevant links and the kind of contribution you want to make. Tell us your location and any practical constraints you want us to consider. Please do not send identity documents, financial information or sensitive information about other people. If a formal opportunity opens, its responsibilities, location and terms will be discussed explicitly. We cannot promise a response or a role from an expression of interest. Need an accessible way to share your work? Say what would help. Read our privacy notice for how contact information is handled.
+Email hi@lightcompany.ai with a short introduction, relevant links, your location and the kind of work you want to do. We welcome expressions of interest. Specific openings, location and employment terms will be discussed directly. Please do not send identity documents or sensitive personal information in an initial message.
 
-# Tell us about your corner of the world.
+# Talk to the Prism team.
 Source: https://lightcompany.ai/contact
 
-The most useful conversation begins with something concrete: a table, a task, a repeated failure, a question nobody can settle.
+Tell us about your robot, tasks and current evaluation process. We will help you work through the station setup, software and integrations.
 
-## Bring Prism to your lab.
+## Book a demo
 
-Tell us what your robot does, how you prepare a trial and what you need to compare. A short description of the workspace, objects, camera view and current reset process is enough to begin. Email the Prism team You can also register interest in a station . No payment is taken by that form. Scope, pricing, availability and any deployment terms are agreed separately.
+Send the task you want to evaluate, the robot or platform you use and the part of the process you want to improve. A short description is enough to start. Email the Prism team You can also register interest in a station . Pricing, deployment scope and availability are discussed directly.
 
-## Find the right conversation.
+## Other inquiries
 
-Research & partnerships Share a task, method or collaboration idea. Include what you want to learn and what evidence would make it useful. Investors Start with the investor overview , then contact us about the company . Careers See areas of work and send a short introduction with something you have made. Press & speaking Tell us the topic, audience and deadline. Please ask before implying a partnership or endorsement. Support Describe the issue and your setup. Do not include passwords, access tokens or private recordings in an initial email. Privacy & security Use the instructions in our privacy notice or security information to report a concern.
+Research & partnerships Discuss a task, method or integration. Investors Read the investor overview or contact the team . Careers Explore areas of work and send an introduction. Press Send your topic and deadline. Support Describe the issue and your setup. Privacy & security See our privacy notice and security information .
 
-## A good first note.
+## What helps us prepare
 
-Include the task, the robot or platform, the objects involved and the part of the evaluation that is hard to repeat. Tell us whether you are exploring, planning a pilot or already operating a lab. Share only material you are authorized to share. A diagram or a non-sensitive description is usually enough for an initial discussion; private data and detailed access arrangements can wait for an agreed process.
+Include your task, objects, robot or platform, number of workcells and current reset or scoring process. Tell us whether you are exploring a first deployment or expanding an existing evaluation workflow. A non-sensitive description or diagram is enough for the first conversation. We can arrange access to private material separately.
 
-# Give every result a little more context.
+# Robot evaluation resources.
 Source: https://lightcompany.ai/resources
 
-Notes for people who prepare the table, run the robot and have to explain what the result means. Start with the question your experiment is trying to answer.
+Guides, methods and examples for teams running physical robot evaluations.
 
-## From a trial to an understanding.
+## Evaluation guides
 
-How to plan a real-world robot evaluation A practical guide to defining a robot task, preparing conditions, recording interventions and reporting results another team can understand. Read the guide → Why robot evaluation starts with the reset Object placement, camera setup and scoring rules can change an evaluation. Learn how to separate intended conditions from what actually happened. Read the guide → A capability map tells you where to look next Go beyond a single robot success rate. Organize evaluation by position, orientation, clutter, objects and lighting while preserving untested conditions. Read the guide → What should a physical scene remember? An essay on physical version control: scene identity, revision history, evidence and the limits of replay in a changing world. Read the guide →
+How to plan a real-world robot evaluation Plan a robot evaluation with defined tasks, controlled conditions, scoring rules and a record of every trial. Read guide → Why robot evaluation starts with the reset Object placement, camera setup and scoring rules can change an evaluation. Learn how to separate intended conditions from what actually happened. Read guide → Capability maps for robot evaluation Go beyond a single robot success rate. Organize evaluation by position, orientation, clutter, objects and lighting while preserving untested conditions. Read guide → Scene history for robot evaluation How scene versions connect physical conditions, policy checkpoints and run evidence for repeatable robot evaluation. Read guide →
 
-## See the physical work.
+## Prism in the lab
 
-Writing can explain a method. Footage shows what a person actually does with it. Explore the lab gallery , watch the evaluation film or follow the Prism workflow from staging to review. Our technical brief on initial-condition control describes the mechanism and its limitations. Operational figures in that brief reflect a limited partner context, not an independently validated market-wide benchmark.
+See projected staging and real workcells in the lab gallery . Watch an evaluation from setup to review , or follow the product workflow . The technical brief explains initial-condition control and the physical constraints involved.
 
-## Reading that shaped the questions.
+## Research references
 
-Robot Learning as an Empirical Science: Best Practices for Policy Evaluation argues for richer reporting of initial conditions, success criteria and observed behavior. Colosseum explores robustness across environmental changes in simulation. SIMPLER studies simulated evaluation against real robot setups. These are independent research projects, not Light Company results or endorsements. Our guides connect those questions to the practical work of preparing and documenting a physical scene. They do not turn a simulated result into a claim about a physical deployment.
+Robot Learning as an Empirical Science: Best Practices for Policy Evaluation discusses reporting initial conditions, success criteria and observed behavior. Colosseum studies robustness across environmental changes. SIMPLER studies simulated evaluation against real robot setups.
 
-## Explore the product direction.
+## Product walkthroughs
 
-The benchmark workspace demonstrates how comparisons, trial records and capability maps could be reviewed. Its current scores are illustrative. The scene-history concept explores the idea of “Git for your physical space.” Its controls operate a diagram, not a station. For a concise machine-readable overview, see llms.txt and the public agent guide . They preserve the same distinction between demonstrated work and proposed direction.
+Explore scene history with an interactive example, or use the benchmark workspace to inspect sample rankings, comparisons and trial records. For machine-readable product information, see llms.txt and the public agent guide .
 
 # How to plan a real-world robot evaluation
 Source: https://lightcompany.ai/resources/robot-evaluation
 
-A robot evaluation is a carefully bounded question. The task, the scene and the rules decide what the answer can mean.
+Define the task, control the starting conditions and agree on scoring before you run the evaluation.
 
-## Start with the decision.
+## Define the evaluation question
 
-Are you choosing between two checkpoints, testing whether a new object breaks a skill, or deciding whether a workflow is ready for a specific setting? These are different decisions. They deserve different experiments. Write the decision in one sentence. Then describe the evidence that would change your mind. This keeps a beautiful demonstration from quietly becoming a deployment claim. A practical example: “We want to know whether the new checkpoint improves placing this mug in this tray across the positions used at this workcell.” That question names the policy change, task, objects and scope. It leaves room to report what was not tested.
+Are you choosing between two checkpoints, testing whether a new object breaks a skill, or deciding whether a workflow is ready for a specific setting? These are different decisions. They deserve different experiments. Write the decision in one sentence. Then describe the evidence that would change your mind. Use that decision to set the test scope and required evidence. A practical example: “We want to know whether the new checkpoint improves placing this mug in this tray across the positions used at this workcell.” That question names the policy change, task, objects and scope. It leaves room to report what was not tested.
 
-## Write the rules before the robot acts.
+## Set the scoring rules
 
 Define success in observable terms. Specify the time limit, allowed contact, acceptable final state and any permitted assistance. Decide how to handle interruptions, sensor loss, a bad reset or a stopped robot. Keep three outcomes separate: a valid success, a valid failure and an invalid or unresolved episode. A reset mistake should not silently count against the policy, and removing a difficult valid failure would make the report misleading. When two reviewers disagree, retain the disagreement and resolve it against the rubric. A scoring model can help organize review, but its answer still depends on the evidence and instructions it receives.
 
-## Choose the world the policy will face.
+## Choose the test conditions
 
 List the conditions that matter: object identity, position, orientation, clutter, lighting, camera arrangement, robot start state and relevant surface properties. Choose which to hold fixed and which to vary deliberately. Begin with a baseline that can be described and restored. Then choose a schedule of conditions that answers the question. Repeating an easy scene many times does not establish performance across a wider set of scenes. Give every intended condition an identifier. Record what was actually staged and whether it met the acceptance rule. A projected target is useful, but the target is not proof that the object arrived there.
 
-## Leave a record another person can follow.
+## Record each trial
 
 At minimum, connect each episode to the task and rubric versions, policy or checkpoint identity, scene condition, robot configuration, outcome and any intervention. Where recordings are collected, preserve their relationship to the episode and handle access according to the team's data agreement. Here is a downloadable evaluation checklist . It is a planning aid, not a Prism API contract. What was the intended setup, and how was it checked? Which policy ran, with which robot and sensor configuration? Was projected guidance visible during the recording? What happened, and what evidence supports the score? Did anyone intervene, discard a trial or change a rule? Which conditions remain untested?
 
-## Report the boundary of the result.
+## Report the results and test scope
 
 Give the number of trials and successes, the conditions covered, the uncertainty appropriate to the experiment and the reasons for exclusions. Explain the important failure modes in words. A single average can hide the condition that matters most to the team using the robot. Compare policies on a matched set of conditions where possible. Consider trial order and wear: running one candidate first all day and another after the objects or hardware have changed can introduce another difference. The Robot Learning as an Empirical Science: Best Practices for Policy Evaluation paper calls for more informative reporting than a bare success rate. This guide applies that principle to a workcell planning conversation; it does not prescribe a universally sufficient trial count. Next: why initial conditions belong in the result .
 
 # Why robot evaluation starts with the reset
 Source: https://lightcompany.ai/resources/initial-conditions
 
-The robot's first observation is already the result of somebody's work. That work deserves a record.
+Consistent starting conditions make policy comparisons easier to interpret. Record the intended setup, check the scene and track changes between trials.
 
-## The smallest change in the room.
+## How setup changes affect results
 
 A mug returns to the table, almost where it was. The handle turns a little. A cable lies closer to the gripper. Nothing about the model changed, but its next observation did. That does not make variation a mistake. A capable robot must operate through variation. The problem is variation that enters the evaluation without being chosen, measured or described. When a team compares two policies, it needs to understand whether the policies faced comparable conditions. Otherwise a changed result may reflect a changed scene, a changed policy or both.
 
-## Keep intention, observation and acceptance separate.
+## Define, observe and verify the setup
 
 Intended condition The scene the protocol asks for: objects, target positions and other declared conditions. Observed condition What the camera or operator can actually establish about the prepared scene. Acceptance decision Whether the observed scene is suitable for this trial under the task's tolerances, including any unresolved uncertainty. Collapsing these into one “ready” flag makes the interface simple at the expense of the experiment. A useful system lets a reviewer recover the reason the trial was accepted.
 
-## What projected staging changes.
+## Use projected setup guides
 
 Prism projects placement guidance onto the work surface so an operator can prepare a target condition without referring back and forth to a separate drawing. Camera registration connects the projected instruction to the observed workspace. The Prism technical brief describes this as an initial-condition layer: stage, verify, log and re-project a saved condition. It also identifies limits. Planar placement is easier to express than a complete three-dimensional configuration; deformable objects and lighting need additional treatment. Visible projected marks may themselves affect a vision policy. The recording protocol must specify when guidance is shown and when it is removed. “No tape on the table” is helpful only if the replacement does not introduce an unexamined cue.
 
-## A reset worth repeating.
+## Repeat the reset consistently
 
 Start by naming the objects and the target arrangement. Check calibration against the actual workspace. Stage the scene, inspect the observation and record the acceptance decision. Only then begin the policy episode. When a reset cannot meet the requirement, preserve that fact. Do not quietly substitute a nearby scene while retaining the original condition label. When the table, camera or projector moves, re-check the relationship before using old targets. This is not a claim that every source of variability can be eliminated. It is a way to make the setup part of the experiment instead of an invisible assumption.
 
-## Variation becomes useful when it has a name.
+## Track each variable
 
 Once a baseline is understood, move beyond it deliberately. Change one axis and record it. Then test combinations where interactions matter. The resulting capability map can show where a policy's performance changes across the conditions tested. For background on richer physical evaluation reporting, see Robot Learning as an Empirical Science: Best Practices for Policy Evaluation . For the product workflow, see how Prism works .
 
-# A capability map tells you where to look next
+# Capability maps for robot evaluation
 Source: https://lightcompany.ai/resources/capability-maps
 
-An average tells you how often. A map helps you understand where, under what conditions and what to try next.
+Break down policy performance by position, orientation, clutter, objects and lighting. See which conditions cause failures and where more trials are needed.
 
-## The failure inside the average.
+## Look beyond aggregate success
 
 Imagine two policies with similar overall results. One works across the table but struggles with a particular object. The other handles that object well but fails near the edge of the workspace. A single number can make them look interchangeable. A capability map organizes outcomes by the condition that produced them. It lets a team ask a practical question: does this policy work in the part of the world we actually care about? The map is an account of tested conditions. It does not establish capability in every untested scene, and it is not a safety certification.
 
-## Five useful questions for a physical scene.
+## Five variables to test
 
 Position What happens when the target moves across the reachable surface? Keep the camera and robot configuration recorded. Orientation What happens when the object turns? State which orientation is being varied and what can actually be verified. Clutter What happens when another object enters the scene? Record its identity and placement rather than calling everything “cluttered.” Objects What happens when the target changes? Size, material, shape and familiarity may change together; a substitution is rarely one perfectly isolated property. Lighting What happens when illumination changes? Record the lighting arrangement and relevant camera settings. Projected staging does not automatically control ambient light.
 
-## Change one variable, then examine interactions.
+## Test individual variables and combinations
 
 Begin with one axis at a time. It makes a failure easier to attribute and gives the team a readable first map. If the cup moves while the camera and light also change, the result cannot isolate the effect of position. After the first pass, test combinations that matter. Clutter and orientation may interact. A policy that tolerates either change alone may fail when both occur. One-variable tests are a useful beginning, not a complete account of the world. Colosseum is a simulation research example of evaluating environmental perturbations systematically. Its findings are not Prism measurements; the useful lesson here is to make the axes of variation explicit.
 
-## Let the blank cells stay blank.
+## Distinguish untested conditions
 
-Show trial counts alongside outcomes. Mark untested conditions clearly. Preserve invalid episodes and review disagreements separately. If one cell contains many trials and another contains only a few, the visual treatment should not suggest equal certainty. Keep the task, rubric, policy and condition versions attached to the map. Comparing maps made under different rules can create a persuasive picture of a change that was never actually measured. Our benchmark workspace uses illustrative data to explore this interface. It demonstrates the reading experience, not the performance of the model families shown.
+Show trial counts alongside outcomes. Mark untested conditions clearly. Preserve invalid episodes and review disagreements separately. If one cell contains many trials and another contains only a few, the visual treatment should not suggest equal certainty. Keep the task, rubric, policy and condition versions attached to the map. Comparing maps made under different rules can create a persuasive picture of a change that was never actually measured. Our benchmark workspace uses illustrative data to explore this interface. The public scores are sample data.
 
-## Use the map to choose the next experiment.
+## Choose the next experiment
 
-A useful map changes what the team does. It might reveal a narrow position boundary, motivate a new object test or identify a scene worth replaying against the next checkpoint. Preserve the conditions that led to that decision. Prism's role begins with making physical placement more explicit through projected guidance and camera checks. The broader ambition is to connect those scenes with the history of what the team learned. Read about physical version control or bring us a task to discuss .
+A useful map changes what the team does. It might reveal a narrow position boundary, motivate a new object test or identify a scene worth replaying against the next checkpoint. Preserve the conditions that led to that decision. Prism's role begins with making physical placement more explicit through projected guidance and camera checks. Scene history connects those conditions to the run record and the resulting comparison. Read about physical version control or bring us a task to discuss .
 
-# What should a physical scene remember?
+# Scene history for robot evaluation
 Source: https://lightcompany.ai/resources/physical-version-control
 
-A laboratory has a memory. Too much of it lives in the person who happened to be there.
+Scene history keeps the test setup, model version and run evidence connected across evaluations.
 
-## The day the person leaves the room.
+## Why scene records matter
 
-The video still exists. The result is in the spreadsheet. But the person who set up the table remembers the detail that makes it meaningful: a camera was moved, an object was substituted, a trial was restarted after an interruption. When that memory disappears, the record becomes harder to use. A new researcher can watch what happened without knowing enough to ask the same question again. “Git for your physical space” names the product direction we are exploring with Prism. It borrows the idea of an intelligible history from software, while taking seriously how different the physical world is.
+The video still exists. The result is in the spreadsheet. But the person who set up the table remembers the detail that makes it meaningful: a camera was moved, an object was substituted, a trial was restarted after an interruption. When that memory disappears, the record becomes harder to use. A new researcher can watch what happened without knowing enough to ask the same question again. Prism applies version history to the physical setup. Save a condition, create a revision and keep the resulting episodes connected to both the scene and policy version.
 
-## A scene needs an identity.
+## Define the scene record
 
 A scene record should connect the intended arrangement with what was observed: object identities, positions, calibration reference and the conditions the task depends on. A trial should point back to that record, not merely to a folder with a familiar name. A revision then describes a change. The cup moved. The object changed. The lighting arrangement was different. The old condition remains understandable, and the new one explains its relationship to it. That relationship is the beginning of a useful comparison. It also makes missing information visible: a field can be unknown rather than silently assumed to match.
 
-## The difference is the question.
+## Compare scene revisions
 
-In a physical experiment, a difference is not just something to display. It is often the reason to run the trial. Did the new policy improve on the old failure? Did changing the object reveal a dependency the team had not noticed? A useful history would keep the scene change, policy change and rubric change distinct. It would let someone review the evidence for the outcome and understand why a score was revised. The proposed scene-history interface makes a small part of this idea concrete. Its example revisions are illustrative and do not represent a connected lab or shipped collaboration system.
+In a physical experiment, a difference is not just something to display. It is often the reason to run the trial. Did the new policy improve on the old failure? Did changing the object reveal a dependency the team had not noticed? A useful history would keep the scene change, policy change and rubric change distinct. It would let someone review the evidence for the outcome and understand why a score was revised. The scene-history walkthrough shows how revisions work using an example scene.
 
-## Replay is a reconstruction.
+## Recreate and verify the setup
 
 Software can restore bytes exactly. A workcell cannot promise the same thing about friction, wear, exposure or the fold of a cloth. Projected guidance can help restore an arrangement; observation must still establish what was achieved. This is where the metaphor earns its limits. A scene history should not pretend to freeze the world. It should make the assumptions and tolerances of a reconstruction available for inspection. The Prism technical brief describes re-projecting a logged condition as a route to physical regression testing. Whether a specific task can be repeated closely enough remains something to measure in that task's setup.
 
-## A record generous enough for someone else.
+## Share an evaluation your team can inspect
 
-The destination is not a prettier archive. It is a lab where a failure remains findable, a comparison remains explainable and an old experiment can teach someone new. That asks for more than storage. It asks for names people understand, reasons kept beside decisions, permissions appropriate to the data and a way to say “we do not know” without breaking the workflow. The room cannot stand still. Its history can still make sense. Explore Prism Robotics , or tell us what your team's physical record is missing .
+The destination is not a prettier archive. It is a lab where a failure remains findable, a comparison remains explainable and an old experiment can teach someone new. That asks for more than storage. It asks for names people understand, reasons kept beside decisions, permissions appropriate to the data and a way to say “we do not know” without breaking the workflow. Explore Prism Robotics , or tell us what your team's physical record is missing .
 
 # Terms of service
 Source: https://lightcompany.ai/terms
@@ -324,7 +332,7 @@ These terms describe the permitted use of lightcompany.ai and its public content
 
 ## Content and examples
 
-The website provides product information, educational material, recorded demonstrations and descriptions of possible future experiences. Availability, compatibility, deployment scope and product specifications must be confirmed directly before relying on them for a purchase or operational decision. Content labeled illustrative, example, concept, proposed or product direction is not a statement that the depicted feature is available or that the shown results were measured. The public benchmark workspace currently contains illustrative data, not a verified ranking or endorsement of model providers. Nothing on this website is an instruction to operate a robot without appropriate supervision, task validation and the controls required by the equipment and setting. Website content is not a safety certification.
+The website provides product information, educational material, recorded demonstrations and descriptions of possible future experiences. Availability, compatibility, deployment scope and product specifications must be confirmed directly before relying on them for a purchase or operational decision. Content labeled illustrative or example uses sample data and should not be cited as a measured result. The public benchmark workspace currently contains illustrative data, not a verified ranking or endorsement of model providers. Nothing on this website is an instruction to operate a robot without appropriate supervision, task validation and the controls required by the equipment and setting. Website content is not a safety certification.
 
 ## Using the website
 
@@ -350,7 +358,7 @@ We aim to keep the website useful and accurate, but content may change and error
 
 We may update these terms as the website changes. The date above identifies the current version. Material changes affecting a separate agreement will be handled according to that agreement and applicable law. For questions or to report inaccurate content, contact hi@lightcompany.ai with the page URL and a description of the concern.
 
-# Privacy, in plain language.
+# Privacy policy
 Source: https://lightcompany.ai/privacy
 
 This notice explains the information involved when you visit this website, register interest in Prism or contact us.
@@ -361,7 +369,7 @@ The station interest form asks for your name, email address and company or lab. 
 
 ## Information involved in running the site
 
-Website hosting, security and delivery providers may process technical information such as IP addresses, browser and device details, requested pages, timestamps and diagnostic information to deliver the website and protect their services. The site's benchmark introduction uses browser session storage to remember whether it has been dismissed. The new scene-history concept changes only the illustration in the page and does not collect camera images or operate a station. Some pages use third-party media, including YouTube. Loading or interacting with that content can send information to its provider. See cookies and storage for the current website features involved.
+Website hosting, security and delivery providers may process technical information such as IP addresses, browser and device details, requested pages, timestamps and diagnostic information to deliver the website and protect their services. The site's benchmark introduction uses browser session storage to remember whether it has been dismissed. The scene-history walkthrough uses an example diagram and does not collect camera images. Some pages use third-party media, including YouTube. Loading or interacting with that content can send information to its provider. See cookies and storage for the current website features involved.
 
 ## Why we use information
 
@@ -383,14 +391,14 @@ You can avoid optional form fields, decline product updates, clear browser stora
 
 This notice covers the public website and related inquiries. It does not establish the data arrangements for camera feeds, robot recordings, customer datasets or station deployments. Before a deployment, the parties should agree what is collected, where it goes, who can access it and how long it is kept. For privacy questions, contact hi@lightcompany.ai . We will update this notice when the public website's practices change.
 
-# What the browser remembers.
+# Cookies and storage
 Source: https://lightcompany.ai/cookies
 
 A small amount of browser state supports the website. Embedded services may have their own behavior.
 
 ## Storage used by the website
 
-The benchmark introduction stores a dismissal flag in session storage under prism-benchmark-intro-v1 . It helps avoid repeatedly showing the same introduction during a browsing session. It does not contain your name or email. The scene-history concept has no saved account or server-side scene history. Its selected revision is held in the page while it is open. Reloading returns the example to its starting state. Hosting and security services may use cookies or similar mechanisms for delivery, abuse prevention or access controls. Their behavior can differ from the page's own scripts.
+The benchmark introduction stores a dismissal flag in session storage under prism-benchmark-intro-v1 . It helps avoid repeatedly showing the same introduction during a browsing session. It does not contain your name or email. The public scene-history walkthrough keeps its selected example in the page while it is open. Reloading returns the walkthrough to its starting state. Hosting and security services may use cookies or similar mechanisms for delivery, abuse prevention or access controls. Their behavior can differ from the page's own scripts.
 
 ## Third-party content
 
@@ -400,40 +408,40 @@ The gallery uses YouTube's player technology. Loading that page or interacting w
 
 You can remove cookies and site storage through your browser settings, block third-party cookies and choose not to load pages containing external media. Clearing storage may make an introduction appear again. The current website code does not include advertising pixels or a marketing analytics tracker. If additional non-essential tracking is introduced, its purpose and any required choices should be provided before it is used. For questions about personal information, see the privacy notice or contact hi@lightcompany.ai .
 
-# Trust begins with a clear account.
+# Security and data
 Source: https://lightcompany.ai/trust
 
-A tool that helps people examine evidence should be clear about its own boundaries. Here is where to start.
+Information about website data, deployment requirements and reporting a security concern.
 
 ## The public website
 
-The website explains our work, hosts films and educational content, and collects station-interest submissions. It is separate from a customer's operational workcell. The public scene-history concept does not connect to cameras or robot controllers. The station-interest endpoint validates submitted fields, limits request size, checks the request origin and stores accepted submissions in a database. Those are specific implementation measures, not a claim of comprehensive security certification. Read the privacy notice and browser-storage information for the public site's data practices.
+The website explains our work, hosts films and educational content, and collects station-interest submissions. It is separate from a customer's operational workcell. The public scene-history walkthrough is an interactive example, separate from a connected workcell. The station-interest endpoint validates submitted fields, limits request size, checks the request origin and stores accepted submissions in a database. Those are specific implementation measures, not a claim of comprehensive security certification. Read the privacy notice and browser-storage information for the public site's data practices.
 
 ## Before a station enters your lab
 
-A deployment discussion should establish the data and operating boundaries before access is provided. These are questions to settle together, not a list of services this website promises: Which camera images, scene records and trial recordings are collected? What stays on the station, what is transmitted and where is it stored? Who can access the records, and how is access removed? How are updates, credentials, backups and incident contacts handled? What retention, export and deletion arrangements apply? Which actions require operator review, and which system controls the robot? Any customer-specific security commitments, data-processing terms, service levels or network requirements belong in the applicable written agreement.
+A deployment discussion should establish the data and operating boundaries before access is provided. Confirm the following requirements with your team: Which camera images, scene records and trial recordings are collected? What stays on the station, what is transmitted and where is it stored? Who can access the records, and how is access removed? How are updates, credentials, backups and incident contacts handled? What retention, export and deletion arrangements apply? Which actions require operator review, and which system controls the robot? Any customer-specific security commitments, data-processing terms, service levels or network requirements belong in the applicable written agreement.
 
 ## Claims you can inspect
 
-We distinguish recorded demonstrations, workflow descriptions, operational estimates and proposed product concepts. None should silently stand in for another. The public benchmark scores are illustrative. Scene-history branching and collaborative workflows shown here are concepts. This site does not assert SOC 2, ISO 27001 or another certification, nor does it promise universal compatibility or a guaranteed accuracy level. For the physical method and known constraints, read the technical brief . For a proposed deployment, ask us for evidence relevant to your actual task.
+Product pages explain Prism workflows and include recorded demonstrations. Sample data and operational estimates are labeled where they appear. The public benchmark scores are illustrative. This site does not assert SOC 2, ISO 27001 or another certification, nor does it promise universal compatibility or a guaranteed accuracy level. For the physical method and known constraints, read the technical brief . For a proposed deployment, ask us for evidence relevant to your actual task.
 
 ## Report a security concern
 
 Email hi@lightcompany.ai with “Security report” in the subject. Include the affected URL or component, a clear description and non-sensitive reproduction steps. Do not include credentials, private customer data or harmful payloads in the initial message. Avoid accessing data that is not yours or disrupting a live service. This page is a reporting contact, not authorization to test private systems or a promise of a bounty.
 
-# An explanation should let people in.
+# Accessibility
 Source: https://lightcompany.ai/accessibility
 
-We want people to be able to understand our work without needing a particular device, way of seeing or way of interacting.
+Information about keyboard access, text, motion, media and assistance on this website.
 
 ## How we approach the website
 
-The company pages use semantic headings, visible keyboard focus, a skip link, readable contrast and responsive layouts. Interactive controls have text labels. Motion respects the browser's reduced-motion preference where supported by the page. The scene-history concept includes a text description of what changes, so its visual diagram is not the only explanation. The ASCII footer is decorative and is hidden from assistive technology. We use the Web Content Accessibility Guidelines as a reference for improvement. This statement is not a claim of complete conformance or an independent accessibility audit.
+The company pages use semantic headings, visible keyboard focus, a skip link, readable contrast and responsive layouts. Interactive controls have text labels. Motion respects the browser's reduced-motion preference where supported by the page. The scene-history walkthrough includes a text description of each change alongside its diagram. The ASCII footer is decorative and is hidden from assistive technology. We use the Web Content Accessibility Guidelines as a reference for improvement. This statement is not a claim of complete conformance or an independent accessibility audit.
 
 ## Known limitations
 
 Some recorded demonstrations communicate information visually, and not every video has a complete caption or audio-description track. Some older pages and third-party players may have different accessibility behavior from the new company pages. If a film, document or interactive view prevents you from getting the information you need, tell us which content matters. We can discuss a text explanation or another way to share it.
 
-## Tell us where the experience breaks
+## Report an accessibility issue
 
 Email hi@lightcompany.ai with the page URL, what you were trying to do and what happened. If useful, include your browser or assistive technology, but do not send sensitive personal information. We welcome specific reports about keyboard access, contrast, text size, motion, media alternatives or confusing controls. A useful website should remain useful when someone's way of using it differs from ours.

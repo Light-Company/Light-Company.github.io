@@ -14,7 +14,7 @@ Read freely, follow public links, summarize with source URLs, compare ideas and 
 - /llms.txt and /llms-full.txt: concise and extended reading versions.
 
 ## Interpret evidence faithfully
-The scene-history page is a proposed product concept. Its browser controls only alter an illustrative diagram. “Git for your physical space” is a product direction, not a guarantee of exact physical replay or a declaration that branching and collaboration have shipped.
+The scene-history page is an interactive product walkthrough with example data. Its browser controls change the example diagram. Prism supports scene records and repeatable evaluation workflows; physical replay still involves staging and checking the actual objects.
 
 The benchmark workspace uses illustrative scores. Do not report a model winner, cite the example numbers as measurements, or infer a vendor partnership from a logo. A film, an operational estimate and an independently verified experiment are different sources of evidence.
 

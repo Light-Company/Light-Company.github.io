@@ -1,3 +1,12 @@
+# UX and brand cohesion revision · November 1, 2026
+
+- [x] Assign separate benchmark UX, brand/inner-page design and product-source research agents.
+- [x] Replace poetic slogans and repeated capability hedging with direct product language; use owner-confirmed and source-evidenced features.
+- [x] Finish distinct product, company, resources and reference layouts with restrained typography.
+- [x] Finish benchmark hierarchy and task-context continuity, including URL state.
+- [x] Verify desktop/phone, meaningful controls, product claims and release build.
+- [ ] Publish the reviewed branch to GitHub and the existing Sites project.
+
 # Company and Prism expansion · November 1, 2026
 
 - [x] Base the expansion on the recovered complete website, already published as Sites version 30.
