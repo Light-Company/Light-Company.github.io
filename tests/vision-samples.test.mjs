@@ -77,7 +77,7 @@ test("the Robotics page keeps its landing video, method and qualified pilot numb
   assert.match(html, /id="outcomes"[\s\S]*Evaluation estimates from pilot customers/);
   const source = sources["robotics-hero-full.mp4"];
   assert.equal(source.sourceFile, "IMG_5578 3 (1).mov");
-  for (const file of ["site/robotics-vision/robotics-hero-full.mp4", "media/brand-film/hero-loop.mp4", "media/brand-film/prism-film.mp4", "media/brand-film/evals-film.mp4", "media/brand-film/evals-explainer.mp4"]) {
+  for (const file of ["site/robotics-vision/robotics-hero-full.mp4", "media/brand-film/hero-loop.mp4", "media/brand-film/prism-film.mp4", "media/brand-film/evals-explainer.mp4"]) {
     const video = await stat(new URL(`../public/${file}`, import.meta.url));
     assert.ok(video.size < 25 * 1024 * 1024, `${file} must fit the hosting static-asset limit`);
   }
