@@ -7,16 +7,16 @@ if (triggers.length) {
   dialog.className = "benchmark-dialog";
   dialog.setAttribute("aria-labelledby", "benchmark-dialog-title");
   dialog.setAttribute("aria-describedby", "benchmark-dialog-description");
-  dialog.innerHTML = `<div class="benchmark-dialog-inner"><button class="benchmark-dialog-close" aria-label="Close benchmark introduction" autofocus>×</button><p class="eyebrow">The Light Company Research</p><span class="preview-label">Illustrative preview</span><h2 id="benchmark-dialog-title">See our scores.</h2><p id="benchmark-dialog-description">Prism controls and verifies the initial state of every rollout, so results reflect the policy, not the reset.</p><div class="benchmark-dialog-logos" aria-label="Example lineup: Google DeepMind, OpenAI, Anthropic, NVIDIA">${benchmark.models.map((m) => `<img src="${logo(m.logo)}" alt="" class="${m.logo === "openai" ? "logo-invert" : ""}" />`).join("")}</div><div class="dialog-bars" aria-hidden="true"><i style="--height:87%;--delay:.08s"></i><i style="--height:82%;--delay:.16s"></i><i style="--height:75%;--delay:.24s"></i><i style="--height:62%;--delay:.32s"></i></div><a class="btn btn-primary" href="/benchmarks">Explore the benchmark <span aria-hidden="true">↗</span></a><p class="dialog-example-note">Illustrative scores and rankings. Verified run data will replace this preview.</p></div>`;
+  dialog.innerHTML = `<div class="benchmark-dialog-inner"><button class="benchmark-dialog-close" aria-label="Close benchmark introduction" autofocus>×</button><p class="eyebrow">The Light Company Research</p><span class="preview-label">Illustrative preview</span><h2 id="benchmark-dialog-title">See our scores.</h2><p id="benchmark-dialog-description">Prism controls and verifies the initial state of every rollout, so results reflect the policy, not the reset.</p><div class="benchmark-dialog-logos" aria-label="Example lineup: Google DeepMind, OpenAI, Anthropic, NVIDIA">${benchmark.models.map((m) => `<img src="${logo(m.logo)}" alt="" class="${m.logo === "openai" ? "logo-invert" : ""}" />`).join("")}</div><a class="btn btn-primary" href="/benchmarks">Explore the benchmark <span aria-hidden="true">↗</span></a><p class="dialog-example-note">Illustrative scores and rankings. Verified run data will replace this preview.</p></div>`;
   document.body.append(dialog);
   let opener;
   let teaser;
   const dismissTeaser = () => { if (teaser) teaser.hidden = true; try { sessionStorage.setItem("prism-benchmark-intro-v1", "seen"); } catch { /* Storage may be unavailable. */ } };
-  const open = (event) => { opener = event.currentTarget; dismissTeaser(); if (!dialog.open) dialog.showModal(); };
+  const open = (event) => { opener = event.currentTarget; dismissTeaser(); if (!dialog.open) dialog.showModal(); triggers.forEach((button) => button.setAttribute("aria-expanded", "true")); };
   triggers.forEach((button) => button.addEventListener("click", open));
   dialog.querySelector("button").addEventListener("click", () => dialog.close());
   dialog.addEventListener("click", (event) => { if (event.target === dialog) { const r = dialog.getBoundingClientRect(); if (event.clientX < r.left || event.clientX > r.right || event.clientY < r.top || event.clientY > r.bottom) dialog.close(); } });
-  dialog.addEventListener("close", () => { const target = opener?.isConnected && !opener.closest("[hidden]") ? opener : triggers[0]; target?.focus({ preventScroll: true }); });
+  dialog.addEventListener("close", () => { triggers.forEach((button) => button.setAttribute("aria-expanded", "false")); const target = opener?.isConnected && !opener.closest("[hidden]") ? opener : triggers[0]; target?.focus({ preventScroll: true }); });
   let seen = false;
   try { seen = sessionStorage.getItem("prism-benchmark-intro-v1") === "seen"; } catch { /* Keep the entry button available without storage. */ }
   if (document.body.hasAttribute("data-benchmark-announcement") && !seen) {

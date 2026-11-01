@@ -1,14 +1,12 @@
 /* Research sits inside the October Light Company visual system. */
-.benchmark-trigger { position: relative; display: inline-flex; align-items: center; justify-content: center; gap: 9px; min-height: 40px; padding: 0 17px; border: 1px solid #3cb4ff75; border-radius: 999px; background: #0d2636d9; color: #d7f0ff; font: 500 14px/1 var(--body); white-space: nowrap; box-shadow: 0 0 22px #3cb4ff1c, inset 0 0 12px #3cb4ff0c; transition: box-shadow .3s, background .3s; }
-.benchmark-trigger:hover { background: #123d54; box-shadow: 0 0 30px #3cb4ff48; }
-.benchmark-spark { width: 6px; height: 6px; border-radius: 50%; background: #82d1ff; box-shadow: 0 0 10px #3cb4ff; }
-.benchmark-trigger::after { content: ""; position: absolute; inset: -3px; border: 1px solid #3cb4ff50; border-radius: inherit; pointer-events: none; animation: benchmarkGlow 3s ease-out 3; }
-@keyframes benchmarkGlow { 0%, 100% { opacity: 0; transform: scale(.98); } 40% { opacity: .7; } 90% { opacity: 0; transform: scale(1.06, 1.15); } }
-.benchmark-dialog { padding: 0; width: min(720px, calc(100vw - 36px)); max-height: 88svh; color: var(--text); border: 1px solid #3cb4ff40; border-radius: 22px; background: #0b1017; box-shadow: 0 32px 160px #000a; overflow: auto; }
+.benchmark-trigger { display: inline-flex; align-items: center; justify-content: center; min-height: 40px; padding: 0 15px; border: 1px solid #ffffff38; border-radius: 6px; background: #ffffff08; color: #f1f3f5; font: 500 14px/1 var(--body); letter-spacing: -.01em; white-space: nowrap; transition: border-color .2s, background .2s; }
+.benchmark-trigger:hover, .benchmark-trigger[aria-expanded="true"] { background: #ffffff14; border-color: #ffffff70; }
+.benchmark-trigger:focus-visible { outline: 2px solid #a4d9fc; outline-offset: 4px; }
+.benchmark-dialog { padding: 0; width: min(720px, calc(100vw - 36px)); max-height: 88svh; color: var(--text); border: 1px solid #ffffff24; border-radius: 12px; background: #101216; box-shadow: 0 32px 160px #000a; overflow: auto; }
 .benchmark-dialog::backdrop { background: #020509b8; backdrop-filter: blur(12px); }
 .benchmark-dialog[open] { animation: benchmarkEnter .5s var(--ease) both; }
 @keyframes benchmarkEnter { from { opacity: 0; transform: translateY(20px) scale(.96); } to { opacity: 1; transform: none; } }
-.benchmark-dialog-inner { padding: 48px; position: relative; background: radial-gradient(ellipse at 80% 0, #164b6e65, transparent 64%); }
+.benchmark-dialog-inner { padding: 48px; position: relative; background: #101216; }
 .benchmark-dialog-close, .benchmark-teaser-close { display: grid; place-items: center; position: absolute; right: 15px; top: 15px; width: 40px; height: 40px; border-radius: 50%; color: #dbe7ef; font-size: 25px; background: #ffffff08; }
 .benchmark-dialog-close:hover, .benchmark-teaser-close:hover { background: #ffffff18; }
 .benchmark-dialog h2 { font-size: clamp(38px, 5vw, 66px); letter-spacing: -.045em; margin: 16px 0; }
@@ -17,11 +15,7 @@
 .benchmark-dialog-logos { display: flex; gap: 22px; margin: 28px 0; align-items: center; }
 .benchmark-dialog-logos img { width: 28px; height: 28px; object-fit: contain; }
 .logo-invert { filter: invert(1); }
-.dialog-bars { display: flex; gap: 8px; height: 88px; align-items: end; margin: 28px 0; border-bottom: 1px solid #ffffff15; }
-.dialog-bars i { flex: 1; height: var(--height); background: linear-gradient(0deg, #3cb4ff18, #58c4ffb0); border: 1px solid #58c4ff50; border-bottom: 0; border-radius: 3px 3px 0 0; transform-origin: bottom; }
-.benchmark-dialog[open] .dialog-bars i { animation: barEnter .8s var(--ease) both; animation-delay: var(--delay); }
-@keyframes barEnter { from { transform: scaleY(.08); opacity: 0; } to { transform: scaleY(1); opacity: 1; } }
-.benchmark-teaser { position: fixed; z-index: 65; bottom: 26px; left: 26px; width: min(360px, calc(100vw - 40px)); padding: 24px; background: #0d151ef2; border: 1px solid #3cb4ff45; border-radius: 16px; backdrop-filter: blur(18px); box-shadow: 0 20px 80px #0007; animation: benchmarkEnter .7s var(--ease) both; }
+.benchmark-teaser { position: fixed; z-index: 65; bottom: 26px; left: 26px; width: min(360px, calc(100vw - 40px)); padding: 24px; background: #111317f5; border: 1px solid #ffffff24; border-radius: 10px; backdrop-filter: blur(18px); box-shadow: 0 20px 80px #0007; animation: benchmarkEnter .7s var(--ease) both; }
 .benchmark-teaser[hidden] { display: none; }
 .benchmark-teaser .eyebrow { font-size: 10px; margin-bottom: 13px; }
 .benchmark-teaser h2 { font-size: 26px; }
@@ -130,4 +124,4 @@
 @media (max-width: 1050px) { .nav-inner { gap: 20px; } .nav-links { gap: 18px; } .benchmark-result-layout { grid-template-columns: 260px minmax(0, 1fr); } .benchmark-leader { padding: 24px; } .benchmark-table-panel { padding: 24px; } }
 @media (max-width: 800px) { .benchmark-intro { grid-template-columns: 1fr; } .benchmark-art { min-height: 320px; } .bench-grid { max-width: 420px; } .benchmark-abstract { grid-template-columns: 1fr; gap: 20px; } .benchmark-result-layout { grid-template-columns: 1fr; } .benchmark-leader { border-right: 0; border-bottom: 1px solid var(--line); } .leader-mark { float: right; } .leader-mark img { margin: 4px 0; } .leader-score { font-size: 58px; } .benchmark-leader hr, .benchmark-leader .leader-note, .benchmark-leader .leader-note + p { display: none; } .map-layout { grid-template-columns: 1fr; gap: 20px; } .benchmark-section-head { align-items: start; flex-direction: column; gap: 20px; } .benchmark-method { grid-template-columns: 1fr 1fr; } .benchmark-cta { align-items: start; flex-direction: column; } }
 @media (max-width: 560px) { .nav-inner { gap: 12px; } .nav-cta > .btn-primary { display: none; } .nav-cta { margin-left: auto; } .nav-toggle { margin-left: 0; flex-shrink: 0; } .brand { font-size: 16px; gap: 8px; } .brand img { width: 24px; } .benchmark-trigger { min-height: 38px; padding: 0 12px; font-size: 12px; } .benchmark-heading { align-items: start; gap: 16px; flex-direction: column; } .benchmark-hero { padding-top: 116px; } .benchmark-intro h1 { font-size: 48px; } .benchmark-model-strip { justify-content: start; gap: 22px; } .benchmark-model-strip > .mono { flex-basis: 100%; } .benchmark-model-strip > span { font-size: 12px; } .benchmark-table-panel { padding: 18px; } .model-cell { gap: 8px; } .model-cell strong { font-size: 12px; } .model-cell small { font-size: 10px; } .model-cell img { width: 20px; height: 20px; } .score-cell { min-width: 80px; } .score-cell strong { font-size: 15px; } .trial-count { font-size: 10px; } .benchmark-table td { padding: 20px 4px; } .benchmark-table th { font-size: 9px; padding-inline: 4px; } .map-frame { padding: 16px; } .map-frame-head { font-size: 8px; } .map-legend { font-size: 9px; } .map-legend i { width: 45px; } .capability-cells { gap: 4px; } .capability-cells button { font-size: 9px; } .benchmark-method { grid-template-columns: 1fr; gap: 28px; } .benchmark-method h3 { margin-top: 15px; } .benchmark-dialog-inner { padding: 34px 24px; } .benchmark-dialog .eyebrow { margin-top: 15px; font-size: 10px; } .benchmark-teaser { bottom: 18px; left: 18px; width: min(340px, calc(100vw - 36px)); } .benchmark-footer { gap: 18px; } }
-@media (prefers-reduced-motion: reduce) { .benchmark-trigger::after, .benchmark-dialog[open], .benchmark-dialog[open] .dialog-bars i, .benchmark-teaser { animation: none; } .capability-cells button { transition: none; } }
+@media (prefers-reduced-motion: reduce) { .benchmark-dialog[open], .benchmark-teaser { animation: none; } .capability-cells button { transition: none; } }

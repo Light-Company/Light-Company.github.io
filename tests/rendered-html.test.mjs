@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { access, readFile } from "node:fs/promises";
+import { access, readFile, readdir } from "node:fs/promises";
 import test from "node:test";
 
 const mainUrl = new URL("../site/main.html", import.meta.url);
@@ -229,18 +229,23 @@ test("publishes the Prism playlist gallery grid", async () => {
 });
 
 test("keeps every referenced production asset in the published bundle", async () => {
+  const exportRoot = new URL("../.pages-dist/", import.meta.url);
+  const pages = (await readdir(exportRoot, { recursive: true })).filter((file) => file.endsWith(".html"));
+  assert.ok(pages.length >= 10, "Check the current rendered public routes");
+  const galleryScript = await readFile(galleryScriptUrl, "utf8");
   const sources = await Promise.all([
-    readFile(mainUrl, "utf8"),
-    readFile(roboticsUrl, "utf8"),
-    readFile(galleryScriptUrl, "utf8"),
+    ...pages.map((file) => readFile(new URL(file, exportRoot), "utf8")),
     readFile(manifestUrl, "utf8"),
   ]);
   const paths = new Set(
-    sources.join("\n").match(/\/(?:site\/assets|media)\/[A-Za-z0-9_./-]+/g) || [],
+    sources.join("\n").match(/\/(?:site|media)\/[A-Za-z0-9_./-]+/g) || [],
   );
-
+  for (const [, slug] of galleryScript.matchAll(/slug: "([a-z0-9-]+)"/g)) {
+    paths.add(`/media/prism/${slug}.gif`);
+  }
   for (const path of paths) {
-    await access(new URL(`../public${path.split("?")[0]}`, import.meta.url));
+    await access(new URL(`../public${path}`, import.meta.url));
+    await access(new URL(`../dist/client${path}`, import.meta.url));
   }
 });
 
