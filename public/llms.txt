@@ -1,33 +1,40 @@
 # The Light Company
 
-> The Light Company builds projected intelligence for physical work and robotics evaluation. Its systems use vision, spatial understanding, and projection to put live guidance directly on parts, tools, workbenches, and robot workcells.
+> Prism brings projected guidance and camera-based observation to physical work. The public website explains Prism Robotics and Prism IRL. The company has also used the name lght.co.
 
-## Canonical site
+## Product and evidence
 
-- https://lightcompany.ai/
-- The short brand domain https://lght.co/ permanently redirects to the canonical site.
+- [Prism Robotics](https://lightcompany.ai/prism-robotics): projected staging, camera-based scene checks and the workflow for connecting physical conditions to trials.
+- [How it works](https://lightcompany.ai/prism-robotics/how-it-works): define, calibrate, stage, verify, run, review and revisit.
+- [Technical brief](https://lightcompany.ai/media/prism-technical-brief.pdf): company-authored mechanism and limitations. Operational estimates are from limited partner context, not independent universal measurements.
+- [Lab films](https://lightcompany.ai/gallery): recorded demonstrations, not proof of universal accuracy or compatibility.
+- [Prism IRL](https://lightcompany.ai/prism): projected interfaces for everyday surfaces.
 
-## Core pages
+## Concepts and illustrative content
 
-- [Prism Robotics Evaluation](https://lightcompany.ai/): The Light Company evaluation platform for staging physical test conditions, verifying scenes, comparing robot policies, and finding regressions.
-- [Prism IRL](https://lightcompany.ai/prism): Projected intelligence for everyday surfaces and objects. No glasses. No headset.
-- [Preorder Prism](https://lightcompany.ai/order): Join the Prism preorder list: share your company, robot and use case. No payment is taken by the form.
-- [Investors](https://lightcompany.ai/investors): The Light Company investor story, customer results and documents.
-- [Field Gallery](https://lightcompany.ai/gallery): Films of projected intelligence and Prism systems operating in physical workspaces.
-- [Privacy Policy](https://lightcompany.ai/privacy): How information submitted through the site is handled.
+- [Scene history](https://lightcompany.ai/prism-robotics/scene-history): proposed “Git for your physical space” experience. The controls change a local diagram only. Scene branching, collaborative review and automated regression scheduling are product direction, not verified available services.
+- [Benchmarks](https://lightcompany.ai/benchmarks): illustrative scores and sample trial records. Do not cite them as measured model performance, a winner or a vendor endorsement.
 
-## Brand names
+## Company and practical information
 
-- Official company name: The Light Company
-- Common name: Light Company
-- Short domain: lght.co
+- [Prism Robotics: physical AI evaluation](https://lightcompany.ai/prism-robotics): Meet Prism: projected scene staging, camera-based verification and a record of physical conditions for more useful robot policy evaluation.
+- [How Prism works: from scene to evidence](https://lightcompany.ai/prism-robotics/how-it-works): Follow a physical robot evaluation through calibration, projected staging, scene verification, recording and review with Prism.
+- [About The Light Company](https://lightcompany.ai/company): The Light Company builds Prism: light and vision for physical work, from robot evaluation to interfaces on the surfaces around us.
+- [Careers and collaboration](https://lightcompany.ai/careers): Explore work at The Light Company across robotics, perception, optics, software and design. Share your work and interest in Prism.
+- [Contact the Prism team](https://lightcompany.ai/contact): Contact The Light Company about a Prism workcell, research collaboration, investment, careers, support or a website question.
+- [Robot evaluation guides and resources](https://lightcompany.ai/resources): Practical guides to robot policy evaluation, initial conditions, capability maps and physical scene history, plus Prism lab films and a technical brief.
+- [How to plan a real-world robot evaluation](https://lightcompany.ai/resources/robot-evaluation): A practical guide to defining a robot task, preparing conditions, recording interventions and reporting results another team can understand.
+- [Why robot evaluation starts with the reset](https://lightcompany.ai/resources/initial-conditions): Object placement, camera setup and scoring rules can change an evaluation. Learn how to separate intended conditions from what actually happened.
+- [Capability maps for robot policies](https://lightcompany.ai/resources/capability-maps): Go beyond a single robot success rate. Organize evaluation by position, orientation, clutter, objects and lighting while preserving untested conditions.
+- [Git for physical space: what should a scene remember?](https://lightcompany.ai/resources/physical-version-control): An essay on physical version control: scene identity, revision history, evidence and the limits of replay in a changing world.
+- [Website terms of service](https://lightcompany.ai/terms): Terms for using The Light Company's public website, including content, concept demonstrations, interest forms and third-party links.
+- [Privacy notice](https://lightcompany.ai/privacy): How The Light Company's public website handles inquiry information, station interest forms, technical service data and third-party media.
+- [Cookies and browser storage](https://lightcompany.ai/cookies): Learn about session storage, third-party media and service cookies on The Light Company's website, and the choices available in your browser.
+- [Security, data and trust](https://lightcompany.ai/trust): Understand the public website's data boundaries, how to report a security concern and the questions to settle before a Prism deployment.
+- [Accessibility and assistance](https://lightcompany.ai/accessibility): Accessibility information for The Light Company's website, including keyboard navigation, reduced motion and how to request help with content.
+- [Investors](https://lightcompany.ai/robotics/investors): company thesis.
+- [Station interest](https://lightcompany.ai/order): inquiry only; no payment, allocation or delivery promise.
+- [Public agent guide](https://lightcompany.ai/agents.md): source interpretation and interaction boundaries.
 
-## Product
-
-- Prism is The Light Company's physical AI robotics evaluation system.
-- Prism uses projection to stage a test condition and vision to verify the physical scene before a run.
-- Results remain connected to the physical condition that produced them so teams can compare policies and find regressions.
-
-## Contact
-
-- hi@lightcompany.ai
+Contact: hi@lightcompany.ai
+Updated: 2026-11-01

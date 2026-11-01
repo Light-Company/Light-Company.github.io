@@ -11,6 +11,7 @@
     <link rel="preload" href="/site/assets/fonts/Satoshi-700.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/site/assets/fonts/inter-variable.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="stylesheet" href="/site/lc/lc.css" />
+    <link rel="stylesheet" href="/site/company/company.css" />
     <script src="/site/lc/lc.js" defer></script>
     <link rel="stylesheet" href="/site/benchmarks/benchmarks.css?v=20261101b" />
     <script src="/site/benchmarks/benchmarks.js?v=20261101b" type="module"></script>
@@ -21,15 +22,7 @@
     <header class="nav">
       <div class="wrap nav-inner">
         <a class="brand" href="/robotics-vision" aria-label="The Light Company home"><img class="no-invert" src="/site/assets/brand/light-company-mark-inverse.svg" alt="" width="30" height="24" />The Light Company</a>
-        <nav class="nav-links" aria-label="Primary">
-          <a href="#loop">How it works</a>
-          <a href="#deeper">Platform</a>
-          <a href="#outcomes">Results</a>
-          <a href="#pilot">Pilot</a>
-          <a href="/prism-vision">Prism IRL</a>
-          <a href="/robotics/investors">Investors</a>
-          <a href="/order">Preorder</a>
-        </nav>
+        <nav class="nav-links" aria-label="Primary"><a href="/prism-robotics">Prism Robotics</a><a href="/resources">Resources</a><a href="/company">Company</a><a href="/robotics/investors">Investors</a><a href="/prism-vision">Prism IRL</a></nav>
         <div class="nav-cta">
           <button class="benchmark-trigger" type="button" data-benchmark-open aria-haspopup="dialog" aria-expanded="false">Benchmarks</button>
           <a class="btn btn-ghost btn-sm" href="https://prism.lightcompany.ai">Sign in</a>
@@ -43,8 +36,8 @@
       <!-- hero: the full lab film -->
       <section class="hero" id="top" aria-labelledby="hero-title">
         <div class="hero-media">
-          <video data-auto autoplay muted loop playsinline preload="auto" poster="/site/robotics-vision/robotics-hero-lab.jpg" aria-label="Prism projects test conditions into a robotic workcell">
-            <source src="/site/robotics-vision/robotics-hero-lab.mp4" type="video/mp4" />
+          <video data-auto autoplay muted loop playsinline preload="auto" poster="/site/robotics-vision/test-condition-full.jpg" aria-label="Projected coordinates and object labels around cups on a robot workbench">
+            <source src="/site/robotics-vision/test-condition-full.mp4" type="video/mp4" />
           </video>
         </div>
         <div class="wrap hero-body">
@@ -58,12 +51,14 @@
             </div>
           </div>
           <div class="hero-foot mono">
-            <span><i class="live-dot" aria-hidden="true"></i>20 stations running in labs today</span>
+            <span><i class="live-dot" aria-hidden="true"></i>Projected guidance in real workcells</span>
             <span>Prism Robotics · The evaluation platform for physical AI</span>
             <span>Works with the robots you already have</span>
           </div>
         </div>
       </section>
+
+      <section class="home-prism-story" aria-labelledby="prism-story-title"><div class="wrap"><h2 id="prism-story-title">Give the physical world<br />a memory.</h2><div><p>Prism brings projected guidance and camera-based checks to the workcell. Light shows the intended scene. Vision helps verify the setup. A record keeps the condition connected to the trial.</p><p>Our direction is simple: Git for your physical space. A way to understand what changed, revisit the scene that mattered, and carry the experiment forward.</p><div class="story-links"><a class="link" href="/prism-robotics">What is Prism?</a><a class="link" href="/prism-robotics/scene-history">Explore the scene-history concept</a></div></div></div></section>
 
       <!-- every lab, full screen -->
       <section class="reel" aria-label="Prism running across the lab">
@@ -82,7 +77,7 @@
             <div class="rv rv-d2"><b>1 in 5</b><p>Episodes thrown out because the scene was set up wrong.</p></div>
             <div class="rv rv-d3"><b>10×</b><p>More trials needed to see a real policy change through the noise.</p></div>
           </div>
-          <p class="mono dim figures-note rv">Figures from published robot-eval research, summarized in our <a class="link" href="/media/prism-technical-brief.pdf">technical brief <span aria-hidden="true">↗</span></a></p>
+          <p class="mono dim figures-note rv">Research context and limited partner estimates, discussed with limitations in our <a class="link" href="/media/prism-technical-brief.pdf">technical brief <span aria-hidden="true">↗</span></a></p>
         </div>
       </section>
 
@@ -101,9 +96,9 @@
       </section>
 
       <!-- stage, full screen -->
-      <section class="reel" aria-label="Staging a test condition">
-        <video data-auto muted loop playsinline preload="none" poster="/site/robotics-vision/test-condition-full.jpg" aria-label="Projected coordinates and object labels around cups on a robot workbench"><source src="/site/robotics-vision/test-condition-full.mp4" type="video/mp4" /></video>
-        <div class="wrap reel-cap mono"><span>01 · Stage</span><span>Every object, placed to the millimeter</span></div>
+      <section class="reel" aria-label="Prism in the lab">
+        <video data-auto muted loop playsinline preload="none" poster="/site/robotics-vision/robotics-hero-lab.jpg" aria-label="Prism evaluation workcells and operators in the lab"><source src="/site/robotics-vision/robotics-hero-lab.mp4" type="video/mp4" /></video>
+        <div class="wrap reel-cap mono"><span>Prism in the lab</span><span>People, robots and the work between them</span></div>
       </section>
 
       <!-- the loop -->
@@ -124,7 +119,7 @@
               <div class="frame"><video data-auto muted loop playsinline preload="none" poster="/media/robotics/arm-stage.jpg" aria-label="A robot arm over a projected test grid"><source src="/media/robotics/arm-stage.mp4" type="video/mp4" /></video><span class="shade"></span><span class="tag">Verify</span></div>
               <span class="num">02 · Verify</span>
               <h3>Vision checks the scene.</h3>
-              <p>Identity, pose, occlusion and tolerance are confirmed before the robot moves. Bad setups never become bad data.</p>
+              <p>Identity, pose, occlusion and tolerance are confirmed before the robot moves. Mismatches can be reviewed before a trial is accepted.</p>
             </article>
             <article class="rv rv-d2">
               <div class="frame"><video data-auto muted loop playsinline preload="none" poster="/media/robotics/live-scene-tracking.jpg" aria-label="Projection stays locked to moving objects"><source src="/media/robotics/live-scene-tracking.mp4" type="video/mp4" /></video><span class="shade"></span><span class="tag">Run</span></div>
@@ -384,20 +379,16 @@
       <a class="corner-peel-link" href="/prism-vision" aria-label="Check out IRL"><img src="/media/brand-film/hero-loop.jpg" alt="" /><span>Check out <strong>IRL</strong> <span aria-hidden="true">↗</span></span></a>
     </div>
 
-    <footer class="footer">
-      <div class="wrap">
-        <div class="footer-grid">
-          <div>
-            <a class="brand" href="/robotics-vision"><img class="no-invert" src="/site/assets/brand/light-company-mark-inverse.svg" alt="" width="30" height="24" />The Light Company</a>
-            <p class="footer-tag">The evaluation platform for physical AI.</p>
-          </div>
-          <div><h4>Platform</h4><ul><li><a href="#loop">How it works</a></li><li><a href="#deeper">Platform</a></li><li><a href="#console">Light Console</a></li><li><a href="#outcomes">Results</a></li><li><a href="#pilot">Pilot</a></li><li><a href="https://prism.lightcompany.ai">Sign in</a></li></ul></div>
-          <div><h4>Products</h4><ul><li><a href="/robotics-vision">Prism Robotics</a></li><li><a href="/prism-vision">Prism IRL</a></li><li><a href="/benchmarks">Benchmarks</a></li><li><a href="/gallery">Gallery</a></li><li><a href="/order">Preorder</a></li></ul></div>
-          <div><h4>Company</h4><ul><li><a href="#company">Company</a></li><li><a href="/robotics/investors">Investors</a></li><li><a href="mailto:hi@lightcompany.ai">hi@lightcompany.ai</a></li><li><a href="/privacy">Privacy</a></li></ul></div>
-        </div>
-        <div class="footer-logo" aria-hidden="true"><canvas class="footer-ascii" data-logo="/site/assets/brand/light-company-logo-full.svg"></canvas></div>
-        <div class="footer-legal mono"><span>© 2026 The Light Company · San Francisco, CA</span><a href="#top">Back to top ↑</a></div>
-      </div>
-    </footer>
+    <footer class="footer company-footer"><div class="wrap">
+  <div class="footer-grid">
+    <div><a class="brand" href="/"><img class="no-invert" src="/site/assets/brand/light-company-mark-inverse.svg" alt="" width="30" height="24" />The Light Company</a><p class="footer-tag">Give the physical world<br />a memory.</p><a class="link" href="mailto:hi@lightcompany.ai">hi@lightcompany.ai</a></div>
+    <div><h4>Prism</h4><ul><li><a href="/prism-robotics">Prism Robotics</a></li><li><a href="/prism-robotics/how-it-works">How it works</a></li><li><a href="/prism-robotics/scene-history">Scene history · concept</a></li><li><a href="/benchmarks">Benchmarks</a></li><li><a href="/prism">Prism IRL</a></li><li><a href="/order">Get a station</a></li></ul></div>
+    <div><h4>Explore</h4><ul><li><a href="/resources">Evaluation guides</a></li><li><a href="/gallery">Lab films</a></li><li><a href="/media/prism-technical-brief.pdf">Technical brief</a></li><li><a href="/llms.txt">AI-readable overview</a></li><li><a href="https://prism.lightcompany.ai">Sign in</a></li></ul></div>
+    <div><h4>Company</h4><ul><li><a href="/company">Our purpose</a></li><li><a href="/robotics/investors">Investors</a></li><li><a href="/careers">Careers</a></li><li><a href="/contact">Contact</a></li><li><a href="/trust">Security & trust</a></li></ul></div>
+    <div><h4>Information</h4><ul><li><a href="/terms">Terms of service</a></li><li><a href="/privacy">Privacy</a></li><li><a href="/cookies">Cookies & storage</a></li><li><a href="/accessibility">Accessibility</a></li></ul></div>
+  </div>
+  <div class="footer-logo" aria-hidden="true"><canvas class="footer-ascii" data-logo="/site/assets/brand/light-company-logo-full.svg"></canvas></div>
+  <div class="footer-legal"><span>© 2026 The Light Company</span><span>Light. Space. Understanding.</span><a href="#top">Back to top ↑</a></div>
+</div></footer>
   </body>
 </html>

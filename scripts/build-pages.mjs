@@ -2,6 +2,7 @@ import { cp, mkdir, readFile, rm, writeFile } from "node:fs/promises";
 import { publishedVisionHtml } from "../lib/published-vision.mjs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
+import { companyPages } from "../lib/company-content.mjs";
 
 const projectRoot = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const outputRoot = join(projectRoot, ".pages-dist");
@@ -18,6 +19,7 @@ const pages = [
   ["site/robotics-investors.html", "robotics/investors/index.html"],
   ["site/demo.html", "demo/index.html"],
   ["site/privacy.html", "privacy/index.html"],
+  ...companyPages.filter(page => page.path !== "/privacy").map(page => [`site/company${page.path}.html`, `${page.path.slice(1)}/index.html`]),
 ];
 
 await rm(outputRoot, { recursive: true, force: true });

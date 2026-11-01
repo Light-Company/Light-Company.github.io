@@ -1,0 +1,50 @@
+THE LIGHT COMPANY — PHYSICAL ROBOT EVALUATION PLANNING SHEET
+Version: 2026-11-01
+Source: https://lightcompany.ai/resources/robot-evaluation
+Planning aid. Not a Prism API contract or a claim of sufficient statistical power.
+
+DECISION
+What decision should this evaluation support?
+What evidence would change that decision?
+
+TASK AND RULES
+Task name and version:
+Observable success criteria:
+Timeout and termination conditions:
+Allowed assistance and contact:
+Invalid-episode rules:
+Review process for uncertain outcomes:
+
+SYSTEM
+Robot / controller / gripper:
+Policy / checkpoint / configuration:
+Camera arrangement and relevant settings:
+Calibration reference and date checked:
+Guidance visible during policy recording? When does it switch off?
+
+SCENE
+Condition identifier and revision:
+Object identities and material changes:
+Target position and orientation:
+Clutter / lighting / surface / robot start state:
+What stays fixed? What changes deliberately?
+Observed setup and evidence:
+Acceptance criteria and unresolved uncertainty:
+
+TRIAL
+Episode identifier:
+Start / end time:
+Policy and scene reference:
+Outcome: success / failure / invalid / unresolved
+Evidence or recording reference:
+Interventions and reasons:
+Reviewer and rubric version:
+Score changes and reasons:
+
+REPORT
+Trials and successes per condition:
+Invalid or excluded episodes and reasons:
+Uncertainty appropriate to the experiment:
+Failure modes worth investigating:
+Untested conditions and scope limits:
+Next experiment and scenes to revisit:

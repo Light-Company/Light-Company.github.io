@@ -76,7 +76,8 @@ test('static export contains the investor story, valid local assets, and entry l
   assert.match(html, /Illustrative workflow/);
   assert.match(html, /Targets · not current traction/);
   assert.doesNotMatch(html, /STORY_CONTINUES|not independently verified|localhost/);
-  for (const file of ['investors/index.html', 'sitemap.xml']) {
-    assert.match(await readFile(new URL(file, root), 'utf8'), /\/robotics\/investors/);
-  }
+  assert.match(await readFile(new URL('investors/index.html', root), 'utf8'), /\/robotics\/investors/);
+  // Investor material remains reachable, but its noindex directive excludes it from the sitemap.
+  assert.match(html, /name="robots" content="noindex, nofollow"/);
+  assert.doesNotMatch(await readFile(new URL('sitemap.xml', root), 'utf8'), /<loc>[^<]*\/robotics\/investors/);
 });

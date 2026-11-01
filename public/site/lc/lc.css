@@ -89,15 +89,17 @@ h3, .h3 { font-size: clamp(18px, 1.3vw, 20px); line-height: 1.1; letter-spacing:
 .brand img { width: 30px; height: auto; filter: invert(1); }
 .brand img.no-invert { filter: none; }
 .nav-links { display: flex; gap: 30px; margin-right: auto; }
-.nav-links a { font-size: 14.5px; color: var(--mute); transition: color 0.25s; }
+.nav-links a { font-size: 14.5px; color: var(--mute); transition: color 0.25s; white-space: nowrap; }
 .nav-links a:hover, .nav-links a[aria-current="page"] { color: var(--text); }
 .nav-cta { display: flex; gap: 10px; align-items: center; }
 .nav-toggle { display: none; width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--line-2); place-items: center; }
 .nav-toggle span, .nav-toggle span::before { display: block; width: 16px; height: 1.5px; background: var(--text); position: relative; transition: transform 0.3s; }
 .nav-toggle span::before { content: ""; position: absolute; top: 5px; }
-@media (max-width: 900px) {
+@media (max-width: 1180px) {
   .nav-links, .nav-cta .btn-ghost { display: none; }
   .nav-toggle { display: grid; margin-left: auto; }
+  .nav-inner { gap: 18px; }
+  .nav .brand { flex-shrink: 0; }
   .nav-cta { margin-left: 0; }
   .nav.is-open { background: rgba(5, 6, 8, 0.96); backdrop-filter: blur(20px); }
   .nav.is-open .nav-links { display: flex; flex-direction: column; gap: 0; position: absolute; top: 72px; left: 0; right: 0; padding: 12px var(--gut) 28px; background: rgba(5, 6, 8, 0.96); border-bottom: 1px solid var(--line); }
