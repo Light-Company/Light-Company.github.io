@@ -1,6 +1,7 @@
 import { benchmark, summarize, rankModels, wilsonInterval, exampleRecords } from './data.mjs';
 
 const $ = (id) => document.getElementById(id);
+const detailIcon = '<svg class="arena-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" > <path d="M7 7h10v10" /> <path d="M7 17 17 7" /> </svg>';
 const colors = ['#88c8f0', '#a09cdb', '#d5ad8e', '#8bbca4'];
 const tasks = benchmark.tasks.filter((t) => t.id !== 'all');
 const modelById = (id) => benchmark.models.find((m) => m.id === id);
@@ -11,6 +12,12 @@ const interval = (m, task = 'all') => {
   const ci = wilsonInterval(s.completed, s.trials);
   return ci ? ci.map((n) => n.toFixed(1)).join('–') : 'Not tested';
 };
+const phoneLayout = window.matchMedia('(max-width: 760px)');
+const contextPanel = document.querySelector('.arena-context');
+const adaptContext = () => { contextPanel.open = !phoneLayout.matches; };
+adaptContext();
+phoneLayout.addEventListener('change', adaptContext);
+
 const viewTitles = { leaderboard: 'Physical AI leaderboard', compare: 'Compare models', maps: 'Capability maps', trials: 'Trial records', method: 'Evaluation methodology' };
 function showView(view, updateUrl = true) {
   if (!viewTitles[view]) view = 'leaderboard';
@@ -21,10 +28,11 @@ function showView(view, updateUrl = true) {
     if (active) b.setAttribute('aria-current', 'page'); else b.removeAttribute('aria-current');
   });
   $('view-title').textContent = viewTitles[view];
-  $('view-breadcrumb').textContent = viewTitles[view].toUpperCase();
-  if (updateUrl) history.replaceState(null, '', '#' + view);
+  $('arena-view').value = view;
+  if (updateUrl) { history.replaceState(null, '', '#' + view); window.scrollTo({ top: 0, behavior: 'auto' }); }
 }
 document.querySelectorAll('[data-view]').forEach((b) => b.addEventListener('click', () => showView(b.dataset.view)));
+$('arena-view').addEventListener('change', (event) => showView(event.target.value));
 window.addEventListener('hashchange', () => showView(location.hash.slice(1), false));
 showView(location.hash.slice(1), false);
 
@@ -42,8 +50,9 @@ function renderLeaderboard() {
   const filtered = ranked.filter((m) => (m.name + ' ' + m.provider).toLowerCase().includes(search));
   if ($('arena-sort').value === 'name') filtered.sort((a, b) => a.name.localeCompare(b.name));
   if ($('arena-sort').value === 'trials') filtered.sort((a, b) => b.trials - a.trials);
-  $('arena-rows').innerHTML = filtered.map((m) => '<tr><td><span class="arena-rank ' + (modelRanks.get(m.id) === 1 ? 'is-first' : '') + '">' + modelRanks.get(m.id) + '</span></td><td><button class="arena-model-button" data-model="' + m.id + '">' + icon(m) + '<span><strong>' + m.name + '</strong><small>' + m.provider + ' · version pending</small></span></button></td><td><strong class="arena-score">' + percent(m.score) + '</strong><span class="arena-score-bar"><i style="width:' + (m.score ?? 0) + '%"></i></span></td><td class="arena-mono">' + interval(m, task) + '</td><td class="arena-mono">' + m.completed + ' / ' + m.trials + '</td>' + tasks.map((t) => '<td><span class="arena-task-cell">' + percent(summarize(m, t.id).score) + '</span></td>').join('') + '<td><button class="arena-detail" data-model="' + m.id + '" aria-label="View ' + m.name + ' details">↗</button></td></tr>').join('') || '<tr><td colspan="9" class="arena-empty">No models match that search. Try a model or provider name.</td></tr>';
+  $('arena-rows').innerHTML = filtered.map((m) => '<tr><td><span class="arena-rank ' + (modelRanks.get(m.id) === 1 ? 'is-first' : '') + '">' + modelRanks.get(m.id) + '</span></td><td><button class="arena-model-button" data-model="' + m.id + '">' + icon(m) + '<span><strong>' + m.name + '</strong><small>' + m.provider + ' · version pending</small></span></button></td><td><strong class="arena-score">' + percent(m.score) + '</strong><span class="arena-score-bar"><i style="width:' + (m.score ?? 0) + '%"></i></span></td><td class="arena-mono">' + interval(m, task) + '</td><td class="arena-mono">' + m.completed + ' / ' + m.trials + '</td>' + tasks.map((t) => '<td><span class="arena-task-cell">' + percent(summarize(m, t.id).score) + '</span></td>').join('') + '<td><button class="arena-detail" data-model="' + m.id + '" aria-label="View ' + m.name + ' details">' + detailIcon + '</button></td></tr>').join('') || '<tr><td colspan="9" class="arena-empty"><strong>No matching models</strong><p>Try a model or provider name, or clear your search to see the full lineup.</p><button class="arena-button" id="clear-model-search">Clear search</button></td></tr>';
   $('arena-count').textContent = filtered.length + ' of ' + benchmark.models.length + ' models · ' + benchmark.tasks.find((t) => t.id === task).name;
+  $('clear-model-search')?.addEventListener('click', () => { $('model-search').value = ''; renderLeaderboard(); $('model-search').focus(); });
   $('arena-rows').querySelectorAll('[data-model]').forEach((b) => b.addEventListener('click', () => openModel(b.dataset.model, b)));
 }
 $('model-search').addEventListener('input', renderLeaderboard);
@@ -96,16 +105,16 @@ function openModel(id, opener) {
   const m = modelById(id);
   const s = summarize(m);
   modelOpener = opener;
-  $('model-dialog-content').innerHTML = '<span class="preview-label">Illustrative model profile</span><div class="arena-model-heading">' + icon(m) + '<div><h2 id="model-dialog-title">' + m.name + '</h2><p>' + m.provider + ' · exact version pending</p></div></div><div class="arena-stats"><div><span>Completion</span><strong>' + percent(s.score) + '</strong></div><div><span>Completed</span><strong>' + s.completed + ' / ' + s.trials + '</strong></div><div><span>Failed</span><strong>' + (s.trials - s.completed) + '</strong></div></div><table class="arena-table"><thead><tr><th>Task</th><th>Completion</th><th>95% interval</th></tr></thead><tbody>' + tasks.map((t) => '<tr><td>' + t.name + '</td><td class="arena-mono">' + percent(summarize(m, t.id).score) + '</td><td class="arena-mono">' + interval(m, t.id) + '</td></tr>').join('') + '</tbody></table><p class="arena-model-evidence">Sample counts only. No checkpoint, runtime settings, accepted reset evidence, or rollout recordings have been supplied. This profile does not establish model performance.</p><button class="arena-button" id="inspect-model-trials">Explore example trial records →</button>';
-  $('inspect-model-trials').addEventListener('click', () => { modelDialog.close(); $('trial-model').value = m.id; $('trial-outcome').value = 'all'; page = 0; renderTrials(); showView('trials'); document.querySelector('.arena-nav[data-view="trials"]').focus(); });
+  $('model-dialog-content').innerHTML = '<span class="preview-label">Illustrative model profile</span><div class="arena-model-heading">' + icon(m) + '<div><h2 id="model-dialog-title">' + m.name + '</h2><p>' + m.provider + ' · exact version pending</p></div></div><div class="arena-stats"><div><span>Completion</span><strong>' + percent(s.score) + '</strong></div><div><span>Completed</span><strong>' + s.completed + ' / ' + s.trials + '</strong></div><div><span>Failed</span><strong>' + (s.trials - s.completed) + '</strong></div></div><table class="arena-table"><thead><tr><th>Task</th><th>Completion</th><th>95% interval</th></tr></thead><tbody>' + tasks.map((t) => '<tr><td>' + t.name + '</td><td class="arena-mono">' + percent(summarize(m, t.id).score) + '</td><td class="arena-mono">' + interval(m, t.id) + '</td></tr>').join('') + '</tbody></table><p class="arena-model-evidence">Sample counts only. No checkpoint, runtime settings, accepted reset evidence, or rollout recordings have been supplied. This profile does not establish model performance.</p><button class="arena-button" id="inspect-model-trials">Explore example trial records <svg class="arena-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></button>';
+  $('inspect-model-trials').addEventListener('click', () => { modelDialog.close(); $('trial-model').value = m.id; $('trial-outcome').value = 'all'; page = 0; renderTrials(); showView('trials'); $('view-title').focus(); });
   modelDialog.showModal();
 }
 modelDialog.querySelector('.arena-modal-close').addEventListener('click', () => modelDialog.close());
 modelDialog.addEventListener('close', () => { if (modelOpener?.isConnected && !modelOpener.closest('[hidden]')) modelOpener.focus({ preventScroll: true }); });
 modelDialog.addEventListener('click', (event) => { if (event.target === modelDialog) { const r = modelDialog.getBoundingClientRect(); if (event.clientX < r.left || event.clientX > r.right || event.clientY < r.top || event.clientY > r.bottom) modelDialog.close(); } });
-$('download-results').addEventListener('click', () => {
+document.querySelectorAll('[data-download-results]').forEach((button) => button.addEventListener('click', () => {
   const blob = new Blob([JSON.stringify({ ...benchmark, records: benchmark.models.flatMap(exampleRecords) }, null, 2)], { type: 'application/json' });
   const url = URL.createObjectURL(blob);
   const link = document.createElement('a'); link.href = url; link.download = 'prism-illustrative-benchmark.json'; link.click();
   window.setTimeout(() => URL.revokeObjectURL(url), 1000);
-});
+}));
