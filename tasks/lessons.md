@@ -14,3 +14,5 @@
 
 - A product preorder page should continue the existing site’s typography and navigation, keep lead capture prominent, and use the approved projection/workcell material. Do not expand it into a separate launch website when the desired conversion is name, email, company, and use case.
 - For a requested video swap, resolve both the named source section and the destination page from the conversation. The Stage / Set the test condition clip was requested for the order page; ambient homepage browser context did not make the homepage the edit target.
+
+- Before selecting the newest website, inspect both GitHub branches and the local `/Users/discoverycore/src/Light-Company.github.io` checkout. Its `rebrand/order-investors` branch contained the newer lab header, blue-beam mark, ASCII footer, and rebranded order/investor pages that were never pushed. Preserve that source when adding features.

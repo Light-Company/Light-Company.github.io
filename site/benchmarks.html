@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en" class="arena-document">
+<head>
+<meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Prism Benchmarks · Physical AI Leaderboard</title>
+<meta name="description" content="Compare models across controlled physical tasks. Explore completion rates, task breakdowns, uncertainty, and capability maps in the Prism benchmark workspace." />
+<meta name="robots" content="noindex, follow" /><link rel="canonical" href="https://lightcompany.ai/benchmarks" />
+<meta property="og:title" content="Prism Benchmarks · Physical AI Leaderboard" /><meta property="og:description" content="An interactive benchmark workspace. Current scores and records are illustrative sample data." />
+<link rel="icon" href="/site/assets/brand/light-company-mark.svg" type="image/svg+xml" />
+<link rel="stylesheet" href="/site/lc/lc.css" /><link rel="stylesheet" href="/site/benchmarks/benchmarks.css?v=20261101b" /><link rel="stylesheet" href="/site/benchmarks/arena.css?v=impeccable3" />
+<script type="module" src="/site/benchmarks/benchmarks.js?v=20261101b"></script><script type="module" src="/site/benchmarks/arena.js?v=impeccable3"></script>
+</head>
+<body class="arena-page benchmark-page">
+<a class="skip-link" href="#main">Skip to leaderboard</a>
+<header class="arena-topbar"><a class="arena-brand" href="/"><img src="/site/assets/brand/light-company-mark-inverse.svg" width="28" height="24" alt="" /><span class="arena-wordmark"><strong>Prism</strong><span>Benchmarks</span></span></a><div class="arena-top-actions"><span class="preview-label">Illustrative preview</span><a href="mailto:hi@lightcompany.ai?subject=Prism%20benchmark%20submission" class="arena-button">Submit a model <svg class="arena-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" > <path d="M7 7h10v10" /> <path d="M7 17 17 7" /> </svg></a></div></header>
+<div class="arena-shell">
+<aside class="arena-sidebar"><nav aria-label="Benchmark views"><button class="arena-nav active" data-view="leaderboard" aria-current="page"><span aria-hidden="true"><svg
+  class="lucide lucide-chart-no-axes-column-increasing"
+  xmlns="http://www.w3.org/2000/svg"
+  width="18"
+  height="18"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.5"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M5 21v-6" />
+  <path d="M12 21V9" />
+  <path d="M19 21V3" />
+</svg>
+</span>Leaderboard</button><button class="arena-nav" data-view="compare"><span aria-hidden="true"><svg
+  class="lucide lucide-columns-2"
+  xmlns="http://www.w3.org/2000/svg"
+  width="18"
+  height="18"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.5"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <rect width="18" height="18" x="3" y="3" rx="2" />
+  <path d="M12 3v18" />
+</svg>
+</span>Compare models</button><button class="arena-nav" data-view="maps"><span aria-hidden="true"><svg
+  class="lucide lucide-grid-3x3"
+  xmlns="http://www.w3.org/2000/svg"
+  width="18"
+  height="18"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.5"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <rect width="18" height="18" x="3" y="3" rx="2" />
+  <path d="M3 9h18" />
+  <path d="M3 15h18" />
+  <path d="M9 3v18" />
+  <path d="M15 3v18" />
+</svg>
+</span>Capability maps</button><button class="arena-nav" data-view="trials"><span aria-hidden="true"><svg
+  class="lucide lucide-list-checks"
+  xmlns="http://www.w3.org/2000/svg"
+  width="18"
+  height="18"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.5"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M13 5h8" />
+  <path d="M13 12h8" />
+  <path d="M13 19h8" />
+  <path d="m3 17 2 2 4-4" />
+  <path d="m3 7 2 2 4-4" />
+</svg>
+</span>Trial records</button><button class="arena-nav" data-view="method"><span aria-hidden="true"><svg
+  class="lucide lucide-book-open"
+  xmlns="http://www.w3.org/2000/svg"
+  width="18"
+  height="18"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.5"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M12 5v16" />
+  <path d="M20.001 19A2 2 0 0022 17V5a2 2 0 00-1.999-2L16 3.002A5 5 0 0012 5a5 5 0 00-4-2H4a2 2 0 00-2 2v12a2 2 0 001.999 2H8a5 5 0 014 2 5 5 0 014-2z" />
+</svg>
+</span>Methodology</button></nav><div class="arena-rail-bottom"><div class="arena-dataset-label"><i></i>Example dataset</div><p>Model versions and verified run evidence are pending.</p><button class="arena-text-button" id="download-results" data-download-results>Download sample data <svg class="arena-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" > <path d="M12 15V3" /> <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /> <path d="m7 10 5 5 5-5" /> </svg></button><a href="/" class="arena-back"><svg class="arena-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" > <path d="m12 19-7-7 7-7" /> <path d="M19 12H5" /> </svg>Back to Light Company</a></div></aside>
+<label class="arena-mobile-nav" for="arena-view">View<select id="arena-view" aria-label="Benchmark view"><option value="leaderboard">Leaderboard</option><option value="compare">Compare models</option><option value="maps">Capability maps</option><option value="trials">Trial records</option><option value="method">Methodology</option></select></label>
+<main id="main" class="arena-main">
+
+<div class="arena-intro"><div><h1 id="view-title" tabindex="-1">Physical AI leaderboard</h1><details class="arena-context" open><summary>About this benchmark</summary><p>In real-world robot evaluation, variance from scene setup often exceeds the difference between the policies being compared.</p><p>Prism controls and verifies the initial state of every rollout, so results reflect the policy, not the reset.</p></details></div><div class="arena-release"><span>Controlled physical tasks</span><span class="arena-release-state">Sample release · v0.1</span></div></div>
+<div class="arena-notice"><span class="arena-notice-dot" aria-hidden="true"></span><p><strong>Example data.</strong> Scores, ranks, intervals, trial records, and maps are illustrative, not measured results. Exact model versions and verified runs will replace this dataset.</p></div>
+<section class="arena-panel" data-panel="leaderboard" aria-label="Leaderboard">
+<div class="arena-stats arena-summary"><div><span>Models compared</span><strong>4</strong><small>Example lineup</small></div><div><span>Valid attempts</span><strong>240</strong><small>60 sample attempts / model</small></div><div><span>Task families</span><strong>3</strong><small>20 sample attempts / task</small></div><div><span>Controlled variables</span><strong>5</strong><small>One variable at a time</small></div></div>
+<div class="arena-card"><div class="arena-card-heading"><div><h2>Model rankings</h2><p>Ranked by completion across valid attempts</p></div><span class="arena-tag">Task completion · %</span></div><div class="arena-toolbar"><label class="arena-search"><svg class="arena-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" > <path d="m21 21-4.34-4.34" /> <circle cx="11" cy="11" r="8" /> </svg><input id="model-search" type="search" placeholder="Search models or providers" aria-label="Search models or providers" /></label><label class="arena-select-label">Task<select id="arena-task"><option value="all">All tasks</option><option value="placement">Pick &amp; place</option><option value="transfer">Transfer</option><option value="recovery">Recovery</option></select></label><label class="arena-select-label">Sort<select id="arena-sort"><option value="score">Completion ↓</option><option value="name">Model A–Z</option><option value="trials">Attempts ↓</option></select></label></div><p class="arena-scroll-hint">Scroll to see task results <svg class="arena-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></p><div class="arena-table-wrap arena-rankings-scroll" tabindex="0" role="region" aria-label="Model rankings table"><table class="arena-table"><caption class="sr-only">Illustrative model rankings; no real model performance is claimed</caption><thead><tr><th scope="col">Rank</th><th scope="col">Model / provider</th><th scope="col">Completion</th><th scope="col">95% interval <abbr title="Wilson interval calculated from sample counts; this is not evidence of measured model performance"><svg class="arena-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" > <circle cx="12" cy="12" r="10" /> <path d="M12 16v-4" /> <path d="M12 8h.01" /> </svg></abbr></th><th scope="col">Completed</th><th scope="col">Pick &amp; place</th><th scope="col">Transfer</th><th scope="col">Recovery</th><th scope="col"><span class="sr-only">Details</span></th></tr></thead><tbody id="arena-rows"></tbody></table></div><div class="arena-table-footer"><span id="arena-count" aria-live="polite">4 models</span><span>Ties share a rank · intervals reflect sample counts only</span></div></div>
+<div class="arena-below-grid"><div class="arena-card"><div class="arena-card-heading"><div><h2>Performance by task</h2><p>The same task mix for every model</p></div></div><div class="arena-task-chart" id="task-chart"></div></div><div class="arena-card arena-readout"><h2>A rank is the start<br />of the comparison.</h2><p>Compare task coverage, inspect uncertainty, then look at the conditions behind failures. A higher sample score alone does not establish a better policy.</p><button class="arena-button" data-view="compare">Compare two models <svg class="arena-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></button></div></div>
+</section>
+<section class="arena-panel" data-panel="compare" hidden aria-label="Model comparison"><div class="arena-card"><div class="arena-card-heading"><div><h2>Compare models</h2><p>One task distribution. Two policies. Every denominator visible.</p></div></div><div class="arena-compare-selectors"><label>Model A<select id="compare-a"></select></label><button class="arena-swap" id="swap-models" aria-label="Swap compared models"><svg class="arena-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" > <path d="M8 3 4 7l4 4" /> <path d="M4 7h16" /> <path d="m16 21 4-4-4-4" /> <path d="M20 17H4" /> </svg></button><label>Model B<select id="compare-b"></select></label></div><div id="comparison-content" aria-live="polite"></div></div><div class="arena-note-card"><h3>What would make this comparison conclusive?</h3><p>Exact model checkpoints, matched case IDs, accepted resets, repeat runs, a declared rubric, and reviewable recordings. None of those are established by this sample dataset.</p></div></section>
+<section class="arena-panel" data-panel="maps" hidden aria-label="Capability maps"><div class="arena-card"><div class="arena-card-heading"><div><h2>Capability map</h2><p>Position, orientation, clutter, objects, lighting. Change one variable at a time.</p></div><span class="arena-tag">Separate illustrative sweep</span></div><div class="arena-map-copy">You don’t get one success rate. You get a capability map: where your policy works and where it breaks across the conditions you tested.</div><div class="map-controls" role="group" aria-label="Variable to explore"><button aria-pressed="true" data-sweep="position">Position</button><button aria-pressed="false" data-sweep="orientation">Orientation</button><button aria-pressed="false" data-sweep="clutter">Clutter</button><button aria-pressed="false" data-sweep="objects">Objects</button><button aria-pressed="false" data-sweep="lighting">Lighting</button></div><div class="map-layout"><div class="map-frame"><div class="map-frame-head mono"><span id="map-title">Position sweep</span><span>Single example policy</span></div><div id="capability-cells" class="capability-cells" role="group" aria-label="Illustrative capability map"></div><div class="map-axis mono"><span id="map-y">Near to far reach</span><span id="map-x">Object position →</span></div><div class="map-legend"><span>Lower completion</span><i aria-hidden="true"></i><span>Higher completion</span><span class="not-tested">/ Not tested</span></div></div><aside class="map-explanation"><span class="mono">Hold everything else steady</span><h3 id="sweep-name">Position</h3><p id="sweep-description"></p><div class="cell-readout" aria-live="polite"><span class="mono">Selected condition</span><strong id="cell-name">A1</strong><p id="cell-score"></p></div><p class="map-note">12 sample attempts per tested cell. Untested cells remain empty. These sweeps are separate from the leaderboard and are not attributed to any listed model.</p></aside></div></div></section>
+<section class="arena-panel" data-panel="trials" hidden aria-label="Trial records"><div class="arena-card"><div class="arena-card-heading"><div><h2>Trial records</h2><p>Synthetic records generated from the sample completion counts</p></div><span class="arena-tag">No real recordings supplied</span></div><div class="arena-toolbar"><label class="arena-select-label">Model<select id="trial-model"></select></label><label class="arena-select-label">Outcome<select id="trial-outcome"><option value="all">All outcomes</option><option value="completed">Completed</option><option value="failed">Failed</option></select></label><span class="arena-toolbar-note">20 example records per task</span></div><div class="arena-table-wrap"><table class="arena-table"><thead><tr><th scope="col">Example ID</th><th scope="col">Task</th><th scope="col">Outcome</th><th scope="col">Setup verification</th><th scope="col">Recording</th></tr></thead><tbody id="trial-rows"></tbody></table></div><div class="arena-pagination"><span id="trial-count" aria-live="polite"></span><div><button id="trial-prev" class="arena-button"><svg class="arena-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" > <path d="m12 19-7-7 7-7" /> <path d="M19 12H5" /> </svg> Previous</button><button id="trial-next" class="arena-button">Next <svg class="arena-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" > <path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /> </svg></button></div></div></div></section>
+<section class="arena-panel" data-panel="method" hidden aria-label="Methodology"><div class="arena-card arena-protocol"><h2>Controlled physical evaluation</h2><h3>Abstract</h3><p>Physical robot tests can change before a policy takes its first action. Object pose, clutter, lighting, and reset quality all affect the task. An aggregate score can hide those differences. Prism pairs a defined test condition with projected setup guidance and a vision check, then compares policies across matched cases with completion criteria set in advance.</p><p>This workspace demonstrates the reporting format. It does not report a completed study. Provider names and marks identify an example lineup and do not imply participation or endorsement.</p><h3>Evaluation protocol</h3><ol class="arena-protocol-steps"><li><strong>Define the case</strong><span>Record the task, objects, poses, exact policy version, and completion rubric.</span></li><li><strong>Stage and verify</strong><span>Project placement guidance. Verify initial conditions against declared tolerances before accepting a rollout.</span></li><li><strong>Run a matched comparison</strong><span>Use the same cases and action budgets, resetting the scene between attempts.</span></li><li><strong>Score and retain evidence</strong><span>Keep setup rejection separate from task failure. Preserve video, outcome, and scoring rationale.</span></li><li><strong>Change one variable</strong><span>Sweep position, orientation, clutter, object identity, or lighting while holding the other conditions fixed.</span></li></ol><h3>Metrics and ranking</h3><dl class="arena-definitions"><div><dt>Completion</dt><dd>Completed trials divided by valid attempts. The aggregate sums counts, not rounded percentages.</dd></div><div><dt>Rank</dt><dd>Descending completion rate for the selected task. Equal rates share the same rank.</dd></div><div><dt>95% interval</dt><dd>Wilson binomial interval using the displayed sample counts. No claim of statistical superiority is made; repeated or correlated trials require further analysis.</dd></div><div><dt>Missing evidence</dt><dd>Missing model versions, setup records, and recordings remain marked as unavailable. They are never treated as verified.</dd></div></dl><h3>Reporting status</h3><div class="arena-protocol-status"><span>Exact model versions</span><strong>Pending</strong><span>Raw rollout evidence</span><strong>Pending</strong><span>Independent replication</span><strong>Pending</strong><span>Current data</span><strong>Illustrative sample</strong></div></div></section>
+<footer class="arena-footer"><button type="button" class="arena-button arena-mobile-download" data-download-results>Download sample data</button><span>Prism Benchmarks · The Light Company</span><a href="mailto:hi@lightcompany.ai?subject=Prism%20benchmark%20correction">Report a correction <svg class="arena-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" > <path d="M7 7h10v10" /> <path d="M7 17 17 7" /> </svg></a><a href="/privacy">Privacy</a></footer>
+</main></div>
+<dialog class="arena-model-dialog" id="model-dialog" aria-labelledby="model-dialog-title"><button class="arena-modal-close" aria-label="Close model details" autofocus><svg class="arena-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" > <path d="M18 6 6 18" /> <path d="m6 6 12 12" /> </svg></button><div id="model-dialog-content"></div></dialog>
+</body></html>

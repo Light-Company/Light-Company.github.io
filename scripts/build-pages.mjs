@@ -11,6 +11,7 @@ const pages = [
   ["site/robotics.html", "robotics/index.html", "https://lightcompany.ai/"],
   ["site/robotics.html", "Robotics/index.html", "https://lightcompany.ai/"],
   ["site/main.html", "prism/index.html", "https://lightcompany.ai/prism"],
+  ["site/benchmarks.html", "benchmarks/index.html"],
   ["site/gallery.html", "gallery/index.html"],
   ["site/order.html", "order/index.html"],
   ["site/investors.html", "investors/index.html"],

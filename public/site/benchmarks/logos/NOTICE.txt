@@ -1,0 +1,4 @@
+Model logo assets from Lobe Icons: https://github.com/lobehub/lobe-icons
+Copyright (c) 2023 LobeHub. Licensed under MIT.
+Original filenames: openai.svg, claude-color.svg, gemini-color.svg, nvidia-color.svg.
+Provider names and marks identify the illustrated models. Their use does not imply affiliation or endorsement.

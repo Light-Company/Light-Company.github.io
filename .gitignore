@@ -41,3 +41,8 @@ next-env.d.ts
 /.wrangler/
 /outputs/
 /work/
+
+# Downloaded Impeccable engine (launcher installs the platform-specific binary)
+/.agents/skills/impeccable/scripts/bin/
+
+/tsconfig.tsbuildinfo

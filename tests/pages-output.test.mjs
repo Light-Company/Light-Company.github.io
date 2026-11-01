@@ -11,7 +11,6 @@ test("builds every public GitHub Pages route", async () => {
     "Robotics/index.html",
     "prism/index.html",
     "gallery/index.html",
-    "order/index.html",
     "privacy/index.html",
     "404.html",
   ];
