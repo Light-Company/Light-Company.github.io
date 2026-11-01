@@ -1,0 +1,24 @@
+# Lead capture for lightcompany.ai. Every preorder / inquiry is stored in D1 first,
+# then emailed to Jon. Runs on Cloudflare in front of whatever hosts the static site.
+name = "lightcompany-inquiries"
+main = "src/index.mjs"
+compatibility_date = "2026-10-01"
+
+# lightcompany.ai is proxied by Cloudflare, so this route catches the form post
+# whether the pages are served by GitHub Pages or anywhere else.
+routes = [
+  { pattern = "lightcompany.ai/api/preorder*", zone_name = "lightcompany.ai" },
+  { pattern = "lightcompany.ai/api/inquiry*", zone_name = "lightcompany.ai" },
+]
+
+[[d1_databases]]
+binding = "DB"
+database_name = "lightcompany-inquiries"
+database_id = "REPLACE_WITH_ID_FROM_wrangler_d1_create"
+migrations_dir = "migrations"
+
+[vars]
+NOTIFY_TO = "jon@lightcompany.ai"
+NOTIFY_FROM = "Prism inquiries <inquiries@lightcompany.ai>"
+
+# Secret, set with: npx wrangler secret put RESEND_API_KEY

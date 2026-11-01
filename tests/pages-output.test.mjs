@@ -64,7 +64,7 @@ test("publishes the approved layouts at the canonical addresses with working cor
   assert.equal(home, robotics);
   assert.match(home, /The evaluation platform for physical AI/);
   assert.match(home, /class="corner-peel-link" href="\/prism"/);
-  assert.match(home, /robotics-hero-full.mp4/);
+  assert.match(home, /robotics-hero-lab.mp4/);
   assert.match(home, /<link rel="canonical" href="https:\/\/lightcompany.ai\/"/);
   assert.match(prism, /AI that helps IRL\./);
   assert.match(prism, /class="corner-peel-link" href="\/"/);

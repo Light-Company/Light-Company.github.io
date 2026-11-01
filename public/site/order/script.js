@@ -68,7 +68,7 @@ form?.addEventListener('submit', async event => {
     success.hidden = false;
     success.focus();
   } catch {
-    showError('We couldn’t confirm your details were saved. Please try again, or contact hi@lightcompany.ai.');
+    showError('We couldn’t confirm your details were saved. Please try again, or email jon@lightcompany.ai.');
   } finally {
     submitting = false;
     submit.disabled = false;

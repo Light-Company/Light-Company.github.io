@@ -11,6 +11,8 @@
 
 - [Prism Robotics Evaluation](https://lightcompany.ai/): The Light Company evaluation platform for staging physical test conditions, verifying scenes, comparing robot policies, and finding regressions.
 - [Prism IRL](https://lightcompany.ai/prism): Projected intelligence for everyday surfaces and objects. No glasses. No headset.
+- [Preorder Prism](https://lightcompany.ai/order): Join the Prism preorder list: share your company, robot and use case. No payment is taken by the form.
+- [Investors](https://lightcompany.ai/investors): The Light Company investor story, customer results and documents.
 - [Field Gallery](https://lightcompany.ai/gallery): Films of projected intelligence and Prism systems operating in physical workspaces.
 - [Privacy Policy](https://lightcompany.ai/privacy): How information submitted through the site is handled.
 

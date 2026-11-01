@@ -7,5 +7,60 @@
     "edit": "Full source duration retained; HLG tone-mapped to SDR. Original untouched.",
     "poster": "robotics-hero-full.jpg",
     "posterTimeSeconds": 62.5
+  },
+  "robotics-hero-lab.mp4": {
+    "sourceFile": [
+      "MVI_0099.MP4",
+      "MVI_0098.MP4",
+      "MVI_0097.MP4",
+      "MVI_0096.MP4"
+    ],
+    "durationSeconds": 43.6,
+    "encoding": "1920x1080 H.264, 23.976 fps, SDR, muted, fast-start, two-pass 3800 kbps / 5000 kbps maximum",
+    "edit": "Eight-shot lab cut: stage the scene on the projected grid, the arm clears cans into the bowl, a second run with cups, the finished table. 0.4 s dissolves, fade in and out, contrast and saturation lift. Originals untouched.",
+    "segments": [
+      [
+        "MVI_0099",
+        1.6,
+        4.4
+      ],
+      [
+        "MVI_0098",
+        3.2,
+        5.0
+      ],
+      [
+        "MVI_0097",
+        5.6,
+        4.5
+      ],
+      [
+        "MVI_0099",
+        8.6,
+        4.0
+      ],
+      [
+        "MVI_0099",
+        19.5,
+        7.0
+      ],
+      [
+        "MVI_0099",
+        33.5,
+        9.0
+      ],
+      [
+        "MVI_0096",
+        48.0,
+        7.0
+      ],
+      [
+        "MVI_0099",
+        44.5,
+        5.5
+      ]
+    ],
+    "poster": "robotics-hero-lab.jpg",
+    "posterTimeSeconds": 25.6
   }
 }

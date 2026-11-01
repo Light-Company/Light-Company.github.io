@@ -76,7 +76,7 @@ test('static export contains the investor story, valid local assets, and entry l
   assert.match(html, /Illustrative workflow/);
   assert.match(html, /Targets · not current traction/);
   assert.doesNotMatch(html, /STORY_CONTINUES|not independently verified|localhost/);
-  for (const file of ['robotics/index.html', 'investors/index.html', 'sitemap.xml']) {
+  for (const file of ['investors/index.html', 'sitemap.xml']) {
     assert.match(await readFile(new URL(file, root), 'utf8'), /\/robotics\/investors/);
   }
 });

@@ -319,3 +319,22 @@
 - [x] Verify responsive page, playing lab video and real persistence locally. Final build and all 49 tests pass; changed-file lint and diff checks pass. Independent review resolved.
 - [x] Verify production migration and a labeled synthetic submission in the live database. The browser showed success; readback confirmed all submitted fields and unchecked update consent.
 - [x] Push same branch, update PR, publish, show the live revision. Sites version 25 is live at https://lightcompany.ai/order.
+
+
+# Impeccable benchmark refinement
+
+- [x] Install Impeccable 4.8.0 for Codex and create `design/impeccable-benchmarks` from current main.
+- [x] Establish the incumbent design and confirm baseline: 51 tests pass.
+- [x] Improve leaderboard hierarchy, readable controls, consistent icons, and mobile navigation.
+- [x] Verify search recovery, navigation, model details, comparison, maps, keyboard focus, and responsive layouts.
+- [x] Run build/tests, lint, type-check and diff review; prepare the branch for review. Build and 51 tests pass; existing lint warnings and three Cloudflare type errors are documented in docs/impeccable-benchmarks.md.
+
+Scope: existing dark product workspace, existing brand, unchanged claims and illustrative data. Keep the complete Impeccable tooling in project context; omit the downloaded platform binary from Git. No production deployment in this review branch.
+
+
+# Recover the complete website and republish
+
+- [x] Locate the exact local branch: `rebrand/order-investors` at `3acee9d`, with clean working tree and no stash.
+- [x] Use that recovered version as the release base and merge all benchmark and Impeccable work.
+- [ ] Verify the alternate 44-second hero, blue-beam brand, ASCII footer, order/investor pages, and benchmark interactions.
+- [ ] Validate the combined release, push the corrected branch, and publish through the existing public Sites project.

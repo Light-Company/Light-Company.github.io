@@ -12,11 +12,12 @@ test('order page and its dependencies survive the static deployment build', asyn
     assert.match(html, new RegExp(`name="${name}"[^>]*required`));
   }
   assert.match(html, /No payment required to join/);
-  assert.match(html, /href="mailto:hi@lightcompany\.ai\?subject=Prism%20preorder"/);
+  assert.match(html, /href="mailto:jon@lightcompany\.ai\?subject=Prism%20preorder"/);
   assert.match(html, /rel="canonical" href="https:\/\/lightcompany\.ai\/order"/);
   assert.doesNotMatch(html, /noindex|localhost|127\.0\.0\.1/);
-  const home = await readFile(new URL('index.html', root), 'utf8');
-  assert.match(home, /href="\/order"/);
+  // the landing page is left exactly as approved; the order page is reached from the investor and Prism pages
+  const investors = await readFile(new URL('robotics/investors/index.html', root), 'utf8');
+  assert.match(investors, /href="\/order"/);
 });
 
 test('all order-page anchors and cross-page destinations exist', async () => {
