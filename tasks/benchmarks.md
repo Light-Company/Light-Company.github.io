@@ -20,3 +20,7 @@ Use a compact dismissible announcement, native dialog with Escape and focus rest
 ## Additional request
 
 Provide editable X post variations in the chat, as requested. Do not add a drafting tool to the website.
+
+## Arena revision
+
+The user clarified that the benchmark is the product. Replace the promotional page with a dense Arena-style workspace: 210px navigation, full comparison table, model details, comparison views, separate capability sweeps, synthetic trial ledger, and protocol. Preserve the October charcoal/blue palette, Satoshi headings, Inter controls, and Plex Mono data. The signature is the task-by-task comparison beside each aggregate score; remove the large marketing hero and leader card.

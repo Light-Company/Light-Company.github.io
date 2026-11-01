@@ -10,10 +10,10 @@ export const benchmark = {
     { id: "recovery", name: "Recovery" },
   ],
   models: [
-    { id: "gemini", name: "Gemini 4 Argon", provider: "Google DeepMind", logo: "gemini-color", results: { placement: [18, 20], transfer: [17, 20], recovery: [17, 20] } },
-    { id: "gpt", name: "GPT-6.1 Sol", provider: "OpenAI", logo: "openai", results: { placement: [18, 20], transfer: [16, 20], recovery: [15, 20] } },
-    { id: "claude", name: "Opus 5.5", provider: "Anthropic", logo: "claude-color", results: { placement: [16, 20], transfer: [15, 20], recovery: [14, 20] } },
-    { id: "groot", name: "GR00T N1.7", provider: "NVIDIA", logo: "nvidia-color", results: { placement: [14, 20], transfer: [12, 20], recovery: [11, 20] } },
+    { id: "gemini", name: "Gemini", provider: "Google DeepMind", logo: "gemini-color", results: { placement: [18, 20], transfer: [17, 20], recovery: [17, 20] } },
+    { id: "gpt", name: "GPT", provider: "OpenAI", logo: "openai", results: { placement: [18, 20], transfer: [16, 20], recovery: [15, 20] } },
+    { id: "claude", name: "Claude", provider: "Anthropic", logo: "claude-color", results: { placement: [16, 20], transfer: [15, 20], recovery: [14, 20] } },
+    { id: "groot", name: "GR00T", provider: "NVIDIA", logo: "nvidia-color", results: { placement: [14, 20], transfer: [12, 20], recovery: [11, 20] } },
   ],
 };
 
@@ -40,3 +40,27 @@ export const sweeps = {
   objects: { label: "Objects", x: "Object identity →", y: "Tested case", note: "Swap the target object. Keep the layout, light, and task instruction fixed.", values: [12,10,12,8,11,6,11,9,11,7,10,5,12,9,10,7,9,4,11,8,10,6,8,4,10,8,9,5,7,null] },
   lighting: { label: "Lighting", x: "Lighting condition →", y: "Tested case", note: "Change the light. Keep the object, starting pose, and surrounding scene fixed.", values: [6,9,12,12,10,7,5,8,11,12,10,7,5,8,12,11,9,6,4,7,10,11,8,5,3,6,9,10,7,null] },
 };
+
+
+export function wilsonInterval(completed, trials) {
+  summarize({ results: { count: [completed, trials] } });
+  if (!trials) return null;
+  const z = 1.959963984540054;
+  const p = completed / trials;
+  const denominator = 1 + z * z / trials;
+  const center = (p + z * z / (2 * trials)) / denominator;
+  const margin = z * Math.sqrt(p * (1 - p) / trials + z * z / (4 * trials * trials)) / denominator;
+  return [Math.max(0, center - margin) * 100, Math.min(1, center + margin) * 100];
+}
+
+// Synthetic records for exploring this interface; never label them observed rollouts.
+export function exampleRecords(model) {
+  summarize(model);
+  return Object.entries(model.results).flatMap(([task, [completed, trials]]) =>
+    Array.from({ length: trials }, (_, i) => ({
+      id: 'EX-' + model.id.toUpperCase() + '-' + task.slice(0, 3).toUpperCase() + '-' + String(i + 1).padStart(2, '0'),
+      model: model.id, task, status: 'illustrative',
+      outcome: Math.floor((i + 1) * completed / trials) > Math.floor(i * completed / trials) ? 'completed' : 'failed',
+      setupVerified: null, recording: null,
+    })));
+}

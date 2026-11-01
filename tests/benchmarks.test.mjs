@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { access, readFile } from "node:fs/promises";
 import test from "node:test";
-import { benchmark, rankModels, summarize, sweeps } from "../public/site/benchmarks/data.mjs";
+import { benchmark, rankModels, summarize, sweeps, wilsonInterval, exampleRecords } from "../public/site/benchmarks/data.mjs";
 
 test("benchmark completion is calculated from valid counts and preserves missing evidence", () => {
   assert.deepEqual(summarize(benchmark.models[0]), { completed: 52, trials: 60, score: 52 / 60 * 100 });
@@ -39,4 +39,25 @@ test("both publishing paths include the benchmark page, assets and honest previe
   const ids = [...html.matchAll(/\bid="([^"]+)"/g)].map((m) => m[1]);
   assert.equal(ids.length, new Set(ids).size);
   for (const [, id] of html.matchAll(/href="#([^"]+)"/g)) assert.ok(ids.includes(id), id);
+});
+
+
+test("Arena uncertainty and synthetic records preserve the displayed denominators", () => {
+  assert.equal(wilsonInterval(0, 0), null);
+  assert.throws(() => wilsonInterval(4, 3), RangeError);
+  assert.ok(wilsonInterval(0, 20)[1] > 0);
+  assert.ok(wilsonInterval(20, 20)[0] < 100);
+  const [low, high] = wilsonInterval(52, 60);
+  assert.ok(low > 75 && low < 76 && high > 93 && high < 94);
+  for (const model of benchmark.models) {
+    const records = exampleRecords(model);
+    assert.equal(records.length, summarize(model).trials);
+    assert.equal(new Set(records.map(r => r.id)).size, records.length);
+    for (const task of benchmark.tasks.filter(t => t.id !== "all")) {
+      const selected = records.filter(r => r.task === task.id);
+      assert.equal(selected.filter(r => r.outcome === "completed").length, model.results[task.id][0]);
+      assert.equal(selected.length, model.results[task.id][1]);
+    }
+    assert.ok(records.every(r => r.status === "illustrative" && r.setupVerified === null && r.recording === null));
+  }
 });
