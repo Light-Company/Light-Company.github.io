@@ -1,30 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
-  <url>
-    <loc>https://lightcompany.ai/</loc>
-    <lastmod>2026-10-29</lastmod>
-    <image:image>
-      <image:loc>https://lightcompany.ai/media/robot-eval-staging.jpg</image:loc>
-      <image:title>Prism Robotics, the evaluation platform for physical AI</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://lightcompany.ai/prism</loc>
-    <lastmod>2026-10-29</lastmod>
-    <image:image>
-      <image:loc>https://lightcompany.ai/site/assets/media/hero-projection.jpg</image:loc>
-      <image:title>Prism IRL by The Light Company</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://lightcompany.ai/gallery</loc>
-    <lastmod>2026-08-24</lastmod>
-  </url>
-  <url>
-    <loc>https://lightcompany.ai/privacy</loc>
-    <lastmod>2026-08-24</lastmod>
-  </url>
-  <url><loc>https://lightcompany.ai/robotics/investors</loc></url>
-  <url><loc>https://lightcompany.ai/prism-vision</loc></url>
-  <url><loc>https://lightcompany.ai/order</loc><lastmod>2026-10-09</lastmod></url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://lightcompany.ai/</loc><lastmod>2026-11-01</lastmod></url>
+  <url><loc>https://lightcompany.ai/prism</loc><lastmod>2026-11-01</lastmod></url>
+  <url><loc>https://lightcompany.ai/gallery</loc><lastmod>2026-11-01</lastmod></url>
+  <url><loc>https://lightcompany.ai/order</loc><lastmod>2026-11-01</lastmod></url>
+  <url><loc>https://lightcompany.ai/prism-robotics</loc><lastmod>2026-11-01</lastmod></url>
+  <url><loc>https://lightcompany.ai/prism-robotics/how-it-works</loc><lastmod>2026-11-01</lastmod></url>
+  <url><loc>https://lightcompany.ai/company</loc><lastmod>2026-11-01</lastmod></url>
+  <url><loc>https://lightcompany.ai/careers</loc><lastmod>2026-11-01</lastmod></url>
+  <url><loc>https://lightcompany.ai/contact</loc><lastmod>2026-11-01</lastmod></url>
+  <url><loc>https://lightcompany.ai/resources</loc><lastmod>2026-11-01</lastmod></url>
+  <url><loc>https://lightcompany.ai/resources/robot-evaluation</loc><lastmod>2026-11-01</lastmod></url>
+  <url><loc>https://lightcompany.ai/resources/initial-conditions</loc><lastmod>2026-11-01</lastmod></url>
+  <url><loc>https://lightcompany.ai/resources/capability-maps</loc><lastmod>2026-11-01</lastmod></url>
+  <url><loc>https://lightcompany.ai/resources/physical-version-control</loc><lastmod>2026-11-01</lastmod></url>
+  <url><loc>https://lightcompany.ai/terms</loc><lastmod>2026-11-01</lastmod></url>
+  <url><loc>https://lightcompany.ai/privacy</loc><lastmod>2026-11-01</lastmod></url>
+  <url><loc>https://lightcompany.ai/cookies</loc><lastmod>2026-11-01</lastmod></url>
+  <url><loc>https://lightcompany.ai/trust</loc><lastmod>2026-11-01</lastmod></url>
+  <url><loc>https://lightcompany.ai/accessibility</loc><lastmod>2026-11-01</lastmod></url>
 </urlset>

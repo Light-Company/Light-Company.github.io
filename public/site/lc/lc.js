@@ -14,6 +14,18 @@
     e.currentTarget.setAttribute("aria-expanded", String(open));
     onScroll();
   });
+  const closeMenu = () => {
+    nav?.classList.remove("is-open");
+    $(".nav-toggle")?.setAttribute("aria-expanded", "false");
+    onScroll();
+  };
+  $$(".nav-links a").forEach((link) => link.addEventListener("click", closeMenu));
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && nav?.classList.contains("is-open")) {
+      closeMenu();
+      $(".nav-toggle")?.focus();
+    }
+  });
 
   // videos: only play what is on screen; mobile won't autoplay everything, so a first gesture kicks them
   const vids = $$("video[data-auto]");

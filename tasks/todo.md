@@ -1,3 +1,11 @@
+# Company and Prism expansion · November 1, 2026
+
+- [x] Base the expansion on the recovered complete website, already published as Sites version 30.
+- [x] Extend Prism explanation, scene-history concept, four guides, company/careers/contact and policy pages.
+- [x] Install SEO/content-strategy guidance; prepare campaign kit, sitemap, metadata and agent documentation.
+- [x] Fix crowded navigation labels and move the menu breakpoint earlier.
+- [ ] Complete desktop/mobile review, release checks, GitHub merge and Sites publication.
+
 # Publish approved Vision designs
 
 - [x] User selected the blue link-preview card; use it for both canonical pages, keep the dark alternative and original image, and preserve the headline wording.
