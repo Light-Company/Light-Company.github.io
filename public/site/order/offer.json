@@ -1,0 +1,11 @@
+{
+  "productName": "Prism",
+  "currency": "USD",
+  "unitAmount": null,
+  "paymentLink": null,
+  "active": false,
+  "kind": "hardware",
+  "shippingSummary": "Confirm delivery for your lab with our team.",
+  "includes": [],
+  "maxQuantity": 1
+}

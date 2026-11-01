@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Prism Benchmarks | The Light Company</title>
+  <meta name="description" content="Explore a preview of Prism's approach to controlled physical AI evaluation: matched starting conditions, transparent scoring, and capability maps." />
+  <meta name="robots" content="noindex, follow" />
+  <link rel="canonical" href="https://lightcompany.ai/benchmarks" />
+  <meta property="og:title" content="Prism Benchmarks | The Light Company" />
+  <meta property="og:description" content="One score tells part of the story. A capability map shows where to look next. Explore the illustrative research preview." />
+  <meta property="og:image" content="https://lightcompany.ai/og-blue.png" />
+  <link rel="icon" href="/site/assets/brand/light-company-mark.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="/site/lc/lc.css" />
+  <link rel="stylesheet" href="/site/benchmarks/benchmarks.css" />
+  <script src="/site/lc/lc.js" defer></script>
+  <script src="/site/benchmarks/benchmarks.js" type="module"></script>
+</head>
+<body class="benchmark-page">
+  <a class="skip-link" href="#main">Skip to results</a>
+  <header class="nav is-solid">
+    <div class="wrap nav-inner">
+      <a class="brand" href="/" aria-label="The Light Company home"><img class="no-invert" src="/site/assets/brand/light-company-mark-inverse.svg" width="30" height="24" alt="" />The Light Company</a>
+      <nav class="nav-links" aria-label="Main navigation"><a href="/">Prism Robotics</a><a href="#results">Results</a><a href="#capability-map">Capability map</a><a href="#method">Method</a></nav>
+      <div class="nav-cta"><a class="benchmark-trigger is-current" href="/benchmarks" aria-current="page"><span class="benchmark-spark" aria-hidden="true"></span>Benchmarks</a><a class="btn btn-primary btn-sm" href="mailto:hi@lightcompany.ai?subject=Prism%20benchmark">Test your policy</a></div>
+      <button class="nav-toggle" aria-label="Menu" aria-expanded="false"><span></span></button>
+    </div>
+  </header>
+  <main id="main">
+    <section class="benchmark-hero wrap">
+      <div class="benchmark-heading"><p class="eyebrow">The Light Company Research</p><span class="preview-label">Illustrative preview</span></div>
+      <div class="benchmark-intro">
+        <div><h1>Same world.<br />Different models.<br /><span>A clearer picture.</span></h1><p class="lede">In real-world robot evaluation, variance from scene setup often exceeds the difference between the policies being compared.</p><p class="lede">Prism controls and verifies the initial state of every rollout, so results reflect the policy, not the reset.</p><div class="hero-actions"><a href="#results" class="btn btn-primary">See our scores <span aria-hidden="true">↘</span></a><a href="#abstract" class="btn btn-ghost">Read the abstract</a></div></div>
+        <div class="benchmark-art" aria-label="Illustration of a projected test grid becoming a capability map"><div class="beam-device"><img src="/site/assets/brand/light-company-mark-inverse.svg" alt="" /></div><div class="bench-beam"></div><div class="bench-grid" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="art-caption mono"><span>Control → Compare</span><span>Prism / Research preview</span></div></div>
+      </div>
+      <p class="benchmark-disclosure">Scores, rankings, trial counts, and maps on this page are illustrative sample data. They are not measured results or evidence that one model outperforms another. Verified Prism results will replace this preview.</p>
+      <div class="benchmark-model-strip" aria-label="Models shown in this preview"><span class="mono">Example lineup</span><span><img src="/site/benchmarks/logos/gemini-color.svg" alt="" />Google DeepMind</span><span><img class="logo-invert" src="/site/benchmarks/logos/openai.svg" alt="" />OpenAI</span><span><img src="/site/benchmarks/logos/claude-color.svg" alt="" />Anthropic</span><span><img src="/site/benchmarks/logos/nvidia-color.svg" alt="" />NVIDIA</span></div>
+    </section>
+    <section class="wrap benchmark-abstract" id="abstract">
+      <div><p class="eyebrow">Abstract</p><p class="mono">Controlled physical evaluation</p></div>
+      <div><h2>A model comparison starts<br />with a comparable world.</h2><p>Physical robot tests can change before a policy takes its first action. Object pose, clutter, lighting, and reset quality all affect the task. An aggregate score can hide these differences.</p><p>Prism's evaluation approach pairs a defined test condition with projected setup guidance and a vision check. Models are compared on matched cases, with completion criteria set in advance. Controlled sweeps then change one variable at a time to reveal the limits of each policy.</p><p>This preview demonstrates the intended reporting format: completion counts, task-level comparisons, and a capability map. The example data below illustrates how to read the report; it does not report a completed study.</p></div>
+    </section>
+    <section class="sec wrap" id="results">
+      <div class="benchmark-section-head"><div><p class="eyebrow">Results</p><h2>Every model.<br />The same starting line.</h2></div><span class="preview-label">Example data · not measured</span></div>
+      <div class="benchmark-result-layout">
+        <aside class="benchmark-leader"><p class="mono">Overall illustrative leader</p><div class="leader-mark"><img src="/site/benchmarks/logos/gemini-color.svg" alt="" /></div><h3>Gemini 4 Argon</h3><div class="leader-score">86.7<span>%</span></div><p>52 of 60 completed trials in this sample dataset.</p><hr /><p class="leader-note">A lead to investigate.</p><p>A real claim of superiority needs repeated runs, uncertainty estimates, and a review of failed trials. This example establishes none of those claims.</p></aside>
+        <div class="benchmark-table-panel"><div class="benchmark-table-top"><div><h3>Task completion</h3><p>Completed trials / valid attempts</p></div><label>Task<select id="benchmark-task"><option value="all">All tasks</option><option value="placement">Pick &amp; place</option><option value="transfer">Transfer</option><option value="recovery">Recovery</option></select></label></div><div class="benchmark-table-scroll"><table class="benchmark-table"><caption class="sr-only">Illustrative model comparison. All values are sample data.</caption><thead><tr><th scope="col">Model</th><th scope="col">Completion</th><th scope="col">Trials</th></tr></thead><tbody id="benchmark-rows"></tbody></table></div><p id="benchmark-result-summary" class="benchmark-table-note" aria-live="polite"></p><p class="benchmark-table-note">Same sample case count for each model. Task ties remain ties. The aggregate combines counts rather than averaging rounded percentages.</p><noscript><p>Enable JavaScript to explore the illustrative comparison table.</p></noscript></div>
+      </div>
+    </section>
+    <section class="benchmark-map-section" id="capability-map"><div class="wrap">
+      <div class="benchmark-section-head"><div><p class="eyebrow">Beyond one success rate</p><h2>Find the boundary.<br /><span class="accent">Then move it.</span></h2></div><p class="lede">Change one variable at a time: position, orientation, clutter, objects, or lighting. See where the policy works and where it breaks across the conditions you tested.</p></div>
+      <div class="map-controls" role="group" aria-label="Variable to explore"><button aria-pressed="true" data-sweep="position">Position</button><button aria-pressed="false" data-sweep="orientation">Orientation</button><button aria-pressed="false" data-sweep="clutter">Clutter</button><button aria-pressed="false" data-sweep="objects">Objects</button><button aria-pressed="false" data-sweep="lighting">Lighting</button></div>
+      <div class="map-layout"><div class="map-frame"><div class="map-frame-head mono"><span id="map-title">Position sweep</span><span>Illustrative · single policy</span></div><div id="capability-cells" class="capability-cells" role="group" aria-label="Illustrative capability map"></div><div class="map-axis mono"><span id="map-y">Near to far reach</span><span id="map-x">Object position →</span></div><div class="map-legend"><span>Lower completion</span><i aria-hidden="true"></i><span>Higher completion</span><span class="not-tested">/ Not tested</span></div></div><aside class="map-explanation"><span class="mono">Hold everything else steady</span><h3 id="sweep-name">Position</h3><p id="sweep-description">Move the starting position. Keep the object, angle, clutter, and light fixed.</p><div class="cell-readout" aria-live="polite"><span class="mono">Selected condition</span><strong id="cell-name">A1</strong><p id="cell-score">11 / 12 example trials completed</p></div><p class="map-note">Select a cell to inspect it. Each tested cell contains 12 sample attempts. Untested conditions stay empty. These separate illustrative sweeps do not contribute to the headline scores.</p></aside></div>
+    </div></section>
+    <section class="sec wrap" id="method"><div class="benchmark-section-head"><div><p class="eyebrow">Evaluation method</p><h2>One controlled loop.</h2></div><a class="link" href="https://jonnysol.github.io/prism-sim-demo/" target="_blank" rel="noopener">Explore the virtual station ↗</a></div><ol class="benchmark-method"><li><span>01 / Define</span><h3>Specify the case.</h3><p>Record the task, objects, poses, conditions, model version, and completion rubric.</p></li><li><span>02 / Stage</span><h3>Project the setup.</h3><p>Guide placement on the work surface, then check the scene against its tolerances.</p></li><li><span>03 / Run</span><h3>Keep the comparison fair.</h3><p>Use matched cases, declared action budgets, and a reset between attempts.</p></li><li><span>04 / Score</span><h3>Keep the evidence.</h3><p>Separate setup rejection from task failure. Record outcomes, videos, and reasons.</p></li><li><span>05 / Map</span><h3>Change one condition.</h3><p>Sweep the variable of interest. Show tested regions, failures, and missing coverage.</p></li></ol><details class="benchmark-limitations"><summary>How to read this preview <span aria-hidden="true">+</span></summary><p>All numbers and rankings are invented examples for the reporting design. Model names identify the example comparison lineup; they do not imply participation, endorsement, or a completed Prism evaluation. A publishable study must specify exact model checkpoints and settings, robot hardware, task definitions, budgets, reset checks, scoring rules, exclusions, and uncertainty. A capability map describes its sampled conditions, not every possible deployment.</p></details></section>
+    <section class="benchmark-cta wrap"><div><p class="eyebrow">Bring your own policy</p><h2>What does your<br />capability map look like?</h2></div><a class="btn btn-primary" href="mailto:hi@lightcompany.ai?subject=Prism%20benchmark%20evaluation">Talk to our team ↗</a></section>
+  </main>
+  <footer class="benchmark-footer wrap"><a class="brand" href="/">The Light Company</a><span>Physical AI, measured in the physical world.</span><a href="/privacy">Privacy</a></footer>
+</body>
+</html>
