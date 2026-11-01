@@ -59,7 +59,7 @@ html.arena-document { zoom: 1; scroll-behavior: auto; }
 .arena-search input::placeholder { color:#778497; }
 .arena-select-label { display:flex; align-items:center; gap:8px; color:#8592a4; font-size:11px; }
 .arena-page select { border:1px solid #303a47; background:#0d131c; color:#cbd8e8; border-radius:6px; padding:8px 26px 8px 10px; font-size:12px; }
-.arena-table-wrap { overflow:auto; }
+.arena-table-wrap { position:relative; overflow:auto; }
 .arena-table { border-collapse:collapse; width:100%; text-align:left; font-size:12px; }
 .arena-table th { white-space:nowrap; padding:12px 16px; font:10px var(--mono); color:#748397; background:#0e131a; border-bottom:1px solid #29313c; }
 .arena-table th abbr { cursor:help; text-decoration:none; }
