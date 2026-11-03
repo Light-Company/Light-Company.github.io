@@ -98,10 +98,29 @@ test("desktop pages render at 80%, the same as the browser's own 80% zoom", asyn
   }
 });
 
-test("the home hero's top logo strip carries the NVIDIA Inception Program badge", async () => {
-  const strip = (await read("index.html")).match(/<div class="creds[^"]*">([\s\S]*?)<\/div>/)?.[1] || "";
-  assert.match(strip, /<img src="\/site\/assets\/brand\/nvidia-inception\.png" alt="NVIDIA Inception Program"/);
+test("the home hero: Built by on top, Backed by Founders, Inc. and NVIDIA Inception at the right of the buttons", async () => {
+  const home = await read("index.html");
+  const top = home.match(/<div class="creds rv">([\s\S]*?)<\/div>/)?.[1] || "";
+  assert.match(top, /Built by/);
+  assert.doesNotMatch(top, /Backed by|nvidia/i);
+  const row = home.match(/<div class="hero-row">([\s\S]*?)<\/div>\s*<\/div>\s*<\/div>\s*<\/div>\s*<\/section>/)?.[1] || "";
+  assert.match(row, /class="hero-actions[\s\S]*Get started[\s\S]*<div class="creds creds-backers[^"]*">[\s\S]*Backed by[\s\S]*Founders, Inc\.[\s\S]*alt="NVIDIA Inception Program"/);
+  const css = await readFile(new URL("../public/site/lc/lc.css", import.meta.url), "utf8");
+  assert.match(css, /\.hero-row \{[^}]*justify-content: space-between;/);
+  // both backers share one logo height, and NVIDIA's badge is plain white like every other logo there
+  assert.match(css, /\.creds-backers \.cl-nv \{[^}]*height: var\(--logo-h\);[^}]*filter: brightness\(0\) invert\(1\);/);
+  assert.match(css, /\.creds-backers \.cl-fi \{[^}]*width: var\(--logo-h\); height: var\(--logo-h\);/);
   assert.equal(await exists(new URL("../public/site/assets/brand/nvidia-inception.png", import.meta.url)), true);
+});
+
+test("the site tells one story: one founder, and Prism scores every run itself", async () => {
+  for (const [page, html] of await allHtml()) {
+    assert.doesNotMatch(html, /\b(?:two|the|our) founders\b/i, `${page} speaks of several founders`);
+    assert.doesNotMatch(html, /Reviewers score/i, `${page} says people score the runs`);
+  }
+  for (const page of ["index.html", "prism-robotics/index.html"]) {
+    assert.match(await read(page), /scored\?<\/summary><p>Prism scores every run automatically\./, page);
+  }
 });
 
 test("the home hero has no ticker strip under it", async () => {

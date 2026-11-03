@@ -145,6 +145,7 @@ h3, .h3 { font-size: clamp(18px, calc(1.3vw / var(--z, 1)), 20px); line-height: 
 .backed b { color: var(--text); font-weight: 600; }
 .hero-body > .eyebrow { display: flex; }
 .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+.hero-row { justify-self: stretch; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px 40px; }
 .hero-foot { display: flex; justify-content: space-between; gap: 24px; margin-top: clamp(36px, calc(4vw / var(--z, 1)), 56px); padding-top: 20px; border-top: 1px solid var(--line); }
 .hero-foot span { display: inline-flex; gap: 10px; align-items: center; }
 .live-dot { width: 7px; height: 7px; border-radius: 50%; background: #ff4a3d; box-shadow: 0 0 10px #ff4a3d; animation: pulse 1.6s infinite; }
@@ -463,10 +464,14 @@ h3, .h3 { font-size: clamp(18px, calc(1.3vw / var(--z, 1)), 20px); line-height: 
 .creds img { opacity: 0.9; }
 .creds .cl-apple { width: 15px; height: 15px; margin-top: -3px; }
 .creds .cl-cmu { width: auto; height: 13px; }
-.creds .cl-nv { width: auto; height: 34px; }
 .creds .cl-fi { width: 18px; height: 18px; border-radius: 4px; background: #1a1a1a; padding: 2px; margin-right: 6px; }
 .creds a { display: inline-flex; align-items: center; color: var(--text); font-weight: 500; }
 @media (max-width: 760px) { .creds-g + .creds-g { padding-left: 0; border-left: 0; } }
+/* hero backers: one logo height for both, all logos white */
+.creds.creds-backers { margin: 0; --logo-h: 40px; align-items: center; }
+.creds-backers .cl-nv { width: auto; height: var(--logo-h); filter: brightness(0) invert(1); opacity: 0.92; }
+.creds-backers .cl-fi { width: var(--logo-h); height: var(--logo-h); border-radius: 9px; padding: 6px; margin-right: 12px; }
+.creds-backers a { font-size: 19px; font-weight: 600; letter-spacing: -0.01em; }
 
 .logos { display: flex; flex-wrap: wrap; gap: 24px 56px; margin: 32px 0 0; padding-top: 24px; border-top: 1px solid var(--line); }
 .logos .mono { display: block; font-size: 11px; margin-bottom: 14px; }
@@ -523,6 +528,14 @@ h3, .h3 { font-size: clamp(18px, calc(1.3vw / var(--z, 1)), 20px); line-height: 
 .inv-proof h3 { font-size: 20px; }
 .inv-proof p:last-child { color: var(--mute); margin: 10px 0 0; max-width: 46ch; }
 @media (max-width: 760px) { .inv-proof { grid-template-columns: 1fr; } }
+.inv-market { margin-top: 20px; }
+.inv-market b { margin: 0 0 14px; }
+.inv-market .link { font-size: 13px; margin-right: 10px; white-space: nowrap; }
+.calc-lines { display: grid; gap: 6px; width: min(100%, 280px); margin: 6px 0 0; }
+.calc-lines > div { display: flex; justify-content: space-between; gap: 16px; padding-top: 6px; border-top: 1px solid var(--line); font-size: 14px; }
+.calc-lines dt { color: var(--mute); }
+.calc-lines dd { margin: 0; font-weight: 600; font-variant-numeric: tabular-nums; }
+.calc-out small { font-size: 12px; letter-spacing: 0.04em; }
 .ledger { display: grid; grid-template-columns: repeat(3, 1fr); margin-top: 20px; border-block: 1px solid var(--line); }
 .ledger > div { padding: 22px 0; display: flex; align-items: baseline; gap: 14px; }
 .ledger > div + div { padding-left: 24px; border-left: 1px solid var(--line); }

@@ -1,5 +1,5 @@
 // Investor overview: the setup-spread illustration, the case map and the revenue scenario.
-import { cells, successRate, cellChange, nextTest, caseFromHash, annualSoftwareRevenue } from "./model.mjs";
+import { cells, successRate, cellChange, nextTest, caseFromHash, annualRevenue } from "./model.mjs";
 
 const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => [...r.querySelectorAll(s)];
@@ -87,16 +87,19 @@ if (map) {
   render();
 }
 
-// 06: software revenue scenario (targets, not traction)
+// 06: software revenue at target prices, line by line
 const calc = $("[data-calc]");
 if (calc) {
-  const input = $("[data-calc-stations]", calc);
-  const money = (n) => (n >= 1e9 ? `$${(n / 1e9).toFixed(1)}B` : n >= 1e6 ? `$${(n / 1e6).toFixed(n >= 1e7 ? 0 : 1)}M` : `$${Math.round(n / 1e3)}K`);
+  const labs = $("[data-calc-labs]", calc), perLab = $("[data-calc-per-lab]", calc);
+  const money = (n) => (n >= 1e9 ? `$${+(n / 1e9).toFixed(1)}B` : n >= 1e6 ? `$${+(n / 1e6).toFixed(n >= 1e8 ? 0 : 1)}M` : `$${Math.round(n / 1e3)}K`);
   const update = () => {
-    const stations = Number(input.value);
-    $("[data-calc-stations-out]", calc).textContent = stations.toLocaleString("en-US");
-    $("[data-calc-out]", calc).textContent = money(annualSoftwareRevenue({ stations }));
+    const r = annualRevenue({ labs: Number(labs.value), stationsPerLab: Number(perLab.value) });
+    $("[data-calc-labs-out]", calc).textContent = Number(labs.value).toLocaleString("en-US");
+    $("[data-calc-per-lab-out]", calc).textContent = perLab.value;
+    $("[data-calc-out]", calc).textContent = money(r.total);
+    for (const line of ["evaluations", "platform", "tooling", "enterprise"]) $(`[data-line="${line}"] dd`, calc).textContent = money(r[line]);
+    $("[data-calc-hw]", calc).textContent = `Plus ${money(r.hardware)} in stations at 80% margin`;
   };
-  input.addEventListener("input", update);
+  [labs, perLab].forEach((input) => input.addEventListener("input", update));
   update();
 }

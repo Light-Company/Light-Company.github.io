@@ -79,7 +79,7 @@ Open a run to inspect its camera recording, 3D telemetry, placement and step-by-
 
 ## Common questions
 
-Is Prism a simulator? Prism Robotics runs around physical robot workcells. It controls and checks the setup for real-world evaluations, then connects conditions and results in the console. Who resets the objects? An operator follows the projected placement guidance. Prism checks the scene against the target before the trial is accepted. The robot continues to use its own control system. How are rollouts scored? Your team defines scoring conditions for each task step and the threshold for success. Reviewers score the run against that rubric, flag abnormal trials and keep the decision with its supporting evidence. How do we get started? Get started with your robot, task and current evaluation process. We will work through station placement, integrations and the first test suite. You can also register interest in a station .
+Is Prism a simulator? Prism Robotics runs around physical robot workcells. It controls and checks the setup for real-world evaluations, then connects conditions and results in the console. Who resets the objects? An operator follows the projected placement guidance. Prism checks the scene against the target before the trial is accepted. The robot continues to use its own control system. How are rollouts scored? Prism scores every run automatically. Its vision-language model watches each trial, judges it against your rubric and records the reason with the recording. Your team defines the scoring conditions for each task step and the threshold for success. How do we get started? Get started with your robot, task and current evaluation process. We will work through station placement, integrations and the first test suite. You can also register interest in a station .
 
 # From scene setup to a comparable result.
 Source: https://lightcompany.ai/prism-robotics/how-it-works
@@ -108,7 +108,7 @@ Your robot executes the task through its existing control system. Prism connects
 
 ## Score, inspect and compare.
 
-Score each task step against the evaluation rubric. Review camera recordings and telemetry, flag abnormal runs and record the reason for a correction. Keep the score, reviewer and timestamps with the result. Compare candidates on the same test suite. Move from an aggregate score to task results, individual trials and the conditions behind a failure.
+Prism scores each task step against the evaluation rubric and records the reason. The camera recording, telemetry and timestamps stay with the score, and any correction keeps its reason. Compare candidates on the same test suite. Move from an aggregate score to task results, individual trials and the conditions behind a failure.
 
 ## Replay a failure against the next checkpoint.
 
@@ -210,7 +210,7 @@ Are you choosing between two checkpoints, testing whether a new object breaks a 
 
 ## Set the scoring rules
 
-Define success in observable terms. Specify the time limit, allowed contact, acceptable final state and any permitted assistance. Decide how to handle interruptions, sensor loss, a bad reset or a stopped robot. Keep three outcomes separate: a valid success, a valid failure and an invalid or unresolved episode. A reset mistake should not silently count against the policy, and removing a difficult valid failure would make the report misleading. When two reviewers disagree, retain the disagreement and resolve it against the rubric. A scoring model can help organize review, but its answer still depends on the evidence and instructions it receives.
+Define success in observable terms. Specify the time limit, allowed contact, acceptable final state and any permitted assistance. Decide how to handle interruptions, sensor loss, a bad reset or a stopped robot. Keep three outcomes separate: a valid success, a valid failure and an invalid or unresolved episode. A reset mistake should not silently count against the policy, and removing a difficult valid failure would make the report misleading. When a score is disputed, keep the disagreement and resolve it against the rubric. Prism's scoring model judges every trial against the same rubric and records its reason, so any score can be checked against the recording.
 
 ## Choose the test conditions
 
