@@ -123,6 +123,34 @@ test("the site tells one story: one founder, and Prism scores every run itself",
   }
 });
 
+const CUSTOMERS = ["Dream Labs", "Enact", "New Theory", "Trossen Robotics"];
+const bandOf = (html) => html.match(/<section class="customers"[\s\S]*?<\/section>/)?.[0] || "";
+
+test("the customer band is the bottom row of the hero on the home and investor pages, identical on both", async () => {
+  const home = await read("index.html"), investors = await read("robotics/investors/index.html");
+  const band = bandOf(home);
+  // the band is the hero's bottom row, so the customers show on first load
+  for (const html of [home, investors]) assert.match(html, /<section class="hero"[\s\S]*?<section class="customers"[\s\S]*?<\/section>\s*<\/section>/, "band inside the hero");
+  assert.match(await readFile(new URL("../public/site/lc/lc.css", import.meta.url), "utf8"), /\.hero \{[^}]*grid-template-rows: 1fr auto;/);
+  const names = band.replace(/<img[^>]*alt="([^"]*)"[^>]*>/g, " $1 ").replace(/<[^>]+>/g, " ");
+  for (const name of CUSTOMERS) assert.match(names, new RegExp(`\\b${name}\\b`), name);
+  assert.match(band, /alt="Dream Labs"/);
+  assert.match(band, /alt="Trossen Robotics"/);
+  assert.equal(bandOf(investors), band, "the investor page carries the same band");
+  for (const [, src] of band.matchAll(/src="(\/site\/assets\/brand\/customers\/[^"]+)"/g)) {
+    assert.equal(await exists(new URL(`../public${src}`, import.meta.url)), true, src);
+  }
+  const css = await readFile(new URL("../public/site/lc/lc.css", import.meta.url), "utf8");
+  assert.match(css, /\.customers img \{[^}]*height: var\(--logo-h\);[^}]*filter: brightness\(0\) invert\(1\);/);
+});
+
+test("the investor hero carries the same Backed by row as the home hero", async () => {
+  const backers = (html) => html.match(/<div class="creds creds-backers[^"]*">[\s\S]*?<\/div>/)?.[0];
+  const home = backers(await read("index.html")), investors = backers(await read("robotics/investors/index.html"));
+  assert.ok(home && investors);
+  assert.equal(investors, home);
+});
+
 test("the home hero has no ticker strip under it", async () => {
   const home = await read("index.html");
   assert.doesNotMatch(home, /hero-foot/);
