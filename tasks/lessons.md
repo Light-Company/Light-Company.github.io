@@ -19,3 +19,5 @@
 
 - Keep primary navigation labels on one line and collapse the menu before the row becomes crowded. Verify at intermediate widths, not only a wide desktop and a phone.
 - The November 1 hero exchange puts test-condition-full.mp4 in the main hero and moves robotics-hero-lab.mp4 into the lower lab reel; update poster and accessible description together.
+- Desktop (761px and wider) renders at 80%, matching what the owner sees with the browser's own Cmd-minus. The rule lives once in lc.css. CSS zoom also shrinks vw/vh, which browser zoom does not, so every viewport unit is written as `calc(Nvw / var(--z, 1))`; tests/site-consistency.test.mjs rejects bare units. The benchmark pages stay at 75%, and their footer is counter-zoomed to the same 80%.
+- The 2:45 Prism platform demo (platform-demo.mp4, captions in platform-demo.vtt) is the film behind "Watch an evaluation" and the investor page film. The poster is the opening lab frame with its overlay label painted out.

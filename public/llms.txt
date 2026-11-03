@@ -13,7 +13,7 @@
 ## Product walkthroughs and sample data
 
 - [Scene history](https://lightcompany.ai/prism-robotics/scene-history): interactive walkthrough of scene history using example data. Prism keeps scene revisions connected to evaluation records; the public controls demonstrate the workflow in a diagram.
-- [Benchmarks](https://lightcompany.ai/benchmarks/): the Physical AI Index. Model scores across sixteen Prism benchmarks, one page per benchmark, full dataset at https://lightcompany.ai/site/benchmarks/data/index.json. A model logo identifies the model tested, not a vendor partnership.
+- [Benchmarks](https://lightcompany.ai/benchmarks/): the Physical AI Index. Model scores across sixteen Prism benchmarks, one page per benchmark, password protected. A model logo identifies the model tested, not a vendor partnership.
 
 ## Company and practical information
 

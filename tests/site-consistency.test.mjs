@@ -52,6 +52,12 @@ test("every page shows that same nav and the same buttons", async () => {
   }
 });
 
+test("page styles cannot resize the footer's columns", async () => {
+  // the benchmark app's .wrap pads its columns; the footer's .wrap must not inherit that
+  const css = await readFile(new URL("../public/site/lc/footer.css", import.meta.url), "utf8");
+  assert.match(css, /\.company-footer \.wrap \{[^}]*padding-inline: 0;/);
+});
+
 test("the site footer is the one on the home page", () => {
   assert.match(companyFooter, /<p class="footer-tag">The full evaluation workflow\.<br \/>One platform\.<\/p>/);
   assert.match(companyFooter, /<span>Light\. Space\. Understanding\.<\/span>/);
@@ -76,6 +82,18 @@ test("the Company page and the founders photo are gone", async () => {
   for (const [page, html] of await allHtml()) {
     assert.doesNotMatch(html, /href="\/company"/, page);
     assert.doesNotMatch(html, /founders\.jpg/, page);
+  }
+});
+
+test("desktop pages render at 80%, the same as the browser's own 80% zoom", async () => {
+  const site = (file) => readFile(new URL(`../public/site/${file}`, import.meta.url), "utf8");
+  assert.match(await site("lc/lc.css"), /@media \(min-width: 761px\) \{ html \{ zoom: 0\.8; \} :root \{ --z: 0\.8; \} \}/);
+  for (const page of [...FOOTER_PAGES, "gallery/index.html"]) assert.match(await read(page), /href="\/site\/lc\/lc\.css"/, page);
+  for (const file of ["company/company.css", "gallery/gallery.css"]) assert.doesNotMatch(await site(file), /zoom/, `${file} must not override the site zoom`);
+  // CSS zoom also shrinks vw/vh (browser zoom does not), so every viewport unit divides the zoom back out.
+  for (const file of ["lc/lc.css", "lc/footer.css", "company/company.css", "gallery/gallery.css"]) {
+    const raw = [...(await site(file)).matchAll(/\d(?:vw|vh|svh|dvh|lvh)\b(?! \/ var\(--z, 1\))/g)];
+    assert.equal(raw.length, 0, `${file}: ${raw.length} viewport units ignore the zoom`);
   }
 });
 

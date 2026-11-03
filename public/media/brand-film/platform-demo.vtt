@@ -1,0 +1,100 @@
+WEBVTT
+
+00:01.200 --> 00:03.634
+Every robot policy gets a score.
+
+00:03.704 --> 00:06.228
+Run it again, and the score moves.
+
+00:06.428 --> 00:12.844
+Shift a cup a few centimeters, and success can fall from ninety-five percent to as low as fifty.
+
+00:13.094 --> 00:15.334
+The noise has two sources.
+
+00:15.334 --> 00:16.987
+Where the objects started.
+
+00:16.987 --> 00:22.566
+And who scored it. On a towel fold, judges disagree by thirty percent.
+
+00:22.716 --> 00:25.745
+Together, about ninety percent of the variance.
+
+00:25.945 --> 00:29.920
+One episode in five is invalid before the math starts.
+
+00:30.220 --> 00:34.242
+Software solved this with seeds, version control, and CI.
+
+00:34.242 --> 00:36.871
+Physical AI never had that layer.
+
+00:37.271 --> 00:39.355
+Prism is that layer.
+
+00:39.705 --> 00:43.243
+One platform, from an empty table to an answer.
+
+00:43.343 --> 00:51.976
+Define the test once. The objects, their exact poses, the rubric, and what counts as success. Every case is versioned.
+
+00:52.076 --> 00:57.069
+Assign runs to stations, and operators see exactly what to set up next.
+
+00:57.169 --> 01:02.889
+Stage. Light shows each object's pose, and guides the operator step by step.
+
+01:02.989 --> 01:07.582
+Verify. Our vision model checks every object before the trial runs.
+
+01:07.682 --> 01:16.025
+Run. Your robot, your policy. The light goes dark, so nothing leaks into training data, and Prism tracks the scene live.
+
+01:16.075 --> 01:22.890
+Score. The same model watches the trial, describes exactly what happened, and judges it against your rubric.
+
+01:22.990 --> 01:27.478
+Every score comes with a reason, and any call can go to human review.
+
+01:27.528 --> 01:32.962
+Log. Every episode keeps its video, where everything began, and why it scored.
+
+01:33.012 --> 01:37.750
+Replay. Rebuild any condition, exactly, for the next checkpoint.
+
+01:38.050 --> 01:41.665
+A seed, and a version history, for the state of a table.
+
+01:41.665 --> 01:43.826
+It all lands in the console.
+
+01:43.976 --> 01:50.646
+Compare policies head to head, see the pass rate at every start position, and catch regressions before they ship.
+
+01:50.896 --> 02:00.289
+Change one condition at a time. Position, rotation, clutter, objects, light. See exactly where a policy holds, and where it breaks.
+
+02:00.439 --> 02:05.218
+Today, twenty stations across robotics labs report to one console.
+
+02:05.268 --> 02:10.338
+At one design-partner lab, score variance fell from forty percent to ten.
+
+02:10.638 --> 02:14.617
+Thirty controlled trials now tell you what three hundred used to.
+
+02:14.667 --> 02:21.483
+It mounts above the tables you already have, works with any arm and any policy, and never touches the robot.
+
+02:21.583 --> 02:26.798
+Claim it with a code, it calibrates itself, and you're scoring trials the same afternoon.
+
+02:27.098 --> 02:35.077
+Bring your tasks and your checkpoints. Trigger scenes, stream runs in, and pull results out, through one API and SDK.
+
+02:35.527 --> 02:39.834
+Results that hold, after the person who ran them leaves the room.
+
+02:40.384 --> 02:42.513
+Prism. By The Light Company.

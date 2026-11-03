@@ -75,6 +75,8 @@ test('static export contains the investor story, valid local assets, and entry l
   assert.match(html, /https:\/\/lightcompany.ai\/robotics\/investors/);
   assert.match(html, /Illustrative workflow/);
   assert.match(html, /<p class="mono dim">Targets<\/p>/);
+  assert.match(html, /src="\/media\/brand-film\/platform-demo.mp4"/);
+  assert.doesNotMatch(html, /evals-explainer/);
   assert.doesNotMatch(html, /STORY_CONTINUES|not independently verified|localhost/);
   assert.match(await readFile(new URL('investors/index.html', root), 'utf8'), /\/robotics\/investors/);
   // Investor material remains reachable, but its noindex directive excludes it from the sitemap.

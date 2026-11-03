@@ -53,9 +53,9 @@ test("the benchmark app links only to pages that still exist and offers no plain
   assert.doesNotMatch(app, /download="physical-ai-index\.json"/);
 });
 
-test("benchmark pages render at 75% on desktop while the site footer stays full size", async () => {
+test("benchmark pages render at 75% on desktop while the site footer matches the 80% main site", async () => {
   const css = await read("site/benchmarks/assets/styles.css");
-  assert.match(css, /@media \(min-width:761px\)\{html\{zoom:\.75\}\.company-footer\{zoom:1\.3333\}\}/);
+  assert.match(css, /@media \(min-width:761px\)\{html\{zoom:\.75\}\.company-footer\{zoom:1\.06667;--z:\.8\}\}/);
   assert.match(await read("site/benchmarks/assets/app.js"), /clientWidth \/ zoom/);
 });
 

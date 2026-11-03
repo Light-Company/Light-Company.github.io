@@ -562,4 +562,4 @@ body.is-locked .page-guides,body.is-locked #site-header,body.is-locked .rail{dis
 
 /* desktop renders at 75%; the shared site footer keeps the size it has on every other page */
 .company-footer{position:relative;z-index:40}
-@media (min-width:761px){html{zoom:.75}.company-footer{zoom:1.3333}}
+@media (min-width:761px){html{zoom:.75}.company-footer{zoom:1.06667;--z:.8}}
