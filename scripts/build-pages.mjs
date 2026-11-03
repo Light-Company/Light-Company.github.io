@@ -3,9 +3,14 @@ import { publishedVisionHtml } from "../lib/published-vision.mjs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { companyPages } from "../lib/company-content.mjs";
+import { withSiteChrome } from "../lib/company-site.mjs";
 
 const projectRoot = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const outputRoot = join(projectRoot, ".pages-dist");
+
+// Physical AI Index: one static page per benchmark (/benchmarks/<id>/), all from the same shell.
+// The scores ship encrypted (data/index.enc.json); routes.json is the plain list of page ids.
+const benchmarkRoutes = JSON.parse(await readFile(join(projectRoot, "public/site/benchmarks/data/routes.json"), "utf8"));
 
 const pages = [
   ["site/robotics.html", "index.html", "https://lightcompany.ai/"],
@@ -13,6 +18,8 @@ const pages = [
   ["site/robotics.html", "Robotics/index.html", "https://lightcompany.ai/"],
   ["site/main.html", "prism/index.html", "https://lightcompany.ai/prism"],
   ["site/benchmarks.html", "benchmarks/index.html"],
+  ["site/benchmarks-all.html", "benchmarks/all/index.html"],
+  ...benchmarkRoutes.benchmarks.map((id) => ["site/benchmark.html", `benchmarks/${id}/index.html`]),
   ["site/gallery.html", "gallery/index.html"],
   ["site/order.html", "order/index.html"],
   ["site/investors.html", "investors/index.html"],
@@ -30,15 +37,19 @@ for (const [source, destination, canonical] of pages) {
   const destinationPath = join(outputRoot, destination);
   await mkdir(dirname(destinationPath), { recursive: true });
   const sample = source === "site/main.html" ? "prism-vision" : source === "site/robotics.html" ? "robotics-vision" : null;
+  const route = `/${destination.replace(/index\.html$/, "")}`.replace(/(.)\/$/, "$1");
+  let html;
   if (sample) {
     const [approved, previous] = await Promise.all([
       readFile(join(projectRoot, `site/${sample}.html`), "utf8"),
       readFile(join(projectRoot, source), "utf8"),
     ]);
-    await writeFile(destinationPath, publishedVisionHtml(approved, previous, canonical));
+    html = publishedVisionHtml(approved, previous, canonical);
   } else {
-    await cp(join(projectRoot, source), destinationPath);
+    html = await readFile(join(projectRoot, source), "utf8");
   }
+  // Every page ships the one site footer, and the global nav where the page uses it.
+  await writeFile(destinationPath, withSiteChrome(html, route));
 }
 
 await writeFile(join(outputRoot, ".nojekyll"), "");

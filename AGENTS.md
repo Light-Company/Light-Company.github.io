@@ -10,7 +10,7 @@ This repository is The Light Company's public website. Take generous ownership o
 - Use direct product language and normal type sizes. The owner rejected poetic slogans, giant headings and repetitive caveats. Say what Prism does, what the user does and what they get.
 
 ## Respect the work already here
-The recovered rebrand includes the 44-second lab film, blue-beam logo, ASCII footer, preorder and investor pages. Preserve those assets. The user subsequently requested the projected-cup staging clip in the main hero; the lab film now occupies the lower reel. /prism is Prism IRL; /prism-robotics explains the evaluation product. /benchmarks is an illustrative product preview until measured results replace its data.
+The recovered rebrand includes the 44-second lab film, blue-beam logo, ASCII footer, preorder and investor pages. Preserve those assets. The user subsequently requested the projected-cup staging clip in the main hero; the lab film now occupies the lower reel. /prism is Prism IRL; /prism-robotics explains the evaluation product. /benchmarks is the Physical AI Index: a static app in public/site/benchmarks/ rendered from the password-sealed data/index.enc.json (see docs/benchmarks.md; the plaintext never enters this repo). Every page shares one nav and one footer from lib/company-site.mjs, applied at export by withSiteChrome; tests/site-consistency.test.mjs fails on any drift.
 
 Do not discard uncommitted changes, stashes or another person's branch. The original checkout at /Users/discoverycore/src/Light-Company.github.io contained previously unpublished work; verify provenance before replacing any future base.
 

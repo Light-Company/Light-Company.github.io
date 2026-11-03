@@ -13,13 +13,12 @@
 ## Product walkthroughs and sample data
 
 - [Scene history](https://lightcompany.ai/prism-robotics/scene-history): interactive walkthrough of scene history using example data. Prism keeps scene revisions connected to evaluation records; the public controls demonstrate the workflow in a diagram.
-- [Benchmarks](https://lightcompany.ai/benchmarks): illustrative scores and sample trial records. Do not cite them as measured model performance, a winner or a vendor endorsement.
+- [Benchmarks](https://lightcompany.ai/benchmarks/): the Physical AI Index. Model scores across sixteen Prism benchmarks, one page per benchmark, full dataset at https://lightcompany.ai/site/benchmarks/data/index.json. A model logo identifies the model tested, not a vendor partnership.
 
 ## Company and practical information
 
 - [Prism Robotics: physical AI evaluation](https://lightcompany.ai/prism-robotics): Stage, verify and record real-world robot evaluations with Prism. Compare policies, map failures and replay the conditions behind a result.
 - [How Prism runs a physical robot evaluation](https://lightcompany.ai/prism-robotics/how-it-works): Define a task, stage and verify the scene, run a policy and review its evidence. See the complete Prism robot evaluation workflow.
-- [About The Light Company](https://lightcompany.ai/company): The Light Company builds Prism, an evaluation platform for physical AI combining projected staging, scene verification and software for robot labs.
 - [Careers at The Light Company](https://lightcompany.ai/careers): Work on Prism across robotics, perception, software, hardware and product design. Share your experience and interest with The Light Company.
 - [Contact The Light Company](https://lightcompany.ai/contact): Contact The Light Company for a Prism demo, station deployment, research partnership, investment, careers or support.
 - [Robot evaluation guides and resources](https://lightcompany.ai/resources): Practical guides to robot evaluation, initial conditions, capability maps and scene history. Explore Prism lab films and the technical brief.

@@ -1,3 +1,5 @@
+> Superseded on 2026-11-03: the benchmark workspace described here was replaced by the Physical AI Index. See docs/benchmarks.md.
+
 # Impeccable benchmark refinement
 
 Impeccable 4.8.0 is installed for Codex at `.agents/skills/impeccable`, with project hooks in `.codex/hooks.json`. The native engine is installed locally and ignored by Git; the checked-in launcher retrieves the platform-specific engine when needed. Tooling assets are excluded from application lint.

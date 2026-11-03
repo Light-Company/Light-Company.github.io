@@ -13,24 +13,16 @@
     <link rel="stylesheet" href="/site/lc/lc.css" />
     <link rel="stylesheet" href="/site/company/company.css" />
     <script src="/site/lc/lc.js" defer></script>
-    <link rel="stylesheet" href="/site/benchmarks/benchmarks.css?v=20261101b" />
-    <script src="/site/benchmarks/benchmarks.js?v=20261101b" type="module"></script>
   </head>
   <body class="prism-home corner-peel-page">
     <a class="skip-link" href="#main">Skip to content</a>
 
     <header class="nav">
       <div class="wrap nav-inner">
-        <a class="brand" href="/robotics-vision" aria-label="The Light Company home"><img class="no-invert" src="/site/assets/brand/light-company-mark-inverse.svg" alt="" width="30" height="24" />The Light Company</a>
-        <nav class="nav-links" aria-label="Primary"><a class="nav-mobile-benchmark" href="/benchmarks">Benchmarks</a><a href="/prism-robotics">Prism Robotics</a><a href="/resources">Resources</a><a href="/company">Company</a><a href="/robotics/investors">Investors</a><a href="/prism-vision">Prism IRL</a></nav>
-        <div class="nav-cta">
-          <button class="benchmark-trigger" type="button" data-benchmark-open aria-haspopup="dialog" aria-expanded="false">Benchmarks</button>
-          <a class="btn btn-ghost btn-sm" href="https://prism.lightcompany.ai">Sign in</a>
-          <a class="btn btn-primary btn-sm" href="https://forms.gle/rVGYU4TRfpJBHDjH6" target="_blank" rel="noopener noreferrer">Pre-order</a>
-        </div>
-        <button class="nav-toggle" aria-label="Menu" aria-expanded="false"><span></span></button>
-      </div>
-    </header>
+    <a class="brand" href="/" aria-label="The Light Company home"><img class="no-invert" src="/site/assets/brand/light-company-mark-inverse.svg" alt="" width="30" height="24" />The Light Company</a>
+    <nav class="nav-links" aria-label="Primary"><a href="/benchmarks/">Benchmarks</a><a href="/prism-robotics">Prism Robotics</a><a href="/robotics/investors">Investors</a><a href="/prism" aria-current="page">Prism IRL</a></nav>
+    <div class="nav-cta"><a class="btn btn-ghost btn-sm" href="https://prism.lightcompany.ai">Sign in</a><a class="btn btn-primary btn-sm" href="/order">Book a demo</a></div><button class="nav-toggle" aria-label="Menu" aria-expanded="false"><span></span></button>
+  </div></header>
 
     <main id="main">
       <!-- 1 · hero: the product working, full bleed -->
@@ -41,7 +33,6 @@
           </video>
         </div>
         <div class="wrap hero-body">
-          <p class="eyebrow rv">Prism · Projected reality</p>
           <h1 class="display rv rv-d1" id="hero-title">AI that helps IRL.</h1>
           <div class="hero-sub">
             <p class="lede rv rv-d2">A new kind of hardware that turns the room into a computer. It sees the table, follows the task, and answers in light on the surfaces and objects in front of you.</p>
@@ -50,28 +41,12 @@
               <a class="btn btn-ghost" href="#film" data-film="/media/brand-film/prism-film.mp4"><span class="play" aria-hidden="true"></span>Watch the film <span class="dim">1:17</span></a>
             </div>
           </div>
-          <div class="hero-foot mono">
-            <span><i class="live-dot" aria-hidden="true"></i>Real footage, filmed on real tables</span>
-            <span>No glasses. No headset.</span>
-            <span>Built in San Francisco</span>
-          </div>
         </div>
       </section>
 
-      <!-- 2 · proof strip -->
-      <section class="proof" aria-label="Prism at a glance">
-        <div class="wrap proof-row">
-          <div class="rv"><b>20</b><span class="mono">Stations running in robotics labs</span></div>
-          <div class="rv rv-d1"><b>3D</b><span class="mono">Reads the room from overhead cameras</span></div>
-          <div class="rv rv-d2"><b>Any</b><span class="mono">Table, bench, wall or page</span></div>
-          <div class="rv rv-d3"><b>0</b><span class="mono">Glasses or headsets to wear</span></div>
-        </div>
-      </section>
-
-      <!-- 3 · the thesis -->
+      <!-- 2 · the thesis -->
       <section class="sec manifesto" id="overview" aria-label="Why Prism">
         <div class="wrap">
-          <p class="eyebrow">Why we built it</p>
           <p data-manifesto data-highlight="room,everyone">For ten years the future of computing has been something you wear. We think it belongs in the room, on the surfaces and objects you already use, where everyone at the table can see it.</p>
         </div>
       </section>
@@ -85,21 +60,18 @@
           </div>
           <div class="steps">
             <article class="step rv">
-              <div class="frame"><video data-auto muted loop playsinline preload="none" poster="/media/scene-scan.jpg" aria-label="A room scan with three-dimensional edges"><source src="/media/scene-scan.mp4" type="video/mp4" /></video><span class="shade"></span><span class="tag">Live room scan</span></div>
-              <p class="num" style="margin-top: 26px">01 · Sees</p>
-              <h3 style="margin-top: 12px">Cameras read the room in 3D.</h3>
+              <div class="frame"><video data-auto muted loop playsinline preload="none" poster="/media/scene-scan.jpg" aria-label="A room scan with three-dimensional edges"><source src="/media/scene-scan.mp4" type="video/mp4" /></video><span class="shade"></span></div>
+              <h3 style="margin-top: 26px">Cameras read the room in 3D.</h3>
               <p>Depth and color from above map every table, wall and object in reach.</p>
             </article>
             <article class="step rv rv-d1">
-              <div class="frame"><video data-auto muted loop playsinline preload="none" poster="/media/room-seg.jpg" aria-label="Objects in a room outlined with three-dimensional boxes"><source src="/media/room-seg.mp4" type="video/mp4" /></video><span class="shade"></span><span class="tag">Objects found</span></div>
-              <p class="num" style="margin-top: 26px">02 · Understands</p>
-              <h3 style="margin-top: 12px">It knows what is where.</h3>
+              <div class="frame"><video data-auto muted loop playsinline preload="none" poster="/media/room-seg.jpg" aria-label="Objects in a room outlined with three-dimensional boxes"><source src="/media/room-seg.mp4" type="video/mp4" /></video><span class="shade"></span></div>
+              <h3 style="margin-top: 26px">It knows what is where.</h3>
               <p>Surfaces, objects, people and hands, tracked as the scene moves.</p>
             </article>
             <article class="step rv rv-d2">
-              <div class="frame"><video data-auto muted loop playsinline preload="none" poster="/media/brand-film/drawing.jpg" aria-label="Light drawn on a table follows a hand"><source src="/media/brand-film/drawing.mp4" type="video/mp4" /></video><span class="shade"></span><span class="tag">Projected</span></div>
-              <p class="num" style="margin-top: 26px">03 · Responds</p>
-              <h3 style="margin-top: 12px">Light lands on the work.</h3>
+              <div class="frame"><video data-auto muted loop playsinline preload="none" poster="/media/brand-film/drawing.jpg" aria-label="Light drawn on a table follows a hand"><source src="/media/brand-film/drawing.mp4" type="video/mp4" /></video><span class="shade"></span></div>
+              <h3 style="margin-top: 26px">Light lands on the work.</h3>
               <p>Guidance, measurements and controls appear right where your hands are.</p>
             </article>
           </div>
@@ -109,9 +81,8 @@
       <!-- 5 · piano -->
       <section class="sec" id="piano" aria-labelledby="piano-title" style="padding-top: 0">
         <div class="wrap split">
-          <div class="frame rv"><video data-auto muted loop playsinline preload="none" poster="/site/prism-vision/media/piano-guidance-full.jpg" aria-label="Green projected notes guide a player along the keys of a physical keyboard"><source src="/site/prism-vision/media/piano-guidance-full.mp4" type="video/mp4" /></video><span class="shade"></span><span class="tag">Piano guidance</span></div>
+          <div class="frame rv"><video data-auto muted loop playsinline preload="none" poster="/site/prism-vision/media/piano-guidance-full.jpg" aria-label="Green projected notes guide a player along the keys of a physical keyboard"><source src="/site/prism-vision/media/piano-guidance-full.mp4" type="video/mp4" /></video><span class="shade"></span></div>
           <div>
-            <p class="eyebrow rv">Piano guidance</p>
             <h2 class="rv rv-d1" id="piano-title">Follow the light.<br />Play the next note.</h2>
             <p class="lede rv rv-d2" style="margin-top: 28px"><strong>Guidance on the keys.</strong> Projected notes show where to place your hands.</p>
           </div>
@@ -142,9 +113,8 @@
       <!-- 7 · guidance + measurement, side by side -->
       <section class="sec" id="guidance" aria-labelledby="guidance-title" style="padding-top: 0">
         <div class="wrap split">
-          <div class="frame rv"><video data-auto muted loop playsinline preload="none" poster="/media/registered-guidance.jpg" aria-label="Projected guidance explains long division on a notebook"><source src="/media/registered-guidance.mp4" type="video/mp4" /></video><span class="shade"></span><span class="tag">Projected guidance</span></div>
+          <div class="frame rv"><video data-auto muted loop playsinline preload="none" poster="/media/registered-guidance.jpg" aria-label="Projected guidance explains long division on a notebook"><source src="/media/registered-guidance.mp4" type="video/mp4" /></video><span class="shade"></span></div>
           <div>
-            <p class="eyebrow rv">Projected guidance</p>
             <h2 class="rv rv-d1" id="guidance-title">Intelligent light<br />over the work.</h2>
             <p class="lede rv rv-d2" style="margin-top: 28px"><strong>A quiet guide that helps you find the part, make the move, and keep going.</strong> Prism sees the bench, follows the task, and points to what comes next.</p>
           </div>
@@ -152,9 +122,8 @@
       </section>
       <section class="sec" id="measurement" aria-labelledby="measurement-title" style="padding-top: 0">
         <div class="wrap split">
-          <div style="order: 2" class="frame rv"><video data-auto muted loop playsinline preload="none" poster="/media/object-measurement.jpg" aria-label="Prism projects dimension boxes around objects on a table"><source src="/media/object-measurement.mp4" type="video/mp4" /></video><span class="shade"></span><span class="tag">What Prism sees</span></div>
+          <div style="order: 2" class="frame rv"><video data-auto muted loop playsinline preload="none" poster="/media/object-measurement.jpg" aria-label="Prism projects dimension boxes around objects on a table"><source src="/media/object-measurement.mp4" type="video/mp4" /></video><span class="shade"></span></div>
           <div>
-            <p class="eyebrow rv">What Prism sees</p>
             <h2 class="rv rv-d1" id="measurement-title">Measure<br />the thing itself.</h2>
             <p class="lede rv rv-d2" style="margin-top: 28px"><strong>The bench becomes the interface.</strong> Set something down and its size appears around it. The work stays in your hands.</p>
           </div>
@@ -171,11 +140,11 @@
           <div class="lines">
             <a class="line-card rv" href="https://forms.gle/rVGYU4TRfpJBHDjH6" target="_blank" rel="noopener noreferrer">
               <video data-auto muted loop playsinline preload="none" poster="/media/hero-workbench.jpg" aria-hidden="true"><source src="/media/hero-workbench.mp4" type="video/mp4" /></video>
-              <div><p class="eyebrow">Prism</p><h3>AI that helps IRL.</h3><p>Guidance, games and tools on any table. No glasses. No headset.</p><span class="btn btn-primary btn-sm">Pre-order Prism</span></div>
+              <div><h3>Prism</h3><p>Guidance, games and tools on any table. No glasses. No headset.</p><span class="btn btn-primary btn-sm">Pre-order Prism</span></div>
             </a>
             <a class="line-card rv rv-d1" href="/robotics-vision">
               <video data-auto muted loop playsinline preload="none" poster="/site/robotics-vision/test-condition-full.jpg" aria-hidden="true"><source src="/site/robotics-vision/test-condition-full.mp4" type="video/mp4" /></video>
-              <div><p class="eyebrow">Prism Robotics</p><h3>Evals for Physical AI.</h3><p>Project every test condition and verify it before the robot moves. Running on 20 stations today.</p><span class="btn btn-ghost btn-sm">Explore Robotics <span aria-hidden="true">↗</span></span></div>
+              <div><h3>Prism Robotics</h3><p>Evals for physical AI. Project every test condition and verify it before the robot moves. Running on 20 stations today.</p><span class="btn btn-ghost btn-sm">Explore Robotics <span aria-hidden="true">↗</span></span></div>
             </a>
           </div>
         </div>
@@ -185,7 +154,7 @@
       <section class="chapter" id="perception" aria-labelledby="perception-title">
         <video data-auto muted loop playsinline preload="none" poster="/media/rooms-grid.jpg" aria-label="Many rooms scanned into three-dimensional models"><source src="/media/rooms-grid.mp4" type="video/mp4" /></video>
         <div class="wrap">
-          <div><p class="eyebrow">Spatial understanding · Where we're going</p><h2 class="rv" id="perception-title">The whole room<br />becomes context.</h2></div>
+          <div><h2 class="rv" id="perception-title">The whole room<br />becomes context.</h2></div>
           <p class="lede rv rv-d1">Projected intelligence for physical work. No glasses. No headset. Today the table, next the room.</p>
         </div>
       </section>
@@ -193,12 +162,10 @@
       <!-- 10 · company -->
       <section class="sec founders" id="company" aria-labelledby="founders-title">
         <div class="wrap split wide">
-          <figure class="frame rv" style="margin: 0"><img src="/site/assets/media/founders.jpg" width="2130" height="1600" alt="The two founders, one holding a handwritten The Light Company sign, with their hardware behind them." loading="lazy" /></figure>
+          <h2 class="rv" id="founders-title">Designed and built<br />in San Francisco.</h2>
           <div>
-            <p class="eyebrow rv">The Light Company</p>
-            <h2 class="rv rv-d1" id="founders-title">Two founders.<br />One little lamp.</h2>
-            <p class="lede rv rv-d2" style="margin-top: 28px">Prism is designed and built by hand in San Francisco. Real hardware, real tables, real labs.</p>
-            <p class="rv rv-d3" style="margin-top: 32px"><a class="link" href="mailto:hi@lightcompany.ai?subject=Light%20Company">Talk to the founders <span aria-hidden="true">↗</span></a></p>
+            <p class="lede rv rv-d1">Real hardware, real tables, real labs.</p>
+            <p class="rv rv-d2" style="margin-top: 28px"><a class="link" href="/contact">Talk to the founders <span aria-hidden="true">→</span></a></p>
           </div>
         </div>
       </section>
@@ -207,11 +174,11 @@
       <section class="sec closing" aria-labelledby="get-prism-title">
         <div class="wrap">
           <div class="mark-wrap"><img class="mark" src="/site/assets/brand/light-company-mark-inverse.svg" alt="The Light Company" /></div>
-          <h2 id="get-prism-title" class="rv">AI that helps IRL.</h2>
-          <p class="lede rv rv-d1">The bench becomes the interface. The work stays in your hands.</p>
+          <h2 id="get-prism-title" class="rv">Put Prism on your table.</h2>
+          <p class="lede rv rv-d1">Projected guidance for any table, bench or wall.</p>
           <div class="hero-actions rv rv-d2">
             <a class="btn btn-primary" href="https://forms.gle/rVGYU4TRfpJBHDjH6" target="_blank" rel="noopener noreferrer">Pre-order Prism</a>
-            <a class="btn btn-ghost" href="mailto:hi@lightcompany.ai?subject=Light%20Company%20Demo">Book a demo</a>
+            <a class="btn btn-ghost" href="/order">Book a demo</a>
           </div>
         </div>
       </section>
@@ -223,10 +190,10 @@
 
     <footer class="footer company-footer"><div class="wrap">
   <div class="footer-grid">
-    <div><a class="brand" href="/"><img class="no-invert" src="/site/assets/brand/light-company-mark-inverse.svg" alt="" width="30" height="24" />The Light Company</a><p class="footer-tag">Give the physical world<br />a memory.</p><a class="link" href="mailto:hi@lightcompany.ai">hi@lightcompany.ai</a></div>
-    <div><h4>Prism</h4><ul><li><a href="/prism-robotics">Prism Robotics</a></li><li><a href="/prism-robotics/how-it-works">How it works</a></li><li><a href="/prism-robotics/scene-history">Scene history</a></li><li><a href="/benchmarks">Benchmarks</a></li><li><a href="/prism">Prism IRL</a></li><li><a href="/order">Get a station</a></li></ul></div>
+    <div><a class="brand" href="/"><img class="no-invert" src="/site/assets/brand/light-company-mark-inverse.svg" alt="" width="30" height="24" />The Light Company</a><p class="footer-tag">The full evaluation workflow.<br />One platform.</p><a class="link" href="mailto:hi@lightcompany.ai">hi@lightcompany.ai</a></div>
+    <div><h4>Prism</h4><ul><li><a href="/prism-robotics">Prism Robotics</a></li><li><a href="/prism-robotics/how-it-works">How it works</a></li><li><a href="/prism-robotics/scene-history">Scene history</a></li><li><a href="/benchmarks/">Benchmarks</a></li><li><a href="/prism">Prism IRL</a></li><li><a href="/order">Get a station</a></li></ul></div>
     <div><h4>Explore</h4><ul><li><a href="/resources">Evaluation guides</a></li><li><a href="/gallery">Lab films</a></li><li><a href="/media/prism-technical-brief.pdf">Technical brief</a></li><li><a href="/llms.txt">AI-readable overview</a></li><li><a href="https://prism.lightcompany.ai">Sign in</a></li></ul></div>
-    <div><h4>Company</h4><ul><li><a href="/company">Our purpose</a></li><li><a href="/robotics/investors">Investors</a></li><li><a href="/careers">Careers</a></li><li><a href="/contact">Contact</a></li><li><a href="/trust">Security & trust</a></li></ul></div>
+    <div><h4>Company</h4><ul><li><a href="/robotics/investors">Investors</a></li><li><a href="/careers">Careers</a></li><li><a href="/contact">Contact</a></li><li><a href="/trust">Security & trust</a></li></ul></div>
     <div><h4>Information</h4><ul><li><a href="/terms">Terms of service</a></li><li><a href="/privacy">Privacy</a></li><li><a href="/cookies">Cookies & storage</a></li><li><a href="/accessibility">Accessibility</a></li></ul></div>
   </div>
   <div class="footer-logo" aria-hidden="true"><canvas class="footer-ascii" data-logo="/site/assets/brand/light-company-logo-full.svg"></canvas></div>

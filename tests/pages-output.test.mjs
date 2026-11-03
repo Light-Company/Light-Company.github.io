@@ -62,7 +62,7 @@ test("publishes the approved layouts at the canonical addresses with working cor
   const prism = await readFile(new URL("prism/index.html", outputRoot), "utf8");
   // Robotics is the main page; /robotics stays as an alias and Prism IRL lives at /prism.
   assert.equal(home, robotics);
-  assert.match(home, /The evaluation platform for physical AI/);
+  assert.match(home, /Robot evaluation,<br \/>from setup to results\./);
   assert.match(home, /class="corner-peel-link" href="\/prism"/);
   assert.match(home, /robotics-hero-lab.mp4/);
   assert.match(home, /<link rel="canonical" href="https:\/\/lightcompany.ai\/"/);

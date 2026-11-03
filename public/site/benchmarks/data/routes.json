@@ -1,0 +1,20 @@
+{
+  "benchmarks": [
+    "tabletop-6",
+    "primitives-5",
+    "deskbench",
+    "rackops-tier-1",
+    "procedure-12",
+    "harmcheck",
+    "spoofcam",
+    "cost-per-success",
+    "clock-time",
+    "thermal-load",
+    "consistency-3",
+    "self-stop",
+    "long-horizon",
+    "scene-shift",
+    "embodiment-transfer",
+    "mobile-manipulation"
+  ]
+}
