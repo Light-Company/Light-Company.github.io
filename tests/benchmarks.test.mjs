@@ -1,63 +1,69 @@
 import assert from "node:assert/strict";
-import { access, readFile } from "node:fs/promises";
+import { access, readFile, readdir } from "node:fs/promises";
 import test from "node:test";
-import { benchmark, rankModels, summarize, sweeps, wilsonInterval, exampleRecords } from "../public/site/benchmarks/data.mjs";
 
-test("benchmark completion is calculated from valid counts and preserves missing evidence", () => {
-  assert.deepEqual(summarize(benchmark.models[0]), { completed: 52, trials: 60, score: 52 / 60 * 100 });
-  assert.equal(summarize({ results: { a: [1, 2], b: [9, 10] } }).score, 10 / 12 * 100);
-  assert.equal(summarize({ results: { a: [0, 0] } }).score, null);
-  assert.equal(summarize({ results: { a: [0, 2] } }).score, 0);
-  assert.throws(() => summarize({ results: { a: [3, 2] } }), RangeError);
-  assert.throws(() => summarize(benchmark.models[0], "unknown"), RangeError);
-  const tied = rankModels("placement");
-  assert.equal(tied[0].score, tied[1].score);
-  assert.equal(rankModels()[0].id, "gemini");
+const root = new URL("../.pages-dist/", import.meta.url);
+const read = (path) => readFile(new URL(path, root), "utf8");
+const exists = (url) => access(url).then(() => true, () => false);
+const routesUrl = new URL("../public/site/benchmarks/data/routes.json", import.meta.url);
+const benchmarkIds = async () => JSON.parse(await readFile(routesUrl, "utf8")).benchmarks;
+
+test("the vault opens with the right password and refuses a wrong one", async () => {
+  const { sealVault, openVault } = await import("../public/site/benchmarks/assets/vault.mjs");
+  const data = { benchmarks: [{ id: "tabletop-6", scores: [{ model: "m", score: 59.3 }] }] };
+  const envelope = await sealVault(data, "correct horse");
+  assert.deepEqual(await openVault(envelope, "correct horse"), data);
+  await assert.rejects(openVault(envelope, "wrong"));
+  assert.doesNotMatch(JSON.stringify(envelope), /tabletop-6|59\.3/);
 });
 
-test("illustrative sweeps keep untested cells separate from failed trials", () => {
-  assert.equal(benchmark.status, "illustrative");
-  for (const sweep of Object.values(sweeps)) {
-    assert.equal(sweep.values.length, 30);
-    assert.ok(sweep.values.includes(null));
-    assert.ok(sweep.values.every((value) => value === null || Number.isInteger(value) && value >= 0 && value <= 12));
+test("the published data is only the encrypted envelope plus the list of page ids", async () => {
+  assert.equal(await exists(new URL("../public/site/benchmarks/data/index.json", import.meta.url)), false);
+  const envelope = JSON.parse(await read("site/benchmarks/data/index.enc.json"));
+  assert.equal(envelope.kdf, "PBKDF2-SHA256");
+  assert.equal(envelope.cipher, "AES-GCM");
+  assert.ok(envelope.iter >= 100000 && envelope.salt && envelope.iv && envelope.ct);
+  const dir = new URL("site/benchmarks/", root);
+  for (const entry of await readdir(dir, { recursive: true })) {
+    if (!/\.(json|js|mjs|html)$/.test(entry) || entry.endsWith("index.enc.json")) continue;
+    assert.doesNotMatch(await readFile(new URL(entry, dir), "utf8"), /"scores"\s*:\s*\[/, entry);
   }
+  const ids = await benchmarkIds();
+  assert.ok(ids.length >= 10 && !ids.includes("all"));
 });
 
-test("both publishing paths include the benchmark page, assets and honest preview labels", async () => {
-  const root = new URL("../.pages-dist/", import.meta.url);
-  const html = await readFile(new URL("benchmarks/index.html", root), "utf8");
-  assert.match(html, /Illustrative preview/);
-  assert.match(html, /not measured results/);
-  assert.match(html, /name="robots" content="noindex, follow"/);
-  assert.match(html, /Abstract/);
-  for (const path of new Set([...html.matchAll(/(?:src|href)="(\/site\/[^"?#]+)/g)].map((m) => m[1]))) await access(new URL(path.slice(1), root));
-  for (const route of ["index.html", "prism/index.html"]) {
-    assert.match(await readFile(new URL(route, root), "utf8"), /data-benchmark-open aria-haspopup="dialog"/);
+test("every benchmark page reads the vault and loads assets that exist", async () => {
+  const ids = await benchmarkIds();
+  for (const page of ["benchmarks/index.html", "benchmarks/all/index.html", ...ids.map((id) => `benchmarks/${id}/index.html`)]) {
+    const html = await read(page);
+    assert.match(html, /vault:'\/site\/benchmarks\/data\/index\.enc\.json'/, page);
+    assert.doesNotMatch(html, /noindex/, page);
+    for (const [, path] of html.matchAll(/(?:src|href)="(\/site\/[^"?#]+)/g)) await access(new URL(path.slice(1), root));
   }
-  assert.match(await readFile(new URL("../app/benchmarks/route.ts", import.meta.url), "utf8"), /site\/benchmarks.html\?raw/);
-  const ids = [...html.matchAll(/\bid="([^"]+)"/g)].map((m) => m[1]);
-  assert.equal(ids.length, new Set(ids).size);
-  for (const [, id] of html.matchAll(/href="#([^"]+)"/g)) assert.ok(ids.includes(id), id);
+  assert.match(await read("benchmarks/index.html"), /data-page="home"/);
+  assert.match(await read("benchmarks/all/index.html"), /data-page="benchmarks"/);
+  assert.match(await read(`benchmarks/${ids[0]}/index.html`), /data-page="benchmark"/);
+  const css = await read("site/benchmarks/assets/styles.css");
+  for (const [, font] of css.matchAll(/url\((fonts\/[^)]+)\)/g)) await access(new URL(`site/benchmarks/assets/${font}`, root));
 });
 
+test("the benchmark app links only to pages that still exist and offers no plaintext download", async () => {
+  const app = await read("site/benchmarks/assets/app.js");
+  assert.doesNotMatch(app, /\/company['"`]/);
+  assert.doesNotMatch(app, /download="physical-ai-index\.json"/);
+});
 
-test("Arena uncertainty and synthetic records preserve the displayed denominators", () => {
-  assert.equal(wilsonInterval(0, 0), null);
-  assert.throws(() => wilsonInterval(4, 3), RangeError);
-  assert.ok(wilsonInterval(0, 20)[1] > 0);
-  assert.ok(wilsonInterval(20, 20)[0] < 100);
-  const [low, high] = wilsonInterval(52, 60);
-  assert.ok(low > 75 && low < 76 && high > 93 && high < 94);
-  for (const model of benchmark.models) {
-    const records = exampleRecords(model);
-    assert.equal(records.length, summarize(model).trials);
-    assert.equal(new Set(records.map(r => r.id)).size, records.length);
-    for (const task of benchmark.tasks.filter(t => t.id !== "all")) {
-      const selected = records.filter(r => r.task === task.id);
-      assert.equal(selected.filter(r => r.outcome === "completed").length, model.results[task.id][0]);
-      assert.equal(selected.length, model.results[task.id][1]);
-    }
-    assert.ok(records.every(r => r.status === "illustrative" && r.setupVerified === null && r.recording === null));
+test("benchmark pages render at 75% on desktop while the site footer stays full size", async () => {
+  const css = await read("site/benchmarks/assets/styles.css");
+  assert.match(css, /@media \(min-width:761px\)\{html\{zoom:\.75\}\.company-footer\{zoom:1\.3333\}\}/);
+  assert.match(await read("site/benchmarks/assets/app.js"), /clientWidth \/ zoom/);
+});
+
+test("the home pages reach the index through the nav link alone, with no popup", async () => {
+  assert.equal(await exists(new URL("../public/site/benchmarks/benchmarks.js", import.meta.url)), false);
+  for (const page of ["index.html", "prism/index.html"]) {
+    const html = await read(page);
+    assert.doesNotMatch(html, /benchmarks\/benchmarks\.(js|css)|data-benchmark-open/, page);
+    assert.match(html, /<nav class="nav-links" aria-label="Primary"><a href="\/benchmarks\/"/, page);
   }
 });

@@ -9,14 +9,14 @@ Read freely, follow public links, summarize with source URLs, compare ideas and 
 - /prism-robotics/how-it-works: workflow and physical limits.
 - /prism: Prism IRL, projected interfaces on everyday surfaces.
 - /resources: educational guides, films and the company-authored technical brief.
-- /company, /careers, /contact, /robotics/investors: company information and inquiry paths.
+- /careers, /contact, /robotics/investors: company information and inquiry paths.
 - /terms, /privacy, /cookies, /trust, /accessibility: public website policies and boundaries.
 - /llms.txt and /llms-full.txt: concise and extended reading versions.
 
 ## Interpret evidence faithfully
 The scene-history page is an interactive product walkthrough with example data. Its browser controls change the example diagram. Prism supports scene records and repeatable evaluation workflows; physical replay still involves staging and checking the actual objects.
 
-The benchmark workspace uses illustrative scores. Do not report a model winner, cite the example numbers as measurements, or infer a vendor partnership from a logo. A film, an operational estimate and an independently verified experiment are different sources of evidence.
+/benchmarks is the Physical AI Index: model scores across sixteen Prism benchmarks, one page per benchmark. The pages are password protected. A model logo identifies the model tested; it does not imply a vendor partnership. A film, an operational estimate and an independently verified experiment are different sources of evidence.
 
 Projected guidance does not itself prove a scene is correct. Physical verification depends on calibration, visibility, task tolerance and what the system can observe. Deformable objects, lighting and robot state require additional consideration.
 
@@ -26,4 +26,4 @@ Public navigation and downloads are available without an account. Contact links 
 Ask for the person's authorization before submitting their information or sending a message. Never infer authority to move hardware, access private recordings, alter permissions or purchase a station from this website.
 
 For factual corrections or questions: hi@lightcompany.ai.
-Updated 2026-11-01.
+Updated 2026-11-03.

@@ -1,6 +1,7 @@
-import benchmarkHtml from "../../site/benchmarks.html?raw";
+import html from "../../site/benchmarks.html?raw";
+import { withSiteChrome } from "../../lib/company-site.mjs";
 import { htmlResponse } from "../html-response";
 
 export function GET() {
-  return htmlResponse(benchmarkHtml);
+  return htmlResponse(withSiteChrome(html, "/benchmarks/"));
 }

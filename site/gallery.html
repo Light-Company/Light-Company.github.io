@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <meta name="theme-color" content="#ffffff" />
+    <meta name="theme-color" content="#08090a" />
     <meta name="author" content="The Light Company" />
     <meta name="description" content="Watch The Light Company's projected intelligence and Prism robotics systems operate in live workspaces, labs, and physical AI evaluation cells." />
     <title>Projected Intelligence Gallery | The Light Company</title>
@@ -18,16 +18,17 @@
     <meta name="twitter:title" content="Projected Intelligence Gallery | The Light Company" />
     <meta name="twitter:description" content="Watch projected intelligence and Prism robotics systems operate in live workspaces and physical AI evaluation cells." />
     <meta name="twitter:image" content="https://lightcompany.ai/og.png" />
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@500;600;700&display=swap" />
+    <link rel="icon" href="/site/assets/brand/light-company-mark.svg" type="image/svg+xml" />
+    <link rel="preload" href="/site/assets/fonts/Satoshi-700.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/site/assets/fonts/inter-variable.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="/site/lc/lc.css" />
+    <link rel="stylesheet" href="/site/company/company.css" />
     <link rel="stylesheet" href="/site/gallery/gallery.css" />
     <link rel="preconnect" href="https://www.youtube-nocookie.com" />
     <link rel="preconnect" href="https://www.youtube.com" />
     <link rel="preconnect" href="https://i.ytimg.com" crossorigin />
+    <script src="/site/lc/lc.js" defer></script>
     <script src="/site/gallery/gallery.js" defer></script>
-    <script src="/site/assets/gmail-compose.js" defer></script>
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -54,62 +55,34 @@
       }
     </script>
   </head>
-  <body>
-    <a class="skip-link" href="#films">Skip to the films</a>
+  <body class="company-page gallery-page" id="top">
+    <a class="skip-link" href="#main">Skip to content</a><header class="nav is-solid"><div class="wrap nav-inner">
+    <a class="brand" href="/" aria-label="The Light Company home"><img class="no-invert" src="/site/assets/brand/light-company-mark-inverse.svg" alt="" width="30" height="24" />The Light Company</a>
+    <nav class="nav-links" aria-label="Primary"><a href="/benchmarks/">Benchmarks</a><a href="/prism-robotics">Prism Robotics</a><a href="/robotics/investors">Investors</a><a href="/prism">Prism IRL</a></nav>
+    <div class="nav-cta"><a class="btn btn-ghost btn-sm" href="https://prism.lightcompany.ai">Sign in</a><a class="btn btn-primary btn-sm" href="/order">Book a demo</a></div><button class="nav-toggle" aria-label="Menu" aria-expanded="false"><span></span></button>
+  </div></header>
 
-    <header class="topbar" aria-label="Main navigation">
-      <div class="topbar-start">
-      <a class="topbar-mark" href="/" aria-label="The Light Company home">
-          <img src="/site/assets/brand/light-company-mark.svg" alt="" />
-          <span>Prism</span>
-        </a>
-      <nav class="topbar-links" aria-label="Primary">
-          <a aria-current="page" href="/gallery">Gallery</a>
-          <a href="/robotics">Robotics</a>
-          <a href="mailto:hi@lightcompany.ai?subject=Light%20Company%20Investor">Investors</a>
-        </nav>
+    <main id="main">
+      <div class="wrap">
+        <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><span aria-current="page">Lab films</span></nav>
+        <header class="editorial-hero"><div class="hero-copy"><h1>Lab films</h1><p class="editorial-intro">Prism running on real robots and real tables.</p></div></header>
+
+        <section class="hero-film" aria-label="Prism, in one film">
+          <div class="hero-film-frame" data-hero-video data-video-id="ebPCIoWpk5Y">
+            <img class="hero-film-poster" data-hero-poster alt="" />
+            <div class="hero-film-player" data-hero-player></div>
+            <button class="hero-film-play" type="button" data-hero-play aria-label="Play the Prism film">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor" /></svg>
+            </button>
+          </div>
+        </section>
+
+        <section class="gallery-shell" id="films" aria-labelledby="films-title">
+          <h2 id="films-title" class="sr-only">Gallery</h2>
+          <div class="grid" data-gallery-grid aria-live="polite"></div>
+          <p class="gallery-error" data-gallery-error hidden>The archive could not load. Refresh this page to try again.</p>
+        </section>
       </div>
-      <div class="topbar-end">
-        <a class="signin" href="https://prism.lightcompany.ai">
-          <span class="signin-label">Enterprise sign in</span>
-          <svg class="signin-arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5" /></svg>
-        </a>
-        <a class="topbar-wordmark" href="/">
-          <span>The Light Company</span>
-          <span class="topbar-locale">San Francisco, CA</span>
-        </a>
-      </div>
-    </header>
-
-    <main>
-      <section class="hero-film" aria-label="Prism, in one film">
-        <div class="hero-film-frame" data-hero-video data-video-id="ebPCIoWpk5Y">
-          <img class="hero-film-poster" data-hero-poster alt="" />
-          <div class="hero-film-player" data-hero-player></div>
-          <button class="hero-film-play" type="button" data-hero-play aria-label="Play the Prism film">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor" /></svg>
-          </button>
-        </div>
-        <div class="hero-actions">
-          <a class="hero-btn hero-btn-primary" data-preorder href="https://forms.gle/rVGYU4TRfpJBHDjH6" target="_blank" rel="noopener">Preorder for $250</a>
-          <a class="hero-btn hero-btn-ghost" href="#contact">Get in touch</a>
-        </div>
-      </section>
-
-      <section class="gallery-shell" id="films" aria-labelledby="films-title">
-        <h2 id="films-title" class="visually-hidden">Gallery</h2>
-        <div class="grid" data-gallery-grid aria-live="polite"></div>
-        <p class="gallery-error" data-gallery-error hidden>The archive could not load. Refresh this page to try again.</p>
-      </section>
-
-      <section class="gallery-end" id="contact">
-        <svg viewBox="128 124 225 183" aria-hidden="true">
-          <path d="M264.268 192.995 233.422 135.867c-1.729-3.266-6.295-3.266-8.023 0l-83.688 152.441c-1.729 3.266.545 7.18 4.012 7.18h157.375c3.467 0 5.74-3.914 4.012-7.18l-17.283-34.566c-1.729-3.266-6.295-3.266-8.023 0" />
-        </svg>
-        <p>Bring intelligence into the room.</p>
-        <a href="mailto:hi@lightcompany.ai?subject=Light%20Company%20Demo">Call or email</a>
-        <a href="/privacy">Privacy</a>
-      </section>
     </main>
 
     <div class="lightbox" data-lightbox hidden>
@@ -126,5 +99,7 @@
         <p class="lightbox-title" data-lightbox-title></p>
       </div>
     </div>
+
+    <footer class="footer company-footer"></footer>
   </body>
 </html>

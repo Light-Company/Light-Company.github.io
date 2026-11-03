@@ -1,65 +1,33 @@
 <!doctype html>
-<html lang="en" class="arena-document">
+<html lang="en">
 <head>
-<meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Prism Benchmarks · Physical AI Leaderboard</title>
-<meta name="description" content="Compare models across controlled physical tasks. Explore completion rates, task breakdowns, uncertainty, and capability maps in the Prism benchmark workspace." />
-<meta name="robots" content="noindex, follow" /><link rel="canonical" href="https://lightcompany.ai/benchmarks" />
-<meta property="og:title" content="Prism Benchmarks · Physical AI Leaderboard" /><meta property="og:description" content="An interactive benchmark workspace. Current scores and records are illustrative sample data." />
-<link rel="icon" href="/site/assets/brand/light-company-mark.svg" type="image/svg+xml" />
-<link rel="stylesheet" href="/site/lc/lc.css" /><link rel="stylesheet" href="/site/benchmarks/benchmarks.css?v=20261101b" /><link rel="stylesheet" href="/site/benchmarks/arena.css?v=cohesion1" />
-<script type="module" src="/site/benchmarks/benchmarks.js?v=20261101b"></script><script type="module" src="/site/benchmarks/arena.js?v=cohesion1"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Physical AI Index · Prism Benchmarks · The Light Company</title>
+<meta name="description" content="The most accurate benchmark for physical AI. Every model tested on real robots under the same controlled conditions.">
+<link rel="canonical" href="https://lightcompany.ai/benchmarks/">
+<meta property="og:title" content="Physical AI Index · Prism Benchmarks · The Light Company">
+<meta property="og:description" content="The most accurate benchmark for physical AI. Every model tested on real robots under the same controlled conditions.">
+<link rel="icon" href="/site/assets/brand/light-company-mark.svg" type="image/svg+xml">
+<meta name="theme-color" content="#f6f5f1">
+<script>try{document.documentElement.dataset.theme=localStorage.getItem("pai-theme")||"light"}catch(e){document.documentElement.dataset.theme="light"}</script>
+<script>window.PAI={lc:'',vault:'/site/benchmarks/data/index.enc.json',base:'/site/benchmarks/',home:'/benchmarks/',list:'/benchmarks/all/',bench:function(id){return '/benchmarks/'+encodeURIComponent(id)+'/'},idFromPath:function(){var p=location.pathname.split('/').filter(Boolean);return p[0]==='benchmarks'&&p[1]&&p[1]!=='all'?decodeURIComponent(p[1]):''}};</script>
+<link rel="preload" href="/site/benchmarks/assets/fonts/Satoshi-700.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/site/benchmarks/assets/fonts/inter-variable.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/site/benchmarks/assets/styles.css?v=pai2">
+<link rel="stylesheet" href="/site/lc/footer.css">
 </head>
-<body class="arena-page benchmark-page">
-<a class="skip-link" href="#main">Skip to benchmark</a>
-<header class="arena-topbar">
-  <a class="arena-brand" href="/" aria-label="The Light Company home"><img src="/site/assets/brand/light-company-mark-inverse.svg" width="28" height="28" alt="" /><span>The Light Company</span></a>
-  <span class="arena-location">Benchmarks</span>
-  <nav class="arena-global-nav" aria-label="Company navigation"><a href="/prism-robotics">Prism Robotics</a><a href="/resources">Resources</a><a href="/company">Company</a></nav>
-  <a href="mailto:hi@lightcompany.ai?subject=Prism%20benchmark%20submission" class="arena-button arena-submit">Submit a model <span aria-hidden="true">↗</span></a>
-</header>
-<div class="arena-shell">
-  <div class="arena-viewbar"><nav aria-label="Benchmark views">
-    <button class="arena-nav active" data-view="leaderboard" aria-current="page">Leaderboard</button>
-    <button class="arena-nav" data-view="compare">Compare models</button>
-    <button class="arena-nav" data-view="maps">Capability maps</button>
-    <button class="arena-nav" data-view="trials">Trial records</button>
-    <button class="arena-nav" data-view="method">Methodology</button>
-  </nav><button class="arena-text-button" data-download-results>Download data <span aria-hidden="true">↓</span></button></div>
-  <main id="main" class="arena-main">
-    <div class="arena-intro"><div><h1 id="view-title" tabindex="-1">Physical AI leaderboard</h1><p id="view-description">Compare completion across controlled physical tasks.</p></div>
-      <label class="arena-select-label arena-task-filter" data-task-controls>Task<select id="arena-task"><option value="all">All tasks</option><option value="placement">Pick &amp; place</option><option value="transfer">Transfer</option><option value="recovery">Recovery</option></select></label>
-    </div>
-    <div class="arena-notice"><p><strong>Illustrative preview.</strong> Scores, ranks, intervals, records and maps are sample data, not measured results.</p><button class="arena-text-button" data-view="method">About the data <span aria-hidden="true">↗</span></button></div>
-    <section class="arena-panel" data-panel="leaderboard" aria-label="Leaderboard">
-      <div class="arena-summary"><span><strong>4</strong> model families</span><span><strong id="dataset-tasks">3</strong> <span id="dataset-task-label">task families</span></span><span><strong id="dataset-attempts">240</strong> sample attempts</span><span class="arena-release">Sample release v0.1</span></div>
-      <div class="arena-card arena-rankings"><h2 class="sr-only">Model rankings</h2>
-        <div class="arena-toolbar"><label class="arena-search"><svg class="arena-icon" aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="m21 21-4.34-4.34" /><circle cx="11" cy="11" r="8" /></svg><input id="model-search" type="search" placeholder="Search models" aria-label="Search models or providers" /></label><label class="arena-select-label">Sort<select id="arena-sort"><option value="score">Completion ↓</option><option value="name">Model A–Z</option><option value="trials">Attempts ↓</option></select></label><span class="arena-toolbar-note">Select a model to inspect results</span></div>
-        <div class="arena-table-wrap arena-rankings-scroll" tabindex="0" role="region" aria-label="Model rankings table"><table class="arena-table"><caption class="sr-only">Illustrative model rankings; no real model performance is claimed</caption><thead><tr><th scope="col">Rank</th><th scope="col">Model / provider</th><th scope="col">Completion</th><th scope="col">95% interval <abbr title="Wilson interval calculated from sample counts">ⓘ</abbr></th><th scope="col">Completed</th><th scope="col">Pick &amp; place</th><th scope="col">Transfer</th><th scope="col">Recovery</th><th scope="col"><span class="sr-only">Details</span></th></tr></thead><tbody id="arena-rows"></tbody></table></div>
-        <div class="arena-table-footer"><span id="arena-count" aria-live="polite">4 models</span><span>Ties share a rank · 95% Wilson intervals</span></div>
-      </div>
-      <div class="arena-below-grid">
-        <section class="arena-task-section" aria-labelledby="task-chart-title"><div class="arena-section-heading"><h2 id="task-chart-title">Performance by task</h2><span>Completion · %</span></div><div class="arena-task-chart" id="task-chart"></div></section>
-        <section class="arena-readout"><h2>Compare the same conditions.</h2><p>Inspect task results side by side, then open the attempts behind each score.</p><button class="arena-button" data-view="compare">Compare two models <span aria-hidden="true">→</span></button><details class="arena-context"><summary>How Prism controls the test</summary><p>In real-world robot evaluation, variance from scene setup often exceeds the difference between the policies being compared.</p><p>Prism controls and verifies the initial state of every rollout, so results reflect the policy, not the reset.</p><a href="/prism-robotics/how-it-works">How Prism works <span aria-hidden="true">↗</span></a></details></section>
-      </div>
-    </section>
-    <section class="arena-panel" data-panel="compare" hidden aria-label="Model comparison">
-      <div class="arena-card"><div class="arena-compare-selectors"><label>Model A<select id="compare-a"></select></label><button class="arena-swap" id="swap-models" aria-label="Swap compared models"><svg class="arena-icon" aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m8 3-4 4 4 4M4 7h16m-4 14 4-4-4-4M20 17H4" /></svg></button><label>Model B<select id="compare-b"></select></label></div><div id="comparison-content" aria-live="polite"></div></div>
-      <p class="arena-comparison-note">Difference is measured in percentage points. The sample counts are independent aggregates, not paired rollout observations.</p>
-    </section>
-<section class="arena-panel" data-panel="maps" hidden aria-label="Capability maps"><div class="arena-card"><div class="arena-card-heading"><div><h2>Condition sweep</h2></div><span class="arena-tag">Separate illustrative sweep</span></div><div class="map-controls" role="group" aria-label="Variable to explore"><button aria-pressed="true" data-sweep="position">Position</button><button aria-pressed="false" data-sweep="orientation">Orientation</button><button aria-pressed="false" data-sweep="clutter">Clutter</button><button aria-pressed="false" data-sweep="objects">Objects</button><button aria-pressed="false" data-sweep="lighting">Lighting</button></div><div class="map-layout"><div class="map-frame"><div class="map-frame-head mono"><span id="map-title">Position sweep</span><span>Single example policy</span></div><div id="capability-cells" class="capability-cells" role="group" aria-label="Illustrative capability map"></div><div class="map-axis mono"><span id="map-y">Near to far reach</span><span id="map-x">Object position →</span></div><div class="map-legend"><span>Lower completion</span><i aria-hidden="true"></i><span>Higher completion</span><span class="not-tested">/ Not tested</span></div></div><aside class="map-explanation"><h3 id="sweep-name">Position</h3><p id="sweep-description"></p><div class="cell-readout" aria-live="polite"><span class="mono">Selected condition</span><strong id="cell-name">A1</strong><p id="cell-score"></p></div><p class="map-note">12 sample attempts per tested cell. Untested cells remain empty. These sweeps are separate from the leaderboard and are not attributed to any listed model.</p></aside></div><div class="arena-map-copy">You don’t get one success rate. You get a capability map: where your policy works and where it breaks across the conditions you tested.</div></div></section>
-
-    <section class="arena-panel" data-panel="trials" hidden aria-label="Trial records">
-      <div class="arena-card"><div class="arena-toolbar"><label class="arena-select-label">Model<select id="trial-model"></select></label><label class="arena-select-label">Outcome<select id="trial-outcome"><option value="all">All outcomes</option><option value="completed">Completed</option><option value="failed">Failed</option></select></label><span class="arena-toolbar-note">Synthetic records from sample counts</span></div>
-        <div class="arena-table-wrap arena-trials-scroll" tabindex="0" role="region" aria-label="Trial records table"><table class="arena-table"><thead><tr><th scope="col">Example ID</th><th scope="col">Task</th><th scope="col">Outcome</th><th scope="col">Setup verification</th><th scope="col">Recording</th></tr></thead><tbody id="trial-rows"></tbody></table></div>
-        <div class="arena-pagination"><span id="trial-count" aria-live="polite"></span><div><button id="trial-prev" class="arena-button"><span aria-hidden="true">←</span> Previous</button><button id="trial-next" class="arena-button">Next <span aria-hidden="true">→</span></button></div></div>
-      </div>
-    </section>
-<section class="arena-panel" data-panel="method" hidden aria-label="Methodology"><div class="arena-card arena-protocol"><h2>Controlled physical evaluation</h2><h3>Abstract</h3><p>Physical robot tests can change before a policy takes its first action. Object pose, clutter, lighting, and reset quality all affect the task. An aggregate score can hide those differences. Prism pairs a defined test condition with projected setup guidance and a vision check, then compares policies across matched cases with completion criteria set in advance.</p><p>This workspace demonstrates the reporting format. It does not report a completed study. Provider names and marks identify an example lineup and do not imply participation or endorsement.</p><h3>Evaluation protocol</h3><ol class="arena-protocol-steps"><li><strong>Define the case</strong><span>Record the task, objects, poses, exact policy version, and completion rubric.</span></li><li><strong>Stage and verify</strong><span>Project placement guidance. Verify initial conditions against declared tolerances before accepting a rollout.</span></li><li><strong>Run a matched comparison</strong><span>Use the same cases and action budgets, resetting the scene between attempts.</span></li><li><strong>Score and retain evidence</strong><span>Keep setup rejection separate from task failure. Preserve video, outcome, and scoring rationale.</span></li><li><strong>Change one variable</strong><span>Sweep position, orientation, clutter, object identity, or lighting while holding the other conditions fixed.</span></li></ol><h3>Metrics and ranking</h3><dl class="arena-definitions"><div><dt>Completion</dt><dd>Completed trials divided by valid attempts. The aggregate sums counts, not rounded percentages.</dd></div><div><dt>Rank</dt><dd>Descending completion rate for the selected task. Equal rates share the same rank.</dd></div><div><dt>95% interval</dt><dd>Wilson binomial interval using the displayed sample counts. No claim of statistical superiority is made; repeated or correlated trials require further analysis.</dd></div><div><dt>Missing evidence</dt><dd>Missing model versions, setup records, and recordings remain marked as unavailable. They are never treated as verified.</dd></div></dl><h3>Reporting status</h3><div class="arena-protocol-status"><span>Exact model versions</span><strong>Pending</strong><span>Raw rollout evidence</span><strong>Pending</strong><span>Independent replication</span><strong>Pending</strong><span>Current data</span><strong>Illustrative sample</strong></div></div></section>
-
-    <footer class="arena-footer"><span>Prism Benchmarks · The Light Company</span><button type="button" class="arena-text-button" data-download-results>Download sample data</button><a href="mailto:hi@lightcompany.ai?subject=Prism%20benchmark%20correction">Report a correction <span aria-hidden="true">↗</span></a><a href="/privacy">Privacy</a></footer>
-  </main>
+<body data-page="home">
+<a id="top"></a>
+<a class="skip-link" href="#main">Skip to main content</a>
+<div class="page">
+  <div class="page-guides" aria-hidden="true"><span class="page-guide is-rail-left"></span><span class="page-guide is-content-left"></span><span class="page-guide is-content-right"></span><span class="page-guide is-rail-right"></span></div>
+  <header class="lc-header" id="site-header"></header>
+  <main id="main" tabindex="-1"></main>
+  <footer class="footer company-footer"></footer>
 </div>
-<dialog class="arena-model-dialog" id="model-dialog" aria-labelledby="model-dialog-title"><button class="arena-modal-close" aria-label="Close model details" autofocus><svg class="arena-icon" aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="m18 6-12 12M6 6l12 12" /></svg></button><div id="model-dialog-content"></div></dialog>
+<script src="/site/benchmarks/assets/logos.js?v=pai2"></script>
+<script src="/site/benchmarks/assets/app.js?v=pai2"></script>
+<script src="/site/lc/lc.js" defer></script>
 </body>
 </html>

@@ -1,27 +1,40 @@
-# Prism benchmark release
+# Physical AI Index (/benchmarks)
 
-The October website rebrand is the base. The existing live order and investor routes are retained. `/benchmarks` works through the Vinext route and GitHub Pages export.
+Prism Benchmarks by The Light Company: "The most accurate benchmark for physical AI." This replaced the earlier arena workspace on 2026-11-03.
 
-The navigation button opens a native dialog. The Robotics homepage offers a nonmodal announcement after 6.5 seconds. Dismissal lasts for the browser session; the navigation button remains available. Escape closes the dialog and returns focus. Motion respects the visitor's reduced-motion preference.
+## Routes
 
-## Data status
+| URL | Shell | Page |
+|---|---|---|
+| `/benchmarks/` | `site/benchmarks.html` | Index: hero with the top five, the index chart, our why, news, compare by topic, changelog, test platforms, and the "Stay up to date" outro |
+| `/benchmarks/all/` | `site/benchmarks-all.html` | Standings table (every model × every domain), then each domain's question with one card per benchmark |
+| `/benchmarks/<id>/` | `site/benchmark.html` | One benchmark: its question above the finding headline, four key numbers, the tasks, results chart, why it matters, two attempts side by side, every score, a sidebar with leaders and how it's run |
 
-All benchmark scores, counts, ranks and heatmaps are explicitly illustrative. No Prism run report was supplied for this change. Do not describe these data as a completed experiment, measured performance, or a validated winner.
+`scripts/build-pages.mjs` writes one `/benchmarks/<id>/index.html` per id in `data/routes.json`, all from the same shell, and gives every page the one site footer (`withSiteChrome`). The app reads the id from the path. The Vinext dev routes are `app/benchmarks/route.ts`, `app/benchmarks/all/route.ts` and `app/benchmarks/[id]/route.ts`.
 
-The page is excluded from indexing while it contains illustrative data. The page, modal, announcement, chart and social metadata all describe a preview.
+## Files
 
-## Replacing the example
+- `public/site/benchmarks/assets/app.js`: the app. It renders every page from the data, and contains the charts, pinning, standings, the rail and the outro.
+- `public/site/benchmarks/assets/styles.css`: the newspaper-scale layout. Light paper is the default; there's a dark toggle that is remembered under `pai-theme`. Spacing comes from the `--s1`…`--s9` scale.
+- `public/site/benchmarks/assets/logos.js` and `assets/logos/`: lab marks.
+- `public/site/benchmarks/data/index.enc.json`: all content (models, scores, benchmarks, domains, news, changelog, copy), sealed: gzip, then AES-GCM with a PBKDF2-SHA256 key from the password. The plaintext never enters this public repository.
+- `public/site/benchmarks/data/routes.json`: the list of benchmark ids, so the export can build one page per benchmark without the plaintext.
+- `public/site/benchmarks/assets/vault.mjs`: seal and open the envelope, in the browser and in Node. The page asks for the password once; the derived key is kept under `pai-key` in local storage, so every other benchmark page opens directly. A new seal (new salt) asks again.
+- The footer is the site footer from `lib/company-site.mjs` (`companyFooter`), styled by `public/site/lc/footer.css` and animated by `/site/lc/lc.js`. The app renders no footer of its own.
+- Desktop (761px and wider) renders at `zoom: .75`; the footer is counter-zoomed so it matches every other page. `geometry()` divides the zoom out of `--vw`.
+- Each shell sets `window.PAI` (route builders and the asset base). Without it, the app uses relative files. This is how the standalone preview in `~/src/lc-physical-ai-index` runs.
 
-1. Supply the exact model versions, runtime settings, hardware, tasks, rubric, reset acceptance criteria, and action budgets.
-2. Supply trial records and the policy for setup rejections, timeouts, faults and exclusions. Keep missing evidence separate from failure.
-3. Replace `public/site/benchmarks/data.mjs`, the workspace copy and the abstract using the verified report. The map is a separate dataset; do not derive it from the aggregate score.
-4. Add uncertainty and replication information before describing a model as a clear winner.
-5. Update the preview notices, share metadata and indexing policy only after those checks. Reset the announcement session key for the verified release.
+## Updating the data
 
-Model icons: Lobe Icons, MIT license, https://github.com/lobehub/lobe-icons . Marks identify the example lineup; no affiliation or endorsement is implied.
+The data is generated in the standalone project:
 
-## Arena workspace
+1. In `~/src/lc-physical-ai-index`, run `python3 tools/build_data.py`. It validates the copy and score rules.
+2. Seal it into this repo: `PAI_PASSWORD=<password> node scripts/encrypt-benchmarks.mjs ~/src/lc-physical-ai-index/data/index.json`. This writes `index.enc.json` and `routes.json` and checks the round trip. Never commit `index.json` here.
+3. If you changed the app, copy `assets/app.js`, `assets/styles.css` and `assets/logos.js` too, and bump the `?v=` in the three shells.
+4. Run `npm test`. `tests/benchmarks.test.mjs` checks that the vault opens only with the right password, that no plaintext scores ship, that every page reads the vault and loads existing assets, the 75% desktop rule, and that the home pages reach the index through the nav link. `tests/site-consistency.test.mjs` checks one nav and one footer on every page.
 
-The benchmark is the product interface: a searchable leaderboard with task filtering and shared ranks for tied rates, model detail panels, side-by-side task comparisons, five controlled-variable sweeps, paginated trial records, and methodology. Model families are examples; exact versions remain pending.
+## Interactions
 
-95% Wilson intervals are calculated from illustrative counts only. Trial records are synthetic, generated to match the counts exactly; setup verification and recordings remain null. Downloads retain their illustrative status. The map is a separate example policy and cannot be attributed to the listed models.
+- Click any bar, leaderboard row or standings row to pin that model on every chart. Esc unpins it.
+- The index chart toggles between success and failure rates. It also has share, CSV download and a lab filter.
+- The outro: "Stay up to date" is drawn in characters. As you scroll, it scrambles into the Light Company logo, and scrolling back reverses it. The pointer then colours and flickers the letters, the same treatment as the ASCII footer. Reduced motion shows the logo statically.

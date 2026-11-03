@@ -70,5 +70,5 @@ test("the expanded navigation keeps investor and policy links beside the recover
   }
   assert.match(home,/robotics-hero-lab\.mp4/);
   assert.match(home,/footer-ascii/);
-  assert.match(home,/data-benchmark-open/);
+  assert.match(home,/<nav class="nav-links" aria-label="Primary"><a href="\/benchmarks\/"/);
 });

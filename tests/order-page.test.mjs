@@ -12,7 +12,7 @@ test('order page and its dependencies survive the static deployment build', asyn
     assert.match(html, new RegExp(`name="${name}"[^>]*required`));
   }
   assert.match(html, /No payment required to join/);
-  assert.match(html, /href="mailto:jon@lightcompany\.ai\?subject=Prism%20preorder"/);
+  assert.match(html, /Prefer to talk\? <a class="link" href="\/contact">Contact the team<\/a>/);
   assert.match(html, /rel="canonical" href="https:\/\/lightcompany\.ai\/order"/);
   assert.doesNotMatch(html, /noindex|localhost|127\.0\.0\.1/);
   // the landing page is left exactly as approved; the order page is reached from the investor and Prism pages

@@ -50,7 +50,7 @@
     const ctx = cv.getContext("2d"), img = new Image();
     let cells = [], cols = 0, rows = 0, cw = 0, ch = 0, start = 0, raf = 0, seen = false;
     let mx = -1e3, my = -1e3, hover = 0, hoverOn = false; // pointer in grid cells; hover eases 0..1
-    const css = getComputedStyle(document.documentElement);
+    const css = getComputedStyle(cv); // the footer carries its own tokens (footer.css)
     const accent = css.getPropertyValue("--accent").trim() || "#3cb4ff";
     const mono = css.getPropertyValue("--mono").trim() || "monospace";
     const build = () => {

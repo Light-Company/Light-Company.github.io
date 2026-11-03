@@ -1,0 +1,37 @@
+/* The one site footer (lib/company-site.mjs companyFooter). It carries its own tokens so any page can
+   show it unchanged, including the light Physical AI Index pages. lc.css imports this file. */
+.company-footer {
+  --bg-2: #0a0c10; --line: rgba(255, 255, 255, 0.08); --line-2: rgba(255, 255, 255, 0.16);
+  --text: #f5f4ef; --mute: #a1a6b0; --dim: #636975; --accent: #3cb4ff;
+  --display: "Satoshi", "Inter", system-ui, sans-serif; --body: "Inter", system-ui, -apple-system, sans-serif;
+  --mono: "Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  --wrap: 1180px; --gut: clamp(20px, 5vw, 72px);
+  color-scheme: dark; color: var(--text); background: var(--bg-2);
+  font: 400 16px/1.55 var(--body); letter-spacing: -0.006em; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
+  border-top: 1px solid var(--line); padding-block: 72px 40px;
+}
+.company-footer, .company-footer * { box-sizing: border-box; }
+.company-footer .wrap { width: min(100% - 2 * var(--gut), var(--wrap)); margin-inline: auto; }
+.company-footer a { color: inherit; text-decoration: none; }
+.company-footer ul, .company-footer li { margin: 0; }
+.company-footer img { display: block; max-width: 100%; }
+.company-footer .brand { display: inline-flex; align-items: center; gap: 12px; font: 700 16px/1 var(--display); letter-spacing: -0.03em; }
+.company-footer .brand img { width: 30px; height: auto; }
+.company-footer .link { display: inline-flex; gap: 8px; align-items: center; color: var(--text); font-weight: 500; border-bottom: 1px solid var(--line-2); padding-bottom: 3px; transition: border-color 0.3s; }
+.company-footer .link:hover { border-color: var(--accent); }
+.company-footer .footer-grid { display: grid; grid-template-columns: 1.6fr repeat(4, 1fr); gap: 28px; }
+.company-footer .footer-grid > div:first-child > .link { font-size: 13px; }
+.company-footer .footer-tag { color: var(--mute); max-width: 30ch; font-size: 15px; line-height: 1.6; margin: 22px 0 16px; }
+.company-footer h4 { font: 500 13px/1.5 var(--body); letter-spacing: 0; text-transform: none; color: var(--text); margin: 6px 0 20px; }
+.company-footer ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+.company-footer ul a { color: #aeb4bf; font-size: 12px; line-height: 1.6; transition: color 0.25s; }
+.company-footer ul a:hover { color: var(--text); }
+/* lockup: the logo rendered as ASCII; it scrambles in, then the beam keeps flowing (lc.js) */
+.company-footer .footer-logo { margin: 72px 0 36px; user-select: none; }
+.company-footer .footer-ascii { display: block; width: 100%; height: auto; aspect-ratio: 356 / 64; }
+.company-footer .footer-legal { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; padding-top: 24px; border-top: 1px solid var(--line); font: 12px/1.6 var(--body); letter-spacing: 0; text-transform: none; }
+@media (max-width: 1000px) {
+  .company-footer .footer-grid { grid-template-columns: repeat(4, 1fr); gap: 24px; }
+  .company-footer .footer-grid > div:first-child { grid-column: 1 / -1; }
+}
+@media (max-width: 760px) { .company-footer .footer-grid { grid-template-columns: repeat(2, 1fr); gap: 30px 22px; } }
