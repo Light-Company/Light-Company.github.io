@@ -98,6 +98,12 @@ test("desktop pages render at 80%, the same as the browser's own 80% zoom", asyn
   }
 });
 
+test("the home hero's top logo strip carries the NVIDIA Inception Program badge", async () => {
+  const strip = (await read("index.html")).match(/<div class="creds[^"]*">([\s\S]*?)<\/div>/)?.[1] || "";
+  assert.match(strip, /<img src="\/site\/assets\/brand\/nvidia-inception\.png" alt="NVIDIA Inception Program"/);
+  assert.equal(await exists(new URL("../public/site/assets/brand/nvidia-inception.png", import.meta.url)), true);
+});
+
 test("the home hero has no ticker strip under it", async () => {
   const home = await read("index.html");
   assert.doesNotMatch(home, /hero-foot/);

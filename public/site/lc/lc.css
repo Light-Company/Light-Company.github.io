@@ -463,6 +463,7 @@ h3, .h3 { font-size: clamp(18px, calc(1.3vw / var(--z, 1)), 20px); line-height: 
 .creds img { opacity: 0.9; }
 .creds .cl-apple { width: 15px; height: 15px; margin-top: -3px; }
 .creds .cl-cmu { width: auto; height: 13px; }
+.creds .cl-nv { width: auto; height: 34px; }
 .creds .cl-fi { width: 18px; height: 18px; border-radius: 4px; background: #1a1a1a; padding: 2px; margin-right: 6px; }
 .creds a { display: inline-flex; align-items: center; color: var(--text); font-weight: 500; }
 @media (max-width: 760px) { .creds-g + .creds-g { padding-left: 0; border-left: 0; } }
