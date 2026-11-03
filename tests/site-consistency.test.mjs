@@ -37,10 +37,10 @@ async function allHtml(dir = root) {
   return out;
 }
 
-test("the shared nav is Benchmarks, Prism Robotics, Investors, Prism IRL, with Sign in and Book a demo", () => {
+test("the shared nav is Benchmarks, Prism Robotics, Investors, Prism IRL, with Sign in and Get started", () => {
   const header = companyHeader("");
   assert.deepEqual(navOf(header), ["Benchmarks → /benchmarks/", "Prism Robotics → /prism-robotics", "Investors → /robotics/investors", "Prism IRL → /prism"]);
-  assert.deepEqual(buttonsOf(header), ["Sign in | btn btn-ghost btn-sm | https://prism.lightcompany.ai", "Book a demo | btn btn-primary btn-sm | /order"]);
+  assert.deepEqual(buttonsOf(header), ["Sign in | btn btn-ghost btn-sm | https://prism.lightcompany.ai", "Get started | btn btn-primary btn-sm | /order"]);
 });
 
 test("every page shows that same nav and the same buttons", async () => {
@@ -70,9 +70,10 @@ test("every page, the benchmarks included, ends with the one site footer", async
   }
 });
 
-test("Book a demo always goes to the order page", async () => {
+test("Get started always goes to the order page, and no page still says Book a demo", async () => {
   for (const [page, html] of await allHtml()) {
-    for (const m of html.matchAll(/<a\b[^>]*>\s*Book a demo\s*</g)) assert.match(m[0], /href="\/order"/, page);
+    assert.doesNotMatch(html, /book a demo/i, page);
+    for (const m of html.matchAll(/<a\b[^>]*>\s*Get started\s*</g)) assert.match(m[0], /href="\/order"/, page);
   }
 });
 

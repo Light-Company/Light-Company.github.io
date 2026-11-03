@@ -79,7 +79,7 @@ Open a run to inspect its camera recording, 3D telemetry, placement and step-by-
 
 ## Common questions
 
-Is Prism a simulator? Prism Robotics runs around physical robot workcells. It controls and checks the setup for real-world evaluations, then connects conditions and results in the console. Who resets the objects? An operator follows the projected placement guidance. Prism checks the scene against the target before the trial is accepted. The robot continues to use its own control system. How are rollouts scored? Your team defines scoring conditions for each task step and the threshold for success. Reviewers score the run against that rubric, flag abnormal trials and keep the decision with its supporting evidence. How do we get started? Book a demo with your robot, task and current evaluation process. We will work through station placement, integrations and the first test suite. You can also register interest in a station .
+Is Prism a simulator? Prism Robotics runs around physical robot workcells. It controls and checks the setup for real-world evaluations, then connects conditions and results in the console. Who resets the objects? An operator follows the projected placement guidance. Prism checks the scene against the target before the trial is accepted. The robot continues to use its own control system. How are rollouts scored? Your team defines scoring conditions for each task step and the threshold for success. Reviewers score the run against that rubric, flag abnormal trials and keep the decision with its supporting evidence. How do we get started? Get started with your robot, task and current evaluation process. We will work through station placement, integrations and the first test suite. You can also register interest in a station .
 
 # From scene setup to a comparable result.
 Source: https://lightcompany.ai/prism-robotics/how-it-works
@@ -166,9 +166,9 @@ Source: https://lightcompany.ai/contact
 
 Tell us about your robot, tasks and current evaluation process. We will help you work through the station setup, software and integrations.
 
-## Book a demo
+## Get started
 
-Send the task you want to evaluate, the robot or platform you use and the part of the process you want to improve. A short description is enough to start. Book a demo You can also register interest in a station . Pricing, deployment scope and availability are discussed directly.
+Send the task you want to evaluate, the robot or platform you use and the part of the process you want to improve. A short description is enough to start. Get started You can also register interest in a station . Pricing, deployment scope and availability are discussed directly.
 
 ## Other inquiries
 
