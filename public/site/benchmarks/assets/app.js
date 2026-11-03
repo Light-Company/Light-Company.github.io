@@ -176,6 +176,7 @@ const io = new IntersectionObserver((entries) => {
 const observe = (el) => { if (reduced) { el.classList.add('is-revealed'); el.dispatchEvent(new CustomEvent('reveal')); } else io.observe(el); };
 
 // ---------- pinning ----------
+const pinHooks = [];                                // charts that follow the pinned model (the terrain)
 function setPin(id) {
   const cur = document.body.dataset.pinned;
   const next = cur === id ? null : id;
@@ -185,6 +186,7 @@ function setPin(id) {
     $$(`[data-model="${CSS.escape(next)}"]`).forEach((e) => e.classList.add('is-pinned'));
   } else delete document.body.dataset.pinned;
   $$('.mini-bar').forEach((b) => b.setAttribute('aria-pressed', String(b.closest('.mini-col').dataset.model === next)));
+  pinHooks.forEach((fn) => fn(next));
 }
 addEventListener('keydown', (e) => { if (e.key === 'Escape' && document.body.dataset.pinned) setPin(document.body.dataset.pinned); });
 document.addEventListener('click', (e) => { const li = e.target.closest('.leaders li[data-model], .standings tbody tr[data-model]'); if (li) setPin(li.dataset.model); });
@@ -322,8 +324,9 @@ function bigChart(host, { rows, mode = 'score', valueOf, labelOf }) {
   return api;
 }
 
-function chartCard({ id, title, description, higherIs, toggles, rows, valueOf, labelOf, link, filename, rail }) {
-  const sec = h(`<section class="index-section" id="${esc(id)}"${rail ? ` data-rail="${esc(rail)}"` : ''}>
+// Card chrome shared by every figure: title, description, link / share / download tools, optional filter and toggle group.
+function cardShell({ id, title, description, toggles, link, rail, filter = true, higherIs, scroll = true }) {
+  return h(`<section class="index-section" id="${esc(id)}"${rail ? ` data-rail="${esc(rail)}"` : ''}>
     <div class="index-card">
       <div class="card-head">
         <div class="card-head-text">
@@ -335,21 +338,18 @@ function chartCard({ id, title, description, higherIs, toggles, rows, valueOf, l
             <button class="tool" data-act="link" aria-label="Copy link"><svg viewBox="0 0 24 24"><path d="M10 14a4 4 0 0 0 5.66 0l3-3a4 4 0 0 0-5.66-5.66l-1 1M14 10a4 4 0 0 0-5.66 0l-3 3a4 4 0 0 0 5.66 5.66l1-1"/></svg><span class="tool-tip">Link copied</span></button>
             <button class="tool" data-act="share" aria-label="Share"><svg viewBox="0 0 24 24"><path d="M12 15V3m0 0L8 7m4-4 4 4M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-7"/></svg><span class="tool-tip">Copied</span></button>
             <button class="tool" data-act="download" aria-label="Download CSV"><svg viewBox="0 0 24 24"><path d="M12 3v12m0 0-4-4m4 4 4-4M5 19h14"/></svg><span class="tool-tip">Downloaded</span></button>
-            <button class="tool" data-act="filter" aria-label="Filter labs" aria-expanded="false"><svg viewBox="0 0 24 24"><path d="M4 5h16l-6 7.5V19l-4 1.5v-8z"/></svg></button>
+            ${filter ? '<button class="tool" data-act="filter" aria-label="Filter labs" aria-expanded="false"><svg viewBox="0 0 24 24"><path d="M4 5h16l-6 7.5V19l-4 1.5v-8z"/></svg></button>' : ''}
             ${link ? `<a class="tool is-bare" href="${esc(link)}" aria-label="Open">${ARROW}</a>` : ''}
-            <div class="filter-pop" role="dialog" aria-label="Filter labs"></div>
+            ${filter ? '<div class="filter-pop" role="dialog" aria-label="Filter labs"></div>' : ''}
           </div>
           ${toggles ? `<div class="scale-toggle" role="group">${toggles.map((t, i) => `<button type="button" data-mode="${esc(t.mode)}" aria-pressed="${i === 0}">${esc(t.label)}</button>`).join('')}</div>` : ''}
         </div>
       </div>
-      <div class="chart-byline-row"><span class="higher-is">${esc(higherIs || '')}</span></div>
-      <div class="chart-scroll"><div class="chart-host"></div></div>
+      ${higherIs != null ? `<div class="chart-byline-row"><span class="higher-is">${esc(higherIs)}</span></div>` : ''}
+      ${scroll ? '<div class="chart-scroll"><div class="chart-host"></div></div>' : '<div class="chart-host"></div>'}
     </div></section>`);
-  const chart = bigChart($('.chart-host', sec), { rows, valueOf, labelOf, mode: toggles ? toggles[0].mode : 'score' });
-  $$('.scale-toggle button', sec).forEach((b) => b.addEventListener('click', () => {
-    $$('.scale-toggle button', sec).forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
-    chart.setMode(b.dataset.mode);
-  }));
+}
+function wireTools(sec, { id, title, filename, csv }) {
   const flash = (btn) => { btn.classList.remove('is-done'); void btn.offsetWidth; btn.classList.add('is-done'); setTimeout(() => btn.classList.remove('is-done'), 1400); };
   const url = () => location.href.split('#')[0] + '#' + id;
   $('[data-act=link]', sec).addEventListener('click', (e) => { navigator.clipboard?.writeText(url()); flash(e.currentTarget); });
@@ -359,11 +359,23 @@ function chartCard({ id, title, description, higherIs, toggles, rows, valueOf, l
     navigator.clipboard?.writeText(url()); flash(btn);
   });
   $('[data-act=download]', sec).addEventListener('click', (e) => {
-    const now = chart.rows().sort((a, b) => b.value - a.value);
-    const csv = ['rank,model,lab,configuration,value', ...now.map((r, i) => { const m = model(r.model); return [i + 1, `"${m.name}"`, `"${org(m.org).name}"`, `"${m.config}"`, r.value.toFixed(2)].join(','); })].join('\n');
-    const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([csv], { type: 'text/csv' })); a.download = (filename || id) + '.csv'; a.click();
+    const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([csv()], { type: 'text/csv' })); a.download = (filename || id) + '.csv'; a.click();
     flash(e.currentTarget);
   });
+  $$('.scale-toggle button', sec).forEach((b) => b.addEventListener('click', () => {
+    $$('.scale-toggle button', sec).forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+    sec.dispatchEvent(new CustomEvent('mode', { detail: b.dataset.mode }));
+  }));
+}
+
+function chartCard({ id, title, description, higherIs, toggles, rows, valueOf, labelOf, link, filename, rail }) {
+  const sec = cardShell({ id, title, description, toggles, link, rail, higherIs: higherIs || '' });
+  const chart = bigChart($('.chart-host', sec), { rows, valueOf, labelOf, mode: toggles ? toggles[0].mode : 'score' });
+  sec.addEventListener('mode', (e) => chart.setMode(e.detail));
+  wireTools(sec, { id, title, filename, csv: () => {
+    const now = chart.rows().sort((a, b) => b.value - a.value);
+    return ['rank,model,lab,configuration,value', ...now.map((r, i) => { const m = model(r.model); return [i + 1, `"${m.name}"`, `"${org(m.org).name}"`, `"${m.config}"`, r.value.toFixed(2)].join(','); })].join('\n');
+  } });
   const pop = $('.filter-pop', sec), fbtn = $('[data-act=filter]', sec);
   const orgsIn = [...new Set(rows.map((r) => model(r.model).org))];
   pop.innerHTML = orgsIn.map((o) => `<label><input type="checkbox" checked data-org="${esc(o)}"><span class="swatch" style="background:${colorVar(o)}"></span>${esc(org(o).name)}</label>`).join('');
@@ -373,6 +385,312 @@ function chartCard({ id, title, description, higherIs, toggles, rows, valueOf, l
     const o = e.target.dataset.org, on = e.target.checked;
     rows.filter((r) => model(r.model).org === o).forEach((r) => chart.toggle(r.model, on));
   });
+  return sec;
+}
+
+// ---------- terrain: every model × every condition as a surface ----------
+// A fixed 30° isometric projection of a model × condition grid. Height is the score (0–1 of the axis).
+// The surface is a Catmull-Rom spline through the real points, drawn as painter-sorted SVG quads with a
+// Lambert shade, marching-squares contours and a grid at the real rows and columns. No library.
+// Hover a point: cross-section slices + value tag. Click: pin it. Click a model or condition name: raise
+// that line and dim the ground. Esc clears. Everything the pointer touches is an SVG element, so hit
+// testing stays correct under the desktop CSS zoom.
+const terrain = (() => {
+  const COS = Math.cos(Math.PI / 6), STEP = 32, STRETCH = 1.6, Z = 260, TOP = Z + 36, SUB_M = 7, SUB_C = 14;
+  const CH_MODEL = 7.8, CH_GROUP = 7.4;                 // mono advance at the label sizes, in viewBox px
+  const LEVELS = [.1, .2, .3, .4, .5, .6, .7, .8, .9];
+  const crom = (p0, p1, p2, p3, t) => .5 * (2 * p1 + (-p0 + p2) * t + (2 * p0 - 5 * p1 + 4 * p2 - p3) * t * t + (-p0 + 3 * p1 - 3 * p2 + p3) * t * t * t);
+  const pts = (a) => a.map(([x, y]) => `${x.toFixed(1)},${y.toFixed(1)}`).join(' ');
+  const clamp = (v, lo, hi) => Math.max(lo, Math.min(hi, v));
+  const rgb = (s) => { s = s.trim(); const m = s.match(/^#([0-9a-f]{6})$/i); return m ? [1, 3, 5].map((i) => parseInt(m[1].slice(i - 1, i + 1), 16)) : (s.match(/\d+/g) || [0, 0, 0]).slice(0, 3).map(Number); };
+  function ramp() {
+    const cs = getComputedStyle(document.documentElement);
+    const stops = ['--terrain-lo', '--terrain-mid', '--terrain-hi'].map((k) => rgb(cs.getPropertyValue(k) || '#000'));
+    return (v, shade = 1) => {
+      const [a, b, t] = v <= .5 ? [stops[0], stops[1], v / .5] : [stops[1], stops[2], (v - .5) / .5];
+      const c = a.map((x, k) => Math.min(255, Math.round((x + (b[k] - x) * t) * shade)));
+      return { css: `rgb(${c.join(' ')})`, luma: (.299 * c[0] + .587 * c[1] + .114 * c[2]) / 255 };
+    };
+  }
+
+  // models [{id,label,name,group,groupLabel}], conditions [{key,title,note}], cell(modelId, key) -> {v, text, rank, n}
+  function mount(host, { models, conditions, cell, caption, onModel }) {
+    const C = models.length, M = conditions.length, A = C - 1, I = (M - 1) * STRETCH;
+    // label room along the condition axis (one unit = STRETCH*STEP px): model names, then the group names beyond them
+    const UNIT = STRETCH * STEP, longest = Math.max(...models.map((m) => m.label.length)), longestGroup = Math.max(...models.map((m) => m.groupLabel.length));
+    const MODEL_AT = M - 1 + .45, GROUP_AT = MODEL_AT + (longest * CH_MODEL + 18) / UNIT;
+    const outward = (GROUP_AT - (M - 1)) * UNIT + longestGroup * CH_GROUP + 14;
+    const condW = Math.max(...conditions.map((c) => (c.title.length + String(c.note || '').length + 3) * 8.4)) + 24;   // condition labels run down-right at 30°
+    const E = I * COS * STEP + outward * COS + 8, W = Math.ceil(E + (A + .4) * COS * STEP + Math.max(130, condW * COS + 24)), H = Math.ceil(TOP + (A + I) * 16 + Math.max(outward, condW + 13) * .5 + 24);
+    const P = (e, s, a = 0) => [E + (e - STRETCH * s) * COS * STEP, TOP + (e + STRETCH * s) * 16 - ZZ * a];
+    const R = SUB_M * A, T = SUB_C * (M - 1);
+    const at = (i, j) => cell(models[clamp(i, 0, C - 1)].id, conditions[clamp(j, 0, M - 1)].key);
+    const all = models.flatMap((m) => conditions.map((c) => cell(m.id, c.key).v));
+    const top = Math.min(1, Math.ceil(Math.max(...all) * 10 + .2) / 10), lo = Math.max(0, Math.floor(Math.min(...all) * 10) / 10);
+    const ZZ = Z / top, tint = (v) => clamp((v - lo) / (top - lo), 0, 1);
+    const val = (i, j) => at(i, j).v;
+    // height field, bicubic through the real grid
+    const F = Array.from({ length: R + 1 }, (_, a) => Array.from({ length: T + 1 }, (_, b) => {
+      const t = a / SUB_M, u = b / SUB_C, i = Math.min(C - 2, Math.floor(t)), j = Math.min(M - 2, Math.floor(u));
+      const rows = [-1, 0, 1, 2].map((s) => crom(val(i - 1, j + s), val(i, j + s), val(i + 1, j + s), val(i + 2, j + s), t - i));
+      return clamp(crom(rows[0], rows[1], rows[2], rows[3], u - j), 0, 1);
+    }));
+    const Pq = (a, b) => P(a / SUB_M, b / SUB_C, F[a][b]);
+    const rowLine = (i) => Array.from({ length: T + 1 }, (_, b) => P(i, b / SUB_C, F[SUB_M * i][b]));
+    const colLine = (j) => Array.from({ length: R + 1 }, (_, a) => P(a / SUB_M, j, F[a][SUB_C * j]));
+
+    let hits = '';
+    function groundHTML() {
+      const col = ramp(); hits = '';
+      const order = Array.from({ length: R * T }, (_, k) => ({ a: k % R, b: Math.floor(k / R) })).sort((p, q) => p.a + p.b - (q.a + q.b));
+      let out = '';
+      for (const { a, b } of order) {
+        const q = [Pq(a, b), Pq(a + 1, b), Pq(a + 1, b + 1), Pq(a, b + 1)];
+        const h00 = F[a][b], h10 = F[a + 1][b], h11 = F[a + 1][b + 1], h01 = F[a][b + 1];
+        const gx = (h10 - h00 + h11 - h01) / 2, gy = (h01 - h00 + h11 - h10) / 2;
+        const nx = -(ZZ * gx) / (STEP / SUB_M), ny = -(ZZ * gy) / (STRETCH * STEP / SUB_C);
+        const shade = .84 + .24 * (-.55 * nx + .45 * ny + .7) / Math.hypot(nx, ny, 1);
+        const fill = col(tint((h00 + h10 + h11 + h01) / 4), shade).css;
+        out += `<polygon class="terrain-quad" points="${pts(q)}" style="fill:${fill};stroke:${fill}"/>`;
+        // contours: marching squares on the four edges
+        let minor = '', major = '';
+        const corners = [[a, b], [a + 1, b], [a + 1, b + 1], [a, b + 1]];
+        for (const lv of LEVELS) {
+          const seg = [];
+          for (let k = 0; k < 4; k++) {
+            const [x0, y0] = corners[k], [x1, y1] = corners[(k + 1) % 4], v0 = F[x0][y0], v1 = F[x1][y1];
+            if ((v0 < lv) !== (v1 < lv)) { const f = (lv - v0) / (v1 - v0); seg.push(P((x0 + (x1 - x0) * f) / SUB_M, (y0 + (y1 - y0) * f) / SUB_C, lv)); }
+          }
+          for (let k = 0; k + 1 < seg.length; k += 2) { const d = `M${seg[k][0].toFixed(1)} ${seg[k][1].toFixed(1)}L${seg[k + 1][0].toFixed(1)} ${seg[k + 1][1].toFixed(1)}`; if (lv === .5) major += d; else minor += d; }
+        }
+        if (minor) out += `<path class="terrain-contour" d="${minor}"/>`;
+        if (major) out += `<path class="terrain-contour is-major" d="${major}"/>`;
+        const line = (p, r) => `<line class="terrain-line" x1="${p[0].toFixed(1)}" y1="${p[1].toFixed(1)}" x2="${r[0].toFixed(1)}" y2="${r[1].toFixed(1)}"/>`;
+        if (a % SUB_M === 0) out += line(q[0], q[3]);
+        if (a + 1 === R) out += line(q[1], q[2]);
+        if (b % SUB_C === 0) out += line(q[0], q[1]);
+        if (b + 1 === T) out += line(q[3], q[2]);
+        for (const [x, y] of corners) {
+          const real = x % SUB_M === 0 && y % SUB_C === 0 && (x === R || y === T ? a === Math.min(x, R - 1) && b === Math.min(y, T - 1) : x === a && y === b);
+          if (!real) continue;
+          const i = x / SUB_M, j = y / SUB_C, [px, py] = P(i, j, F[x][y]);
+          out += `<circle class="terrain-dot" cx="${px.toFixed(1)}" cy="${py.toFixed(1)}" r="3"/>`;
+          hits += `<g class="terrain-point" data-i="${i}" data-j="${j}"><circle class="terrain-hit" cx="${px.toFixed(1)}" cy="${py.toFixed(1)}" r="10"/></g>`;
+        }
+      }
+      return out;
+    }
+    function labelsHTML() {
+      let out = '';
+      models.forEach((m, i) => {
+        const [x, y] = P(i, MODEL_AT), w = Math.max(24, CH_MODEL * m.label.length) + 12;
+        out += `<g class="terrain-label" role="button" tabindex="0" data-axis="model" data-index="${i}" data-model="${esc(m.id)}" aria-label="Highlight ${esc(m.name)}" aria-pressed="false" transform="translate(${x.toFixed(1)} ${y.toFixed(1)}) rotate(-30)"><rect class="terrain-label-hit" x="${-w + 6}" y="-20" width="${w}" height="32" rx="3"/><text class="terrain-name terrain-model" text-anchor="end">${esc(m.label)}</text></g>`;
+      });
+      const groups = [...new Set(models.map((m) => m.group))];
+      groups.forEach((g) => {
+        const idx = models.map((m, i) => m.group === g ? i : -1).filter((i) => i >= 0);
+        const [x, y] = P((idx[0] + idx[idx.length - 1]) / 2, GROUP_AT);
+        out += `<text class="terrain-name terrain-group" aria-hidden="true" x="${x.toFixed(1)}" y="${y.toFixed(1)}" text-anchor="end" transform="rotate(-30 ${x.toFixed(1)} ${y.toFixed(1)})">${esc(models[idx[0]].groupLabel)}</text>`;
+      });
+      conditions.forEach((c, j) => {
+        const [x, y] = P(A + .7, j), w = (c.title.length + String(c.note || '').length + 4) * 7.5 + 12;
+        out += `<g class="terrain-label" role="button" tabindex="0" data-axis="condition" data-index="${j}" aria-label="Highlight ${esc(c.title)}" aria-pressed="false" transform="translate(${x.toFixed(1)} ${(y + 4).toFixed(1)}) rotate(30)"><rect class="terrain-label-hit" x="-6" y="-20" width="${w.toFixed(0)}" height="32" rx="3"/><text class="terrain-name terrain-condition"><tspan>${esc(c.title)}</tspan>${c.note ? `<tspan class="terrain-condition-note" dx="10">${esc(c.note)}</tspan>` : ''}</text></g>`;
+      });
+      return out;
+    }
+    const uid = 'terrain-' + Math.random().toString(36).slice(2, 7);
+    const [ax, ay] = P(A + .3, -.2);
+    const svg = h(`<svg class="terrain-plot" role="group" aria-label="${esc(caption)}" aria-describedby="${uid}-help" viewBox="0 0 ${W} ${H}" tabindex="-1">
+      <polygon class="terrain-plate" aria-hidden="true" points="${pts([P(-.3, -.2), P(A + .3, -.2), P(A + .3, M - 1 + .2), P(-.3, M - 1 + .2)])}"/>
+      <g class="terrain-axis" aria-hidden="true"><line x1="${ax}" y1="${ay}" x2="${ax}" y2="${ay - Z}"/>${[0, .5, 1].map((l) => `<line x1="${ax}" y1="${ay - Z * l}" x2="${ax + 5}" y2="${ay - Z * l}"/><text class="terrain-tick" x="${ax + 9}" y="${ay - Z * l + 4}">${Math.round(100 * top * l)}</text>`).join('')}</g>
+      <g class="terrain-ground" aria-hidden="true"></g>
+      <g class="terrain-hits" aria-hidden="true"></g>
+      <g class="terrain-labels"></g>
+      <g class="terrain-selected" aria-hidden="true"></g>
+      <g class="terrain-focus-layer" aria-hidden="true"></g>
+      <g class="terrain-raised"></g>
+    </svg>`);
+    const ground = $('.terrain-ground', svg), hitG = $('.terrain-hits', svg), labels = $('.terrain-labels', svg), selG = $('.terrain-selected', svg), focusG = $('.terrain-focus-layer', svg), raisedG = $('.terrain-raised', svg);
+    ground.innerHTML = groundHTML(); hitG.innerHTML = hits; labels.innerHTML = labelsHTML();
+    host.appendChild(h(`<p id="${uid}-help" class="sr-only">Select a model or condition name to bring its line and points to the front. Select it again or press Escape to clear. Select a point to keep its value visible.</p>`));
+    host.appendChild(svg);
+    host.appendChild(h(`<div class="sr-only"><table><caption>${esc(caption)}</caption><thead><tr><th scope="col">Model</th>${conditions.map((c) => `<th scope="col">${esc(c.title)}</th>`).join('')}</tr></thead><tbody>${models.map((m) => `<tr><th scope="row">${esc(m.name)}</th>${conditions.map((c) => `<td>${esc(cell(m.id, c.key).text)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`));
+
+    const st = { hover: null, pinned: null, sel: null };
+    const same = (p, q) => !!p && !!q && p.i === q.i && p.j === q.j;
+    function focusHTML({ i, j }) {
+      const col = ramp(), x = SUB_M * i, y = SUB_C * j, hgt = F[x][y], foot = P(i, j), top = P(i, j, hgt), c = at(i, j);
+      const row = rowLine(i), colL = colLine(j);
+      const value = c.text, label = c.rank ? `#${c.rank} of ${c.n}` : '';
+      const w = 20 + 8.4 * value.length + (label ? 8 + 7 * label.length : 0);
+      const tx = clamp(top[0] - w / 2, 2, W - w - 2), ty = top[1] - 14 - 22 < 2 ? top[1] + 12 : top[1] - 14 - 22;
+      const tone = col(tint(hgt));
+      return `<g class="terrain-focus">
+        <polygon class="terrain-slice" points="${pts([P(i, 0), ...row, P(i, M - 1)])}"/><polyline class="terrain-profile" points="${pts(row)}"/>
+        <polygon class="terrain-slice" points="${pts([P(0, j), ...colL, P(A, j)])}"/><polyline class="terrain-profile" points="${pts(colL)}"/>
+        <line class="terrain-stem" x1="${foot[0].toFixed(1)}" y1="${foot[1].toFixed(1)}" x2="${top[0].toFixed(1)}" y2="${top[1].toFixed(1)}"/>
+        <circle class="terrain-foot" cx="${foot[0].toFixed(1)}" cy="${foot[1].toFixed(1)}" r="3"/>
+        <circle class="terrain-dot is-on" cx="${top[0].toFixed(1)}" cy="${top[1].toFixed(1)}" r="5.5"/>
+        <g class="terrain-tag${tone.luma > .62 ? ' is-light' : ''}" transform="translate(${tx.toFixed(1)} ${ty.toFixed(1)})"><rect width="${w.toFixed(1)}" height="22" rx="4" style="fill:${tone.css}"/><text class="terrain-tag-value" x="10" y="15">${esc(value)}</text>${label ? `<text class="terrain-tag-label" x="${(10 + 8.4 * value.length + 8).toFixed(1)}" y="15">${esc(label)}</text>` : ''}</g>
+      </g>`;
+    }
+    function apply() {
+      const N = st.hover || st.pinned, sel = st.sel;
+      const mi = N ? N.i : sel && sel.axis === 'model' ? sel.index : null;
+      const cj = N ? N.j : sel && sel.axis === 'condition' ? sel.index : null;
+      svg.classList.toggle('has-focus', !!N); svg.classList.toggle('has-selection', !!sel);
+      $$('.terrain-label', labels).forEach((g) => {
+        const axis = g.dataset.axis, k = +g.dataset.index, on = axis === 'model' ? mi : cj, t = g.querySelector('.terrain-name');
+        t.classList.toggle('is-on', on === k); t.classList.toggle('is-dim', on != null && on !== k);
+        g.setAttribute('aria-pressed', String(!!sel && sel.axis === axis && sel.index === k));
+      });
+      $$('.terrain-group', labels).forEach((t) => t.classList.toggle('is-dim', !!N || !!sel));
+      focusG.innerHTML = N ? focusHTML(N) : '';
+      if (sel) {
+        const line = sel.axis === 'model' ? rowLine(sel.index) : colLine(sel.index);
+        selG.innerHTML = `<polyline class="terrain-profile-halo" points="${pts(line)}"/><polyline class="terrain-profile is-selected" points="${pts(line)}"/>`;
+        const list = sel.axis === 'model' ? conditions.map((_, j) => ({ i: sel.index, j })) : models.map((_, i) => ({ i, j: sel.index }));
+        raisedG.innerHTML = list.map(({ i, j }) => {
+          const c = at(i, j), [x, y] = P(i, j, F[SUB_M * i][SUB_C * j]);
+          return `<g class="terrain-point terrain-raised-point" role="button" tabindex="0" data-i="${i}" data-j="${j}" aria-pressed="${same(st.pinned, { i, j })}" aria-label="${esc(models[i].name)}, ${esc(conditions[j].title)}: ${esc(c.text)}${c.rank ? `, rank ${c.rank} of ${c.n}` : ''}"><circle class="terrain-hit" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="14"/><circle class="terrain-dot-halo" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="7"/><circle class="terrain-dot is-selected${same(N, { i, j }) ? ' is-on' : ''}" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="4.5"/></g>`;
+        }).join('');
+      } else { selG.innerHTML = ''; raisedG.innerHTML = ''; }
+    }
+    const pointOf = (el) => { const g = el && el.closest('.terrain-point'); return g ? { i: +g.dataset.i, j: +g.dataset.j } : null; };
+    svg.addEventListener('pointerover', (e) => { const p = pointOf(e.target); if (p && !same(p, st.hover)) { st.hover = p; apply(); } });
+    svg.addEventListener('pointerout', (e) => { const g = e.target.closest('.terrain-point'); if (g && !(e.relatedTarget && g.contains(e.relatedTarget)) && st.hover) { st.hover = null; apply(); } });
+    svg.addEventListener('focusin', (e) => { const p = pointOf(e.target); if (p) { st.hover = p; apply(); } });
+    svg.addEventListener('focusout', (e) => { if (pointOf(e.target) && st.hover) { st.hover = null; apply(); } });
+    const select = (axis, index) => {
+      const off = st.sel && st.sel.axis === axis && st.sel.index === index;
+      st.sel = off ? null : { axis, index }; st.hover = null; st.pinned = null;
+      if (axis === 'model' && onModel) onModel(off ? null : models[index].id);
+      apply();
+    };
+    const activate = (el) => {
+      const p = pointOf(el); if (p) { st.pinned = same(st.pinned, p) ? null : p; st.hover = null; apply(); return true; }
+      const l = el.closest('.terrain-label'); if (l) { select(l.dataset.axis, +l.dataset.index); return true; }
+      return false;
+    };
+    svg.addEventListener('click', (e) => activate(e.target));
+    svg.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') { e.preventDefault(); const s = st.sel; st.sel = null; st.hover = null; st.pinned = null; if (s && s.axis === 'model' && onModel) onModel(null); apply(); if (s) labels.querySelector(`[data-axis="${s.axis}"][data-index="${s.index}"]`)?.focus(); }
+      else if ((e.key === 'Enter' || e.key === ' ') && activate(e.target)) e.preventDefault();
+    });
+    new MutationObserver(() => { ground.innerHTML = groundHTML(); hitG.innerHTML = hits; apply(); }).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+    return {
+      svg, range: [Math.round(100 * lo), Math.round(100 * top)],
+      // follow the page-wide pinned model: raise its row, or clear when it is not on this map
+      setModel(id) {
+        const i = models.findIndex((m) => m.id === id);
+        if (i < 0) { if (st.sel && st.sel.axis === 'model') { st.sel = null; apply(); } return; }
+        if (st.sel && st.sel.axis === 'model' && st.sel.index === i) return;
+        st.sel = { axis: 'model', index: i }; st.hover = null; st.pinned = null; apply();
+      },
+    };
+  }
+  return { mount };
+})();
+
+// The benchmark page's landscape: every model tested on every benchmark in the domain, plus the domain
+// mean (the same formula as the published domain score). Front row is this benchmark.
+function landscapeCard(b, d) {
+  const BM = Object.fromEntries(DATA.benchmarks.map((x) => [x.id, x]));
+  const benches = (d.benchmarks || [b.id]).map((id) => BM[id]).filter(Boolean);
+  const ordered = [...benches.filter((x) => x.id !== b.id), b];        // this benchmark nearest the reader
+  const table = Object.fromEntries(ordered.map((x) => [x.id, Object.fromEntries(x.scores.map((r) => [r.model, r.score]))]));
+  const ids = b.scores.map((r) => r.model).filter((id) => M[id] && ordered.every((x) => table[x.id][id] != null));
+  if (ids.length < 3) return null;
+  const domainOf = (id) => ordered.reduce((s, x) => s + table[x.id][id], 0) / ordered.length;
+  const conditions = [{ key: 'domain', title: d.name, get: domainOf }, ...ordered.map((x) => ({ key: x.id, title: x.name, get: (id) => table[x.id][id] }))];
+  const cells = new Map();
+  conditions.forEach((c) => {
+    const vals = ids.map((id) => ({ id, s: c.get(id) })).sort((p, q) => q.s - p.s);
+    c.note = fmt(vals.reduce((s, r) => s + r.s, 0) / vals.length, 1);
+    vals.forEach((r, k) => cells.set(r.id + '|' + c.key, { v: clamp01(r.s / 100), text: fmt(r.s, 1), rank: k + 1, n: vals.length, score: r.s }));
+  });
+  const cell = (id, key) => cells.get(id + '|' + key);
+  const here = table[b.id];
+  const modelsFor = (mode) => {
+    const key = mode === 'type' ? (id) => model(id).type || 'Other' : (id) => model(id).org;
+    const label = mode === 'type' ? (id) => model(id).type || 'Other' : (id) => org(model(id).org).name;
+    const groups = new Map();
+    ids.forEach((id) => { const g = key(id); if (!groups.has(g)) groups.set(g, []); groups.get(g).push(id); });
+    const list = [...groups.entries()].map(([g, arr]) => ({ g, arr: arr.sort((p, q) => here[q] - here[p]) })).sort((p, q) => here[q.arr[0]] - here[p.arr[0]]);
+    return list.flatMap(({ g, arr }) => arr.map((id) => { const m = model(id); return { id, label: m.short || m.name, name: `${m.name} · ${m.config}`, group: g, groupLabel: label(id) }; }));
+  };
+  const n = conditions.length;
+  const sec = cardShell({
+    id: 'landscape', rail: 'Landscape', filter: false,
+    title: `Every model across ${d.name}`,
+    description: `${ids.length} models tested on ${n - 1 === 1 ? 'the' : n - 1 === 2 ? 'both' : `all ${n - 1}`} ${d.name} benchmark${n - 1 > 1 ? 's' : ''}. Height and colour are the score; the front row is ${b.name}, the back row the ${d.name} mean.`,
+    toggles: [{ mode: 'org', label: 'By lab' }, { mode: 'type', label: 'By type' }],
+  });
+  const host = $('.chart-host', sec);
+  $('.chart-scroll', sec).insertAdjacentHTML('beforebegin', '<div class="terrain-key" aria-hidden="true"><span>0</span><i></i><span>100</span></div>');
+  let api = null;
+  const draw = (mode) => {
+    host.innerHTML = '';
+    api = terrain.mount(host, { models: modelsFor(mode), conditions, cell, caption: `${b.name} and the other ${d.name} benchmarks, score out of 100 for every model`, onModel: (id) => { const cur = document.body.dataset.pinned; if ((id || null) !== (cur || null)) setPin(id || cur); } });
+    if (document.body.dataset.pinned) api.setModel(document.body.dataset.pinned);
+    $$('.terrain-key span', sec).forEach((el, k) => { el.textContent = api.range[k]; });
+  };
+  draw('org');
+  sec.addEventListener('mode', (e) => draw(e.detail));
+  pinHooks.push((id) => api && api.setModel(id));
+  wireTools(sec, { id: 'landscape', title: `Every model across ${d.name}`, filename: b.id + '-landscape', csv: () => ['model,lab,configuration,' + conditions.map((c) => `"${c.title}"`).join(','), ...ids.map((id) => { const m = model(id); return [`"${m.name}"`, `"${org(m.org).name}"`, `"${m.config}"`, ...conditions.map((c) => cell(id, c.key).text)].join(','); })].join('\n') });
+  return sec;
+}
+const clamp01 = (v) => Math.max(0, Math.min(1, v));
+
+// Dumbbell: a model's score here against its mean on the domain's other benchmarks, sorted by the gap.
+function gapCard(b, d) {
+  const BM = Object.fromEntries(DATA.benchmarks.map((x) => [x.id, x]));
+  const others = (d.benchmarks || []).filter((id) => id !== b.id).map((id) => BM[id]).filter(Boolean);
+  if (!others.length) return null;
+  const rest = Object.fromEntries(others.map((x) => [x.id, Object.fromEntries(x.scores.map((r) => [r.model, r.score]))]));
+  const rows = b.scores.filter((r) => M[r.model]).map((r) => {
+    const v = others.map((x) => rest[x.id][r.model]).filter((x) => x != null);
+    return v.length ? { id: r.model, here: r.score, rest: v.reduce((s, x) => s + x, 0) / v.length, k: v.length } : null;
+  }).filter(Boolean).sort((p, q) => (q.here - q.rest) - (p.here - p.rest));
+  if (rows.length < 3) return null;
+  const restLabel = others.length === 1 ? others[0].name : `the other ${d.name} benchmarks`;
+  const sec = cardShell({
+    id: 'gap', rail: 'Against the domain', filter: false,
+    title: `${b.name} against ${restLabel}`,
+    description: `Each model's score here beside its mean on ${restLabel}${others.length > 1 ? ` (${others.map((x) => x.name).join(', ')})` : ''}, sorted by the gap.`,
+  });
+  const RH = 24, L = 200, X0 = L + 14, X1 = 640, top = 52, W = 700, H = top + rows.length * RH + 8;
+  const x = (v) => X0 + (X1 - X0) * clamp01(v / 100);
+  const legend2 = X0 + 16 + restLabel.length * 6.2 + 22;
+  const svg = `<svg class="dumbbells" viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(b.name)} score against the mean of ${esc(restLabel)}, per model">
+    <g class="db-axis" aria-hidden="true">${[0, 25, 50, 75, 100].map((t) => `<line x1="${x(t)}" y1="${top - 6}" x2="${x(t)}" y2="${H - 8}"/><text x="${x(t)}" y="${top - 12}" text-anchor="middle">${t}</text>`).join('')}</g>
+    <g class="db-legend" aria-hidden="true"><circle class="db-ring" cx="${X0 + 5}" cy="9" r="4"/><text x="${X0 + 14}" y="12">${esc(restLabel)}</text><circle class="db-dot" cx="${legend2}" cy="9" r="4"/><text x="${legend2 + 9}" y="12">${esc(b.name)}</text></g>
+    ${rows.map((r, i) => { const m = model(r.id), y = top + i * RH + RH / 2, gap = r.here - r.rest; return `<g class="db-row" data-model="${esc(r.id)}"><title>${esc(m.name)} · ${esc(m.config)}: ${fmt(r.here, 1)} here, ${fmt(r.rest, 1)} on ${esc(restLabel)} (${gap >= 0 ? '+' : ''}${fmt(gap, 1)})</title><rect class="db-hit" x="0" y="${y - RH / 2}" width="${W}" height="${RH}"/><circle class="db-lab" cx="8" cy="${y}" r="3.5" style="fill:${colorVar(m.org)}"/><text class="db-label" x="${L}" y="${y + 4}" text-anchor="end">${esc(m.short || m.name)}<tspan class="db-detail" dx="6">${esc(m.config)}</tspan></text><line class="db-join" x1="${x(r.rest).toFixed(1)}" y1="${y}" x2="${x(r.here).toFixed(1)}" y2="${y}"/><circle class="db-ring" cx="${x(r.rest).toFixed(1)}" cy="${y}" r="4.5"/><circle class="db-dot" cx="${x(r.here).toFixed(1)}" cy="${y}" r="4.5"/><text class="db-value" x="${X1 + 12}" y="${y + 4}">${fmt(r.rest, 0)} → ${fmt(r.here, 0)}<tspan class="db-gap${gap < 0 ? ' is-down' : ''}" dx="8">${gap >= 0 ? '+' : '−'}${fmt(Math.abs(gap), 0)}</tspan></text></g>`; }).join('')}
+  </svg>`;
+  $('.chart-host', sec).innerHTML = svg;
+  $('.chart-host', sec).addEventListener('click', (e) => { const g = e.target.closest('.db-row'); if (g) setPin(g.dataset.model); });
+  wireTools(sec, { id: 'gap', title: `${b.name} against ${restLabel}`, filename: b.id + '-gap', csv: () => ['model,lab,configuration,here,rest,gap', ...rows.map((r) => { const m = model(r.id); return [`"${m.name}"`, `"${org(m.org).name}"`, `"${m.config}"`, r.here.toFixed(1), r.rest.toFixed(1), (r.here - r.rest).toFixed(1)].join(','); })].join('\n') });
+  return sec;
+}
+
+// Rate bars: share of attempts that ended as a full completion ("31 / 120" in extra.Completions). Bars cascade in on reveal.
+function completionsCard(b) {
+  const parse = (s) => { const m = String(s || '').match(/^\s*(\d+)\s*\/\s*(\d+)/); return m && +m[2] ? { a: +m[1], n: +m[2] } : null; };
+  const rows = b.scores.filter((r) => M[r.model]).map((r) => ({ id: r.model, c: parse((r.extra || {}).Completions), score: r.score })).filter((r) => r.c);
+  if (rows.length < 3 || rows.length < b.scores.length * 0.8) return null;
+  rows.sort((p, q) => q.c.a / q.c.n - p.c.a / p.c.n);
+  const sec = cardShell({
+    id: 'completions', rail: 'Full completions', filter: false, scroll: false,
+    title: 'Full completions',
+    description: `Attempts that finished the whole task, out of every attempt the model made on ${b.name}.`,
+  });
+  $('.chart-host', sec).innerHTML = `<div class="rate-bars" data-armed>${rows.map((r, i) => { const m = model(r.id), p = r.c.a / r.c.n; return `<div class="rate-row" data-model="${esc(r.id)}" title="${esc(m.name)} · ${esc(m.config)}: ${r.c.a} of ${r.c.n} attempts"><span class="rate-label"><b>${esc(m.short || m.name)}</b><i>${esc(org(m.org).name)} · ${esc(m.config)}</i></span><span class="rate-track"><span class="rate-fill" style="--rate:${p.toFixed(4)};--i:${i};background:${colorVar(m.org)}"></span></span><span class="rate-value">${Math.round(p * 100)}%<i>${r.c.a} / ${r.c.n}</i></span></div>`; }).join('')}</div>`;
+  const bars = $('.rate-bars', sec);
+  bars.addEventListener('reveal', () => bars.setAttribute('data-in', ''));
+  observe(bars);
+  bars.addEventListener('click', (e) => { const g = e.target.closest('.rate-row'); if (g) setPin(g.dataset.model); });
+  wireTools(sec, { id: 'completions', title: 'Full completions', filename: b.id + '-completions', csv: () => ['model,lab,configuration,completed,attempts,share', ...rows.map((r) => { const m = model(r.id); return [`"${m.name}"`, `"${org(m.org).name}"`, `"${m.config}"`, r.c.a, r.c.n, (r.c.a / r.c.n).toFixed(3)].join(','); })].join('\n') });
   return sec;
 }
 
@@ -668,6 +986,11 @@ function renderBenchmark() {
   results.classList.add('is-article');
   art.appendChild(results);
 
+  const land = landscapeCard(b, d);
+  if (land) { land.classList.add('is-article'); art.appendChild(land); }
+  const gap = gapCard(b, d);
+  if (gap) { gap.classList.add('is-article'); art.appendChild(gap); }
+
   if (b.why) art.appendChild(h(`<section class="home-section" id="why-it-matters" data-rail="Why it matters">
     ${sectionHead('Why it matters')}
     <blockquote class="pull" data-rise>${esc(b.why)}</blockquote></section>`));
@@ -687,6 +1010,9 @@ function renderBenchmark() {
     });
     art.appendChild(sec);
   }
+
+  const comp = completionsCard(b);
+  if (comp) { comp.classList.add('is-article'); art.appendChild(comp); }
 
   const extraKeys = [...new Set(sorted.flatMap((r) => Object.keys(r.extra || {})))].filter((k) => k !== 'Config').slice(0, 3);
   art.appendChild(h(`<section class="home-section" id="scores" data-rail="Every score">

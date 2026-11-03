@@ -37,10 +37,10 @@ async function allHtml(dir = root) {
   return out;
 }
 
-test("the shared nav is Benchmarks, Prism Robotics, Investors, Prism IRL, with Sign in and Book a demo", () => {
+test("the shared nav is Benchmarks, Prism Robotics, Investors, Prism IRL, with Sign in and Get started", () => {
   const header = companyHeader("");
   assert.deepEqual(navOf(header), ["Benchmarks → /benchmarks/", "Prism Robotics → /prism-robotics", "Investors → /robotics/investors", "Prism IRL → /prism"]);
-  assert.deepEqual(buttonsOf(header), ["Sign in | btn btn-ghost btn-sm | https://prism.lightcompany.ai", "Book a demo | btn btn-primary btn-sm | /order"]);
+  assert.deepEqual(buttonsOf(header), ["Sign in | btn btn-ghost btn-sm | https://prism.lightcompany.ai", "Get started | btn btn-primary btn-sm | /order"]);
 });
 
 test("every page shows that same nav and the same buttons", async () => {
@@ -50,6 +50,12 @@ test("every page shows that same nav and the same buttons", async () => {
     assert.deepEqual(navOf(html), navOf(header), `${page} nav`);
     assert.deepEqual(buttonsOf(html), buttonsOf(header), `${page} buttons`);
   }
+});
+
+test("page styles cannot resize the footer's columns", async () => {
+  // the benchmark app's .wrap pads its columns; the footer's .wrap must not inherit that
+  const css = await readFile(new URL("../public/site/lc/footer.css", import.meta.url), "utf8");
+  assert.match(css, /\.company-footer \.wrap \{[^}]*padding-inline: 0;/);
 });
 
 test("the site footer is the one on the home page", () => {
@@ -64,9 +70,10 @@ test("every page, the benchmarks included, ends with the one site footer", async
   }
 });
 
-test("Book a demo always goes to the order page", async () => {
+test("Get started always goes to the order page, and no page still says Book a demo", async () => {
   for (const [page, html] of await allHtml()) {
-    for (const m of html.matchAll(/<a\b[^>]*>\s*Book a demo\s*</g)) assert.match(m[0], /href="\/order"/, page);
+    assert.doesNotMatch(html, /book a demo/i, page);
+    for (const m of html.matchAll(/<a\b[^>]*>\s*Get started\s*</g)) assert.match(m[0], /href="\/order"/, page);
   }
 });
 
@@ -76,6 +83,43 @@ test("the Company page and the founders photo are gone", async () => {
   for (const [page, html] of await allHtml()) {
     assert.doesNotMatch(html, /href="\/company"/, page);
     assert.doesNotMatch(html, /founders\.jpg/, page);
+  }
+});
+
+test("desktop pages render at 80%, the same as the browser's own 80% zoom", async () => {
+  const site = (file) => readFile(new URL(`../public/site/${file}`, import.meta.url), "utf8");
+  assert.match(await site("lc/lc.css"), /@media \(min-width: 761px\) \{ html \{ zoom: 0\.8; \} :root \{ --z: 0\.8; \} \}/);
+  for (const page of [...FOOTER_PAGES, "gallery/index.html"]) assert.match(await read(page), /href="\/site\/lc\/lc\.css"/, page);
+  for (const file of ["company/company.css", "gallery/gallery.css"]) assert.doesNotMatch(await site(file), /zoom/, `${file} must not override the site zoom`);
+  // CSS zoom also shrinks vw/vh (browser zoom does not), so every viewport unit divides the zoom back out.
+  for (const file of ["lc/lc.css", "lc/footer.css", "company/company.css", "gallery/gallery.css"]) {
+    const raw = [...(await site(file)).matchAll(/\d(?:vw|vh|svh|dvh|lvh)\b(?! \/ var\(--z, 1\))/g)];
+    assert.equal(raw.length, 0, `${file}: ${raw.length} viewport units ignore the zoom`);
+  }
+});
+
+test("the home hero: Built by on top, Backed by Founders, Inc. and NVIDIA Inception at the right of the buttons", async () => {
+  const home = await read("index.html");
+  const top = home.match(/<div class="creds rv">([\s\S]*?)<\/div>/)?.[1] || "";
+  assert.match(top, /Built by/);
+  assert.doesNotMatch(top, /Backed by|nvidia/i);
+  const row = home.match(/<div class="hero-row">([\s\S]*?)<\/div>\s*<\/div>\s*<\/div>\s*<\/div>\s*<\/section>/)?.[1] || "";
+  assert.match(row, /class="hero-actions[\s\S]*Get started[\s\S]*<div class="creds creds-backers[^"]*">[\s\S]*Backed by[\s\S]*Founders, Inc\.[\s\S]*alt="NVIDIA Inception Program"/);
+  const css = await readFile(new URL("../public/site/lc/lc.css", import.meta.url), "utf8");
+  assert.match(css, /\.hero-row \{[^}]*justify-content: space-between;/);
+  // both backers share one logo height, and NVIDIA's badge is plain white like every other logo there
+  assert.match(css, /\.creds-backers \.cl-nv \{[^}]*height: var\(--logo-h\);[^}]*filter: brightness\(0\) invert\(1\);/);
+  assert.match(css, /\.creds-backers \.cl-fi \{[^}]*width: var\(--logo-h\); height: var\(--logo-h\);/);
+  assert.equal(await exists(new URL("../public/site/assets/brand/nvidia-inception.png", import.meta.url)), true);
+});
+
+test("the site tells one story: one founder, and Prism scores every run itself", async () => {
+  for (const [page, html] of await allHtml()) {
+    assert.doesNotMatch(html, /\b(?:two|the|our) founders\b/i, `${page} speaks of several founders`);
+    assert.doesNotMatch(html, /Reviewers score/i, `${page} says people score the runs`);
+  }
+  for (const page of ["index.html", "prism-robotics/index.html"]) {
+    assert.match(await read(page), /scored\?<\/summary><p>Prism scores every run automatically\./, page);
   }
 });
 

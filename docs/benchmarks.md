@@ -33,6 +33,18 @@ The data is generated in the standalone project:
 3. If you changed the app, copy `assets/app.js`, `assets/styles.css` and `assets/logos.js` too, and bump the `?v=` in the three shells.
 4. Run `npm test`. `tests/benchmarks.test.mjs` checks that the vault opens only with the right password, that no plaintext scores ship, that every page reads the vault and loads existing assets, the 75% desktop rule, and that the home pages reach the index through the nav link. `tests/site-consistency.test.mjs` checks one nav and one footer on every page.
 
+## Charts on a benchmark page
+
+- **Landscape** (`#landscape`): a 3D surface of every model tested on all of the domain's benchmarks.
+  - Models run left to right, grouped by lab or by type.
+  - Rows run from the domain mean at the back to this benchmark at the front.
+  - Height and colour are the score. The axis and colour key run from the lowest to the highest score on the map, and both are labelled.
+  - It is pure SVG with no library, adapted from the teardown in `~/src/lc-physical-ai-index/_reference/prosaic/TEARDOWN.md`.
+  - Dots are drawn back to front so hills hide them. The hover targets sit in one layer above the surface, so every point can be reached.
+- **Gap** (`#gap`): each model's score here against its mean on the domain's other benchmarks, sorted by the gap.
+- **Full completions** (`#completions`): finished attempts out of all attempts. It appears where the data has the counts.
+- Selecting a model on any chart pins it on every chart.
+
 ## Interactions
 
 - Click any bar, leaderboard row or standings row to pin that model on every chart. Esc unpins it.

@@ -41,7 +41,10 @@
 
   // reveal on scroll
   const rio = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("in"); rio.unobserve(e.target); } }), { rootMargin: "0px 0px -8% 0px" });
-  $$(".rv").forEach((el) => (reduce ? el.classList.add("in") : rio.observe(el)));
+  // anything already on screen at load fades in now; the -8% margin is only for content scrolled into view
+  // (at 80% the hero buttons can start inside that bottom band and would otherwise never appear)
+  const show = (el) => requestAnimationFrame(() => requestAnimationFrame(() => el.classList.add("in")));
+  $$(".rv").forEach((el) => (reduce ? el.classList.add("in") : el.getBoundingClientRect().top < innerHeight ? show(el) : rio.observe(el)));
 
   // footer lockup: the real logo sampled into a character grid. Cells scramble in left to right,
   // then the beam keeps streaming outward and a slow light band crosses the wordmark.

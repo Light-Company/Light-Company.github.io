@@ -23,7 +23,7 @@ for (const name of ["robotics-vision", "prism-vision"]) {
     const autoplay = html.match(/<video[^>]*\bautoplay\b/g) || [];
     assert.ok(autoplay.length <= 1);
     for (const video of html.match(/<video\b[^>]*>/g) || []) {
-      if (!/\bcontrols\b|evals-/.test(video)) for (const attr of ["data-auto", "muted", "loop", "playsinline"]) assert.match(video, new RegExp(`\\b${attr}\\b`));
+      if (!/\bcontrols\b|evals-|platform-demo\./.test(video)) for (const attr of ["data-auto", "muted", "loop", "playsinline"]) assert.match(video, new RegExp(`\\b${attr}\\b`));
     }
 
     const ids = [...html.matchAll(/\bid="([^"]+)"/g)].map((match) => match[1]);
@@ -75,13 +75,15 @@ test("the Robotics page keeps its landing video, method and qualified pilot numb
   assert.equal(html.split('src="/site/robotics-vision/robotics-hero-lab.mp4"').length - 1, 1);
   assert.match(html, /\/site\/robotics-vision\/test-condition-full.mp4/);
   assert.match(html, /\/media\/robotics\/projected-test-run.mp4/);
-  assert.match(html, /data-film-inline[\s\S]*\/media\/brand-film\/evals-explainer.mp4/);
+  assert.match(html, /data-film-inline[\s\S]*poster="\/media\/brand-film\/platform-demo.jpg" src="\/media\/brand-film\/platform-demo.mp4"/);
+  assert.match(html, /<track kind="captions" srclang="en" label="English" src="\/media\/brand-film\/platform-demo.vtt"/);
+  assert.doesNotMatch(html, /evals-explainer/);
   assert.match(html, /id="deeper"[\s\S]*Capability maps[\s\S]*robot-eval-staging.mp4/);
   assert.match(html, /id="outcomes" aria-labelledby="outcomes-title"/);
   assert.doesNotMatch(html, /Evaluation estimates from pilot customers|Sample data shown/);
   assert.equal(sources["robotics-hero-full.mp4"].sourceFile, "IMG_5578 3 (1).mov");
   assert.deepEqual(sources["robotics-hero-lab.mp4"].sourceFile, ["MVI_0099.MP4", "MVI_0098.MP4", "MVI_0097.MP4", "MVI_0096.MP4"]);
-  for (const file of ["site/robotics-vision/robotics-hero-lab.mp4", "media/brand-film/hero-loop.mp4", "media/brand-film/prism-film.mp4", "media/brand-film/evals-explainer.mp4"]) {
+  for (const file of ["site/robotics-vision/robotics-hero-lab.mp4", "media/brand-film/hero-loop.mp4", "media/brand-film/prism-film.mp4", "media/brand-film/platform-demo.mp4"]) {
     const video = await stat(new URL(`../public/${file}`, import.meta.url));
     assert.ok(video.size < 25 * 1024 * 1024, `${file} must fit the hosting static-asset limit`);
   }

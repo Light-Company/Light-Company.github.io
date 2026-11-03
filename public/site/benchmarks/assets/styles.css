@@ -23,6 +23,10 @@
   --good:#1d7a45; --good-bg:rgba(29,122,69,.08); --good-line:rgba(29,122,69,.28);
   --warn:#94601c; --warn-bg:rgba(148,96,28,.07); --warn-line:rgba(148,96,28,.28);
   --live:#e5484d;
+  /* landscape surface: low → mid → high, plus its lines */
+  --terrain-lo:#c4643f; --terrain-mid:#e2c27d; --terrain-hi:#1f8fe0;
+  --terrain-plate:#efede7; --terrain-grid:rgba(255,255,255,.7); --terrain-contour:rgba(11,12,14,.16); --terrain-contour-major:rgba(11,12,14,.34);
+  --terrain-slice:rgba(11,12,14,.13); --terrain-slice-line:rgba(11,12,14,.38); --terrain-shadow:rgba(11,12,14,.12);
 }
 :root[data-theme=dark]{
   color-scheme:dark;
@@ -37,6 +41,9 @@
   --good:#7fd6a0; --good-bg:rgba(76,190,120,.10); --good-line:rgba(76,190,120,.32);
   --warn:#dfc5a3; --warn-bg:rgba(215,179,131,.06); --warn-line:rgba(215,179,131,.28);
   --live:#ff4d3d;
+  --terrain-lo:#b0583a; --terrain-mid:#c9a865; --terrain-hi:#3cb4ff;
+  --terrain-plate:#14171c; --terrain-grid:rgba(255,255,255,.22); --terrain-contour:rgba(0,0,0,.3); --terrain-contour-major:rgba(0,0,0,.55);
+  --terrain-slice:rgba(255,255,255,.14); --terrain-slice-line:rgba(255,255,255,.45); --terrain-shadow:rgba(0,0,0,.6);
 }
 :root:not([data-theme=dark]) .only-dark{display:none!important}
 :root[data-theme=dark] .only-light{display:none!important}
@@ -524,6 +531,90 @@ body[data-pinned] .is-pinned .mini-bar,body[data-pinned] .is-pinned .chart-bar{o
 .related h3{margin-top:var(--s2);font-family:var(--display);font-weight:700;font-size:15px;letter-spacing:-.015em;line-height:1.3}
 .related p{margin-top:var(--s1);font-size:12px;color:var(--mute);line-height:1.5;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
 
+/* ---------- Landscape (model × condition surface) ---------- */
+.terrain-key{display:flex;align-items:center;gap:6px;margin-top:var(--s3);font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;color:var(--dim)}
+.terrain-key i{width:96px;height:8px;border-radius:2px;background:linear-gradient(90deg,var(--terrain-lo),var(--terrain-mid),var(--terrain-hi))}
+.chart-scroll .terrain-plot,.chart-scroll .dumbbells{min-width:640px}
+.terrain-plot{display:block;width:100%;max-width:980px;height:auto;margin:var(--s3) auto 0;outline:none;overflow:visible}
+.terrain-plate{fill:var(--terrain-plate);stroke:var(--line-3);filter:drop-shadow(0 14px 18px var(--terrain-shadow))}
+.terrain-quad{stroke-width:.6px;stroke-linejoin:round}
+.terrain-contour{fill:none;stroke:var(--terrain-contour);stroke-width:.6px}
+.terrain-contour.is-major{stroke:var(--terrain-contour-major);stroke-width:.9px}
+.terrain-line{stroke:var(--terrain-grid);stroke-width:.7px}
+.terrain-axis line{stroke:var(--line-3)}
+.terrain-tick{font-family:var(--mono);font-size:12px;fill:var(--dim)}
+.terrain-name{font-family:var(--mono);fill:var(--mute);transition:opacity .14s var(--ease-out-quart),fill .14s}
+.terrain-model{font-size:13px}
+.terrain-condition{font-size:14px;fill:var(--text)}
+.terrain-condition-note{fill:var(--dim)}
+.terrain-group{font-size:12px;letter-spacing:.12em;text-transform:uppercase;fill:var(--text)}
+.terrain-name.is-dim{opacity:.18}
+.terrain-name.is-on{fill:var(--accent-text);font-weight:500}
+.terrain-label{cursor:pointer;outline:none}
+.terrain-label-hit{fill:transparent;stroke:transparent;pointer-events:all}
+.terrain-label:is(:hover,:focus-visible) .terrain-name,.terrain-label[aria-pressed=true] .terrain-name{fill:var(--accent-text);text-decoration:underline;text-underline-offset:3px}
+.terrain-label:focus-visible .terrain-label-hit{stroke:var(--accent);stroke-width:1.5px}
+.terrain-dot{fill:var(--surface);stroke:var(--text);stroke-width:1.2px;pointer-events:none;transition:opacity .14s}
+.terrain-hit{fill:transparent;pointer-events:all}
+.terrain-point{cursor:pointer}
+.terrain-dot-halo{fill:var(--surface);pointer-events:none}
+.terrain-ground{transition:opacity .14s var(--ease-out-quart)}
+.terrain-plot.has-selection .terrain-ground{opacity:.3}
+.terrain-plot.has-selection .terrain-hits .terrain-hit,.terrain-selected{pointer-events:none}
+.terrain-plot.has-focus .terrain-dot:not(.is-on,.is-selected){opacity:.35}
+.terrain-profile-halo{fill:none;stroke:var(--surface);stroke-width:5px;stroke-linejoin:round}
+.terrain-profile{fill:none;stroke:var(--text);stroke-opacity:.7;stroke-width:1.4px;stroke-linejoin:round}
+.terrain-profile.is-selected{stroke:var(--accent);stroke-opacity:1;stroke-width:2px}
+.terrain-raised-point:focus-visible{outline:none}
+.terrain-raised-point:is(:focus-visible,[aria-pressed=true]) .terrain-dot{stroke-width:2.5px}
+.terrain-focus-layer{pointer-events:none}
+.terrain-focus{animation:terrain-in .14s var(--ease-out-quart) both}
+@keyframes terrain-in{0%{opacity:0}}
+.terrain-slice{fill:var(--terrain-slice);stroke:var(--terrain-slice-line);stroke-width:.8px}
+.terrain-stem{stroke:var(--text);stroke-width:1.5px}
+.terrain-foot{fill:var(--text)}
+.terrain-tag rect{stroke:rgba(11,12,14,.25);stroke-width:.8px}
+.terrain-tag-value{font-family:var(--mono);font-size:14px;font-weight:500;fill:#fff}
+.terrain-tag-label{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;fill:rgba(255,255,255,.75)}
+.terrain-tag.is-light .terrain-tag-value{fill:#0b0c0e}
+.terrain-tag.is-light .terrain-tag-label{fill:rgba(11,12,14,.7)}
+
+/* ---------- Dumbbells (this benchmark against the rest of its domain) ---------- */
+.dumbbells{display:block;width:100%;height:auto;margin-top:var(--s3)}
+.db-axis line{stroke:var(--line);stroke-dasharray:2 3}
+.db-axis text,.db-legend text{font-family:var(--mono);font-size:10px;fill:var(--dim)}
+.db-legend text{fill:var(--mute)}
+.db-hit{fill:transparent}
+.db-row{cursor:pointer;transition:opacity .12s}
+.db-label{font-family:var(--body);font-size:12px;fill:var(--text)}
+.db-detail{font-size:10px;fill:var(--dim)}
+.db-join{stroke:var(--line-3);stroke-width:2px}
+.db-ring{fill:var(--surface);stroke:var(--text);stroke-width:1.6px}
+.db-dot{fill:var(--accent)}
+.db-value{font-family:var(--mono);font-size:11px;font-variant-numeric:tabular-nums;fill:var(--copy)}
+.db-gap{fill:var(--good)}
+.db-gap.is-down{fill:var(--warn)}
+.dumbbells:has(.db-row:hover) .db-row:not(:hover){opacity:.2}
+.db-row:hover .db-join{stroke:var(--text)}
+body[data-pinned] .db-row:not(.is-pinned){opacity:.2}
+body[data-pinned] .db-row.is-pinned .db-join{stroke:var(--text)}
+
+/* ---------- Rate bars (full completions) ---------- */
+.rate-bars{margin-top:var(--s3)}
+.rate-row{display:grid;grid-template-columns:minmax(7rem,11rem) minmax(0,1fr) 5.5rem;gap:var(--s3);align-items:center;padding:5px 0;border-bottom:1px solid var(--line-faint);cursor:pointer}
+.rate-row:last-child{border-bottom:0}
+.rate-label{min-width:0;line-height:1.2}
+.rate-label b{display:block;font-weight:500;font-size:12px;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rate-label i{display:block;font-style:normal;font-size:10px;color:var(--dim);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rate-track{display:block;height:8px;border-radius:2px;background:var(--line-faint);overflow:hidden}
+.rate-fill{display:block;height:100%;border-radius:2px;transform:scaleX(var(--rate));transform-origin:0 50%;transition:transform 1s var(--ease);transition-delay:calc(var(--i,0) * 45ms)}
+.rate-bars[data-armed]:not([data-in]) .rate-fill{transform:scaleX(0)}
+.rate-value{font-family:var(--mono);font-size:12px;font-variant-numeric:tabular-nums;color:var(--text);text-align:right;line-height:1.2}
+.rate-value i{display:block;font-style:normal;font-size:9.5px;color:var(--dim)}
+.rate-row:hover .rate-label b{color:var(--accent-text)}
+body[data-pinned] .rate-row:not(.is-pinned){opacity:.3}
+@media (max-width:719px){.rate-row{grid-template-columns:minmax(5.5rem,7.5rem) minmax(0,1fr) 4.5rem;gap:var(--s2)}}
+
 /* ---------- Footer ---------- */
 
 [data-rise]{opacity:0;transform:translateY(10px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
@@ -562,4 +653,4 @@ body.is-locked .page-guides,body.is-locked #site-header,body.is-locked .rail{dis
 
 /* desktop renders at 75%; the shared site footer keeps the size it has on every other page */
 .company-footer{position:relative;z-index:40}
-@media (min-width:761px){html{zoom:.75}.company-footer{zoom:1.3333}}
+@media (min-width:761px){html{zoom:.75}.company-footer{zoom:1.06667;--z:.8}}

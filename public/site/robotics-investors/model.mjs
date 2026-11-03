@@ -50,6 +50,29 @@ export function annualSoftwareRevenue({ stations, evaluationsPerDay = 100, price
   if (mode !== 'usage') throw new RangeError('Unknown pricing mode.');
   return stations * evaluationsPerDay * activeDays * price;
 }
+// A Prism Station: $1,500, about $300 to build and deploy.
+export const STATION = Object.freeze({ price: 1500, cost: 300, margin: 0.8 });
+
+// Target prices for the software lines (the investor page shows these under "Targets").
+export const TARGETS = Object.freeze({
+  seatsPerStation: 4, seatMonthly: 50, // platform: console, replay, case library
+  toolingPerLab: 50000, // SDK, scoring API for robots outside a station, benchmark access
+  enterprisePerLab: 150000, enterpriseFrom: 10, // multi-site fleets, SSO, on-prem scoring
+});
+
+export function annualRevenue({ labs, stationsPerLab }) {
+  if ([labs, stationsPerLab].some(n => !Number.isFinite(n) || n < 0)) throw new RangeError('Labs and stations per lab must be finite and non-negative.');
+  const stations = labs * stationsPerLab;
+  const lines = {
+    evaluations: annualSoftwareRevenue({ stations }),
+    platform: stations * TARGETS.seatsPerStation * TARGETS.seatMonthly * 12,
+    tooling: labs * TARGETS.toolingPerLab,
+    enterprise: stationsPerLab >= TARGETS.enterpriseFrom ? labs * TARGETS.enterprisePerLab : 0,
+  };
+  const total = Object.values(lines).reduce((sum, n) => sum + n, 0);
+  return { stations, ...lines, total, hardware: stations * STATION.price };
+}
+
 export function buildIllustrativeCase(cell) {
   return {
     illustrative: true,

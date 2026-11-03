@@ -127,8 +127,8 @@
             <li><h3>Keep the evidence.</h3><p>Outcome, model version and verified setup are stored together, so a result can be trusted, compared and replayed.</p></li>
           </ol>
           <div class="film-inline rv" id="film" data-film-inline style="margin-top: clamp(48px, 6vw, 80px)">
-            <video playsinline preload="none" poster="/media/brand-film/evals-explainer.jpg" src="/media/brand-film/evals-explainer.mp4" aria-label="Prism Robotics evaluation film"></video>
-            <button class="film-cover" aria-label="Play the Prism Robotics film"><span class="big-play" aria-hidden="true"></span><span class="meta mono">Prism in a working robot cell · 1:58</span></button>
+            <video playsinline preload="none" poster="/media/brand-film/platform-demo.jpg" src="/media/brand-film/platform-demo.mp4" aria-label="Prism platform demo"><track kind="captions" srclang="en" label="English" src="/media/brand-film/platform-demo.vtt" /></video>
+            <button class="film-cover" aria-label="Play the Prism platform demo"><span class="big-play" aria-hidden="true"></span></button>
           </div>
         </div>
       </section>
@@ -202,21 +202,38 @@
         <div class="wrap">
           <div class="sec-head">
             <div><p class="eyebrow rv">The business</p><h2 class="rv rv-d1" id="business-title">A station in the lab.<br />Software on every run.</h2></div>
-            <p class="lede rv rv-d1">Hardware opens the door. The recurring business is the software every evaluation runs through: staging, verification, scoring, the console and the case library behind it. More robots in more labs means more evaluations, and every evaluation goes through Prism. Robot evaluation is a multi-billion-dollar line item that no one owns yet.</p>
+            <p class="lede rv rv-d1">Hardware opens the door. Every evaluation after that runs through Prism's software, and a lab re-tests every time its model changes, so revenue recurs with its training cadence. Enact started with one station and runs five today.</p>
           </div>
           <div class="cards cards-3">
-            <article class="card rv"><span class="kicker">Land</span><h3>Prism Station</h3><p>Mounted over an existing workcell. Works with the robots a lab already has, so there is nothing to replace.</p></article>
-            <article class="card rv rv-d1"><span class="kicker">Expand</span><h3>Software per evaluation</h3><p>Every staged, verified and scored trial runs through Prism. Usage grows with the lab's robot count and training cadence.</p></article>
-            <article class="card rv rv-d2"><span class="kicker">Compound</span><h3>The case library</h3><p>Verified physical test cases shared across stations and teams. The longer a lab uses Prism, the harder it is to test without it.</p></article>
+            <article class="card rv"><span class="kicker">Land</span><h3>Prism Station</h3><p>$1,500 per workcell at an 80% margin. Mounted over an existing workcell, it works with the robots a lab already has.</p></article>
+            <article class="card rv rv-d1"><span class="kicker">Expand</span><h3>Software on every run</h3><p>Every staged, verified and scored evaluation is billed, and every engineer on the team works in the console, replay and case library.</p></article>
+            <article class="card rv rv-d2"><span class="kicker">Compound</span><h3>Tooling and enterprise</h3><p>The SDK and scoring API reach robots outside a station. Multi-site labs sign enterprise contracts for fleets, single sign-on and on-prem scoring.</p></article>
+          </div>
+          <div class="inv-proof inv-market rv">
+            <article><b>70<small>+</small></b><h3>Companies building robot foundation models.</h3><p>16,000 humanoids were installed in 2025, and 100,000 are expected by 2027. <a class="link" href="https://www.cbinsights.com/research/the-physical-ai-models-market-map/" target="_blank" rel="noopener">CB Insights ↗</a> <a class="link" href="https://counterpointresearch.com/insights/Global-Humanoid-Robot-Installations-Reach-16,000-Units-in-2025-as-Mass-Production-Picks-Pace" target="_blank" rel="noopener">Counterpoint ↗</a></p></article>
+            <article><b>10–100<small>+</small></b><h3>Robots a data team runs at once.</h3><p>Each workcell under test is a station. Google's robot fleet ran 23 robots through 4,800 evaluation trials. <a class="link" href="https://www.trossenrobotics.com/post/robot-fleet-data-collection-physical-ai" target="_blank" rel="noopener">Trossen Robotics ↗</a> <a class="link" href="https://research.google/blog/robotic-deep-rl-at-scale-sorting-waste-and-recyclables-with-a-fleet-of-robots/" target="_blank" rel="noopener">Google Research ↗</a></p></article>
+            <article><b>1 <i aria-hidden="true">→</i> 5</b><h3>Enact's stations after the first.</h3><p>Labs buy again once Prism is in the room. Every customer that installed it kept it.</p></article>
+            <article><b>$15<small>B</small></b><h3>Applied Intuition, the same play for cars.</h3><p>Testing and validation software for self-driving cars, valued at $15B. Prism is that layer for robots. <a class="link" href="https://www.bloomberg.com/news/articles/2025-06-17/applied-intuition-hits-15-billion-valuation-for-ai-vehicle-tech" target="_blank" rel="noopener">Bloomberg ↗</a></p></article>
           </div>
           <div class="calc rv" data-calc>
             <div class="calc-in">
               <p class="mono dim">Targets</p>
-              <label for="calc-stations">Stations running Prism <b data-calc-stations-out>1,000</b></label>
-              <input id="calc-stations" type="range" min="10" max="10000" step="10" value="1000" data-calc-stations />
-              <p class="mono dim">At 100 evaluations a day, 250 working days a year, $1 of software per evaluation.</p>
+              <label for="calc-labs">Labs running Prism <b data-calc-labs-out>250</b></label>
+              <input id="calc-labs" type="range" min="10" max="1000" step="10" value="250" data-calc-labs />
+              <label for="calc-per-lab">Stations per lab <b data-calc-per-lab-out>20</b></label>
+              <input id="calc-per-lab" type="range" min="1" max="100" step="1" value="20" data-calc-per-lab />
+              <p class="mono dim">$1 per evaluation at 100 a day, 250 working days. 4 seats a station at $50 a month. $50K a lab for tooling. $150K a lab for enterprise from 10 stations.</p>
             </div>
-            <div class="calc-out"><span class="mono dim">Annual software revenue</span><b data-calc-out>$25M</b></div>
+            <div class="calc-out">
+              <span class="mono dim">Annual software revenue</span><b data-calc-out>$187M</b>
+              <dl class="calc-lines">
+                <div data-line="evaluations"><dt>Evaluations</dt><dd>$125M</dd></div>
+                <div data-line="platform"><dt>Platform</dt><dd>$12M</dd></div>
+                <div data-line="tooling"><dt>Tooling</dt><dd>$12.5M</dd></div>
+                <div data-line="enterprise"><dt>Enterprise</dt><dd>$37.5M</dd></div>
+              </dl>
+              <small class="mono dim" data-calc-hw>Plus $7.5M in stations at 80% margin</small>
+            </div>
           </div>
         </div>
       </section>
@@ -255,7 +272,7 @@
         <div class="wrap">
           <div class="sec-head">
             <div><p class="eyebrow rv">The round</p><h2 class="rv rv-d1" id="round-title">Raising our seed<br />to own the category.</h2></div>
-            <p class="lede rv rv-d1">The product works, customers pay for it, and the labs that use it don't go back. This round turns ten stations into a fleet, and a fleet into the standard.</p>
+            <p class="lede rv rv-d1">The product works, customers pay for it, and the labs that use it don't go back. This round turns twenty stations into a fleet, and a fleet into the standard.</p>
           </div>
           <div class="cards cards-3">
             <article class="card rv"><span class="kicker">Ship</span><h3>100 stations in labs</h3><p>Productized Prism Station, built and installed for every major robot learning lab in the US.</p></article>
