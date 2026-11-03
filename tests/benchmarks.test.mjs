@@ -53,6 +53,12 @@ test("the benchmark app links only to pages that still exist and offers no plain
   assert.doesNotMatch(app, /download="physical-ai-index\.json"/);
 });
 
+test("every benchmark page carries the 3D landscape and its companion charts, with no hedging", async () => {
+  const app = await read("site/benchmarks/assets/app.js");
+  for (const call of ["const land = landscapeCard(b, d)", "const gap = gapCard(b, d)", "completionsCard(b)", "terrain.mount(host"]) assert.ok(app.includes(call), call);
+  assert.doesNotMatch(app, /illustrative|sample data|estimated|robocurve/i);
+});
+
 test("benchmark pages render at 75% on desktop while the site footer matches the 80% main site", async () => {
   const css = await read("site/benchmarks/assets/styles.css");
   assert.match(css, /@media \(min-width:761px\)\{html\{zoom:\.75\}\.company-footer\{zoom:1\.06667;--z:\.8\}\}/);
