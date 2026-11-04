@@ -118,9 +118,55 @@ test("the site tells one story: one founder, and Prism scores every run itself",
     assert.doesNotMatch(html, /\b(?:two|the|our) founders\b/i, `${page} speaks of several founders`);
     assert.doesNotMatch(html, /Reviewers score/i, `${page} says people score the runs`);
   }
-  for (const page of ["index.html", "prism-robotics/index.html"]) {
-    assert.match(await read(page), /scored\?<\/summary><p>Prism scores every run automatically\./, page);
+  assert.match(await read("prism-robotics/index.html"), /scored\?<\/summary><p>Prism scores every run automatically\./);
+});
+
+test("the home page is a short startup homepage: eight sections, one closing offer, nothing said twice", async () => {
+  const home = await read("index.html");
+  const main = home.slice(home.indexOf("<main"), home.indexOf("</main>"));
+  // top-level sections in order (the customer band is the hero's bottom row)
+  const order = [...main.matchAll(/<section ([^>]*)>/g)].map((m) => m[1]).filter((a) => !/class="customers"/.test(a))
+    .map((a) => a.match(/id="([^"]+)"/)?.[1] || a.match(/class="([^"]+)"/)?.[1]);
+  assert.deepEqual(order, ["top", "overview", "film-inline", "reel", "loop", "console", "outcomes", "get"]);
+  // the FAQ, the platform deep-dive and the comparison table live on /prism-robotics, not here
+  assert.doesNotMatch(main, /id="(?:faq|deeper|why|pilot|company)"|Good to know/);
+  assert.equal(main.match(/<section class="reel"/g)?.length, 1, "one lab reel");
+  const words = main.replace(/<script[\s\S]*?<\/script>/g, "").replace(/<[^>]+>/g, " ").split(/\s+/).filter(Boolean).length;
+  assert.ok(words <= 750, `home page has ${words} words`);
+  // credentials appear once, in the hero
+  assert.equal(main.match(/Built by/g)?.length, 1);
+  assert.equal(main.match(/Backed by/g)?.length, 1);
+  const close = main.match(/<section class="sec closing" id="get"[\s\S]*?<\/section>/)?.[0] || "";
+  assert.match(close, /Prove it on your robot<br \/>in 30 days\./);
+  assert.match(close, /<a class="btn btn-primary" href="\/order">Get started<\/a>/);
+});
+
+const CUSTOMERS = ["Dream Labs", "Enact", "New Theory", "Trossen Robotics"];
+const bandOf = (html) => html.match(/<section class="customers"[\s\S]*?<\/section>/)?.[0] || "";
+
+test("the customer band is the bottom row of the hero on the home and investor pages, identical on both", async () => {
+  const home = await read("index.html"), investors = await read("robotics/investors/index.html");
+  const band = bandOf(home);
+  // the band is the hero's bottom row, so the customers show on first load
+  for (const html of [home, investors]) assert.match(html, /<section class="hero"[\s\S]*?<section class="customers"[\s\S]*?<\/section>\s*<\/section>/, "band inside the hero");
+  assert.match(await readFile(new URL("../public/site/lc/lc.css", import.meta.url), "utf8"), /\.hero \{[^}]*grid-template-rows: 1fr auto;/);
+  const names = band.replace(/<img[^>]*alt="([^"]*)"[^>]*>/g, " $1 ").replace(/<[^>]+>/g, " ");
+  for (const name of CUSTOMERS) assert.match(names, new RegExp(`\\b${name}\\b`), name);
+  assert.match(band, /alt="Dream Labs"/);
+  assert.match(band, /alt="Trossen Robotics"/);
+  assert.equal(bandOf(investors), band, "the investor page carries the same band");
+  for (const [, src] of band.matchAll(/src="(\/site\/assets\/brand\/customers\/[^"]+)"/g)) {
+    assert.equal(await exists(new URL(`../public${src}`, import.meta.url)), true, src);
   }
+  const css = await readFile(new URL("../public/site/lc/lc.css", import.meta.url), "utf8");
+  assert.match(css, /\.customers img \{[^}]*height: var\(--logo-h\);[^}]*filter: brightness\(0\) invert\(1\);/);
+});
+
+test("the investor hero carries the same Backed by row as the home hero", async () => {
+  const backers = (html) => html.match(/<div class="creds creds-backers[^"]*">[\s\S]*?<\/div>/)?.[0];
+  const home = backers(await read("index.html")), investors = backers(await read("robotics/investors/index.html"));
+  assert.ok(home && investors);
+  assert.equal(investors, home);
 });
 
 test("the home hero has no ticker strip under it", async () => {
