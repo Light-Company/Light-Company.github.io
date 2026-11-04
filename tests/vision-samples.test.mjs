@@ -78,7 +78,8 @@ test("the Robotics page keeps its landing video, method and qualified pilot numb
   assert.match(html, /data-film-inline[\s\S]*poster="\/media\/brand-film\/platform-demo.jpg" src="\/media\/brand-film\/platform-demo.mp4"/);
   assert.match(html, /<track kind="captions" srclang="en" label="English" src="\/media\/brand-film\/platform-demo.vtt"/);
   assert.doesNotMatch(html, /evals-explainer/);
-  assert.match(html, /id="deeper"[\s\S]*Capability maps[\s\S]*robot-eval-staging.mp4/);
+  // the platform deep-dive moved off the home page to /prism-robotics
+  assert.doesNotMatch(html, /id="deeper"/);
   assert.match(html, /id="outcomes" aria-labelledby="outcomes-title"/);
   assert.doesNotMatch(html, /Evaluation estimates from pilot customers|Sample data shown/);
   assert.equal(sources["robotics-hero-full.mp4"].sourceFile, "IMG_5578 3 (1).mov");

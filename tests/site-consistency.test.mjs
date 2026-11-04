@@ -118,9 +118,27 @@ test("the site tells one story: one founder, and Prism scores every run itself",
     assert.doesNotMatch(html, /\b(?:two|the|our) founders\b/i, `${page} speaks of several founders`);
     assert.doesNotMatch(html, /Reviewers score/i, `${page} says people score the runs`);
   }
-  for (const page of ["index.html", "prism-robotics/index.html"]) {
-    assert.match(await read(page), /scored\?<\/summary><p>Prism scores every run automatically\./, page);
-  }
+  assert.match(await read("prism-robotics/index.html"), /scored\?<\/summary><p>Prism scores every run automatically\./);
+});
+
+test("the home page is a short startup homepage: eight sections, one closing offer, nothing said twice", async () => {
+  const home = await read("index.html");
+  const main = home.slice(home.indexOf("<main"), home.indexOf("</main>"));
+  // top-level sections in order (the customer band is the hero's bottom row)
+  const order = [...main.matchAll(/<section ([^>]*)>/g)].map((m) => m[1]).filter((a) => !/class="customers"/.test(a))
+    .map((a) => a.match(/id="([^"]+)"/)?.[1] || a.match(/class="([^"]+)"/)?.[1]);
+  assert.deepEqual(order, ["top", "overview", "film-inline", "reel", "loop", "console", "outcomes", "get"]);
+  // the FAQ, the platform deep-dive and the comparison table live on /prism-robotics, not here
+  assert.doesNotMatch(main, /id="(?:faq|deeper|why|pilot|company)"|Good to know/);
+  assert.equal(main.match(/<section class="reel"/g)?.length, 1, "one lab reel");
+  const words = main.replace(/<script[\s\S]*?<\/script>/g, "").replace(/<[^>]+>/g, " ").split(/\s+/).filter(Boolean).length;
+  assert.ok(words <= 750, `home page has ${words} words`);
+  // credentials appear once, in the hero
+  assert.equal(main.match(/Built by/g)?.length, 1);
+  assert.equal(main.match(/Backed by/g)?.length, 1);
+  const close = main.match(/<section class="sec closing" id="get"[\s\S]*?<\/section>/)?.[0] || "";
+  assert.match(close, /Prove it on your robot<br \/>in 30 days\./);
+  assert.match(close, /<a class="btn btn-primary" href="\/order">Get started<\/a>/);
 });
 
 const CUSTOMERS = ["Dream Labs", "Enact", "New Theory", "Trossen Robotics"];
